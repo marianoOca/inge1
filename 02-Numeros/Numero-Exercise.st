@@ -390,28 +390,28 @@ Numero subclass: #Entero
 	
 	^self class with: value // aDivisor integerValue! !
 
-!Entero methodsFor: 'arithmetic operations' stamp: 'MO 9/12/2022 21:02:05'!
-addToEntero: anEnteroAdder
+!Entero methodsFor: 'arithmetic operations' stamp: 'MO 9/14/2022 11:00:44'!
+addToEntero: aEnteroAdder
 
-	^self class with: value + anEnteroAdder integerValue! !
+	^self class with: value + aEnteroAdder integerValue! !
 
-!Entero methodsFor: 'arithmetic operations' stamp: 'MO 9/12/2022 21:39:34'!
-addToFraccion: anFraccionAdder
+!Entero methodsFor: 'arithmetic operations' stamp: 'MO 9/14/2022 11:00:52'!
+addToFraccion: aFraccionAdder
 
-	^self * anFraccionAdder denominator + anFraccionAdder numerator / anFraccionAdder denominator
+	^self * aFraccionAdder denominator + aFraccionAdder numerator / aFraccionAdder denominator
 	! !
 
-!Entero methodsFor: 'arithmetic operations' stamp: 'cde 9/13/2022 15:16:56'!
-divideToEntero: unEnteroDividendo 
+!Entero methodsFor: 'arithmetic operations' stamp: 'MO 9/14/2022 11:01:00'!
+divideToEntero: aEnteroDividend
 	
-	^Fraccion with: unEnteroDividendo over: self.
+	^Fraccion with: aEnteroDividend over: self.
 
 	! !
 
-!Entero methodsFor: 'arithmetic operations' stamp: 'cde 9/13/2022 15:17:04'!
-divideToFraccion: unaFraccionDividendo
+!Entero methodsFor: 'arithmetic operations' stamp: 'MO 9/14/2022 11:01:09'!
+divideToFraccion: aFraccionDividend
 
-	^unaFraccionDividendo numerator / (unaFraccionDividendo denominator * self).
+	^aFraccionDividend numerator / (aFraccionDividend denominator * self).
 ! !
 
 !Entero methodsFor: 'arithmetic operations' stamp: 'cde 9/13/2022 15:47:40'!
@@ -433,10 +433,10 @@ greatestCommonDivisorWith: anEntero
 	
 	^self class with: (value gcd: anEntero integerValue)! !
 
-!Entero methodsFor: 'arithmetic operations' stamp: 'MO 9/12/2022 21:55:58'!
-multiplyToEntero: anEnteroMultiplier
+!Entero methodsFor: 'arithmetic operations' stamp: 'MO 9/14/2022 11:01:17'!
+multiplyToEntero: aEnteroMultiplier
 	
-	^self class with: value * anEnteroMultiplier integerValue
+	^self class with: value * aEnteroMultiplier integerValue
 	! !
 
 !Entero methodsFor: 'arithmetic operations' stamp: 'cde 9/13/2022 15:14:20'!
@@ -453,17 +453,17 @@ siEsCeroOUno: unClosure
 	
 		! !
 
-!Entero methodsFor: 'arithmetic operations' stamp: 'cde 9/13/2022 14:36:23'!
-substractToEntero: unEntero
+!Entero methodsFor: 'arithmetic operations' stamp: 'MO 9/14/2022 11:01:57'!
+substractToEntero: aEnteroMinuend
 	
-	^ self class with: unEntero integerValue - value.
+	^ self class with: aEnteroMinuend integerValue - value.
 	 
 	! !
 
-!Entero methodsFor: 'arithmetic operations' stamp: 'cde 9/13/2022 14:50:43'!
-substractToFraccion: aFraction
+!Entero methodsFor: 'arithmetic operations' stamp: 'MO 9/14/2022 11:02:13'!
+substractToFraccion: aFraccionMinuend
 	
-	^ aFraction numerator - (self * aFraction denominator) / aFraction denominator.
+	^ aFraccionMinuend numerator - (self * aFraccionMinuend denominator) / aFraccionMinuend denominator.
 	
 ! !
 
@@ -566,58 +566,58 @@ Numero subclass: #Fraccion
 
 	^ aDivisor divideToFraccion: self. ! !
 
-!Fraccion methodsFor: 'arithmetic operations' stamp: 'MO 9/12/2022 21:00:46'!
-addToEntero: anEnteroAdder
+!Fraccion methodsFor: 'arithmetic operations' stamp: 'MO 9/14/2022 11:03:45'!
+addToEntero: aEnteroAdder
 
-	^anEnteroAdder * denominator + numerator / denominator! !
+	^aEnteroAdder * denominator + numerator / denominator! !
 
-!Fraccion methodsFor: 'arithmetic operations' stamp: 'MO 9/12/2022 21:41:29'!
-addToFraccion: anFraccionAdder
+!Fraccion methodsFor: 'arithmetic operations' stamp: 'MO 9/14/2022 11:03:39'!
+addToFraccion: aFraccionAdder
 
 		| newNumerator newDenominator |
 		
-		newNumerator := (anFraccionAdder numerator * denominator) + (anFraccionAdder denominator * numerator).
-		newDenominator := anFraccionAdder denominator * denominator.
+		newNumerator := (aFraccionAdder numerator * denominator) + (aFraccionAdder denominator * numerator).
+		newDenominator := aFraccionAdder denominator * denominator.
 		
 		^newNumerator / newDenominator
 	! !
 
-!Fraccion methodsFor: 'arithmetic operations' stamp: 'cde 9/13/2022 15:16:36'!
-divideToEntero: unEnteroDividendo 
+!Fraccion methodsFor: 'arithmetic operations' stamp: 'MO 9/14/2022 11:03:27'!
+divideToEntero: aEnteroDividend
 
-	^unEnteroDividendo * self denominator / self numerator.
+	^aEnteroDividend * self denominator / self numerator.
 	! !
 
-!Fraccion methodsFor: 'arithmetic operations' stamp: 'cde 9/13/2022 15:16:24'!
-divideToFraccion: unaFraccionDividendo
+!Fraccion methodsFor: 'arithmetic operations' stamp: 'MO 9/14/2022 11:03:14'!
+divideToFraccion: aFraccionDividend
 
-	^(unaFraccionDividendo numerator * self denominator) / (unaFraccionDividendo denominator * self numerator)
+	^(aFraccionDividend numerator * self denominator) / (aFraccionDividend denominator * self numerator)
 ! !
 
-!Fraccion methodsFor: 'arithmetic operations' stamp: 'MO 9/12/2022 21:51:44'!
-multiplyToEntero: anEnteroMultiplier
+!Fraccion methodsFor: 'arithmetic operations' stamp: 'MO 9/14/2022 11:03:03'!
+multiplyToEntero: aEnteroMultiplier
 	
-	^anEnteroMultiplier * numerator / denominator! !
+	^aEnteroMultiplier * numerator / denominator! !
 
-!Fraccion methodsFor: 'arithmetic operations' stamp: 'cde 9/13/2022 15:15:52'!
-multiplyToFraccion: unaFraccionMultiplicando 
+!Fraccion methodsFor: 'arithmetic operations' stamp: 'MO 9/14/2022 11:02:50'!
+multiplyToFraccion: aFraccionMultiplier
 
-	^(unaFraccionMultiplicando numerator * self numerator) / (unaFraccionMultiplicando denominator * self denominator).
+	^(aFraccionMultiplier numerator * self numerator) / (aFraccionMultiplier denominator * self denominator).
 ! !
 
-!Fraccion methodsFor: 'arithmetic operations' stamp: 'cde 9/13/2022 14:37:48'!
-substractToEntero: unEntero 
-	^ (unEntero * denominator) - numerator / denominator
+!Fraccion methodsFor: 'arithmetic operations' stamp: 'MO 9/14/2022 11:02:36'!
+substractToEntero: aEnteroMinuend
+	^ (aEnteroMinuend * denominator) - numerator / denominator
 	
 
 ! !
 
-!Fraccion methodsFor: 'arithmetic operations' stamp: 'cde 9/13/2022 14:38:11'!
-substractToFraccion: aFraccion 
+!Fraccion methodsFor: 'arithmetic operations' stamp: 'MO 9/14/2022 11:02:24'!
+substractToFraccion: aFraccionMinuend 
 	| newNumerator newDenominator |
 	
-	newNumerator := (denominator * aFraccion numerator) - (numerator * aFraccion denominator) . 	
-	newDenominator := denominator * aFraccion denominator.
+	newNumerator := (denominator * aFraccionMinuend numerator) - (numerator * aFraccionMinuend denominator) . 	
+	newDenominator := denominator * aFraccionMinuend denominator.
 		
 	^newNumerator / newDenominator.
 	
