@@ -144,6 +144,19 @@ TestCase subclass: #SentenceFinderByPrefixTest
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
 
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'MO 9/18/2022 17:09:35'!
+test01PrefixShouldNotBeEmpty
+
+	| stack |
+	
+	stack := OOStackPrefixSearch new.
+	
+	self
+		should: [ stack searchByPrefix: '' ]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = OOStackPrefixSearch emptyPrefixErrorDescription ]! !
+
 
 !classDefinition: #OOStack category: 'Stack-Exercise'!
 Object subclass: #OOStack
@@ -152,12 +165,12 @@ Object subclass: #OOStack
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
 
-!OOStack methodsFor: 'as yet unclassified' stamp: 'MO 9/17/2022 21:20:32'!
+!OOStack methodsFor: 'methods' stamp: 'MO 9/17/2022 21:20:32'!
 isEmpty
 
 	^ last isEmpty! !
 
-!OOStack methodsFor: 'as yet unclassified' stamp: 'MO 9/18/2022 13:33:32'!
+!OOStack methodsFor: 'methods' stamp: 'MO 9/18/2022 16:16:05'!
 pop
 
 	|aSentence|
@@ -170,19 +183,19 @@ pop
 	
 	^ aSentence! !
 
-!OOStack methodsFor: 'as yet unclassified' stamp: 'MO 9/18/2022 13:33:39'!
+!OOStack methodsFor: 'methods' stamp: 'MO 9/18/2022 16:16:12'!
 push: aSentence
 	
 	last := OOStackElement new initializeWithPrevious: last withContent: aSentence.
 	
 	size := size + 1! !
 
-!OOStack methodsFor: 'as yet unclassified' stamp: 'MO 9/17/2022 21:51:15'!
+!OOStack methodsFor: 'methods' stamp: 'MO 9/17/2022 21:51:15'!
 size
 
 	^ size! !
 
-!OOStack methodsFor: 'as yet unclassified' stamp: 'MO 9/17/2022 21:46:48'!
+!OOStack methodsFor: 'methods' stamp: 'MO 9/17/2022 21:46:48'!
 top
 
 	^ last content! !
@@ -206,6 +219,32 @@ stackEmptyErrorDescription
 	^ 'cant do that stack is empty!!!!!!'! !
 
 
+!classDefinition: #OOStackPrefixSearch category: 'Stack-Exercise'!
+OOStack subclass: #OOStackPrefixSearch
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Stack-Exercise'!
+
+!OOStackPrefixSearch methodsFor: 'private methods' stamp: 'MO 9/18/2022 16:59:31'!
+isPrefix: aPrefix! !
+
+
+!OOStackPrefixSearch methodsFor: 'methods' stamp: 'MO 9/18/2022 16:57:43'!
+searchByPrefix: aPrefix! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'OOStackPrefixSearch class' category: 'Stack-Exercise'!
+OOStackPrefixSearch class
+	instanceVariableNames: ''!
+
+!OOStackPrefixSearch class methodsFor: 'error descriptions' stamp: 'MO 9/18/2022 17:08:43'!
+emptyPrefixErrorDescription
+	
+	^ 'prefix cant be empty!!!!'! !
+
+
 !classDefinition: #OOStackBase category: 'Stack-Exercise'!
 Object subclass: #OOStackBase
 	instanceVariableNames: ''
@@ -213,12 +252,12 @@ Object subclass: #OOStackBase
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
 
-!OOStackBase methodsFor: 'as yet unclassified' stamp: 'MO 9/17/2022 21:54:24'!
+!OOStackBase methodsFor: 'methods' stamp: 'MO 9/17/2022 21:54:24'!
 content
 
 	self error: OOStack stackEmptyErrorDescription! !
 
-!OOStackBase methodsFor: 'as yet unclassified' stamp: 'MO 9/17/2022 21:54:32'!
+!OOStackBase methodsFor: 'methods' stamp: 'MO 9/17/2022 21:54:32'!
 isEmpty
 
 	^ true! !
@@ -231,24 +270,24 @@ Object subclass: #OOStackElement
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
 
-!OOStackElement methodsFor: 'instace creation' stamp: 'MO 9/17/2022 21:44:11'!
-initializeWithPrevious: previousOOStackElement withContent: aSentence 
+!OOStackElement methodsFor: 'instace creation' stamp: 'MO 9/18/2022 16:19:04'!
+initializeWithPrevious: previousOOStackElement withContent: aSentence
 
 	previous := previousOOStackElement.
 	content  := aSentence.! !
 
 
-!OOStackElement methodsFor: 'as yet unclassified' stamp: 'MO 9/17/2022 21:37:45'!
+!OOStackElement methodsFor: 'methods' stamp: 'MO 9/17/2022 21:37:45'!
 content
 
 	^ content! !
 
-!OOStackElement methodsFor: 'as yet unclassified' stamp: 'MO 9/17/2022 20:59:41'!
+!OOStackElement methodsFor: 'methods' stamp: 'MO 9/17/2022 20:59:41'!
 isEmpty
 
 	^ false! !
 
-!OOStackElement methodsFor: 'as yet unclassified' stamp: 'MO 9/17/2022 21:30:21'!
+!OOStackElement methodsFor: 'methods' stamp: 'MO 9/17/2022 21:30:21'!
 previous
 
 	^ previous! !
