@@ -157,7 +157,7 @@ isEmpty
 
 	^ last isEmpty! !
 
-!OOStack methodsFor: 'as yet unclassified' stamp: 'MO 9/17/2022 21:59:23'!
+!OOStack methodsFor: 'as yet unclassified' stamp: 'MO 9/18/2022 13:33:32'!
 pop
 
 	|aSentence|
@@ -166,16 +166,16 @@ pop
 	
 	last := last previous.
 	
-	size = size - 1.
+	size := size - 1.
 	
 	^ aSentence! !
 
-!OOStack methodsFor: 'as yet unclassified' stamp: 'MO 9/17/2022 21:59:37'!
+!OOStack methodsFor: 'as yet unclassified' stamp: 'MO 9/18/2022 13:33:39'!
 push: aSentence
 	
 	last := OOStackElement new initializeWithPrevious: last withContent: aSentence.
 	
-	size = size + 1! !
+	size := size + 1! !
 
 !OOStack methodsFor: 'as yet unclassified' stamp: 'MO 9/17/2022 21:51:15'!
 size
