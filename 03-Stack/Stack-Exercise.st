@@ -144,20 +144,13 @@ TestCase subclass: #SentenceFinderByPrefixTest
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
 
-!SentenceFinderByPrefixTest methodsFor: 'setUp' stamp: 'MO 9/18/2022 20:54:45'!
+!SentenceFinderByPrefixTest methodsFor: 'setUp' stamp: 'MO 9/19/2022 15:38:41'!
 setUp
 
-	aStack := OOStackPrefixSearch new.
+	aStack := OOStack new.
 	
 	aSenteceFinder := SentenceFinderByPrefix new.! !
 
-
-!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'MO 9/18/2022 21:18:01'!
-test00PruebasSobreIsPrefix
-	
-	self assert: (aSenteceFinder isPrefix: 'la' of: 'la vaca lola').
-	
-	self deny: (aSenteceFinder isPrefix: 'La' of: 'la vaca lola').! !
 
 !SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'MO 9/18/2022 20:54:53'!
 test01PrefixShouldNotBeEmpty
@@ -190,8 +183,8 @@ test03OneSentenceShouldBeFoundByPrefix
 	
 	self assert: (sentecesFoundReal = sentecesFoundExpected).! !
 
-!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'SR 9/18/2022 23:26:06'!
-test04NoSentenceShouldBeFoundByPrefix
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'MO 9/19/2022 15:25:26'!
+test04NoneSentenceShouldBeFoundByPrefix
 	
 	| sentecesFoundReal |
 	
@@ -201,7 +194,18 @@ test04NoSentenceShouldBeFoundByPrefix
 	
 	self assert: (sentecesFoundReal size = 0).! !
 
-!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'SR 9/18/2022 23:24:53'!
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'MO 9/19/2022 15:25:58'!
+test04SentenceFinderIsCaseSensitive
+	
+	| sentecesFoundReal |
+	
+	aStack push: 'la vaca lola'.
+	
+	sentecesFoundReal := (aSenteceFinder searchByPrefix: 'La' inStack: aStack).
+	
+	self assert: (sentecesFoundReal size = 0).! !
+
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'MO 9/19/2022 15:13:20'!
 test05MultipleSentencesShouldBeFoundByPrefix
 	
 	| sentecesFoundReal sentecesFoundExpected |
@@ -211,8 +215,7 @@ test05MultipleSentencesShouldBeFoundByPrefix
 	sentecesFoundReal := (aSenteceFinder searchByPrefix: 'win' inStack: aStack).
 	
 	sentecesFoundExpected := OrderedCollection new.
-	sentecesFoundExpected addLast: 'winning is everything'.
-	sentecesFoundExpected addLast: 'winter is coming'.
+	sentecesFoundExpected add: 'winning is everything'; add: 'winter is coming'.
 	
 	self assert: (sentecesFoundReal = sentecesFoundExpected).! !
 
@@ -232,6 +235,62 @@ test06AllSentencesShouldBeFoundByPrefix
 	sentecesFoundExpected addLast: 'winter is coming'.
 	
 	self assert: (sentecesFoundReal = sentecesFoundExpected).! !
+
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'MO 9/19/2022 15:28:32'!
+test07NoneSentencesShouldBeFoundByPrefix
+	
+	| sentecesFoundReal |
+	
+	aStack push: 'winter is coming'; push: 'winning is everything'; push: 'winter is here'; push: 'winds of Winter'.
+	
+	sentecesFoundReal := (aSenteceFinder searchByPrefix: 'is' inStack: aStack).
+	
+	self assert: (sentecesFoundReal size = 0).! !
+
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'MO 9/19/2022 15:30:46'!
+test08StackRemainsTheSameAfterFindingNothing
+	
+	| anotherStack |
+	
+	anotherStack := aStack.
+	
+	aStack push: 'winter is coming'; push: 'winning is everything'; push: 'winter is here'; push: 'winds of Winter'.
+	
+	aSenteceFinder searchByPrefix: 'is' inStack: aStack.
+	
+	self assert: (aStack = anotherStack).! !
+
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'MO 9/19/2022 15:35:44'!
+test09StackRemainsTheSameAfterFindingMatches
+	
+	| anotherStack sentecesFoundReal sentecesFoundExpected|
+	
+	anotherStack := aStack.
+	
+	aStack push: 'la vaca lola'; push: 'no tiene cabeza'; push: 'no tiene cola'; push: 'inge1 la mejor materia'.
+	
+	sentecesFoundReal := (aSenteceFinder searchByPrefix: 'no' inStack: aStack).
+	
+	sentecesFoundExpected := OrderedCollection new.
+	sentecesFoundExpected add: 'no tiene cola'; add: 'no tiene cabeza'.
+	
+	self assert: (sentecesFoundReal = sentecesFoundExpected).
+	self assert: (aStack = anotherStack).! !
+
+
+!SentenceFinderByPrefixTest methodsFor: 'private test' stamp: 'MO 9/19/2022 14:56:17'!
+test01PruebasSobreIsPrefix
+	
+	self assert: (aSenteceFinder isPrefix: 'la' of: 'la vaca lola').
+	
+	self deny: (aSenteceFinder isPrefix: 'La' of: 'la vaca lola').! !
+
+!SentenceFinderByPrefixTest methodsFor: 'private test' stamp: 'MO 9/19/2022 15:10:29'!
+test02PruebasSobreHasNoSpaces
+	
+	self assert: (aSenteceFinder hasNoSpaces: 'NoHayEspacioAcá').
+	
+	self deny: (aSenteceFinder hasNoSpaces: 'AcáHayUnEspacio Ahí').! !
 
 
 !classDefinition: #OOStack category: 'Stack-Exercise'!
@@ -295,32 +354,6 @@ stackEmptyErrorDescription
 	^ 'cant do that stack is empty!!!!!!'! !
 
 
-!classDefinition: #OOStackPrefixSearch category: 'Stack-Exercise'!
-OOStack subclass: #OOStackPrefixSearch
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Stack-Exercise'!
-
-!OOStackPrefixSearch methodsFor: 'private methods' stamp: 'MO 9/18/2022 16:59:31'!
-isPrefix: aPrefix! !
-
-
-!OOStackPrefixSearch methodsFor: 'methods' stamp: 'MO 9/18/2022 16:57:43'!
-searchByPrefix: aPrefix! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-!classDefinition: 'OOStackPrefixSearch class' category: 'Stack-Exercise'!
-OOStackPrefixSearch class
-	instanceVariableNames: ''!
-
-!OOStackPrefixSearch class methodsFor: 'error descriptions' stamp: 'MO 9/18/2022 17:08:43'!
-emptyPrefixErrorDescription
-	
-	^ 'prefix cant be empty!!!!'! !
-
-
 !classDefinition: #OOStackBase category: 'Stack-Exercise'!
 Object subclass: #OOStackBase
 	instanceVariableNames: ''
@@ -376,6 +409,37 @@ Object subclass: #SentenceFinderByPrefix
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
 
+!SentenceFinderByPrefix methodsFor: 'private methods' stamp: 'MO 9/19/2022 15:15:28'!
+checkPrefixIsNotEmptyOrHasSpaces: aPrefix.
+	
+	aPrefix = '' ifTrue: [self error: SentenceFinderByPrefix emptyPrefixErrorDescription ].
+	
+	(self hasNoSpaces: aPrefix) ifFalse: [self error: SentenceFinderByPrefix prefixWithSpacesErrorDescription ].! !
+
+!SentenceFinderByPrefix methodsFor: 'private methods' stamp: 'MO 9/19/2022 15:23:12'!
+exploreStack: aStackToExplore pushingToSrack: aStackToPush usingPrefix: aPrefix
+	
+	| sentecesFound aSentence|
+	
+	sentecesFound := OrderedCollection new.
+	
+	aStackToExplore size timesRepeat: [
+		aSentence := aStackToExplore pop.
+		
+		(self isPrefix: aPrefix of: aSentence) ifTrue: [ sentecesFound add: aSentence ].
+		
+		aStackToPush push: aSentence
+		].
+	
+	^ sentecesFound! !
+
+!SentenceFinderByPrefix methodsFor: 'private methods' stamp: 'MO 9/19/2022 15:08:29'!
+hasNoSpaces: aPrefix
+
+	"aPrefix do: [ :aCharacter | (aCharacter = ' ') ifTrue: [^ true] ]."
+	
+	^ aPrefix allSatisfy: [:a | a ~= $ ].! !
+
 !SentenceFinderByPrefix methodsFor: 'private methods' stamp: 'MO 9/18/2022 21:15:58'!
 isPrefix: aPrefix of: aString
 
@@ -385,27 +449,24 @@ isPrefix: aPrefix of: aString
 	
 	^ aCroppedString = aPrefix! !
 
+!SentenceFinderByPrefix methodsFor: 'private methods' stamp: 'MO 9/19/2022 15:17:37'!
+restoreStack: aStackToRestore fromSrack: aStackToTearDown. 
 
-!SentenceFinderByPrefix methodsFor: 'methods' stamp: 'MO 9/18/2022 21:33:37'!
+	aStackToTearDown size timesRepeat: [ aStackToRestore push: aStackToTearDown pop ].! !
+
+
+!SentenceFinderByPrefix methodsFor: 'methods' stamp: 'MO 9/19/2022 15:24:22'!
 searchByPrefix: aPrefix inStack: aOOStack
 
-	|inverseStack aSentence sentecesFound|
+	|inverseStack sentecesFound|
 	
-	aPrefix = '' ifTrue: [self error: SentenceFinderByPrefix emptyPrefixErrorDescription ].
-	"(self hasSpaces aPrefix) ifTrue: [self error: SentenceFinderByPrefix prefixWithSpacesErrorDescription ]."
+	self checkPrefixIsNotEmptyOrHasSpaces: aPrefix.
 	
 	inverseStack := OOStack new.
-	sentecesFound := OrderedCollection new.
 	
-	aOOStack size timesRepeat: [
-		aSentence := aOOStack pop.
-		
-		(self isPrefix: aPrefix of: aSentence) ifTrue: [ sentecesFound add: aSentence ].
-		
-		inverseStack push: aSentence
-		].
+	sentecesFound := self exploreStack: aOOStack pushingToSrack: inverseStack usingPrefix: aPrefix.
 	
-	inverseStack size timesRepeat: [ aOOStack push: inverseStack pop ].
+	self restoreStack: aOOStack fromSrack: inverseStack.
 	
 	^ sentecesFound.! !
 
