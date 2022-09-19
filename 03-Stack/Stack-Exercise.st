@@ -139,23 +139,56 @@ test10CanNotTopWhenThereAreNoObjectsInTheStack
 
 !classDefinition: #SentenceFinderByPrefixTest category: 'Stack-Exercise'!
 TestCase subclass: #SentenceFinderByPrefixTest
-	instanceVariableNames: ''
+	instanceVariableNames: 'aStack aSenteceFinder'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
 
-!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'MO 9/18/2022 17:09:35'!
+!SentenceFinderByPrefixTest methodsFor: 'setUp' stamp: 'MO 9/18/2022 20:54:45'!
+setUp
+
+	aStack := OOStackPrefixSearch new.
+	
+	aSenteceFinder := SentenceFinderByPrefix new.! !
+
+
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'MO 9/18/2022 21:18:01'!
+test00PruebasSobreIsPrefix
+	
+	self assert: (aSenteceFinder isPrefix: 'la' of: 'la vaca lola').
+	
+	self deny: (aSenteceFinder isPrefix: 'La' of: 'la vaca lola').! !
+
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'MO 9/18/2022 20:54:53'!
 test01PrefixShouldNotBeEmpty
 
-	| stack |
-	
-	stack := OOStackPrefixSearch new.
-	
 	self
-		should: [ stack searchByPrefix: '' ]
+		should: [ aSenteceFinder searchByPrefix: '' inStack: aStack ]
 		raise: Error - MessageNotUnderstood
 		withExceptionDo: [ :anError |
-			self assert: anError messageText = OOStackPrefixSearch emptyPrefixErrorDescription ]! !
+			self assert: anError messageText = SentenceFinderByPrefix emptyPrefixErrorDescription ]! !
+
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'MO 9/18/2022 21:37:02'!
+test02PrefixShouldNotHaveSpaces
+
+	self
+		should: [ aSenteceFinder searchByPrefix: 'space spaces' inStack: aStack ]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = SentenceFinderByPrefix prefixWithSpacesErrorDescription ]! !
+
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'MO 9/18/2022 21:34:29'!
+test03OneSentenceShouldBeFoundByPrefix
+	
+	|sentecesFoundReal sentecesFoundExpected|
+	
+	aStack push: 'la vaca lola'.
+	
+	sentecesFoundReal := (aSenteceFinder searchByPrefix: 'la' inStack: aStack).
+	
+	sentecesFoundExpected := OrderedCollection with: 'la vaca lola'.
+	
+	self assert: (sentecesFoundReal = sentecesFoundExpected).! !
 
 
 !classDefinition: #OOStack category: 'Stack-Exercise'!
@@ -299,3 +332,52 @@ Object subclass: #SentenceFinderByPrefix
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
+
+!SentenceFinderByPrefix methodsFor: 'private methods' stamp: 'MO 9/18/2022 21:15:58'!
+isPrefix: aPrefix of: aString
+
+	|aCroppedString|
+	
+	aCroppedString := aString copyFrom: 1 to: aPrefix size. 
+	
+	^ aCroppedString = aPrefix! !
+
+
+!SentenceFinderByPrefix methodsFor: 'methods' stamp: 'MO 9/18/2022 21:33:37'!
+searchByPrefix: aPrefix inStack: aOOStack
+
+	|inverseStack aSentence sentecesFound|
+	
+	aPrefix = '' ifTrue: [self error: SentenceFinderByPrefix emptyPrefixErrorDescription ].
+	"(self hasSpaces aPrefix) ifTrue: [self error: SentenceFinderByPrefix prefixWithSpacesErrorDescription ]."
+	
+	inverseStack := OOStack new.
+	sentecesFound := OrderedCollection new.
+	
+	aOOStack size timesRepeat: [
+		aSentence := aOOStack pop.
+		
+		(self isPrefix: aPrefix of: aSentence) ifTrue: [ sentecesFound add: aSentence ].
+		
+		inverseStack push: aSentence
+		].
+	
+	inverseStack size timesRepeat: [ aOOStack push: inverseStack pop ].
+	
+	^ sentecesFound.! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'SentenceFinderByPrefix class' category: 'Stack-Exercise'!
+SentenceFinderByPrefix class
+	instanceVariableNames: ''!
+
+!SentenceFinderByPrefix class methodsFor: 'error descriptions' stamp: 'MO 9/18/2022 20:06:13'!
+emptyPrefixErrorDescription
+	
+	^ 'prefix cant be empty!!!!'! !
+
+!SentenceFinderByPrefix class methodsFor: 'error descriptions' stamp: 'MO 9/18/2022 21:34:05'!
+prefixWithSpacesErrorDescription
+	
+	^ 'prefix cant have spaces in it!!!!'! !
