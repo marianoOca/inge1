@@ -177,7 +177,7 @@ test02PrefixShouldNotHaveSpaces
 		withExceptionDo: [ :anError |
 			self assert: anError messageText = SentenceFinderByPrefix prefixWithSpacesErrorDescription ]! !
 
-!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'MO 9/18/2022 21:34:29'!
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'SR 9/18/2022 22:38:24'!
 test03OneSentenceShouldBeFoundByPrefix
 	
 	|sentecesFoundReal sentecesFoundExpected|
@@ -187,6 +187,49 @@ test03OneSentenceShouldBeFoundByPrefix
 	sentecesFoundReal := (aSenteceFinder searchByPrefix: 'la' inStack: aStack).
 	
 	sentecesFoundExpected := OrderedCollection with: 'la vaca lola'.
+	
+	self assert: (sentecesFoundReal = sentecesFoundExpected).! !
+
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'SR 9/18/2022 23:26:06'!
+test04NoSentenceShouldBeFoundByPrefix
+	
+	| sentecesFoundReal |
+	
+	aStack push: 'la vaca lola'.
+	
+	sentecesFoundReal := (aSenteceFinder searchByPrefix: 'La' inStack: aStack).
+	
+	self assert: (sentecesFoundReal size = 0).! !
+
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'SR 9/18/2022 23:24:53'!
+test05MultipleSentencesShouldBeFoundByPrefix
+	
+	| sentecesFoundReal sentecesFoundExpected |
+	
+	aStack push: 'winter is coming'; push: 'winning is everything'; push: 'Winter is here'; push: 'The winds of Winter'.
+	
+	sentecesFoundReal := (aSenteceFinder searchByPrefix: 'win' inStack: aStack).
+	
+	sentecesFoundExpected := OrderedCollection new.
+	sentecesFoundExpected addLast: 'winning is everything'.
+	sentecesFoundExpected addLast: 'winter is coming'.
+	
+	self assert: (sentecesFoundReal = sentecesFoundExpected).! !
+
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'SR 9/18/2022 23:30:55'!
+test06AllSentencesShouldBeFoundByPrefix
+	
+	| sentecesFoundReal sentecesFoundExpected |
+	
+	aStack push: 'winter is coming'; push: 'winning is everything'; push: 'winter is here'; push: 'winds of Winter'.
+	
+	sentecesFoundReal := (aSenteceFinder searchByPrefix: 'wi' inStack: aStack).
+	
+	sentecesFoundExpected := OrderedCollection new.
+	sentecesFoundExpected addLast: 'winds of Winter'.
+	sentecesFoundExpected addLast: 'winter is here'.
+	sentecesFoundExpected addLast: 'winning is everything'.
+	sentecesFoundExpected addLast: 'winter is coming'.
 	
 	self assert: (sentecesFoundReal = sentecesFoundExpected).! !
 
