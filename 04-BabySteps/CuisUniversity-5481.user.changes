@@ -1,0 +1,29 @@
+
+
+----SNAPSHOT----(1 October 2022 13:58:57) TDDBabyStepsGames.image priorSource: 7371458!
+
+----STARTUP---- (1 October 2022 14:09:25) as C:\Users\sarod\Desktop\windows64\CuisUniversity-5481.image!
+
+
+!testRun: #TDDBabyStepsAnagramsTest #test01EmptyStringAnagramIsJustACollectionWithTheEmptyString stamp: 'SR 10/1/2022 14:09:34'!
+PASSED!
+
+!testRun: #TDDBabyStepsAnagramsTest #test02OneCharStringAnagramReturnsACollectionWithTheSameOneCharString stamp: 'SR 10/1/2022 14:09:34'!
+PASSED!
+
+!testRun: #TDDBabyStepsAnagramsTest #test03TwoCharStringAnagramReturnsTheOriginalStringAndAnotherOneFlipped stamp: 'SR 10/1/2022 14:09:34'!
+PASSED!
+
+!testRun: #TDDBabyStepsAnagramsTest #test04ThreeCharStringAnagramReturnsAllThe6PossibleOrderCombinations stamp: 'SR 10/1/2022 14:09:34'!
+PASSED!
+
+!testRun: #TDDBabyStepsAnagramsTest #test05MoreThanThreeCharStringAnagramReturnsAllTheCorrectPossibleOrderCombinations stamp: 'SR 10/1/2022 14:09:34'!
+PASSED!
+
+!testRun: #TDDBabyStepsAnagramsTest #testExtraToCheckGeneralizationOnKata stamp: 'SR 10/1/2022 14:09:34'!
+PASSED!
+
+----STARTUP---- (1 October 2022 14:10:02) as C:\Users\sarod\Desktop\windows64\CuisUniversity-5481.image!
+
+
+----SNAPSHOT----(1 October 2022 14:12:06) CuisUniversity-5481.image priorSource: 7371549!
