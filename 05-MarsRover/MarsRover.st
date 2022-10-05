@@ -183,45 +183,45 @@ test18RotatingRightFacingWestChangesDirectionToNorth
 	
 	self assert: (marsRover isInPosition: (0@0) andDirection: #N).! !
 
-!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 17:25:23'!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 18:00:42'!
 test19ReceivingAnFMakesRoverMoveForwards
 
 	| marsRover instructionFromEarth|
 	
-	instructionFromEarth := 'f'.				
+	instructionFromEarth := $f.				
 	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
 	marsRover receiveSingleInstruction: instructionFromEarth.
 	
 	self assert: (marsRover isInPosition: (0@1) andDirection: #N).! !
 
-!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 17:25:56'!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 18:00:49'!
 test20ReceivingABMakesRoverMoveBackwards
 
 	| marsRover instructionFromEarth|
 	
-	instructionFromEarth := 'b'.				
+	instructionFromEarth := $b.				
 	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
 	marsRover receiveSingleInstruction: instructionFromEarth.
 	
 	self assert: (marsRover isInPosition: (0@-1) andDirection: #N).! !
 
-!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 16:37:28'!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 18:00:56'!
 test21ReceivingAnLMakesRoverRotateLeft
 
 	| marsRover instructionFromEarth|
 	
-	instructionFromEarth := 'l'.				
+	instructionFromEarth := $l.				
 	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
 	marsRover receiveSingleInstruction: instructionFromEarth.
 	
 	self assert: (marsRover isInPosition: (0@0) andDirection: #W).! !
 
-!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 16:37:23'!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 18:01:03'!
 test22ReceivingAnRMakesRoverRotateLeft
 
 	| marsRover instructionFromEarth|
 	
-	instructionFromEarth := 'r'.				
+	instructionFromEarth := $r.				
 	marsRover := MarsRover withPosition: (0@0) andDirection: #S.
 	marsRover receiveSingleInstruction: instructionFromEarth.
 	
@@ -238,16 +238,16 @@ test23ReceivingTwoValidInstructionsThatMakeRoverStayAtStartingPoint
 	
 	self assert: (marsRover isInPosition: (0@0) andDirection: #S).! !
 
-!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 17:23:57'!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 18:00:06'!
 test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate
 
 	| marsRover instructionFromEarth|
 	
-	instructionFromEarth := 'ff'.				
+	instructionFromEarth := 'ffr'.				
 	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
 	marsRover receiveInstructionString: instructionFromEarth.
 	
-	self assert: (marsRover isInPosition: (0@2) andDirection: #N).! !
+	self assert: (marsRover isInPosition: (0@2) andDirection: #E).! !
 
 
 !classDefinition: #MarsRover category: 'MarsRover'!
@@ -285,13 +285,13 @@ receiveInstructionString: anInstruction
 	
 	anInstruction do: [:aSingleInstruction | self receiveSingleInstruction: aSingleInstruction]! !
 
-!MarsRover methodsFor: 'actions' stamp: 'cde 10/5/2022 17:21:18'!
+!MarsRover methodsFor: 'actions' stamp: 'cde 10/5/2022 17:59:30'!
 receiveSingleInstruction: anInstruction
 	
-	anInstruction = 'f' ifTrue: [^ self moveForward].
-	anInstruction = 'b' ifTrue: [^ self moveBackwards].
-	anInstruction = 'l' ifTrue: [^ self rotateLeft].
-	anInstruction = 'r' ifTrue: [^ self rotateRight].! !
+	anInstruction = $f ifTrue: [^ self moveForward].
+	anInstruction = $b ifTrue: [^ self moveBackwards].
+	anInstruction = $l ifTrue: [^ self rotateLeft].
+	anInstruction = $r ifTrue: [^ self rotateRight].! !
 
 !MarsRover methodsFor: 'actions' stamp: 'SR 10/5/2022 00:18:34'!
 rotateLeft
