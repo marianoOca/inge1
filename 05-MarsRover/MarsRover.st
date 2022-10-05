@@ -5,7 +5,7 @@ TestCase subclass: #MarsRoverTest
 	poolDictionaries: ''
 	category: 'MarsRover'!
 
-!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'SR 10/4/2022 18:49:32'!
+!MarsRoverTest methodsFor: 'tests' stamp: 'SR 10/4/2022 18:49:32'!
 test01StartsAtLandingPositionAndDirection
 
 	| marsRover |
@@ -14,7 +14,7 @@ test01StartsAtLandingPositionAndDirection
 	
 	self assert: (marsRover isInPosition: (0@0) andDirection: #N).! !
 
-!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'SR 10/4/2022 22:40:03'!
+!MarsRoverTest methodsFor: 'tests' stamp: 'SR 10/4/2022 22:40:03'!
 test02AtLandingIsNotInOtherPositionAndDirection
 
 	| marsRover |
@@ -23,37 +23,37 @@ test02AtLandingIsNotInOtherPositionAndDirection
 	
 	self assert: (marsRover isInPosition: (1@1) andDirection: #S) not.! !
 
-!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'SR 10/4/2022 20:53:53'!
-test03MovingForwardFacingNorthIncreasePositionsXCoordinate
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 17:38:23'!
+test03MovingForwardFacingNorthIncreasePositionsYCoordinate
 
 	| marsRover |
 	
 	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
 	marsRover moveForward.
 	
-	self assert: (marsRover isInPosition: (1@0) andDirection: #N).! !
+	self assert: (marsRover isInPosition: (0@1) andDirection: #N).! !
 
-!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'SR 10/4/2022 20:53:53'!
-test04MovingForwardFacingSouthDecreasePositionsXCoordinate
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 17:38:35'!
+test04MovingForwardFacingSouthDecreasePositionsYCoordinate
 
 	| marsRover |
 	
 	marsRover := MarsRover withPosition: (0@0) andDirection: #S.
 	marsRover moveForward.
 	
-	self assert: (marsRover isInPosition: (-1@0) andDirection: #S).! !
+	self assert: (marsRover isInPosition: (0@-1) andDirection: #S).! !
 
-!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'SR 10/4/2022 20:53:53'!
-test05MovingForwardFacingEastIncreasePositionsYCoordinate
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 17:38:44'!
+test05MovingForwardFacingEastIncreasePositionsXCoordinate
 
 	| marsRover |
 	
 	marsRover := MarsRover withPosition: (0@0) andDirection: #E.
 	marsRover moveForward.
 	
-	self assert: (marsRover isInPosition: (0@1) andDirection: #E).! !
+	self assert: (marsRover isInPosition: (1@0) andDirection: #E).! !
 
-!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'SR 10/4/2022 20:53:53'!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 17:33:32'!
 test06MovingForwardFacingWestDecreasePositionsYCoordinate
 
 	| marsRover |
@@ -61,49 +61,49 @@ test06MovingForwardFacingWestDecreasePositionsYCoordinate
 	marsRover := MarsRover withPosition: (0@0) andDirection: #W.
 	marsRover moveForward.
 	
-	self assert: (marsRover isInPosition: (0@-1) andDirection: #W).! !
+	self assert: (marsRover isInPosition: (-1@0) andDirection: #W).! !
 
-!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'SR 10/4/2022 20:53:20'!
-test07MovingBackwardsFacingNorthDecreasePositionsXCoordinate
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 17:38:54'!
+test07MovingBackwardsFacingNorthDecreasePositionsYCoordinate
 
 	| marsRover |
 	
 	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
 	marsRover moveBackwards.
 	
-	self assert: (marsRover isInPosition: (-1@0) andDirection: #N).! !
+	self assert: (marsRover isInPosition: (0@-1) andDirection: #N).! !
 
-!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'SR 10/4/2022 20:58:46'!
-test08MovingBackwardsFacingSouthIncreasePositionsXCoordinate
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 17:39:53'!
+test08MovingBackwardsFacingSouthIncreasePositionsYCoordinate
 
 	| marsRover |
 	
 	marsRover := MarsRover withPosition: (0@0) andDirection: #S.
 	marsRover moveBackwards.
 	
-	self assert: (marsRover isInPosition: (1@0) andDirection: #S).! !
+	self assert: (marsRover isInPosition: (0@1) andDirection: #S).! !
 
-!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'SR 10/4/2022 20:58:09'!
-test09MovingBackwardsFacingEastDecreasePositionsYCoordinate
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 17:37:07'!
+test09MovingBackwardsFacingEastDecreasePositionsXCoordinate
 
 	| marsRover |
 	
 	marsRover := MarsRover withPosition: (0@0) andDirection: #E.
 	marsRover moveBackwards.
 	
-	self assert: (marsRover isInPosition: (0@-1) andDirection: #E).! !
+	self assert: (marsRover isInPosition: (-1@0) andDirection: #E).! !
 
-!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'SR 10/4/2022 20:59:41'!
-test10MovingBackwardsFacingWestIncreasePositionsYCoordinate
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 17:40:08'!
+test10MovingBackwardsFacingWestIncreasePositionsXCoordinate
 
 	| marsRover |
 	
 	marsRover := MarsRover withPosition: (0@0) andDirection: #W.
 	marsRover moveBackwards.
 	
-	self assert: (marsRover isInPosition: (0@1) andDirection: #W).! !
+	self assert: (marsRover isInPosition: (1@0) andDirection: #W).! !
 
-!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'SR 10/4/2022 23:49:04'!
+!MarsRoverTest methodsFor: 'tests' stamp: 'SR 10/4/2022 23:49:04'!
 test11RotatingLeftFacingNorthChangesDirectionToWest
 
 	| marsRover |
@@ -113,7 +113,7 @@ test11RotatingLeftFacingNorthChangesDirectionToWest
 	
 	self assert: (marsRover isInPosition: (0@0) andDirection: #W).! !
 
-!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'SR 10/4/2022 23:50:14'!
+!MarsRoverTest methodsFor: 'tests' stamp: 'SR 10/4/2022 23:50:14'!
 test12RotatingRightFacingNorthChangesDirectionToEast
 
 	| marsRover |
@@ -123,7 +123,7 @@ test12RotatingRightFacingNorthChangesDirectionToEast
 	
 	self assert: (marsRover isInPosition: (0@0) andDirection: #E).! !
 
-!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'SR 10/4/2022 23:53:55'!
+!MarsRoverTest methodsFor: 'tests' stamp: 'SR 10/4/2022 23:53:55'!
 test13RotatingLeftFacingSouthChangesDirectionToEast
 
 	| marsRover |
@@ -133,7 +133,7 @@ test13RotatingLeftFacingSouthChangesDirectionToEast
 	
 	self assert: (marsRover isInPosition: (0@0) andDirection: #E).! !
 
-!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'SR 10/5/2022 00:00:06'!
+!MarsRoverTest methodsFor: 'tests' stamp: 'SR 10/5/2022 00:00:06'!
 test14RotatingRightFacingSouthChangesDirectionToWest
 
 	| marsRover |
@@ -143,7 +143,7 @@ test14RotatingRightFacingSouthChangesDirectionToWest
 	
 	self assert: (marsRover isInPosition: (0@0) andDirection: #W).! !
 
-!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'SR 10/5/2022 00:00:40'!
+!MarsRoverTest methodsFor: 'tests' stamp: 'SR 10/5/2022 00:00:40'!
 test15RotatingLeftFacingEastChangesDirectionToNorth
 
 	| marsRover |
@@ -153,7 +153,7 @@ test15RotatingLeftFacingEastChangesDirectionToNorth
 	
 	self assert: (marsRover isInPosition: (0@0) andDirection: #N).! !
 
-!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'SR 10/5/2022 00:06:18'!
+!MarsRoverTest methodsFor: 'tests' stamp: 'SR 10/5/2022 00:06:18'!
 test16RotatingRightFacingEastChangesDirectionToSouth
 
 	| marsRover |
@@ -163,7 +163,7 @@ test16RotatingRightFacingEastChangesDirectionToSouth
 	
 	self assert: (marsRover isInPosition: (0@0) andDirection: #S).! !
 
-!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'SR 10/5/2022 00:06:28'!
+!MarsRoverTest methodsFor: 'tests' stamp: 'SR 10/5/2022 00:06:28'!
 test17RotatingLeftFacingWestChangesDirectionToSouth
 
 	| marsRover |
@@ -173,7 +173,7 @@ test17RotatingLeftFacingWestChangesDirectionToSouth
 	
 	self assert: (marsRover isInPosition: (0@0) andDirection: #S).! !
 
-!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'SR 10/5/2022 00:06:48'!
+!MarsRoverTest methodsFor: 'tests' stamp: 'SR 10/5/2022 00:06:48'!
 test18RotatingRightFacingWestChangesDirectionToNorth
 
 	| marsRover |
@@ -182,6 +182,72 @@ test18RotatingRightFacingWestChangesDirectionToNorth
 	marsRover rotateRight.
 	
 	self assert: (marsRover isInPosition: (0@0) andDirection: #N).! !
+
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 17:25:23'!
+test19ReceivingAnFMakesRoverMoveForwards
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'f'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover receiveSingleInstruction: instructionFromEarth.
+	
+	self assert: (marsRover isInPosition: (0@1) andDirection: #N).! !
+
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 17:25:56'!
+test20ReceivingABMakesRoverMoveBackwards
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'b'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover receiveSingleInstruction: instructionFromEarth.
+	
+	self assert: (marsRover isInPosition: (0@-1) andDirection: #N).! !
+
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 16:37:28'!
+test21ReceivingAnLMakesRoverRotateLeft
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'l'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover receiveSingleInstruction: instructionFromEarth.
+	
+	self assert: (marsRover isInPosition: (0@0) andDirection: #W).! !
+
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 16:37:23'!
+test22ReceivingAnRMakesRoverRotateLeft
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'r'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #S.
+	marsRover receiveSingleInstruction: instructionFromEarth.
+	
+	self assert: (marsRover isInPosition: (0@0) andDirection: #W).! !
+
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 16:40:53'!
+test23ReceivingTwoValidInstructionsThatMakeRoverStayAtStartingPoint
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'fb'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #S.
+	marsRover receiveInstructionString: instructionFromEarth.
+	
+	self assert: (marsRover isInPosition: (0@0) andDirection: #S).! !
+
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 17:23:57'!
+test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'ff'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover receiveInstructionString: instructionFromEarth.
+	
+	self assert: (marsRover isInPosition: (0@2) andDirection: #N).! !
 
 
 !classDefinition: #MarsRover category: 'MarsRover'!
@@ -214,6 +280,19 @@ moveForward
 
 	(MarsRoverState for: self with: direction) moveForward.! !
 
+!MarsRover methodsFor: 'actions' stamp: 'cde 10/5/2022 17:16:32'!
+receiveInstructionString: anInstruction
+	
+	anInstruction do: [:aSingleInstruction | self receiveSingleInstruction: aSingleInstruction]! !
+
+!MarsRover methodsFor: 'actions' stamp: 'cde 10/5/2022 17:21:18'!
+receiveSingleInstruction: anInstruction
+	
+	anInstruction = 'f' ifTrue: [^ self moveForward].
+	anInstruction = 'b' ifTrue: [^ self moveBackwards].
+	anInstruction = 'l' ifTrue: [^ self rotateLeft].
+	anInstruction = 'r' ifTrue: [^ self rotateRight].! !
+
 !MarsRover methodsFor: 'actions' stamp: 'SR 10/5/2022 00:18:34'!
 rotateLeft
 	
@@ -225,25 +304,25 @@ rotateRight
 	(MarsRoverState for: self with: direction) rotateRight.! !
 
 
-!MarsRover methodsFor: 'private' stamp: 'SR 10/4/2022 22:59:53'!
+!MarsRover methodsFor: 'private' stamp: 'cde 10/5/2022 17:30:47'!
 moveEast
-
-	position := position + (0@1)! !
-
-!MarsRover methodsFor: 'private' stamp: 'SR 10/4/2022 22:59:49'!
-moveNorth
 
 	position := position + (1@0)! !
 
-!MarsRover methodsFor: 'private' stamp: 'SR 10/4/2022 22:59:45'!
+!MarsRover methodsFor: 'private' stamp: 'cde 10/5/2022 17:30:54'!
+moveNorth
+
+	position := position + (0@1)! !
+
+!MarsRover methodsFor: 'private' stamp: 'cde 10/5/2022 17:31:00'!
 moveSouth
 
-	position := position - (1@0)! !
+	position := position - (0@1)! !
 
-!MarsRover methodsFor: 'private' stamp: 'SR 10/4/2022 22:59:39'!
+!MarsRover methodsFor: 'private' stamp: 'cde 10/5/2022 17:31:06'!
 moveWest
 
-	position := position - (0@1)! !
+	position := position - (1@0)! !
 
 !MarsRover methodsFor: 'private' stamp: 'SR 10/5/2022 00:18:07'!
 rotateEast
