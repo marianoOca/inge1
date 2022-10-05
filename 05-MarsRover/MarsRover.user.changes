@@ -1,0 +1,1114 @@
+
+
+----SNAPSHOT----(4 October 2022 23:51:41) MarsRover.image priorSource: 7059698!
+
+!testRun: #MarsRoverTest #test01StartsAtLandingPositionAndDirection stamp: 'SR 10/4/2022 23:53:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02AtLandingIsNotInOtherPositionAndDirection stamp: 'SR 10/4/2022 23:53:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MovingForwardFacingNorthIncreasePositionsXCoordinate stamp: 'SR 10/4/2022 23:53:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MovingForwardFacingSouthDecreasePositionsXCoordinate stamp: 'SR 10/4/2022 23:53:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MovingForwardFacingEastIncreasePositionsYCoordinate stamp: 'SR 10/4/2022 23:53:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MovingForwardFacingWestDecreasePositionsYCoordinate stamp: 'SR 10/4/2022 23:53:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MovingBackwardsFacingNorthDecreasePositionsXCoordinate stamp: 'SR 10/4/2022 23:53:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsXCoordinate stamp: 'SR 10/4/2022 23:53:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MovingBackwardsFacingEastDecreasePositionsYCoordinate stamp: 'SR 10/4/2022 23:53:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MovingBackwardsFacingWestIncreasePositionsYCoordinate stamp: 'SR 10/4/2022 23:53:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RotatingLeftFacingNorthChangesDirectionToWest stamp: 'SR 10/4/2022 23:53:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RotatingRightFacingNorthChangesDirectionToEast stamp: 'SR 10/4/2022 23:53:03'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'SR 10/4/2022 23:53:55'!
+test13RotatingLeftFacingSouthChangesDirectionToEast
+
+	| marsRover |
+	
+	marsRover := MarsRover withPosition: (0@0) andDirection: #S.
+	marsRover rotateLeft.
+	
+	self assert: (marsRover isInPosition: (0@0) andDirection: #E).! !
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'SR 10/4/2022 23:53:57'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'SR 10/4/2022 23:53:57'!
+FAILURE!
+!MarsRover methodsFor: 'actions' stamp: 'SR 10/4/2022 23:54:33' prior: 50555709!
+rotateLeft
+	
+	direction := #N ifTrue: [ direction := #W ].
+	direction := #S ifTrue: [ direction := #E ].! !
+
+!testRun: #MarsRoverTest #test01StartsAtLandingPositionAndDirection stamp: 'SR 10/4/2022 23:54:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02AtLandingIsNotInOtherPositionAndDirection stamp: 'SR 10/4/2022 23:54:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MovingForwardFacingNorthIncreasePositionsXCoordinate stamp: 'SR 10/4/2022 23:54:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MovingForwardFacingSouthDecreasePositionsXCoordinate stamp: 'SR 10/4/2022 23:54:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MovingForwardFacingEastIncreasePositionsYCoordinate stamp: 'SR 10/4/2022 23:54:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MovingForwardFacingWestDecreasePositionsYCoordinate stamp: 'SR 10/4/2022 23:54:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MovingBackwardsFacingNorthDecreasePositionsXCoordinate stamp: 'SR 10/4/2022 23:54:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsXCoordinate stamp: 'SR 10/4/2022 23:54:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MovingBackwardsFacingEastDecreasePositionsYCoordinate stamp: 'SR 10/4/2022 23:54:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MovingBackwardsFacingWestIncreasePositionsYCoordinate stamp: 'SR 10/4/2022 23:54:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RotatingLeftFacingNorthChangesDirectionToWest stamp: 'SR 10/4/2022 23:54:38'!
+ERROR!
+
+!testRun: #MarsRoverTest #test12RotatingRightFacingNorthChangesDirectionToEast stamp: 'SR 10/4/2022 23:54:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'SR 10/4/2022 23:54:38'!
+ERROR!
+
+!testRun: #MarsRoverTest #test11RotatingLeftFacingNorthChangesDirectionToWest stamp: 'SR 10/4/2022 23:55:10'!
+ERROR!
+
+!testRun: #MarsRoverTest #test11RotatingLeftFacingNorthChangesDirectionToWest stamp: 'SR 10/4/2022 23:55:10'!
+ERROR!
+
+!testRun: #MarsRoverTest #test12RotatingRightFacingNorthChangesDirectionToEast stamp: 'SR 10/4/2022 23:55:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'SR 10/4/2022 23:55:14'!
+ERROR!
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'SR 10/4/2022 23:55:14'!
+ERROR!
+!MarsRover methodsFor: 'actions' stamp: 'SR 10/4/2022 23:56:27' prior: 50555879!
+rotateLeft
+	
+	direction := #N ifTrue: [ direction := #W ] ifFalse: [
+		direction := #S ifTrue: [ direction := #E ]
+		].! !
+
+!testRun: #MarsRoverTest #test01StartsAtLandingPositionAndDirection stamp: 'SR 10/4/2022 23:56:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02AtLandingIsNotInOtherPositionAndDirection stamp: 'SR 10/4/2022 23:56:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MovingForwardFacingNorthIncreasePositionsXCoordinate stamp: 'SR 10/4/2022 23:56:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MovingForwardFacingSouthDecreasePositionsXCoordinate stamp: 'SR 10/4/2022 23:56:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MovingForwardFacingEastIncreasePositionsYCoordinate stamp: 'SR 10/4/2022 23:56:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MovingForwardFacingWestDecreasePositionsYCoordinate stamp: 'SR 10/4/2022 23:56:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MovingBackwardsFacingNorthDecreasePositionsXCoordinate stamp: 'SR 10/4/2022 23:56:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsXCoordinate stamp: 'SR 10/4/2022 23:56:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MovingBackwardsFacingEastDecreasePositionsYCoordinate stamp: 'SR 10/4/2022 23:56:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MovingBackwardsFacingWestIncreasePositionsYCoordinate stamp: 'SR 10/4/2022 23:56:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RotatingLeftFacingNorthChangesDirectionToWest stamp: 'SR 10/4/2022 23:56:30'!
+ERROR!
+
+!testRun: #MarsRoverTest #test12RotatingRightFacingNorthChangesDirectionToEast stamp: 'SR 10/4/2022 23:56:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'SR 10/4/2022 23:56:30'!
+ERROR!
+!MarsRover methodsFor: 'actions' stamp: 'SR 10/4/2022 23:56:56' prior: 50555954!
+rotateLeft
+	
+	direction = #N ifTrue: [ direction := #W ] ifFalse: [
+		direction = #S ifTrue: [ direction := #E ]
+		].! !
+
+!testRun: #MarsRoverTest #test01StartsAtLandingPositionAndDirection stamp: 'SR 10/4/2022 23:56:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02AtLandingIsNotInOtherPositionAndDirection stamp: 'SR 10/4/2022 23:56:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MovingForwardFacingNorthIncreasePositionsXCoordinate stamp: 'SR 10/4/2022 23:56:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MovingForwardFacingSouthDecreasePositionsXCoordinate stamp: 'SR 10/4/2022 23:56:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MovingForwardFacingEastIncreasePositionsYCoordinate stamp: 'SR 10/4/2022 23:56:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MovingForwardFacingWestDecreasePositionsYCoordinate stamp: 'SR 10/4/2022 23:56:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MovingBackwardsFacingNorthDecreasePositionsXCoordinate stamp: 'SR 10/4/2022 23:56:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsXCoordinate stamp: 'SR 10/4/2022 23:56:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MovingBackwardsFacingEastDecreasePositionsYCoordinate stamp: 'SR 10/4/2022 23:56:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MovingBackwardsFacingWestIncreasePositionsYCoordinate stamp: 'SR 10/4/2022 23:56:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RotatingLeftFacingNorthChangesDirectionToWest stamp: 'SR 10/4/2022 23:56:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RotatingRightFacingNorthChangesDirectionToEast stamp: 'SR 10/4/2022 23:56:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'SR 10/4/2022 23:56:59'!
+PASSED!
+!MarsRover methodsFor: 'actions' stamp: 'SR 10/4/2022 23:57:19' prior: 50556011!
+rotateLeft
+	
+	direction = #N ifTrue: [ direction := #W ].
+	direction = #S ifTrue: [ direction := #E ]! !
+
+!testRun: #MarsRoverTest #test01StartsAtLandingPositionAndDirection stamp: 'SR 10/4/2022 23:57:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02AtLandingIsNotInOtherPositionAndDirection stamp: 'SR 10/4/2022 23:57:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MovingForwardFacingNorthIncreasePositionsXCoordinate stamp: 'SR 10/4/2022 23:57:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MovingForwardFacingSouthDecreasePositionsXCoordinate stamp: 'SR 10/4/2022 23:57:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MovingForwardFacingEastIncreasePositionsYCoordinate stamp: 'SR 10/4/2022 23:57:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MovingForwardFacingWestDecreasePositionsYCoordinate stamp: 'SR 10/4/2022 23:57:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MovingBackwardsFacingNorthDecreasePositionsXCoordinate stamp: 'SR 10/4/2022 23:57:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsXCoordinate stamp: 'SR 10/4/2022 23:57:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MovingBackwardsFacingEastDecreasePositionsYCoordinate stamp: 'SR 10/4/2022 23:57:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MovingBackwardsFacingWestIncreasePositionsYCoordinate stamp: 'SR 10/4/2022 23:57:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RotatingLeftFacingNorthChangesDirectionToWest stamp: 'SR 10/4/2022 23:57:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RotatingRightFacingNorthChangesDirectionToEast stamp: 'SR 10/4/2022 23:57:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'SR 10/4/2022 23:57:31'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'SR 10/4/2022 23:58:13'!
+test14RotatingRightFacingSouthChangesDirectionToWest
+
+	| marsRover |
+	
+	marsRover := MarsRover withPosition: (0@0) andDirection: #S.
+	marsRover rotateLeft.
+	
+	self assert: (marsRover isInPosition: (0@0) andDirection: #W).! !
+
+!testRun: #MarsRoverTest #test14RotatingRightFacingSouthChangesDirectionToWest stamp: 'SR 10/4/2022 23:58:28'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test14RotatingRightFacingSouthChangesDirectionToWest stamp: 'SR 10/4/2022 23:58:28'!
+FAILURE!
+!MarsRover methodsFor: 'actions' stamp: 'SR 10/4/2022 23:59:00' prior: 50555805!
+rotateRight
+	
+	direction = #N ifTrue: [ direction := #E ].
+	direction = #S ifTrue: [ direction := #W ].! !
+
+!testRun: #MarsRoverTest #test01StartsAtLandingPositionAndDirection stamp: 'SR 10/4/2022 23:59:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02AtLandingIsNotInOtherPositionAndDirection stamp: 'SR 10/4/2022 23:59:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MovingForwardFacingNorthIncreasePositionsXCoordinate stamp: 'SR 10/4/2022 23:59:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MovingForwardFacingSouthDecreasePositionsXCoordinate stamp: 'SR 10/4/2022 23:59:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MovingForwardFacingEastIncreasePositionsYCoordinate stamp: 'SR 10/4/2022 23:59:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MovingForwardFacingWestDecreasePositionsYCoordinate stamp: 'SR 10/4/2022 23:59:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MovingBackwardsFacingNorthDecreasePositionsXCoordinate stamp: 'SR 10/4/2022 23:59:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsXCoordinate stamp: 'SR 10/4/2022 23:59:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MovingBackwardsFacingEastDecreasePositionsYCoordinate stamp: 'SR 10/4/2022 23:59:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MovingBackwardsFacingWestIncreasePositionsYCoordinate stamp: 'SR 10/4/2022 23:59:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RotatingLeftFacingNorthChangesDirectionToWest stamp: 'SR 10/4/2022 23:59:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RotatingRightFacingNorthChangesDirectionToEast stamp: 'SR 10/4/2022 23:59:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'SR 10/4/2022 23:59:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RotatingRightFacingSouthChangesDirectionToWest stamp: 'SR 10/4/2022 23:59:04'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test14RotatingRightFacingSouthChangesDirectionToWest stamp: 'SR 10/4/2022 23:59:04'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test14RotatingRightFacingSouthChangesDirectionToWest stamp: 'SR 10/4/2022 23:59:09'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test14RotatingRightFacingSouthChangesDirectionToWest stamp: 'SR 10/4/2022 23:59:09'!
+FAILURE!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'SR 10/5/2022 00:00:06' prior: 50556124!
+test14RotatingRightFacingSouthChangesDirectionToWest
+
+	| marsRover |
+	
+	marsRover := MarsRover withPosition: (0@0) andDirection: #S.
+	marsRover rotateRight.
+	
+	self assert: (marsRover isInPosition: (0@0) andDirection: #W).! !
+
+!testRun: #MarsRoverTest #test01StartsAtLandingPositionAndDirection stamp: 'SR 10/5/2022 00:00:08'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02AtLandingIsNotInOtherPositionAndDirection stamp: 'SR 10/5/2022 00:00:08'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MovingForwardFacingNorthIncreasePositionsXCoordinate stamp: 'SR 10/5/2022 00:00:08'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MovingForwardFacingSouthDecreasePositionsXCoordinate stamp: 'SR 10/5/2022 00:00:08'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MovingForwardFacingEastIncreasePositionsYCoordinate stamp: 'SR 10/5/2022 00:00:08'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MovingForwardFacingWestDecreasePositionsYCoordinate stamp: 'SR 10/5/2022 00:00:08'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MovingBackwardsFacingNorthDecreasePositionsXCoordinate stamp: 'SR 10/5/2022 00:00:08'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsXCoordinate stamp: 'SR 10/5/2022 00:00:08'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MovingBackwardsFacingEastDecreasePositionsYCoordinate stamp: 'SR 10/5/2022 00:00:08'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MovingBackwardsFacingWestIncreasePositionsYCoordinate stamp: 'SR 10/5/2022 00:00:08'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RotatingLeftFacingNorthChangesDirectionToWest stamp: 'SR 10/5/2022 00:00:08'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RotatingRightFacingNorthChangesDirectionToEast stamp: 'SR 10/5/2022 00:00:08'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'SR 10/5/2022 00:00:08'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RotatingRightFacingSouthChangesDirectionToWest stamp: 'SR 10/5/2022 00:00:08'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'SR 10/5/2022 00:00:40'!
+test15RotatingLeftFacingEastChangesDirectionToNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover withPosition: (0@0) andDirection: #E.
+	marsRover rotateLeft.
+	
+	self assert: (marsRover isInPosition: (0@0) andDirection: #N).! !
+
+!testRun: #MarsRoverTest #test15RotatingLeftFacingEastChangesDirectionToNorth stamp: 'SR 10/5/2022 00:00:44'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test15RotatingLeftFacingEastChangesDirectionToNorth stamp: 'SR 10/5/2022 00:00:44'!
+FAILURE!
+!MarsRover methodsFor: 'actions' stamp: 'SR 10/5/2022 00:01:03' prior: 50556068!
+rotateLeft
+	
+	direction = #N ifTrue: [ direction := #W ].
+	direction = #S ifTrue: [ direction := #E ].
+	direction = #E ifTrue: [ direction := #N ].! !
+
+!testRun: #MarsRoverTest #test01StartsAtLandingPositionAndDirection stamp: 'SR 10/5/2022 00:01:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02AtLandingIsNotInOtherPositionAndDirection stamp: 'SR 10/5/2022 00:01:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MovingForwardFacingNorthIncreasePositionsXCoordinate stamp: 'SR 10/5/2022 00:01:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MovingForwardFacingSouthDecreasePositionsXCoordinate stamp: 'SR 10/5/2022 00:01:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MovingForwardFacingEastIncreasePositionsYCoordinate stamp: 'SR 10/5/2022 00:01:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MovingForwardFacingWestDecreasePositionsYCoordinate stamp: 'SR 10/5/2022 00:01:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MovingBackwardsFacingNorthDecreasePositionsXCoordinate stamp: 'SR 10/5/2022 00:01:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsXCoordinate stamp: 'SR 10/5/2022 00:01:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MovingBackwardsFacingEastDecreasePositionsYCoordinate stamp: 'SR 10/5/2022 00:01:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MovingBackwardsFacingWestIncreasePositionsYCoordinate stamp: 'SR 10/5/2022 00:01:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RotatingLeftFacingNorthChangesDirectionToWest stamp: 'SR 10/5/2022 00:01:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RotatingRightFacingNorthChangesDirectionToEast stamp: 'SR 10/5/2022 00:01:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'SR 10/5/2022 00:01:06'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test14RotatingRightFacingSouthChangesDirectionToWest stamp: 'SR 10/5/2022 00:01:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RotatingLeftFacingEastChangesDirectionToNorth stamp: 'SR 10/5/2022 00:01:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'SR 10/5/2022 00:01:06'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test15RotatingLeftFacingEastChangesDirectionToNorth stamp: 'SR 10/5/2022 00:01:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RotatingRightFacingSouthChangesDirectionToWest stamp: 'SR 10/5/2022 00:01:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'SR 10/5/2022 00:01:16'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'SR 10/5/2022 00:01:16'!
+FAILURE!
+!MarsRover methodsFor: 'actions' stamp: 'SR 10/5/2022 00:02:35' prior: 50556296!
+rotateLeft
+	
+	direction = #N ifTrue: [ direction := #W ] ifFalse: [
+		direction = #S ifTrue: [ direction := #E ] ifFalse: [
+			direction = #E ifTrue: [ direction := #N ].
+			].
+		].
+	
+	! !
+!MarsRover methodsFor: 'actions' stamp: 'SR 10/5/2022 00:02:37' prior: 50556380!
+rotateLeft
+	
+	direction = #N ifTrue: [ direction := #W ] ifFalse: [
+		direction = #S ifTrue: [ direction := #E ] ifFalse: [
+			direction = #E ifTrue: [ direction := #N ].
+			].
+		].! !
+
+!testRun: #MarsRoverTest #test01StartsAtLandingPositionAndDirection stamp: 'SR 10/5/2022 00:02:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02AtLandingIsNotInOtherPositionAndDirection stamp: 'SR 10/5/2022 00:02:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MovingForwardFacingNorthIncreasePositionsXCoordinate stamp: 'SR 10/5/2022 00:02:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MovingForwardFacingSouthDecreasePositionsXCoordinate stamp: 'SR 10/5/2022 00:02:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MovingForwardFacingEastIncreasePositionsYCoordinate stamp: 'SR 10/5/2022 00:02:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MovingForwardFacingWestDecreasePositionsYCoordinate stamp: 'SR 10/5/2022 00:02:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MovingBackwardsFacingNorthDecreasePositionsXCoordinate stamp: 'SR 10/5/2022 00:02:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsXCoordinate stamp: 'SR 10/5/2022 00:02:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MovingBackwardsFacingEastDecreasePositionsYCoordinate stamp: 'SR 10/5/2022 00:02:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MovingBackwardsFacingWestIncreasePositionsYCoordinate stamp: 'SR 10/5/2022 00:02:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RotatingLeftFacingNorthChangesDirectionToWest stamp: 'SR 10/5/2022 00:02:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RotatingRightFacingNorthChangesDirectionToEast stamp: 'SR 10/5/2022 00:02:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'SR 10/5/2022 00:02:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RotatingRightFacingSouthChangesDirectionToWest stamp: 'SR 10/5/2022 00:02:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RotatingLeftFacingEastChangesDirectionToNorth stamp: 'SR 10/5/2022 00:02:42'!
+PASSED!
+!MarsRover methodsFor: 'actions' stamp: 'SR 10/5/2022 00:02:58' prior: 50556142!
+rotateRight
+	
+	direction = #N ifTrue: [ direction := #E ] ifFalse: [
+		direction = #S ifTrue: [ direction := #W ].
+		].! !
+
+!testRun: #MarsRoverTest #test01StartsAtLandingPositionAndDirection stamp: 'SR 10/5/2022 00:03:00'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02AtLandingIsNotInOtherPositionAndDirection stamp: 'SR 10/5/2022 00:03:00'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MovingForwardFacingNorthIncreasePositionsXCoordinate stamp: 'SR 10/5/2022 00:03:00'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MovingForwardFacingSouthDecreasePositionsXCoordinate stamp: 'SR 10/5/2022 00:03:00'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MovingForwardFacingEastIncreasePositionsYCoordinate stamp: 'SR 10/5/2022 00:03:00'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MovingForwardFacingWestDecreasePositionsYCoordinate stamp: 'SR 10/5/2022 00:03:00'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MovingBackwardsFacingNorthDecreasePositionsXCoordinate stamp: 'SR 10/5/2022 00:03:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsXCoordinate stamp: 'SR 10/5/2022 00:03:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MovingBackwardsFacingEastDecreasePositionsYCoordinate stamp: 'SR 10/5/2022 00:03:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MovingBackwardsFacingWestIncreasePositionsYCoordinate stamp: 'SR 10/5/2022 00:03:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RotatingLeftFacingNorthChangesDirectionToWest stamp: 'SR 10/5/2022 00:03:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RotatingRightFacingNorthChangesDirectionToEast stamp: 'SR 10/5/2022 00:03:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'SR 10/5/2022 00:03:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RotatingRightFacingSouthChangesDirectionToWest stamp: 'SR 10/5/2022 00:03:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RotatingLeftFacingEastChangesDirectionToNorth stamp: 'SR 10/5/2022 00:03:01'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'SR 10/5/2022 00:03:22'!
+test15RotatingRightFacingEastChangesDirectionToSouth
+
+	| marsRover |
+	
+	marsRover := MarsRover withPosition: (0@0) andDirection: #E.
+	marsRover rotateRight.
+	
+	self assert: (marsRover isInPosition: (0@0) andDirection: #S).! !
+
+!testRun: #MarsRoverTest #test15RotatingRightFacingEastChangesDirectionToSouth stamp: 'SR 10/5/2022 00:03:25'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test15RotatingRightFacingEastChangesDirectionToSouth stamp: 'SR 10/5/2022 00:03:25'!
+FAILURE!
+!MarsRover methodsFor: 'actions' stamp: 'SR 10/5/2022 00:04:03' prior: 50556455!
+rotateRight
+	
+	direction = #N ifTrue: [ direction := #E ] ifFalse: [
+		direction = #S ifTrue: [ direction := #W ] ifFalse: [
+			direction = #E ifTrue: [ direction := #S ]
+			]
+		].! !
+
+!testRun: #MarsRoverTest #test01StartsAtLandingPositionAndDirection stamp: 'SR 10/5/2022 00:04:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02AtLandingIsNotInOtherPositionAndDirection stamp: 'SR 10/5/2022 00:04:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MovingForwardFacingNorthIncreasePositionsXCoordinate stamp: 'SR 10/5/2022 00:04:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MovingForwardFacingSouthDecreasePositionsXCoordinate stamp: 'SR 10/5/2022 00:04:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MovingForwardFacingEastIncreasePositionsYCoordinate stamp: 'SR 10/5/2022 00:04:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MovingForwardFacingWestDecreasePositionsYCoordinate stamp: 'SR 10/5/2022 00:04:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MovingBackwardsFacingNorthDecreasePositionsXCoordinate stamp: 'SR 10/5/2022 00:04:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsXCoordinate stamp: 'SR 10/5/2022 00:04:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MovingBackwardsFacingEastDecreasePositionsYCoordinate stamp: 'SR 10/5/2022 00:04:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MovingBackwardsFacingWestIncreasePositionsYCoordinate stamp: 'SR 10/5/2022 00:04:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RotatingLeftFacingNorthChangesDirectionToWest stamp: 'SR 10/5/2022 00:04:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RotatingRightFacingNorthChangesDirectionToEast stamp: 'SR 10/5/2022 00:04:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'SR 10/5/2022 00:04:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RotatingRightFacingSouthChangesDirectionToWest stamp: 'SR 10/5/2022 00:04:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RotatingLeftFacingEastChangesDirectionToNorth stamp: 'SR 10/5/2022 00:04:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RotatingRightFacingEastChangesDirectionToSouth stamp: 'SR 10/5/2022 00:04:11'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'SR 10/5/2022 00:04:36'!
+test15RotatingLeftFacingWestChangesDirectionToSouth
+
+	| marsRover |
+	
+	marsRover := MarsRover withPosition: (0@0) andDirection: #W.
+	marsRover rotateLeft.
+	
+	self assert: (marsRover isInPosition: (0@0) andDirection: #S).! !
+!MarsRover methodsFor: 'actions' stamp: 'SR 10/5/2022 00:05:08' prior: 50556389!
+rotateLeft
+	
+	direction = #N ifTrue: [ direction := #W ] ifFalse: [
+		direction = #S ifTrue: [ direction := #E ] ifFalse: [
+			direction = #E ifTrue: [ direction := #N ] ifFalse: [
+				direction = #W ifTrue: [ direction := #S ].
+				].
+			].
+		].! !
+!MarsRover methodsFor: 'actions' stamp: 'SR 10/5/2022 00:05:14' prior: 50556537!
+rotateRight
+	
+	direction = #N ifTrue: [ direction := #E ] ifFalse: [
+		direction = #S ifTrue: [ direction := #W ] ifFalse: [
+			direction = #E ifTrue: [ direction := #S ].
+			].
+		].! !
+
+!testRun: #MarsRoverTest #test01StartsAtLandingPositionAndDirection stamp: 'SR 10/5/2022 00:05:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02AtLandingIsNotInOtherPositionAndDirection stamp: 'SR 10/5/2022 00:05:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MovingForwardFacingNorthIncreasePositionsXCoordinate stamp: 'SR 10/5/2022 00:05:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MovingForwardFacingSouthDecreasePositionsXCoordinate stamp: 'SR 10/5/2022 00:05:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MovingForwardFacingEastIncreasePositionsYCoordinate stamp: 'SR 10/5/2022 00:05:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MovingForwardFacingWestDecreasePositionsYCoordinate stamp: 'SR 10/5/2022 00:05:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MovingBackwardsFacingNorthDecreasePositionsXCoordinate stamp: 'SR 10/5/2022 00:05:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsXCoordinate stamp: 'SR 10/5/2022 00:05:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MovingBackwardsFacingEastDecreasePositionsYCoordinate stamp: 'SR 10/5/2022 00:05:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MovingBackwardsFacingWestIncreasePositionsYCoordinate stamp: 'SR 10/5/2022 00:05:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RotatingLeftFacingNorthChangesDirectionToWest stamp: 'SR 10/5/2022 00:05:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RotatingRightFacingNorthChangesDirectionToEast stamp: 'SR 10/5/2022 00:05:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'SR 10/5/2022 00:05:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RotatingRightFacingSouthChangesDirectionToWest stamp: 'SR 10/5/2022 00:05:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RotatingLeftFacingEastChangesDirectionToNorth stamp: 'SR 10/5/2022 00:05:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RotatingLeftFacingWestChangesDirectionToSouth stamp: 'SR 10/5/2022 00:05:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RotatingRightFacingEastChangesDirectionToSouth stamp: 'SR 10/5/2022 00:05:17'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'SR 10/5/2022 00:05:54'!
+test16RotatingLeftFacingWestChangesDirectionToSouth
+
+	| marsRover |
+	
+	marsRover := MarsRover withPosition: (0@0) andDirection: #W.
+	marsRover rotateLeft.
+	
+	self assert: (marsRover isInPosition: (0@0) andDirection: #S).! !
+
+!methodRemoval: MarsRoverTest #test15RotatingLeftFacingWestChangesDirectionToSouth stamp: 'SR 10/5/2022 00:05:54'!
+test15RotatingLeftFacingWestChangesDirectionToSouth
+
+	| marsRover |
+	
+	marsRover := MarsRover withPosition: (0@0) andDirection: #W.
+	marsRover rotateLeft.
+	
+	self assert: (marsRover isInPosition: (0@0) andDirection: #S).!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'SR 10/5/2022 00:06:18'!
+test16RotatingRightFacingEastChangesDirectionToSouth
+
+	| marsRover |
+	
+	marsRover := MarsRover withPosition: (0@0) andDirection: #E.
+	marsRover rotateRight.
+	
+	self assert: (marsRover isInPosition: (0@0) andDirection: #S).! !
+
+!methodRemoval: MarsRoverTest #test15RotatingRightFacingEastChangesDirectionToSouth stamp: 'SR 10/5/2022 00:06:19'!
+test15RotatingRightFacingEastChangesDirectionToSouth
+
+	| marsRover |
+	
+	marsRover := MarsRover withPosition: (0@0) andDirection: #E.
+	marsRover rotateRight.
+	
+	self assert: (marsRover isInPosition: (0@0) andDirection: #S).!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'SR 10/5/2022 00:06:28'!
+test17RotatingLeftFacingWestChangesDirectionToSouth
+
+	| marsRover |
+	
+	marsRover := MarsRover withPosition: (0@0) andDirection: #W.
+	marsRover rotateLeft.
+	
+	self assert: (marsRover isInPosition: (0@0) andDirection: #S).! !
+
+!methodRemoval: MarsRoverTest #test16RotatingLeftFacingWestChangesDirectionToSouth stamp: 'SR 10/5/2022 00:06:28'!
+test16RotatingLeftFacingWestChangesDirectionToSouth
+
+	| marsRover |
+	
+	marsRover := MarsRover withPosition: (0@0) andDirection: #W.
+	marsRover rotateLeft.
+	
+	self assert: (marsRover isInPosition: (0@0) andDirection: #S).!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'SR 10/5/2022 00:06:48'!
+test18RotatingRightFacingWestChangesDirectionToNorth
+
+	| marsRover |
+	
+	marsRover := MarsRover withPosition: (0@0) andDirection: #W.
+	marsRover rotateRight.
+	
+	self assert: (marsRover isInPosition: (0@0) andDirection: #N).! !
+!MarsRover methodsFor: 'actions' stamp: 'SR 10/5/2022 00:07:16' prior: 50556628!
+rotateRight
+	
+	direction = #N ifTrue: [ direction := #E ] ifFalse: [
+		direction = #S ifTrue: [ direction := #W ] ifFalse: [
+			direction = #E ifTrue: [ direction := #S ] ifFalse: [
+				direction = #W ifTrue: [ direction := #N ].
+				].
+			].
+		].! !
+
+!testRun: #MarsRoverTest #test01StartsAtLandingPositionAndDirection stamp: 'SR 10/5/2022 00:07:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02AtLandingIsNotInOtherPositionAndDirection stamp: 'SR 10/5/2022 00:07:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MovingForwardFacingNorthIncreasePositionsXCoordinate stamp: 'SR 10/5/2022 00:07:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MovingForwardFacingSouthDecreasePositionsXCoordinate stamp: 'SR 10/5/2022 00:07:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MovingForwardFacingEastIncreasePositionsYCoordinate stamp: 'SR 10/5/2022 00:07:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MovingForwardFacingWestDecreasePositionsYCoordinate stamp: 'SR 10/5/2022 00:07:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MovingBackwardsFacingNorthDecreasePositionsXCoordinate stamp: 'SR 10/5/2022 00:07:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsXCoordinate stamp: 'SR 10/5/2022 00:07:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MovingBackwardsFacingEastDecreasePositionsYCoordinate stamp: 'SR 10/5/2022 00:07:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MovingBackwardsFacingWestIncreasePositionsYCoordinate stamp: 'SR 10/5/2022 00:07:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RotatingLeftFacingNorthChangesDirectionToWest stamp: 'SR 10/5/2022 00:07:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RotatingRightFacingNorthChangesDirectionToEast stamp: 'SR 10/5/2022 00:07:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'SR 10/5/2022 00:07:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RotatingRightFacingSouthChangesDirectionToWest stamp: 'SR 10/5/2022 00:07:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RotatingLeftFacingEastChangesDirectionToNorth stamp: 'SR 10/5/2022 00:07:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RotatingRightFacingEastChangesDirectionToSouth stamp: 'SR 10/5/2022 00:07:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RotatingLeftFacingWestChangesDirectionToSouth stamp: 'SR 10/5/2022 00:07:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RotatingRightFacingWestChangesDirectionToNorth stamp: 'SR 10/5/2022 00:07:19'!
+PASSED!
+!MarsRoverState methodsFor: 'actions' stamp: 'SR 10/5/2022 00:08:52'!
+rotateLeft
+
+	self subclassResponsibility ! !
+!MarsRoverState methodsFor: 'actions' stamp: 'SR 10/5/2022 00:08:57'!
+rotateRight
+
+	self subclassResponsibility ! !
+!MarsRoverEast methodsFor: 'nil' stamp: 'SR 10/5/2022 00:10:26' overrides: 50556854!
+rotateLeft
+
+	! !
+!MarsRoverNorth methodsFor: 'actions' stamp: 'SR 10/5/2022 00:10:32' overrides: 50556854!
+rotateLeft
+
+	! !
+!MarsRoverSouth methodsFor: 'actions' stamp: 'SR 10/5/2022 00:10:40' overrides: 50556854!
+rotateLeft
+
+	! !
+!MarsRoverWest methodsFor: 'actions' stamp: 'SR 10/5/2022 00:10:45' overrides: 50556854!
+rotateLeft
+
+	! !
+!MarsRoverWest methodsFor: 'actions' stamp: 'SR 10/5/2022 00:10:51' overrides: 50556858!
+rotateRight
+
+	! !
+!MarsRoverSouth methodsFor: 'actions' stamp: 'SR 10/5/2022 00:10:59' prior: 50556871 overrides: 50556854!
+rotateLeft
+
+	! !
+!MarsRoverNorth methodsFor: 'actions' stamp: 'SR 10/5/2022 00:11:03' prior: 50556867 overrides: 50556854!
+rotateLeft
+
+	! !
+!MarsRoverEast methodsFor: 'actions' stamp: 'SR 10/5/2022 00:11:06' prior: 50556863 overrides: 50556854!
+rotateLeft
+
+	! !
+!MarsRoverEast methodsFor: 'actions' stamp: 'SR 10/5/2022 00:11:10' overrides: 50556858!
+rotateRight
+	! !
+!MarsRoverNorth methodsFor: 'actions' stamp: 'SR 10/5/2022 00:11:15' prior: 50556887 overrides: 50556854!
+rotateLeft
+
+	! !
+!MarsRoverNorth methodsFor: 'actions' stamp: 'SR 10/5/2022 00:11:30' overrides: 50556858!
+rotateRight
+
+	! !
+!MarsRoverSouth methodsFor: 'actions' stamp: 'SR 10/5/2022 00:11:33' overrides: 50556858!
+rotateRight
+
+	! !
+!MarsRover methodsFor: 'actions' stamp: 'SR 10/5/2022 00:12:35' prior: 50556617!
+rotateLeft
+	
+	(MarsRoverState for: self with: direction) rotateLeft.
+	
+	"
+	direction = #N ifTrue: [ direction := #W ] ifFalse: [
+		direction = #S ifTrue: [ direction := #E ] ifFalse: [
+			direction = #E ifTrue: [ direction := #N ] ifFalse: [
+				direction = #W ifTrue: [ direction := #S ].
+				].
+			].
+		]."! !
+!MarsRover methodsFor: 'actions' stamp: 'SR 10/5/2022 00:12:48' prior: 50556775!
+rotateRight
+	
+	(MarsRoverState for: self with: direction) rotateRight.
+	"
+	direction = #N ifTrue: [ direction := #E ] ifFalse: [
+		direction = #S ifTrue: [ direction := #W ] ifFalse: [
+			direction = #E ifTrue: [ direction := #S ] ifFalse: [
+				direction = #W ifTrue: [ direction := #N ].
+				].
+			].
+		]."! !
+!MarsRover methodsFor: 'actions' stamp: 'SR 10/5/2022 00:13:15' prior: 50556924!
+rotateRight
+	
+	(MarsRoverState for: self with: direction) rotateRight.
+	
+	"
+	direction = #N ifTrue: [ direction := #E ] ifFalse: [
+		direction = #S ifTrue: [ direction := #W ] ifFalse: [
+			direction = #E ifTrue: [ direction := #S ] ifFalse: [
+				direction = #W ifTrue: [ direction := #N ].
+				].
+			].
+		]."! !
+!MarsRoverNorth methodsFor: 'actions' stamp: 'SR 10/5/2022 00:14:54' prior: 50556899 overrides: 50556854!
+rotateLeft
+
+	marsRover rotateWest.! !
+!MarsRoverNorth methodsFor: 'actions' stamp: 'SR 10/5/2022 00:15:13' prior: 50556903 overrides: 50556858!
+rotateRight
+
+	marsRover rotateEast.! !
+!MarsRoverEast methodsFor: 'actions' stamp: 'SR 10/5/2022 00:15:27' prior: 50556891 overrides: 50556854!
+rotateLeft
+
+	marsRover rotateSouth.! !
+!MarsRoverEast methodsFor: 'actions' stamp: 'SR 10/5/2022 00:15:36' prior: 50556895 overrides: 50556858!
+rotateRight
+	
+	marsRover rotateNorth.! !
+!MarsRoverSouth methodsFor: 'actions' stamp: 'SR 10/5/2022 00:15:56' prior: 50556883 overrides: 50556854!
+rotateLeft
+
+	marsRover rotateEast.! !
+!MarsRoverSouth methodsFor: 'actions' stamp: 'SR 10/5/2022 00:16:03' prior: 50556907 overrides: 50556858!
+rotateRight
+
+	marsRover rotateWest.! !
+!MarsRoverWest methodsFor: 'actions' stamp: 'SR 10/5/2022 00:16:16' prior: 50556875 overrides: 50556854!
+rotateLeft
+
+	marsRover rotateSouth.! !
+!MarsRoverWest methodsFor: 'actions' stamp: 'SR 10/5/2022 00:16:22' prior: 50556879 overrides: 50556858!
+rotateRight
+
+	marsRover rotateNorth.! !
+!MarsRoverEast methodsFor: 'actions' stamp: 'SR 10/5/2022 00:16:36' prior: 50556966 overrides: 50556858!
+rotateRight
+	
+	marsRover rotateSouth.! !
+!MarsRoverEast methodsFor: 'actions' stamp: 'SR 10/5/2022 00:16:41' prior: 50556961 overrides: 50556854!
+rotateLeft
+
+	marsRover rotateNorth.! !
+!MarsRover methodsFor: 'private' stamp: 'SR 10/5/2022 00:17:55'!
+rotateNorth
+
+	direction := #N.! !
+!MarsRover methodsFor: 'private' stamp: 'SR 10/5/2022 00:18:03'!
+rotateSouth
+
+	direction := #S.! !
+!MarsRover methodsFor: 'private' stamp: 'SR 10/5/2022 00:18:07'!
+rotateEast
+
+	direction := #E.! !
+!MarsRover methodsFor: 'private' stamp: 'SR 10/5/2022 00:18:11'!
+rotateWest
+
+	direction := #W.! !
+
+!testRun: #MarsRoverTest #test01StartsAtLandingPositionAndDirection stamp: 'SR 10/5/2022 00:18:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02AtLandingIsNotInOtherPositionAndDirection stamp: 'SR 10/5/2022 00:18:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MovingForwardFacingNorthIncreasePositionsXCoordinate stamp: 'SR 10/5/2022 00:18:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MovingForwardFacingSouthDecreasePositionsXCoordinate stamp: 'SR 10/5/2022 00:18:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MovingForwardFacingEastIncreasePositionsYCoordinate stamp: 'SR 10/5/2022 00:18:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MovingForwardFacingWestDecreasePositionsYCoordinate stamp: 'SR 10/5/2022 00:18:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MovingBackwardsFacingNorthDecreasePositionsXCoordinate stamp: 'SR 10/5/2022 00:18:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsXCoordinate stamp: 'SR 10/5/2022 00:18:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MovingBackwardsFacingEastDecreasePositionsYCoordinate stamp: 'SR 10/5/2022 00:18:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MovingBackwardsFacingWestIncreasePositionsYCoordinate stamp: 'SR 10/5/2022 00:18:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RotatingLeftFacingNorthChangesDirectionToWest stamp: 'SR 10/5/2022 00:18:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RotatingRightFacingNorthChangesDirectionToEast stamp: 'SR 10/5/2022 00:18:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'SR 10/5/2022 00:18:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RotatingRightFacingSouthChangesDirectionToWest stamp: 'SR 10/5/2022 00:18:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RotatingLeftFacingEastChangesDirectionToNorth stamp: 'SR 10/5/2022 00:18:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RotatingRightFacingEastChangesDirectionToSouth stamp: 'SR 10/5/2022 00:18:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RotatingLeftFacingWestChangesDirectionToSouth stamp: 'SR 10/5/2022 00:18:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RotatingRightFacingWestChangesDirectionToNorth stamp: 'SR 10/5/2022 00:18:17'!
+PASSED!
+!MarsRover methodsFor: 'actions' stamp: 'SR 10/5/2022 00:18:34' prior: 50556911!
+rotateLeft
+	
+	(MarsRoverState for: self with: direction) rotateLeft.! !
+!MarsRover methodsFor: 'actions' stamp: 'SR 10/5/2022 00:18:39' prior: 50556937!
+rotateRight
+	
+	(MarsRoverState for: self with: direction) rotateRight.! !
+
+----SNAPSHOT----(5 October 2022 00:19:27) MarsRover.image priorSource: 7173177!
+
+!testRun: #MarsRoverTest #test01StartsAtLandingPositionAndDirection stamp: 'SR 10/5/2022 00:19:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02AtLandingIsNotInOtherPositionAndDirection stamp: 'SR 10/5/2022 00:19:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MovingForwardFacingNorthIncreasePositionsXCoordinate stamp: 'SR 10/5/2022 00:19:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MovingForwardFacingSouthDecreasePositionsXCoordinate stamp: 'SR 10/5/2022 00:19:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MovingForwardFacingEastIncreasePositionsYCoordinate stamp: 'SR 10/5/2022 00:19:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MovingForwardFacingWestDecreasePositionsYCoordinate stamp: 'SR 10/5/2022 00:19:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MovingBackwardsFacingNorthDecreasePositionsXCoordinate stamp: 'SR 10/5/2022 00:19:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsXCoordinate stamp: 'SR 10/5/2022 00:19:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MovingBackwardsFacingEastDecreasePositionsYCoordinate stamp: 'SR 10/5/2022 00:19:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MovingBackwardsFacingWestIncreasePositionsYCoordinate stamp: 'SR 10/5/2022 00:19:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RotatingLeftFacingNorthChangesDirectionToWest stamp: 'SR 10/5/2022 00:19:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RotatingRightFacingNorthChangesDirectionToEast stamp: 'SR 10/5/2022 00:19:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'SR 10/5/2022 00:19:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RotatingRightFacingSouthChangesDirectionToWest stamp: 'SR 10/5/2022 00:19:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RotatingLeftFacingEastChangesDirectionToNorth stamp: 'SR 10/5/2022 00:19:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RotatingRightFacingEastChangesDirectionToSouth stamp: 'SR 10/5/2022 00:19:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RotatingLeftFacingWestChangesDirectionToSouth stamp: 'SR 10/5/2022 00:19:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RotatingRightFacingWestChangesDirectionToNorth stamp: 'SR 10/5/2022 00:19:40'!
+PASSED!
+
+----SNAPSHOT----(5 October 2022 00:20:43) MarsRover.image priorSource: 7173177!
+
+----SNAPSHOT----(5 October 2022 00:20:50) MarsRover.image priorSource: 7216409!
