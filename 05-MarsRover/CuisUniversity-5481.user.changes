@@ -1,0 +1,3531 @@
+
+
+----QUIT----(11 September 2022 19:10:09) CuisUniversity-5481.image priorSource: 2810882!
+
+----STARTUP---- (11 September 2022 19:10:10) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5481.image!
+
+
+----QUIT----(11 September 2022 19:10:10) CuisUniversity-5481.image priorSource: 7059465!
+
+----STARTUP---- (1 October 2022 14:18:00) as /home/carla/Downloads/linux64/CuisUniversity-5481.image!
+
+
+----End fileIn of /home/carla/Downloads/linux64/de Erausquin entrega/ISW1-2022-2C-1erParcial.st----!
+
+!classRemoval: #SimplePirate stamp: 'cde 10/1/2022 14:20:50'!
+Rank subclass: #SimplePirate
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+
+!classRemoval: #Captain stamp: 'cde 10/1/2022 14:20:51'!
+Rank subclass: #Captain
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+
+!classRemoval: #Rank stamp: 'cde 10/1/2022 14:20:51'!
+Object subclass: #Rank
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+
+!classRemoval: #Filibustero stamp: 'cde 10/1/2022 14:20:51'!
+Pirate subclass: #Filibustero
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+
+!classRemoval: #Corsario stamp: 'cde 10/1/2022 14:20:52'!
+Pirate subclass: #Corsario
+	instanceVariableNames: 'map'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+
+!classRemoval: #Bucanero stamp: 'cde 10/1/2022 14:20:52'!
+Pirate subclass: #Bucanero
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+
+!classRemoval: #Pirate stamp: 'cde 10/1/2022 14:20:52'!
+Object subclass: #Pirate
+	instanceVariableNames: 'rank'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+
+!classRemoval: #Map stamp: 'cde 10/1/2022 14:20:52'!
+Object subclass: #Map
+	instanceVariableNames: 'island startPosition steps treasureMarkPosition'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+
+!classRemoval: #Island stamp: 'cde 10/1/2022 14:20:53'!
+Object subclass: #Island
+	instanceVariableNames: 'boardSize treesAt digsAt crewAt treasureAt'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+
+!classRemoval: #Crew stamp: 'cde 10/1/2022 14:20:53'!
+Object subclass: #Crew
+	instanceVariableNames: 'island pirates'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+
+!classRemoval: #CrewTest stamp: 'cde 10/1/2022 14:20:53'!
+TestCase subclass: #CrewTest
+	instanceVariableNames: 'islandForTesting crewForTesting crewPositionForTesting treePositionForTesting mapForTesting nextPositionForTesting digPositionForTesting unBucanero'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-2C-1erParcial'!
+
+----End fileIn of /home/carla/Downloads/linux64/ISW1-2022-2C-1erParcial.st----!
+
+----STARTUP---- (5 October 2022 15:53:32) as /home/carla/Downloads/linux64/CuisUniversity-5481.image!
+
+
+----End fileIn of /home/carla/Downloads/linux64/MarsRover.st----!
+
+!testRun: #MarsRoverTest #test01StartsAtLandingPositionAndDirection stamp: 'cde 10/5/2022 15:56:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RotatingRightFacingWestChangesDirectionToNorth stamp: 'cde 10/5/2022 15:56:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RotatingLeftFacingWestChangesDirectionToSouth stamp: 'cde 10/5/2022 15:56:26'!
+PASSED!
+
+----End fileIn of /home/carla/Downloads/linux64/Packages/TerseGuide.pck.st----!
+
+----STARTUP---- (5 October 2022 16:03:31) as /home/carla/Downloads/linux64/CuisUniversity-5481.image!
+
+
+----End fileIn of /home/carla/Downloads/linux64/MarsRover.st----!
+
+----End fileIn of /home/carla/Downloads/linux64/Packages/TerseGuide.pck.st----!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 16:11:19'!
+test19ReceivingAnFMakesRoverMoveForwards
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'f'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover receiveInstruction: instructionFromEarth..
+	
+	self assert: (marsRover isInPosition: (1@0) andDirection: #N).! !
+
+!testRun: #MarsRoverTest #test19ReceivingAnFMakesRoverMoveForwards stamp: 'cde 10/5/2022 16:11:34'!
+ERROR!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 16:12:00' prior: 50556840!
+test19ReceivingAnFMakesRoverMoveForwards
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'f'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover receiveInstruction: instructionFromEarth.
+	
+	self assert: (marsRover isInPosition: (1@0) andDirection: #N).! !
+!MarsRover methodsFor: 'actions' stamp: 'cde 10/5/2022 16:13:33'!
+receiveInstruction: anInstruction
+	
+	self moveForward.! !
+
+!testRun: #MarsRoverTest #test19ReceivingAnFMakesRoverMoveForwards stamp: 'cde 10/5/2022 16:13:39'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 16:14:57'!
+test20ReceivingABMakesRoverMoveBackwards
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'b'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover receiveInstruction: instructionFromEarth.
+	
+	self assert: (marsRover isInPosition: (-1@0) andDirection: #N).! !
+
+!testRun: #MarsRoverTest #test20ReceivingABMakesRoverMoveBackwards stamp: 'cde 10/5/2022 16:14:57'!
+FAILURE!
+!MarsRover methodsFor: 'actions' stamp: 'cde 10/5/2022 16:16:21' prior: 50556868!
+receiveInstruction: anInstruction
+	
+	anInstruction = 'f' ifTrue: [self moveForward].
+	anInstruction = 'b' ifTrue: [self moveBackwards].! !
+
+!testRun: #MarsRoverTest #test20ReceivingABMakesRoverMoveBackwards stamp: 'cde 10/5/2022 16:16:27'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 16:17:16'!
+test21ReceivingAnLMakesRoverRotateLeft
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'l'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover receiveInstruction: instructionFromEarth.
+	
+	self assert: (marsRover isInPosition: (0@0) andDirection: #W).! !
+
+!testRun: #MarsRoverTest #test21ReceivingAnLMakesRoverRotateLeft stamp: 'cde 10/5/2022 16:17:17'!
+FAILURE!
+!MarsRover methodsFor: 'actions' stamp: 'cde 10/5/2022 16:18:06' prior: 50556892!
+receiveInstruction: anInstruction
+	
+	anInstruction = 'f' ifTrue: [self moveForward].
+	anInstruction = 'b' ifTrue: [self moveBackwards].
+	anInstruction = 'l' ifTrue: [self rotateLeft].
+	anInstruction = 'r' ifTrue: [self rotateRight].! !
+
+!testRun: #MarsRoverTest #test01StartsAtLandingPositionAndDirection stamp: 'cde 10/5/2022 16:18:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02AtLandingIsNotInOtherPositionAndDirection stamp: 'cde 10/5/2022 16:18:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MovingForwardFacingNorthIncreasePositionsXCoordinate stamp: 'cde 10/5/2022 16:18:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MovingForwardFacingSouthDecreasePositionsXCoordinate stamp: 'cde 10/5/2022 16:18:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MovingForwardFacingEastIncreasePositionsYCoordinate stamp: 'cde 10/5/2022 16:18:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MovingForwardFacingWestDecreasePositionsYCoordinate stamp: 'cde 10/5/2022 16:18:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MovingBackwardsFacingNorthDecreasePositionsXCoordinate stamp: 'cde 10/5/2022 16:18:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsXCoordinate stamp: 'cde 10/5/2022 16:18:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MovingBackwardsFacingEastDecreasePositionsYCoordinate stamp: 'cde 10/5/2022 16:18:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MovingBackwardsFacingWestIncreasePositionsYCoordinate stamp: 'cde 10/5/2022 16:18:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RotatingLeftFacingNorthChangesDirectionToWest stamp: 'cde 10/5/2022 16:18:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RotatingRightFacingNorthChangesDirectionToEast stamp: 'cde 10/5/2022 16:18:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'cde 10/5/2022 16:18:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RotatingRightFacingSouthChangesDirectionToWest stamp: 'cde 10/5/2022 16:18:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RotatingLeftFacingEastChangesDirectionToNorth stamp: 'cde 10/5/2022 16:18:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RotatingRightFacingEastChangesDirectionToSouth stamp: 'cde 10/5/2022 16:18:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RotatingLeftFacingWestChangesDirectionToSouth stamp: 'cde 10/5/2022 16:18:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RotatingRightFacingWestChangesDirectionToNorth stamp: 'cde 10/5/2022 16:18:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19ReceivingAnFMakesRoverMoveForwards stamp: 'cde 10/5/2022 16:18:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20ReceivingABMakesRoverMoveBackwards stamp: 'cde 10/5/2022 16:18:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21ReceivingAnLMakesRoverRotateLeft stamp: 'cde 10/5/2022 16:18:22'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 16:19:01'!
+test22ReceivingAnRMakesRoverRotateLeft
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'r'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #S.
+	marsRover receiveInstruction: instructionFromEarth.
+	
+	self assert: (marsRover isInPosition: (0@0) andDirection: #W).! !
+
+!testRun: #MarsRoverTest #test22ReceivingAnRMakesRoverRotateLeft stamp: 'cde 10/5/2022 16:19:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01StartsAtLandingPositionAndDirection stamp: 'cde 10/5/2022 16:19:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02AtLandingIsNotInOtherPositionAndDirection stamp: 'cde 10/5/2022 16:19:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MovingForwardFacingNorthIncreasePositionsXCoordinate stamp: 'cde 10/5/2022 16:19:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MovingForwardFacingSouthDecreasePositionsXCoordinate stamp: 'cde 10/5/2022 16:19:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MovingForwardFacingEastIncreasePositionsYCoordinate stamp: 'cde 10/5/2022 16:19:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MovingForwardFacingWestDecreasePositionsYCoordinate stamp: 'cde 10/5/2022 16:19:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MovingBackwardsFacingNorthDecreasePositionsXCoordinate stamp: 'cde 10/5/2022 16:19:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsXCoordinate stamp: 'cde 10/5/2022 16:19:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MovingBackwardsFacingEastDecreasePositionsYCoordinate stamp: 'cde 10/5/2022 16:19:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MovingBackwardsFacingWestIncreasePositionsYCoordinate stamp: 'cde 10/5/2022 16:19:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RotatingLeftFacingNorthChangesDirectionToWest stamp: 'cde 10/5/2022 16:19:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RotatingRightFacingNorthChangesDirectionToEast stamp: 'cde 10/5/2022 16:19:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'cde 10/5/2022 16:19:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RotatingRightFacingSouthChangesDirectionToWest stamp: 'cde 10/5/2022 16:19:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RotatingLeftFacingEastChangesDirectionToNorth stamp: 'cde 10/5/2022 16:19:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RotatingRightFacingEastChangesDirectionToSouth stamp: 'cde 10/5/2022 16:19:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RotatingLeftFacingWestChangesDirectionToSouth stamp: 'cde 10/5/2022 16:19:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RotatingRightFacingWestChangesDirectionToNorth stamp: 'cde 10/5/2022 16:19:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19ReceivingAnFMakesRoverMoveForwards stamp: 'cde 10/5/2022 16:19:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20ReceivingABMakesRoverMoveBackwards stamp: 'cde 10/5/2022 16:19:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21ReceivingAnLMakesRoverRotateLeft stamp: 'cde 10/5/2022 16:19:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22ReceivingAnRMakesRoverRotateLeft stamp: 'cde 10/5/2022 16:19:02'!
+PASSED!
+
+MarsRover subclass: #ReceiveAnF
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classDefinition: #ReceiveAnF category: 'MarsRover' stamp: 'cde 10/5/2022 16:22:48'!
+MarsRover subclass: #ReceiveAnF
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+MarsRover subclass: #ReceiveAB
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classDefinition: #ReceiveAB category: 'MarsRover' stamp: 'cde 10/5/2022 16:23:25'!
+MarsRover subclass: #ReceiveAB
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+MarsRover subclass: #ReceiveAnL
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classDefinition: #ReceiveAnL category: 'MarsRover' stamp: 'cde 10/5/2022 16:23:39'!
+MarsRover subclass: #ReceiveAnL
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+MarsRover subclass: #ReceiveAnR
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classDefinition: #ReceiveAnR category: 'MarsRover' stamp: 'cde 10/5/2022 16:23:43'!
+MarsRover subclass: #ReceiveAnR
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+!MarsRover methodsFor: 'actions' stamp: 'cde 10/5/2022 16:24:32' prior: 50556918!
+receiveInstruction: anInstruction
+	
+	self subclassResponsibility! !
+!ReceiveAB methodsFor: 'no messages' stamp: 'cde 10/5/2022 16:25:22' overrides: 50557148!
+receiveInstruction: anInstruction! !
+!MarsRover methodsFor: 'actions' stamp: 'cde 10/5/2022 16:18:06' prior: 50557148!
+receiveInstruction: anInstruction
+	
+	anInstruction = 'f' ifTrue: [self moveForward].
+	anInstruction = 'b' ifTrue: [self moveBackwards].
+	anInstruction = 'l' ifTrue: [self rotateLeft].
+	anInstruction = 'r' ifTrue: [self rotateRight].! !
+
+!classRemoval: #ReceiveAnR stamp: 'cde 10/5/2022 16:28:50'!
+MarsRover subclass: #ReceiveAnR
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #ReceiveAnF stamp: 'cde 10/5/2022 16:28:53'!
+MarsRover subclass: #ReceiveAnF
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #ReceiveAnL stamp: 'cde 10/5/2022 16:28:56'!
+MarsRover subclass: #ReceiveAnL
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #ReceiveAB stamp: 'cde 10/5/2022 16:28:59'!
+MarsRover subclass: #ReceiveAB
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+Object subclass: #MarsRoverInstructionReceiver
+	instanceVariableNames: 'marsRover'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classDefinition: #MarsRoverInstructionReceiver category: 'MarsRover' stamp: 'cde 10/5/2022 16:34:31'!
+Object subclass: #MarsRoverInstructionReceiver
+	instanceVariableNames: 'marsRover'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #MarsRoverInstructionReceiver stamp: 'cde 10/5/2022 16:35:09'!
+Object subclass: #MarsRoverInstructionReceiver
+	instanceVariableNames: 'marsRover'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+!MarsRover methodsFor: 'actions' stamp: 'cde 10/5/2022 16:37:04'!
+receiveSingleInstruction: anInstruction
+	
+	anInstruction = 'f' ifTrue: [self moveForward].
+	anInstruction = 'b' ifTrue: [self moveBackwards].
+	anInstruction = 'l' ifTrue: [self rotateLeft].
+	anInstruction = 'r' ifTrue: [self rotateRight].! !
+
+!methodRemoval: MarsRover #receiveInstruction: stamp: 'cde 10/5/2022 16:37:04'!
+receiveInstruction: anInstruction
+	
+	anInstruction = 'f' ifTrue: [self moveForward].
+	anInstruction = 'b' ifTrue: [self moveBackwards].
+	anInstruction = 'l' ifTrue: [self rotateLeft].
+	anInstruction = 'r' ifTrue: [self rotateRight].!
+
+!testRun: #MarsRoverTest #test01StartsAtLandingPositionAndDirection stamp: 'cde 10/5/2022 16:37:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02AtLandingIsNotInOtherPositionAndDirection stamp: 'cde 10/5/2022 16:37:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MovingForwardFacingNorthIncreasePositionsXCoordinate stamp: 'cde 10/5/2022 16:37:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MovingForwardFacingSouthDecreasePositionsXCoordinate stamp: 'cde 10/5/2022 16:37:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MovingForwardFacingEastIncreasePositionsYCoordinate stamp: 'cde 10/5/2022 16:37:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MovingForwardFacingWestDecreasePositionsYCoordinate stamp: 'cde 10/5/2022 16:37:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MovingBackwardsFacingNorthDecreasePositionsXCoordinate stamp: 'cde 10/5/2022 16:37:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsXCoordinate stamp: 'cde 10/5/2022 16:37:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MovingBackwardsFacingEastDecreasePositionsYCoordinate stamp: 'cde 10/5/2022 16:37:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MovingBackwardsFacingWestIncreasePositionsYCoordinate stamp: 'cde 10/5/2022 16:37:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RotatingLeftFacingNorthChangesDirectionToWest stamp: 'cde 10/5/2022 16:37:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RotatingRightFacingNorthChangesDirectionToEast stamp: 'cde 10/5/2022 16:37:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'cde 10/5/2022 16:37:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RotatingRightFacingSouthChangesDirectionToWest stamp: 'cde 10/5/2022 16:37:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RotatingLeftFacingEastChangesDirectionToNorth stamp: 'cde 10/5/2022 16:37:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RotatingRightFacingEastChangesDirectionToSouth stamp: 'cde 10/5/2022 16:37:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RotatingLeftFacingWestChangesDirectionToSouth stamp: 'cde 10/5/2022 16:37:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RotatingRightFacingWestChangesDirectionToNorth stamp: 'cde 10/5/2022 16:37:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19ReceivingAnFMakesRoverMoveForwards stamp: 'cde 10/5/2022 16:37:09'!
+ERROR!
+
+!testRun: #MarsRoverTest #test20ReceivingABMakesRoverMoveBackwards stamp: 'cde 10/5/2022 16:37:09'!
+ERROR!
+
+!testRun: #MarsRoverTest #test21ReceivingAnLMakesRoverRotateLeft stamp: 'cde 10/5/2022 16:37:09'!
+ERROR!
+
+!testRun: #MarsRoverTest #test22ReceivingAnRMakesRoverRotateLeft stamp: 'cde 10/5/2022 16:37:09'!
+ERROR!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 16:37:23' prior: 50557007!
+test22ReceivingAnRMakesRoverRotateLeft
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'r'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #S.
+	marsRover receiveSingleInstruction: instructionFromEarth.
+	
+	self assert: (marsRover isInPosition: (0@0) andDirection: #W).! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 16:37:28' prior: 50556902!
+test21ReceivingAnLMakesRoverRotateLeft
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'l'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover receiveSingleInstruction: instructionFromEarth.
+	
+	self assert: (marsRover isInPosition: (0@0) andDirection: #W).! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 16:37:35' prior: 50556876!
+test20ReceivingABMakesRoverMoveBackwards
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'b'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover receiveSingleInstruction: instructionFromEarth.
+	
+	self assert: (marsRover isInPosition: (-1@0) andDirection: #N).! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 16:37:41' prior: 50556856!
+test19ReceivingAnFMakesRoverMoveForwards
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'f'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover receiveSingleInstruction: instructionFromEarth.
+	
+	self assert: (marsRover isInPosition: (1@0) andDirection: #N).! !
+
+!testRun: #MarsRoverTest #test19ReceivingAnFMakesRoverMoveForwards stamp: 'cde 10/5/2022 16:37:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20ReceivingABMakesRoverMoveBackwards stamp: 'cde 10/5/2022 16:37:44'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21ReceivingAnLMakesRoverRotateLeft stamp: 'cde 10/5/2022 16:37:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22ReceivingAnRMakesRoverRotateLeft stamp: 'cde 10/5/2022 16:37:47'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 16:40:53'!
+test23ReceivingTwoValidInstructionsThatMakeRoverStayAtStartingPoint
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'fb'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #S.
+	marsRover receiveInstructionString: instructionFromEarth.
+	
+	self assert: (marsRover isInPosition: (0@0) andDirection: #S).! !
+
+!testRun: #MarsRoverTest #test23ReceivingTwoValidInstructionsThatMakeRoverStayAtStartingPoint stamp: 'cde 10/5/2022 16:40:56'!
+ERROR!
+!MarsRover methodsFor: 'actions' stamp: 'cde 10/5/2022 16:44:52'!
+receiveInstructionString: anInstruction
+	
+	anInstruction do: [:aSingleInstruction | self receiveSingleInstruction: aSingleInstruction]! !
+
+!testRun: #MarsRoverTest #test23ReceivingTwoValidInstructionsThatMakeRoverStayAtStartingPoint stamp: 'cde 10/5/2022 16:45:09'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 16:47:27'!
+test23ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'ffr'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #S.
+	marsRover receiveInstructionString: instructionFromEarth.
+	
+	self assert: (marsRover isInPosition: (2@0) andDirection: #W).! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 16:47:35'!
+test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'ffr'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #S.
+	marsRover receiveInstructionString: instructionFromEarth.
+	
+	self assert: (marsRover isInPosition: (2@0) andDirection: #W).! !
+
+!methodRemoval: MarsRoverTest #test23ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 16:47:38'!
+test23ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'ffr'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #S.
+	marsRover receiveInstructionString: instructionFromEarth.
+	
+	self assert: (marsRover isInPosition: (2@0) andDirection: #W).!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 16:47:41'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 16:47:41'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 16:50:16'!
+FAILURE!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 16:50:30' prior: 50557420!
+test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'ffr'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #S.
+	marsRover receiveInstructionString: instructionFromEarth.
+	
+	self assert: (marsRover isInPosition: (-2@0) andDirection: #W).! !
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 16:50:32'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 16:50:33'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 16:51:07'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 16:51:07'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 16:51:40'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 16:51:40'!
+FAILURE!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 16:52:19' prior: 50557460!
+test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'ffr'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover receiveInstructionString: instructionFromEarth.
+	
+	self assert: (marsRover isInPosition: (2@0) andDirection: #W).! !
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 16:52:22'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 16:52:22'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test23ReceivingTwoValidInstructionsThatMakeRoverStayAtStartingPoint stamp: 'cde 10/5/2022 16:52:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 16:52:30'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 16:52:30'!
+FAILURE!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 16:52:41' prior: 50557498!
+test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'ffr'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover receiveInstructionString: instructionFromEarth.
+	
+	self assert: (marsRover isInPosition: (2@0) andDirection: #E).! !
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 16:52:44'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 16:52:44'!
+FAILURE!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 16:53:36' prior: 50557532!
+test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'ffr'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover receiveInstructionString: instructionFromEarth.
+	self assert: (marsRover isInPosition: (2@0) andDirection: #E).! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 16:53:39' prior: 50557554!
+test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'ffr'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover receiveInstructionString: instructionFromEarth.
+	
+	self assert: (marsRover isInPosition: (2@0) andDirection: #E).! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 16:53:57' prior: 50557567!
+test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'ff'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover receiveInstructionString: instructionFromEarth.
+	
+	self assert: (marsRover isInPosition: (2@0) andDirection: #N).! !
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 16:53:58'!
+FAILURE!
+
+'hola' do: [:a | Transcript show: a printString; newLine].!
+
+'hola' do: [:a | Transcript show: a printString; newLine].!
+
+'hola' do: [:a | Transcript show: a printString; newLine].!
+
+'hola' do: [:a | Transcript show: a printString; newLine].!
+
+'hola' do: [:a | Transcript show: a printString; newLine].!
+
+'hola' do: [:a | Transcript show: a printString; newLine].!
+
+'hola' do: [:a | Transcript show: a printString; newLine].!
+
+'hola' do: [:a | Transcript show: a printString; newLine].!
+
+2+2!
+
+2+2!
+
+2+2!
+
+2+2!
+
+2+2!
+
+2+2!
+
+2+2!
+
+2+2!
+
+'hola' do: [:a | Transcript show: a printString; newLine].!
+
+'hola' do: [:a | Transcript show: a printString; newLine].!
+
+'hola' do: [:a | Transcript show: a printString; newLine].!
+
+'hola' do: [:a | Transcript show: a printString; newLine]!
+
+marsRover isInPosition: (2@0) andDirection: #N!
+
+instructionFromEarth := 'ff'.				!
+
+marsRover := MarsRover withPosition: (0@0) andDirection: #N.!
+
+marsRover receiveInstructionString: instructionFromEarth.!
+
+marsRover isInPosition: (2@0) andDirection: #N!
+
+marsRover isInPosition: (0@0) andDirection: #N!
+!MarsRover methodsFor: 'actions' stamp: 'cde 10/5/2022 17:05:06' prior: 50557396!
+receiveInstructionString: anInstruction
+	
+	anInstruction collect: [:aSingleInstruction | self receiveSingleInstruction: aSingleInstruction]! !
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 17:05:11'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 17:05:11'!
+FAILURE!
+
+marsRover receiveInstructionString: instructionFromEarth.!
+
+marsRover isInPosition: (0@0) andDirection: #N!
+!MarsRover methodsFor: 'actions' stamp: 'cde 10/5/2022 17:08:16' prior: 50557631!
+receiveInstructionString: anInstruction
+	|anInstructionAsArray|
+	anInstructionAsArray := anInstruction asArray.
+	anInstructionAsArray do: [:aSingleInstruction | self receiveSingleInstruction: aSingleInstruction]! !
+
+!testRun: #MarsRoverTest #test01StartsAtLandingPositionAndDirection stamp: 'cde 10/5/2022 17:08:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02AtLandingIsNotInOtherPositionAndDirection stamp: 'cde 10/5/2022 17:08:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MovingForwardFacingNorthIncreasePositionsXCoordinate stamp: 'cde 10/5/2022 17:08:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MovingForwardFacingSouthDecreasePositionsXCoordinate stamp: 'cde 10/5/2022 17:08:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MovingForwardFacingEastIncreasePositionsYCoordinate stamp: 'cde 10/5/2022 17:08:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MovingForwardFacingWestDecreasePositionsYCoordinate stamp: 'cde 10/5/2022 17:08:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MovingBackwardsFacingNorthDecreasePositionsXCoordinate stamp: 'cde 10/5/2022 17:08:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsXCoordinate stamp: 'cde 10/5/2022 17:08:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MovingBackwardsFacingEastDecreasePositionsYCoordinate stamp: 'cde 10/5/2022 17:08:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MovingBackwardsFacingWestIncreasePositionsYCoordinate stamp: 'cde 10/5/2022 17:08:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RotatingLeftFacingNorthChangesDirectionToWest stamp: 'cde 10/5/2022 17:08:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RotatingRightFacingNorthChangesDirectionToEast stamp: 'cde 10/5/2022 17:08:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'cde 10/5/2022 17:08:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RotatingRightFacingSouthChangesDirectionToWest stamp: 'cde 10/5/2022 17:08:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RotatingLeftFacingEastChangesDirectionToNorth stamp: 'cde 10/5/2022 17:08:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RotatingRightFacingEastChangesDirectionToSouth stamp: 'cde 10/5/2022 17:08:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RotatingLeftFacingWestChangesDirectionToSouth stamp: 'cde 10/5/2022 17:08:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RotatingRightFacingWestChangesDirectionToNorth stamp: 'cde 10/5/2022 17:08:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19ReceivingAnFMakesRoverMoveForwards stamp: 'cde 10/5/2022 17:08:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20ReceivingABMakesRoverMoveBackwards stamp: 'cde 10/5/2022 17:08:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21ReceivingAnLMakesRoverRotateLeft stamp: 'cde 10/5/2022 17:08:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22ReceivingAnRMakesRoverRotateLeft stamp: 'cde 10/5/2022 17:08:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test23ReceivingTwoValidInstructionsThatMakeRoverStayAtStartingPoint stamp: 'cde 10/5/2022 17:08:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 17:08:21'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 17:08:21'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 17:08:27'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 17:08:27'!
+FAILURE!
+
+| marsRover instructionFromEarth|!
+
+instructionFromEarth := 'ff'.				 !
+
+marsRover := MarsRover withPosition: (0@0) andDirection: #N.!
+
+marsRover receiveInstructionString: instructionFromEarth.!
+
+marsRover isInPosition: (0@0) andDirection: #N!
+
+'hola' do: [:a | Transcript show: a printString; newLine]!
+
+'hola' do: [:a | Transcript show: a printString]!
+!MarsRover methodsFor: 'actions' stamp: 'cde 10/5/2022 17:16:32' prior: 50557650!
+receiveInstructionString: anInstruction
+	
+	anInstruction do: [:aSingleInstruction | self receiveSingleInstruction: aSingleInstruction]! !
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 17:16:54'!
+FAILURE!
+!MarsRover methodsFor: 'actions' stamp: 'cde 10/5/2022 17:21:18' prior: 50557211!
+receiveSingleInstruction: anInstruction
+	
+	anInstruction = 'f' ifTrue: [^ self moveForward].
+	anInstruction = 'b' ifTrue: [^ self moveBackwards].
+	anInstruction = 'l' ifTrue: [^ self rotateLeft].
+	anInstruction = 'r' ifTrue: [^ self rotateRight].! !
+
+!testRun: #MarsRoverTest #test01StartsAtLandingPositionAndDirection stamp: 'cde 10/5/2022 17:21:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02AtLandingIsNotInOtherPositionAndDirection stamp: 'cde 10/5/2022 17:21:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MovingForwardFacingNorthIncreasePositionsXCoordinate stamp: 'cde 10/5/2022 17:21:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MovingForwardFacingSouthDecreasePositionsXCoordinate stamp: 'cde 10/5/2022 17:21:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MovingForwardFacingEastIncreasePositionsYCoordinate stamp: 'cde 10/5/2022 17:21:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MovingForwardFacingWestDecreasePositionsYCoordinate stamp: 'cde 10/5/2022 17:21:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MovingBackwardsFacingNorthDecreasePositionsXCoordinate stamp: 'cde 10/5/2022 17:21:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsXCoordinate stamp: 'cde 10/5/2022 17:21:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MovingBackwardsFacingEastDecreasePositionsYCoordinate stamp: 'cde 10/5/2022 17:21:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MovingBackwardsFacingWestIncreasePositionsYCoordinate stamp: 'cde 10/5/2022 17:21:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RotatingLeftFacingNorthChangesDirectionToWest stamp: 'cde 10/5/2022 17:21:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RotatingRightFacingNorthChangesDirectionToEast stamp: 'cde 10/5/2022 17:21:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'cde 10/5/2022 17:21:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RotatingRightFacingSouthChangesDirectionToWest stamp: 'cde 10/5/2022 17:21:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RotatingLeftFacingEastChangesDirectionToNorth stamp: 'cde 10/5/2022 17:21:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RotatingRightFacingEastChangesDirectionToSouth stamp: 'cde 10/5/2022 17:21:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RotatingLeftFacingWestChangesDirectionToSouth stamp: 'cde 10/5/2022 17:21:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RotatingRightFacingWestChangesDirectionToNorth stamp: 'cde 10/5/2022 17:21:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19ReceivingAnFMakesRoverMoveForwards stamp: 'cde 10/5/2022 17:21:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20ReceivingABMakesRoverMoveBackwards stamp: 'cde 10/5/2022 17:21:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21ReceivingAnLMakesRoverRotateLeft stamp: 'cde 10/5/2022 17:21:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22ReceivingAnRMakesRoverRotateLeft stamp: 'cde 10/5/2022 17:21:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test23ReceivingTwoValidInstructionsThatMakeRoverStayAtStartingPoint stamp: 'cde 10/5/2022 17:21:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 17:21:25'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 17:21:25'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test23ReceivingTwoValidInstructionsThatMakeRoverStayAtStartingPoint stamp: 'cde 10/5/2022 17:21:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22ReceivingAnRMakesRoverRotateLeft stamp: 'cde 10/5/2022 17:21:37'!
+PASSED!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 17:21:39'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 17:21:39'!
+FAILURE!
+
+marsRover receiveInstructionString: instructionFromEarth.!
+
+marsRover := MarsRover withPosition: (0@0) andDirection: #N.!
+
+marsRover receiveInstructionString: instructionFromEarth.!
+
+| marsRover instructionFromEarth|!
+
+marsRover receiveInstructionString: instructionFromEarth.!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 17:23:11'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 17:23:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 17:23:29'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 17:23:38'!
+FAILURE!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 17:23:57' prior: 50557580!
+test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'ff'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover receiveInstructionString: instructionFromEarth.
+	
+	self assert: (marsRover isInPosition: (0@2) andDirection: #N).! !
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 17:23:57'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 17:24:22'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test19ReceivingAnFMakesRoverMoveForwards stamp: 'cde 10/5/2022 17:25:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01StartsAtLandingPositionAndDirection stamp: 'cde 10/5/2022 17:25:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02AtLandingIsNotInOtherPositionAndDirection stamp: 'cde 10/5/2022 17:25:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MovingForwardFacingNorthIncreasePositionsXCoordinate stamp: 'cde 10/5/2022 17:25:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MovingForwardFacingSouthDecreasePositionsXCoordinate stamp: 'cde 10/5/2022 17:25:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MovingForwardFacingEastIncreasePositionsYCoordinate stamp: 'cde 10/5/2022 17:25:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MovingForwardFacingWestDecreasePositionsYCoordinate stamp: 'cde 10/5/2022 17:25:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MovingBackwardsFacingNorthDecreasePositionsXCoordinate stamp: 'cde 10/5/2022 17:25:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsXCoordinate stamp: 'cde 10/5/2022 17:25:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MovingBackwardsFacingEastDecreasePositionsYCoordinate stamp: 'cde 10/5/2022 17:25:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MovingBackwardsFacingWestIncreasePositionsYCoordinate stamp: 'cde 10/5/2022 17:25:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RotatingLeftFacingNorthChangesDirectionToWest stamp: 'cde 10/5/2022 17:25:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RotatingRightFacingNorthChangesDirectionToEast stamp: 'cde 10/5/2022 17:25:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'cde 10/5/2022 17:25:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RotatingRightFacingSouthChangesDirectionToWest stamp: 'cde 10/5/2022 17:25:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RotatingLeftFacingEastChangesDirectionToNorth stamp: 'cde 10/5/2022 17:25:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RotatingRightFacingEastChangesDirectionToSouth stamp: 'cde 10/5/2022 17:25:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RotatingLeftFacingWestChangesDirectionToSouth stamp: 'cde 10/5/2022 17:25:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RotatingRightFacingWestChangesDirectionToNorth stamp: 'cde 10/5/2022 17:25:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19ReceivingAnFMakesRoverMoveForwards stamp: 'cde 10/5/2022 17:25:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20ReceivingABMakesRoverMoveBackwards stamp: 'cde 10/5/2022 17:25:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21ReceivingAnLMakesRoverRotateLeft stamp: 'cde 10/5/2022 17:25:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22ReceivingAnRMakesRoverRotateLeft stamp: 'cde 10/5/2022 17:25:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test23ReceivingTwoValidInstructionsThatMakeRoverStayAtStartingPoint stamp: 'cde 10/5/2022 17:25:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 17:25:10'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 17:25:10'!
+FAILURE!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 17:25:23' prior: 50557353!
+test19ReceivingAnFMakesRoverMoveForwards
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'f'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover receiveSingleInstruction: instructionFromEarth.
+	
+	self assert: (marsRover isInPosition: (0@1) andDirection: #N).! !
+
+!testRun: #MarsRoverTest #test19ReceivingAnFMakesRoverMoveForwards stamp: 'cde 10/5/2022 17:25:23'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test17RotatingLeftFacingWestChangesDirectionToSouth stamp: 'cde 10/5/2022 17:25:30'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RotatingRightFacingWestChangesDirectionToNorth stamp: 'cde 10/5/2022 17:25:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19ReceivingAnFMakesRoverMoveForwards stamp: 'cde 10/5/2022 17:25:40'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test19ReceivingAnFMakesRoverMoveForwards stamp: 'cde 10/5/2022 17:25:40'!
+FAILURE!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 17:25:56' prior: 50557340!
+test20ReceivingABMakesRoverMoveBackwards
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'b'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover receiveSingleInstruction: instructionFromEarth.
+	
+	self assert: (marsRover isInPosition: (0@-1) andDirection: #N).! !
+
+!testRun: #MarsRoverTest #test20ReceivingABMakesRoverMoveBackwards stamp: 'cde 10/5/2022 17:25:57'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test21ReceivingAnLMakesRoverRotateLeft stamp: 'cde 10/5/2022 17:26:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22ReceivingAnRMakesRoverRotateLeft stamp: 'cde 10/5/2022 17:26:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test23ReceivingTwoValidInstructionsThatMakeRoverStayAtStartingPoint stamp: 'cde 10/5/2022 17:26:16'!
+PASSED!
+!MarsRover methodsFor: 'private' stamp: 'cde 10/5/2022 17:30:47' prior: 50553645!
+moveEast
+
+	position := position + (1@0)! !
+!MarsRover methodsFor: 'private' stamp: 'cde 10/5/2022 17:30:54' prior: 50553649!
+moveNorth
+
+	position := position + (0@1)! !
+!MarsRover methodsFor: 'private' stamp: 'cde 10/5/2022 17:31:00' prior: 50553653!
+moveSouth
+
+	position := position - (0@1)! !
+!MarsRover methodsFor: 'private' stamp: 'cde 10/5/2022 17:31:06' prior: 50553657!
+moveWest
+
+	position := position - (1@0)! !
+
+!testRun: #MarsRoverTest #test01StartsAtLandingPositionAndDirection stamp: 'cde 10/5/2022 17:31:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02AtLandingIsNotInOtherPositionAndDirection stamp: 'cde 10/5/2022 17:31:39'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 17:31:48' prior: 50553442!
+test03MovingForwardFacingNorthIncreasePositionsXCoordinate
+
+	| marsRover |
+	
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover moveForward.
+	
+	self assert: (marsRover isInPosition: (0@1) andDirection: #N).! !
+
+!testRun: #MarsRoverTest #test03MovingForwardFacingNorthIncreasePositionsXCoordinate stamp: 'cde 10/5/2022 17:31:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01StartsAtLandingPositionAndDirection stamp: 'cde 10/5/2022 17:31:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02AtLandingIsNotInOtherPositionAndDirection stamp: 'cde 10/5/2022 17:31:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MovingForwardFacingNorthIncreasePositionsXCoordinate stamp: 'cde 10/5/2022 17:31:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MovingForwardFacingSouthDecreasePositionsXCoordinate stamp: 'cde 10/5/2022 17:31:49'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test05MovingForwardFacingEastIncreasePositionsYCoordinate stamp: 'cde 10/5/2022 17:31:49'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test06MovingForwardFacingWestDecreasePositionsYCoordinate stamp: 'cde 10/5/2022 17:31:49'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test07MovingBackwardsFacingNorthDecreasePositionsXCoordinate stamp: 'cde 10/5/2022 17:31:49'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsXCoordinate stamp: 'cde 10/5/2022 17:31:49'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test09MovingBackwardsFacingEastDecreasePositionsYCoordinate stamp: 'cde 10/5/2022 17:31:49'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test10MovingBackwardsFacingWestIncreasePositionsYCoordinate stamp: 'cde 10/5/2022 17:31:49'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test11RotatingLeftFacingNorthChangesDirectionToWest stamp: 'cde 10/5/2022 17:31:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RotatingRightFacingNorthChangesDirectionToEast stamp: 'cde 10/5/2022 17:31:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'cde 10/5/2022 17:31:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RotatingRightFacingSouthChangesDirectionToWest stamp: 'cde 10/5/2022 17:31:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RotatingLeftFacingEastChangesDirectionToNorth stamp: 'cde 10/5/2022 17:31:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RotatingRightFacingEastChangesDirectionToSouth stamp: 'cde 10/5/2022 17:31:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RotatingLeftFacingWestChangesDirectionToSouth stamp: 'cde 10/5/2022 17:31:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RotatingRightFacingWestChangesDirectionToNorth stamp: 'cde 10/5/2022 17:31:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19ReceivingAnFMakesRoverMoveForwards stamp: 'cde 10/5/2022 17:31:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20ReceivingABMakesRoverMoveBackwards stamp: 'cde 10/5/2022 17:31:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21ReceivingAnLMakesRoverRotateLeft stamp: 'cde 10/5/2022 17:31:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22ReceivingAnRMakesRoverRotateLeft stamp: 'cde 10/5/2022 17:31:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test23ReceivingTwoValidInstructionsThatMakeRoverStayAtStartingPoint stamp: 'cde 10/5/2022 17:31:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 17:31:49'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test03MovingForwardFacingNorthIncreasePositionsXCoordinate stamp: 'cde 10/5/2022 17:31:57'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 17:32:10' prior: 50553452!
+test04MovingForwardFacingSouthDecreasePositionsXCoordinate
+
+	| marsRover |
+	
+	marsRover := MarsRover withPosition: (0@0) andDirection: #S.
+	marsRover moveForward.
+	
+	self assert: (marsRover isInPosition: (0@-1) andDirection: #S).! !
+
+!testRun: #MarsRoverTest #test04MovingForwardFacingSouthDecreasePositionsXCoordinate stamp: 'cde 10/5/2022 17:32:13'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 17:32:22' prior: 50553462!
+test05MovingForwardFacingEastIncreasePositionsYCoordinate
+
+	| marsRover |
+	
+	marsRover := MarsRover withPosition: (0@0) andDirection: #E.
+	marsRover moveForward.
+	
+	self assert: (marsRover isInPosition: (1@0) andDirection: #E).! !
+
+!testRun: #MarsRoverTest #test05MovingForwardFacingEastIncreasePositionsYCoordinate stamp: 'cde 10/5/2022 17:32:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MovingForwardFacingWestDecreasePositionsYCoordinate stamp: 'cde 10/5/2022 17:32:38'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test06MovingForwardFacingWestDecreasePositionsYCoordinate stamp: 'cde 10/5/2022 17:32:38'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test06MovingForwardFacingWestDecreasePositionsYCoordinate stamp: 'cde 10/5/2022 17:33:20'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test06MovingForwardFacingWestDecreasePositionsYCoordinate stamp: 'cde 10/5/2022 17:33:20'!
+FAILURE!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 17:33:32' prior: 50553472!
+test06MovingForwardFacingWestDecreasePositionsYCoordinate
+
+	| marsRover |
+	
+	marsRover := MarsRover withPosition: (0@0) andDirection: #W.
+	marsRover moveForward.
+	
+	self assert: (marsRover isInPosition: (-1@0) andDirection: #W).! !
+
+!testRun: #MarsRoverTest #test06MovingForwardFacingWestDecreasePositionsYCoordinate stamp: 'cde 10/5/2022 17:33:35'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 17:33:42' prior: 50553482!
+test07MovingBackwardsFacingNorthDecreasePositionsXCoordinate
+
+	| marsRover |
+	
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover moveBackwards.
+	
+	self assert: (marsRover isInPosition: (0@-1) andDirection: #N).! !
+
+!testRun: #MarsRoverTest #test07MovingBackwardsFacingNorthDecreasePositionsXCoordinate stamp: 'cde 10/5/2022 17:33:46'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 17:33:55' prior: 50553492!
+test08MovingBackwardsFacingSouthIncreasePositionsXCoordinate
+
+	| marsRover |
+	
+	marsRover := MarsRover withPosition: (0@0) andDirection: #S.
+	marsRover moveBackwards.
+	
+	self assert: (marsRover isInPosition: (0@-1) andDirection: #S).! !
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsXCoordinate stamp: 'cde 10/5/2022 17:33:57'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsXCoordinate stamp: 'cde 10/5/2022 17:33:57'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsXCoordinate stamp: 'cde 10/5/2022 17:34:04'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsXCoordinate stamp: 'cde 10/5/2022 17:34:04'!
+FAILURE!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 17:35:07' prior: 50558316!
+test08MovingBackwardsFacingSouthIncreasePositionsXCoordinate
+
+	| marsRover |
+	
+	marsRover := MarsRover withPosition: (0@0) andDirection: #S.
+	marsRover moveBackwards.
+	
+	self assert: (marsRover isInPosition: (0@1) andDirection: #S).! !
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsXCoordinate stamp: 'cde 10/5/2022 17:35:10'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 17:37:07'!
+test09MovingBackwardsFacingEastDecreasePositionsXCoordinate
+
+	| marsRover |
+	
+	marsRover := MarsRover withPosition: (0@0) andDirection: #E.
+	marsRover moveBackwards.
+	
+	self assert: (marsRover isInPosition: (-1@0) andDirection: #E).! !
+
+!methodRemoval: MarsRoverTest #test09MovingBackwardsFacingEastDecreasePositionsYCoordinate stamp: 'cde 10/5/2022 17:37:11'!
+test09MovingBackwardsFacingEastDecreasePositionsYCoordinate
+
+	| marsRover |
+	
+	marsRover := MarsRover withPosition: (0@0) andDirection: #E.
+	marsRover moveBackwards.
+	
+	self assert: (marsRover isInPosition: (0@-1) andDirection: #E).!
+
+!testRun: #MarsRoverTest #test09MovingBackwardsFacingEastDecreasePositionsXCoordinate stamp: 'cde 10/5/2022 17:37:14'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 17:37:38' prior: 50553512!
+test10MovingBackwardsFacingWestIncreasePositionsYCoordinate
+
+	| marsRover |
+	
+	marsRover := MarsRover withPosition: (0@0) andDirection: #W.
+	marsRover moveBackwards.
+	
+	self assert: (marsRover isInPosition: (1@0) andDirection: #W).! !
+
+!testRun: #MarsRoverTest #test19ReceivingAnFMakesRoverMoveForwards stamp: 'cde 10/5/2022 17:37:55'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20ReceivingABMakesRoverMoveBackwards stamp: 'cde 10/5/2022 17:38:00'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21ReceivingAnLMakesRoverRotateLeft stamp: 'cde 10/5/2022 17:38:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22ReceivingAnRMakesRoverRotateLeft stamp: 'cde 10/5/2022 17:38:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test23ReceivingTwoValidInstructionsThatMakeRoverStayAtStartingPoint stamp: 'cde 10/5/2022 17:38:13'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 17:38:23'!
+test03MovingForwardFacingNorthIncreasePositionsYCoordinate
+
+	| marsRover |
+	
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover moveForward.
+	
+	self assert: (marsRover isInPosition: (0@1) andDirection: #N).! !
+
+!methodRemoval: MarsRoverTest #test03MovingForwardFacingNorthIncreasePositionsXCoordinate stamp: 'cde 10/5/2022 17:38:28'!
+test03MovingForwardFacingNorthIncreasePositionsXCoordinate
+
+	| marsRover |
+	
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover moveForward.
+	
+	self assert: (marsRover isInPosition: (0@1) andDirection: #N).!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 17:38:35'!
+test04MovingForwardFacingSouthDecreasePositionsYCoordinate
+
+	| marsRover |
+	
+	marsRover := MarsRover withPosition: (0@0) andDirection: #S.
+	marsRover moveForward.
+	
+	self assert: (marsRover isInPosition: (0@-1) andDirection: #S).! !
+
+!methodRemoval: MarsRoverTest #test04MovingForwardFacingSouthDecreasePositionsXCoordinate stamp: 'cde 10/5/2022 17:38:38'!
+test04MovingForwardFacingSouthDecreasePositionsXCoordinate
+
+	| marsRover |
+	
+	marsRover := MarsRover withPosition: (0@0) andDirection: #S.
+	marsRover moveForward.
+	
+	self assert: (marsRover isInPosition: (0@-1) andDirection: #S).!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 17:38:44'!
+test05MovingForwardFacingEastIncreasePositionsXCoordinate
+
+	| marsRover |
+	
+	marsRover := MarsRover withPosition: (0@0) andDirection: #E.
+	marsRover moveForward.
+	
+	self assert: (marsRover isInPosition: (1@0) andDirection: #E).! !
+
+!methodRemoval: MarsRoverTest #test05MovingForwardFacingEastIncreasePositionsYCoordinate stamp: 'cde 10/5/2022 17:38:48'!
+test05MovingForwardFacingEastIncreasePositionsYCoordinate
+
+	| marsRover |
+	
+	marsRover := MarsRover withPosition: (0@0) andDirection: #E.
+	marsRover moveForward.
+	
+	self assert: (marsRover isInPosition: (1@0) andDirection: #E).!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 17:38:54'!
+test07MovingBackwardsFacingNorthDecreasePositionsYCoordinate
+
+	| marsRover |
+	
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover moveBackwards.
+	
+	self assert: (marsRover isInPosition: (0@-1) andDirection: #N).! !
+
+!methodRemoval: MarsRoverTest #test07MovingBackwardsFacingNorthDecreasePositionsXCoordinate stamp: 'cde 10/5/2022 17:38:56'!
+test07MovingBackwardsFacingNorthDecreasePositionsXCoordinate
+
+	| marsRover |
+	
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover moveBackwards.
+	
+	self assert: (marsRover isInPosition: (0@-1) andDirection: #N).!
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsXCoordinate stamp: 'cde 10/5/2022 17:39:23'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 17:39:53'!
+test08MovingBackwardsFacingSouthIncreasePositionsYCoordinate
+
+	| marsRover |
+	
+	marsRover := MarsRover withPosition: (0@0) andDirection: #S.
+	marsRover moveBackwards.
+	
+	self assert: (marsRover isInPosition: (0@1) andDirection: #S).! !
+
+!methodRemoval: MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsXCoordinate stamp: 'cde 10/5/2022 17:39:55'!
+test08MovingBackwardsFacingSouthIncreasePositionsXCoordinate
+
+	| marsRover |
+	
+	marsRover := MarsRover withPosition: (0@0) andDirection: #S.
+	marsRover moveBackwards.
+	
+	self assert: (marsRover isInPosition: (0@1) andDirection: #S).!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 17:40:08'!
+test10MovingBackwardsFacingWestIncreasePositionsXCoordinate
+
+	| marsRover |
+	
+	marsRover := MarsRover withPosition: (0@0) andDirection: #W.
+	marsRover moveBackwards.
+	
+	self assert: (marsRover isInPosition: (1@0) andDirection: #W).! !
+
+!methodRemoval: MarsRoverTest #test10MovingBackwardsFacingWestIncreasePositionsYCoordinate stamp: 'cde 10/5/2022 17:40:11'!
+test10MovingBackwardsFacingWestIncreasePositionsYCoordinate
+
+	| marsRover |
+	
+	marsRover := MarsRover withPosition: (0@0) andDirection: #W.
+	marsRover moveBackwards.
+	
+	self assert: (marsRover isInPosition: (1@0) andDirection: #W).!
+
+!testRun: #MarsRoverTest #test19ReceivingAnFMakesRoverMoveForwards stamp: 'cde 10/5/2022 17:56:08'!
+PASSED!
+!MarsRover methodsFor: 'actions' stamp: 'cde 10/5/2022 17:59:30' prior: 50557786!
+receiveSingleInstruction: anInstruction
+	
+	anInstruction = $f ifTrue: [^ self moveForward].
+	anInstruction = $b ifTrue: [^ self moveBackwards].
+	anInstruction = $l ifTrue: [^ self rotateLeft].
+	anInstruction = $r ifTrue: [^ self rotateRight].! !
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 17:59:39'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 18:00:06' prior: 50557933!
+test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'ffr'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover receiveInstructionString: instructionFromEarth.
+	
+	self assert: (marsRover isInPosition: (0@2) andDirection: #E).! !
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 18:00:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01StartsAtLandingPositionAndDirection stamp: 'cde 10/5/2022 18:00:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02AtLandingIsNotInOtherPositionAndDirection stamp: 'cde 10/5/2022 18:00:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MovingForwardFacingNorthIncreasePositionsYCoordinate stamp: 'cde 10/5/2022 18:00:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MovingForwardFacingSouthDecreasePositionsYCoordinate stamp: 'cde 10/5/2022 18:00:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MovingForwardFacingEastIncreasePositionsXCoordinate stamp: 'cde 10/5/2022 18:00:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MovingForwardFacingWestDecreasePositionsYCoordinate stamp: 'cde 10/5/2022 18:00:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MovingBackwardsFacingNorthDecreasePositionsYCoordinate stamp: 'cde 10/5/2022 18:00:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsYCoordinate stamp: 'cde 10/5/2022 18:00:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MovingBackwardsFacingEastDecreasePositionsXCoordinate stamp: 'cde 10/5/2022 18:00:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MovingBackwardsFacingWestIncreasePositionsXCoordinate stamp: 'cde 10/5/2022 18:00:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RotatingLeftFacingNorthChangesDirectionToWest stamp: 'cde 10/5/2022 18:00:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RotatingRightFacingNorthChangesDirectionToEast stamp: 'cde 10/5/2022 18:00:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'cde 10/5/2022 18:00:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RotatingRightFacingSouthChangesDirectionToWest stamp: 'cde 10/5/2022 18:00:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RotatingLeftFacingEastChangesDirectionToNorth stamp: 'cde 10/5/2022 18:00:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RotatingRightFacingEastChangesDirectionToSouth stamp: 'cde 10/5/2022 18:00:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RotatingLeftFacingWestChangesDirectionToSouth stamp: 'cde 10/5/2022 18:00:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RotatingRightFacingWestChangesDirectionToNorth stamp: 'cde 10/5/2022 18:00:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19ReceivingAnFMakesRoverMoveForwards stamp: 'cde 10/5/2022 18:00:07'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test20ReceivingABMakesRoverMoveBackwards stamp: 'cde 10/5/2022 18:00:07'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test21ReceivingAnLMakesRoverRotateLeft stamp: 'cde 10/5/2022 18:00:07'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test22ReceivingAnRMakesRoverRotateLeft stamp: 'cde 10/5/2022 18:00:07'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test23ReceivingTwoValidInstructionsThatMakeRoverStayAtStartingPoint stamp: 'cde 10/5/2022 18:00:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 18:00:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 18:00:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21ReceivingAnLMakesRoverRotateLeft stamp: 'cde 10/5/2022 18:00:30'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test21ReceivingAnLMakesRoverRotateLeft stamp: 'cde 10/5/2022 18:00:30'!
+FAILURE!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 18:00:42' prior: 50558053!
+test19ReceivingAnFMakesRoverMoveForwards
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := $f.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover receiveSingleInstruction: instructionFromEarth.
+	
+	self assert: (marsRover isInPosition: (0@1) andDirection: #N).! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 18:00:49' prior: 50558083!
+test20ReceivingABMakesRoverMoveBackwards
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := $b.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover receiveSingleInstruction: instructionFromEarth.
+	
+	self assert: (marsRover isInPosition: (0@-1) andDirection: #N).! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 18:00:56' prior: 50557327!
+test21ReceivingAnLMakesRoverRotateLeft
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := $l.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover receiveSingleInstruction: instructionFromEarth.
+	
+	self assert: (marsRover isInPosition: (0@0) andDirection: #W).! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 18:01:03' prior: 50557314!
+test22ReceivingAnRMakesRoverRotateLeft
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := $r.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #S.
+	marsRover receiveSingleInstruction: instructionFromEarth.
+	
+	self assert: (marsRover isInPosition: (0@0) andDirection: #W).! !
+
+!testRun: #MarsRoverTest #test23ReceivingTwoValidInstructionsThatMakeRoverStayAtStartingPoint stamp: 'cde 10/5/2022 18:01:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01StartsAtLandingPositionAndDirection stamp: 'cde 10/5/2022 18:01:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02AtLandingIsNotInOtherPositionAndDirection stamp: 'cde 10/5/2022 18:01:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MovingForwardFacingNorthIncreasePositionsYCoordinate stamp: 'cde 10/5/2022 18:01:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MovingForwardFacingSouthDecreasePositionsYCoordinate stamp: 'cde 10/5/2022 18:01:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MovingForwardFacingEastIncreasePositionsXCoordinate stamp: 'cde 10/5/2022 18:01:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MovingForwardFacingWestDecreasePositionsYCoordinate stamp: 'cde 10/5/2022 18:01:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MovingBackwardsFacingNorthDecreasePositionsYCoordinate stamp: 'cde 10/5/2022 18:01:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsYCoordinate stamp: 'cde 10/5/2022 18:01:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MovingBackwardsFacingEastDecreasePositionsXCoordinate stamp: 'cde 10/5/2022 18:01:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MovingBackwardsFacingWestIncreasePositionsXCoordinate stamp: 'cde 10/5/2022 18:01:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RotatingLeftFacingNorthChangesDirectionToWest stamp: 'cde 10/5/2022 18:01:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RotatingRightFacingNorthChangesDirectionToEast stamp: 'cde 10/5/2022 18:01:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'cde 10/5/2022 18:01:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RotatingRightFacingSouthChangesDirectionToWest stamp: 'cde 10/5/2022 18:01:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RotatingLeftFacingEastChangesDirectionToNorth stamp: 'cde 10/5/2022 18:01:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RotatingRightFacingEastChangesDirectionToSouth stamp: 'cde 10/5/2022 18:01:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RotatingLeftFacingWestChangesDirectionToSouth stamp: 'cde 10/5/2022 18:01:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RotatingRightFacingWestChangesDirectionToNorth stamp: 'cde 10/5/2022 18:01:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19ReceivingAnFMakesRoverMoveForwards stamp: 'cde 10/5/2022 18:01:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20ReceivingABMakesRoverMoveBackwards stamp: 'cde 10/5/2022 18:01:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21ReceivingAnLMakesRoverRotateLeft stamp: 'cde 10/5/2022 18:01:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22ReceivingAnRMakesRoverRotateLeft stamp: 'cde 10/5/2022 18:01:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test23ReceivingTwoValidInstructionsThatMakeRoverStayAtStartingPoint stamp: 'cde 10/5/2022 18:01:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 18:01:12'!
+PASSED!
+
+Object subclass: #MarsRoverInstructionReceiver
+	instanceVariableNames: 'marsRover'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classDefinition: #MarsRoverInstructionReceiver category: 'MarsRover' stamp: 'cde 10/5/2022 18:09:24'!
+Object subclass: #MarsRoverInstructionReceiver
+	instanceVariableNames: 'marsRover'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+MarsRoverInstructionReceiver subclass: #ReceiveF
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classDefinition: #ReceiveF category: 'MarsRover' stamp: 'cde 10/5/2022 18:09:40'!
+MarsRoverInstructionReceiver subclass: #ReceiveF
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+MarsRoverInstructionReceiver subclass: #ReceiveB
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classDefinition: #ReceiveB category: 'MarsRover' stamp: 'cde 10/5/2022 18:09:43'!
+MarsRoverInstructionReceiver subclass: #ReceiveB
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+MarsRoverInstructionReceiver subclass: #ReceiveR
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classDefinition: #ReceiveR category: 'MarsRover' stamp: 'cde 10/5/2022 18:09:46'!
+MarsRoverInstructionReceiver subclass: #ReceiveR
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+MarsRoverInstructionReceiver subclass: #ReceiveL
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classDefinition: #ReceiveL category: 'MarsRover' stamp: 'cde 10/5/2022 18:09:49'!
+MarsRoverInstructionReceiver subclass: #ReceiveL
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+MarsRoverInstructionReceiver subclass: #ReceiveInvalid
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classDefinition: #ReceiveInvalid category: 'MarsRover' stamp: 'cde 10/5/2022 18:09:53'!
+MarsRoverInstructionReceiver subclass: #ReceiveInvalid
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+!MarsRoverInstructionReceiver class methodsFor: 'no messages' stamp: 'cde 10/5/2022 18:10:34'!
+createFor: aMarsRover
+
+	^self new initializeWith: aMarsRover! !
+!MarsRoverInstructionReceiver class methodsFor: 'as yet unclassified' stamp: 'cde 10/5/2022 18:10:57'!
+canHandle: anInstruction
+
+	self subclassResponsibility ! !
+!MarsRoverInstructionReceiver class methodsFor: 'as yet unclassified' stamp: 'cde 10/5/2022 18:11:24'!
+for: aMarsRover with: anInstruction
+
+	^(self subclasses detect: [ :aSubclass | aSubclass canHandle: anInstruction ]) createFor: aMarsRover.! !
+!MarsRoverInstructionReceiver methodsFor: 'no messages' stamp: 'cde 10/5/2022 18:11:40'!
+initializeWith: aMarsRover
+
+	marsRover := aMarsRover! !
+!MarsRoverInstructionReceiver methodsFor: 'as yet unclassified' stamp: 'cde 10/5/2022 18:12:25'!
+receiveAnInstruction
+
+	self subclassResponsibility ! !
+!ReceiveB methodsFor: 'no messages' stamp: 'cde 10/5/2022 18:14:52' overrides: 50558922!
+receiveAnInstruction
+	
+	marsRover moveBackwards. ! !
+!ReceiveF methodsFor: 'no messages' stamp: 'cde 10/5/2022 18:15:26' overrides: 50558922!
+receiveAnInstruction
+	
+	marsRover moveForward. ! !
+!ReceiveL methodsFor: 'no messages' stamp: 'cde 10/5/2022 18:16:07' overrides: 50558922!
+receiveAnInstruction
+	
+	marsRover rotateLeft. ! !
+!ReceiveR methodsFor: 'no messages' stamp: 'cde 10/5/2022 18:16:15' overrides: 50558922!
+receiveAnInstruction
+	
+	marsRover rotateRight. ! !
+!ReceiveB class methodsFor: 'no messages' stamp: 'cde 10/5/2022 18:16:58' overrides: 50558903!
+canHandle: anInstruction
+	
+	^ anInstruction = $b. ! !
+!ReceiveF class methodsFor: 'no messages' stamp: 'cde 10/5/2022 18:17:04' overrides: 50558903!
+canHandle: anInstruction
+	
+	^ anInstruction = $f. ! !
+!ReceiveL class methodsFor: 'no messages' stamp: 'cde 10/5/2022 18:17:25' overrides: 50558903!
+canHandle: anInstruction
+	
+	^ anInstruction = $l. ! !
+!ReceiveR class methodsFor: 'no messages' stamp: 'cde 10/5/2022 18:17:32' overrides: 50558903!
+canHandle: anInstruction
+	
+	^ anInstruction = $r. ! !
+!MarsRover methodsFor: 'actions' stamp: 'cde 10/5/2022 18:19:10' prior: 50558545!
+receiveSingleInstruction: anInstruction
+	
+	(MarsRoverInstructionReceiver for: self with: anInstruction) receiveAnInstruction.! !
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/5/2022 18:19:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test23ReceivingTwoValidInstructionsThatMakeRoverStayAtStartingPoint stamp: 'cde 10/5/2022 18:19:29'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 18:21:06'!
+test25ReceivingAnInvalidString
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'ffj'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover receiveInstructionString: instructionFromEarth.
+	
+	self assert: (marsRover isInPosition: (0@2) andDirection: #E).! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 18:21:11' prior: 50558982!
+test25ReceivingAnInvalidString
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'ffj'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover receiveInstructionString: instructionFromEarth.
+	
+	self assert: (marsRover isInPosition: (0@2) andDirection: #N).! !
+
+!testRun: #MarsRoverTest #test25ReceivingAnInvalidString stamp: 'cde 10/5/2022 18:21:13'!
+ERROR!
+!ReceiveInvalid class methodsFor: 'no messages' stamp: 'cde 10/5/2022 18:21:42' overrides: 50558903!
+canHandle: anInvalidInstruction! !
+!ReceiveInvalid class methodsFor: 'as yet unclassified' stamp: 'cde 10/5/2022 18:23:25' prior: 50559010 overrides: 50558903!
+canHandle: anInvalidInstruction
+	^ (anInvalidInstruction = $b) not and: [(anInvalidInstruction = $f) not and: [(anInvalidInstruction = $l) not and: [(anInvalidInstruction = $r) not]]]! !
+!ReceiveInvalid methodsFor: 'no messages' stamp: 'cde 10/5/2022 18:25:09' overrides: 50558922!
+receiveAnInstruction
+	
+	^ self ! !
+
+!testRun: #MarsRoverTest #test25ReceivingAnInvalidString stamp: 'cde 10/5/2022 18:25:15'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 18:25:47'!
+test26ReceivingAnInvalidStringDoesNotContinueExecuting
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'ffjr'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover receiveInstructionString: instructionFromEarth.
+	
+	self assert: (marsRover isInPosition: (0@2) andDirection: #N).! !
+
+!testRun: #MarsRoverTest #test26ReceivingAnInvalidStringDoesNotContinueExecuting stamp: 'cde 10/5/2022 18:25:49'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test26ReceivingAnInvalidStringDoesNotContinueExecuting stamp: 'cde 10/5/2022 18:25:49'!
+FAILURE!
+!ReceiveInvalid methodsFor: 'as yet unclassified' stamp: 'cde 10/5/2022 18:27:01' prior: 50559024 overrides: 50558922!
+receiveAnInstruction
+	
+	^ self error: 'Invalid instruction!! Execution stopped.'! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 18:29:43'!
+test26ReceivingAnInvalidStringRaisesError
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'r'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover receiveInstructionString: instructionFromEarth.
+	
+	self 
+		should: [ marsRover receiveInstructionString: instructionFromEarth ] 
+		raise: Error - MessageNotUnderstood 
+		withExceptionDo: [ :error | 
+			self assert: error messageText equals: 'Invalid instruction!! Execution stopped.'.
+			self assert: (marsRover isInPosition: (0@2) andDirection: #N). ]! !
+
+!testRun: #MarsRoverTest #test26ReceivingAnInvalidStringRaisesError stamp: 'cde 10/5/2022 18:29:50'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test26ReceivingAnInvalidStringRaisesError stamp: 'cde 10/5/2022 18:29:50'!
+FAILURE!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 18:30:17' prior: 50559058!
+test26ReceivingAnInvalidStringRaisesError
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := $r.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover receiveInstructionString: instructionFromEarth.
+	
+	self 
+		should: [ marsRover receiveInstructionString: instructionFromEarth ] 
+		raise: Error - MessageNotUnderstood 
+		withExceptionDo: [ :error | 
+			self assert: error messageText equals: 'Invalid instruction!! Execution stopped.'.
+			self assert: (marsRover isInPosition: (0@2) andDirection: #N). ]! !
+
+!testRun: #MarsRoverTest #test26ReceivingAnInvalidStringRaisesError stamp: 'cde 10/5/2022 18:30:20'!
+ERROR!
+
+!testRun: #MarsRoverTest #test26ReceivingAnInvalidStringRaisesError stamp: 'cde 10/5/2022 18:30:20'!
+ERROR!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 18:31:00' prior: 50559085!
+test26ReceivingAnInvalidStringRaisesError
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := $r.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover receiveInstructionString: instructionFromEarth.
+	
+	self 
+		should: [ marsRover receiveInstructionString: instructionFromEarth ] 
+		raise: Error  
+		withExceptionDo: [ :error | 
+			self assert: error messageText equals: 'Invalid instruction!! Execution stopped.'. ]! !
+
+!testRun: #MarsRoverTest #test26ReceivingAnInvalidStringRaisesError stamp: 'cde 10/5/2022 18:31:04'!
+ERROR!
+
+!testRun: #MarsRoverTest #test26ReceivingAnInvalidStringRaisesError stamp: 'cde 10/5/2022 18:31:04'!
+ERROR!
+
+!testRun: #MarsRoverTest #test26ReceivingAnInvalidStringRaisesError stamp: 'cde 10/5/2022 18:31:14'!
+ERROR!
+
+!methodRemoval: MarsRoverTest #test26ReceivingAnInvalidStringDoesNotContinueExecuting stamp: 'cde 10/5/2022 18:31:26'!
+test26ReceivingAnInvalidStringDoesNotContinueExecuting
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'ffjr'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover receiveInstructionString: instructionFromEarth.
+	
+	self assert: (marsRover isInPosition: (0@2) andDirection: #N).!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 18:31:50' prior: 50559112!
+test26ReceivingAnInvalidStringRaisesError
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := $r.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover receiveSingleInstruction: instructionFromEarth.
+	
+	self 
+		should: [ marsRover receiveInstructionString: instructionFromEarth ] 
+		raise: Error  
+		withExceptionDo: [ :error | 
+			self assert: error messageText equals: 'Invalid instruction!! Execution stopped.'. ]! !
+
+!testRun: #MarsRoverTest #test26ReceivingAnInvalidStringRaisesError stamp: 'cde 10/5/2022 18:31:52'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test26ReceivingAnInvalidStringRaisesError stamp: 'cde 10/5/2022 18:31:52'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test26ReceivingAnInvalidStringRaisesError stamp: 'cde 10/5/2022 18:31:57'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test26ReceivingAnInvalidStringRaisesError stamp: 'cde 10/5/2022 18:31:57'!
+FAILURE!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 18:32:04' prior: 50559153!
+test26ReceivingAnInvalidStringRaisesError
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := $j.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover receiveSingleInstruction: instructionFromEarth.
+	
+	self 
+		should: [ marsRover receiveInstructionString: instructionFromEarth ] 
+		raise: Error  
+		withExceptionDo: [ :error | 
+			self assert: error messageText equals: 'Invalid instruction!! Execution stopped.'. ]! !
+
+!testRun: #MarsRoverTest #test26ReceivingAnInvalidStringRaisesError stamp: 'cde 10/5/2022 18:32:07'!
+ERROR!
+
+!testRun: #MarsRoverTest #test26ReceivingAnInvalidStringRaisesError stamp: 'cde 10/5/2022 18:32:07'!
+ERROR!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 18:32:41' prior: 50559184!
+test26ReceivingAnInvalidStringRaisesError
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := $j.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	
+	self 
+		should: [ marsRover receiveInstructionString: instructionFromEarth ] 
+		raise: Error  
+		withExceptionDo: [ :error | 
+			self assert: error messageText equals: 'Invalid instruction!! Execution stopped.'. ]! !
+
+!testRun: #MarsRoverTest #test26ReceivingAnInvalidStringRaisesError stamp: 'cde 10/5/2022 18:32:45'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test26ReceivingAnInvalidStringRaisesError stamp: 'cde 10/5/2022 18:32:45'!
+FAILURE!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 18:33:59'!
+test25ReceivingAnInvalidStringDoesNotAlterPosition
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'ffj'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover receiveInstructionString: instructionFromEarth.
+	
+	self assert: (marsRover isInPosition: (0@2) andDirection: #N).! !
+
+!methodRemoval: MarsRoverTest #test25ReceivingAnInvalidString stamp: 'cde 10/5/2022 18:34:02'!
+test25ReceivingAnInvalidString
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'ffj'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover receiveInstructionString: instructionFromEarth.
+	
+	self assert: (marsRover isInPosition: (0@2) andDirection: #N).!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 18:35:09' prior: 50559208!
+test26ReceivingAnInvalidStringRaisesError
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := $j.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	
+	self 
+		should: [ marsRover receiveSingleInstruction: instructionFromEarth ] 
+		raise: Error  
+		withExceptionDo: [ :error | 
+			self assert: error messageText equals: 'Invalid instruction!! Execution stopped.'. ]! !
+
+!testRun: #MarsRoverTest #test26ReceivingAnInvalidStringRaisesError stamp: 'cde 10/5/2022 18:35:12'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 18:36:37'!
+test27ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'ffjf'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	
+	self 
+		should: [ marsRover receiveSingleInstruction: instructionFromEarth ] 
+		raise: Error  
+		withExceptionDo: [ :error | 
+			self assert: error messageText equals: 'Invalid instruction!! Execution stopped.'. 
+			self assert: (marsRover isInPosition: (0@2) andDirection: #N)]! !
+
+!testRun: #MarsRoverTest #test27ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover stamp: 'cde 10/5/2022 18:36:39'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test27ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover stamp: 'cde 10/5/2022 18:36:39'!
+FAILURE!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 18:36:58' prior: 50559273!
+test27ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'ffjf'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	
+	self 
+		should: [ marsRover receiveSingleInstruction: instructionFromEarth ] 
+		raise: Error  
+		withExceptionDo: [ :error | 
+			self assert: error messageText equals: 'Invalid instruction!! Execution stopped.'. 
+			self assert: (marsRover isInPosition: (0@3) andDirection: #N)]! !
+
+!testRun: #MarsRoverTest #test27ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover stamp: 'cde 10/5/2022 18:37:02'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test27ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover stamp: 'cde 10/5/2022 18:37:02'!
+FAILURE!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/5/2022 18:37:20' prior: 50559300!
+test27ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'ffjf'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	
+	self 
+		should: [ marsRover receiveSingleInstruction: instructionFromEarth ] 
+		raise: Error  
+		withExceptionDo: [ :error | 
+			self assert: (marsRover isInPosition: (0@2) andDirection: #N).
+			self assert: error messageText equals: 'Invalid instruction!! Execution stopped.'. ]! !
+
+!testRun: #MarsRoverTest #test27ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover stamp: 'cde 10/5/2022 18:37:22'!
+FAILURE!
+
+----SNAPSHOT----(5 October 2022 18:39:05) CuisUniversity-5481.image priorSource: 7059698!
+
+----STARTUP---- (6 October 2022 12:55:08) as /home/carla/Downloads/linux64/CuisUniversity-5481.image!
+
+
+!testRun: #MarsRoverTest #test27ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover stamp: 'cde 10/6/2022 12:55:30'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test27ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover stamp: 'cde 10/6/2022 12:55:30'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test26ReceivingAnInvalidStringRaisesError stamp: 'cde 10/6/2022 12:55:37'!
+PASSED!
+
+!testRun: #MarsRoverTest #test27ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover stamp: 'cde 10/6/2022 12:55:45'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test27ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover stamp: 'cde 10/6/2022 12:55:45'!
+FAILURE!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/6/2022 12:56:11' prior: 50559327!
+test27ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'ffjf'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	
+	self 
+		should: [ marsRover receiveSingleInstruction: instructionFromEarth ] 
+		raise: Error  
+		withExceptionDo: [ :error | 
+			
+			self assert: error messageText equals: 'Invalid instruction!! Execution stopped.'. ]! !
+
+!testRun: #MarsRoverTest #test27ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover stamp: 'cde 10/6/2022 12:56:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01StartsAtLandingPositionAndDirection stamp: 'cde 10/6/2022 12:56:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02AtLandingIsNotInOtherPositionAndDirection stamp: 'cde 10/6/2022 12:56:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MovingForwardFacingNorthIncreasePositionsYCoordinate stamp: 'cde 10/6/2022 12:56:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MovingForwardFacingSouthDecreasePositionsYCoordinate stamp: 'cde 10/6/2022 12:56:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MovingForwardFacingEastIncreasePositionsXCoordinate stamp: 'cde 10/6/2022 12:56:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MovingForwardFacingWestDecreasePositionsYCoordinate stamp: 'cde 10/6/2022 12:56:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MovingBackwardsFacingNorthDecreasePositionsYCoordinate stamp: 'cde 10/6/2022 12:56:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsYCoordinate stamp: 'cde 10/6/2022 12:56:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MovingBackwardsFacingEastDecreasePositionsXCoordinate stamp: 'cde 10/6/2022 12:56:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MovingBackwardsFacingWestIncreasePositionsXCoordinate stamp: 'cde 10/6/2022 12:56:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RotatingLeftFacingNorthChangesDirectionToWest stamp: 'cde 10/6/2022 12:56:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RotatingRightFacingNorthChangesDirectionToEast stamp: 'cde 10/6/2022 12:56:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'cde 10/6/2022 12:56:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RotatingRightFacingSouthChangesDirectionToWest stamp: 'cde 10/6/2022 12:56:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RotatingLeftFacingEastChangesDirectionToNorth stamp: 'cde 10/6/2022 12:56:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RotatingRightFacingEastChangesDirectionToSouth stamp: 'cde 10/6/2022 12:56:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RotatingLeftFacingWestChangesDirectionToSouth stamp: 'cde 10/6/2022 12:56:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RotatingRightFacingWestChangesDirectionToNorth stamp: 'cde 10/6/2022 12:56:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19ReceivingAnFMakesRoverMoveForwards stamp: 'cde 10/6/2022 12:56:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20ReceivingABMakesRoverMoveBackwards stamp: 'cde 10/6/2022 12:56:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21ReceivingAnLMakesRoverRotateLeft stamp: 'cde 10/6/2022 12:56:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22ReceivingAnRMakesRoverRotateLeft stamp: 'cde 10/6/2022 12:56:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test23ReceivingTwoValidInstructionsThatMakeRoverStayAtStartingPoint stamp: 'cde 10/6/2022 12:56:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/6/2022 12:56:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test25ReceivingAnInvalidStringDoesNotAlterPosition stamp: 'cde 10/6/2022 12:56:13'!
+ERROR!
+
+!testRun: #MarsRoverTest #test26ReceivingAnInvalidStringRaisesError stamp: 'cde 10/6/2022 12:56:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test27ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover stamp: 'cde 10/6/2022 12:56:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test25ReceivingAnInvalidStringDoesNotAlterPosition stamp: 'cde 10/6/2022 12:56:13'!
+ERROR!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/6/2022 12:56:21' prior: 50559377!
+test27ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'ffjf'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	
+	self 
+		should: [ marsRover receiveSingleInstruction: instructionFromEarth ] 
+		raise: Error  
+		withExceptionDo: [ :error | 
+			self assert: error messageText equals: 'Invalid instruction!! Execution stopped.'. ]! !
+
+!testRun: #MarsRoverTest #test27ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover stamp: 'cde 10/6/2022 12:56:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01StartsAtLandingPositionAndDirection stamp: 'cde 10/6/2022 12:56:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02AtLandingIsNotInOtherPositionAndDirection stamp: 'cde 10/6/2022 12:56:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MovingForwardFacingNorthIncreasePositionsYCoordinate stamp: 'cde 10/6/2022 12:56:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MovingForwardFacingSouthDecreasePositionsYCoordinate stamp: 'cde 10/6/2022 12:56:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MovingForwardFacingEastIncreasePositionsXCoordinate stamp: 'cde 10/6/2022 12:56:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MovingForwardFacingWestDecreasePositionsYCoordinate stamp: 'cde 10/6/2022 12:56:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MovingBackwardsFacingNorthDecreasePositionsYCoordinate stamp: 'cde 10/6/2022 12:56:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsYCoordinate stamp: 'cde 10/6/2022 12:56:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MovingBackwardsFacingEastDecreasePositionsXCoordinate stamp: 'cde 10/6/2022 12:56:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MovingBackwardsFacingWestIncreasePositionsXCoordinate stamp: 'cde 10/6/2022 12:56:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RotatingLeftFacingNorthChangesDirectionToWest stamp: 'cde 10/6/2022 12:56:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RotatingRightFacingNorthChangesDirectionToEast stamp: 'cde 10/6/2022 12:56:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'cde 10/6/2022 12:56:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RotatingRightFacingSouthChangesDirectionToWest stamp: 'cde 10/6/2022 12:56:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RotatingLeftFacingEastChangesDirectionToNorth stamp: 'cde 10/6/2022 12:56:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RotatingRightFacingEastChangesDirectionToSouth stamp: 'cde 10/6/2022 12:56:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RotatingLeftFacingWestChangesDirectionToSouth stamp: 'cde 10/6/2022 12:56:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RotatingRightFacingWestChangesDirectionToNorth stamp: 'cde 10/6/2022 12:56:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19ReceivingAnFMakesRoverMoveForwards stamp: 'cde 10/6/2022 12:56:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20ReceivingABMakesRoverMoveBackwards stamp: 'cde 10/6/2022 12:56:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21ReceivingAnLMakesRoverRotateLeft stamp: 'cde 10/6/2022 12:56:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22ReceivingAnRMakesRoverRotateLeft stamp: 'cde 10/6/2022 12:56:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test23ReceivingTwoValidInstructionsThatMakeRoverStayAtStartingPoint stamp: 'cde 10/6/2022 12:56:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/6/2022 12:56:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test25ReceivingAnInvalidStringDoesNotAlterPosition stamp: 'cde 10/6/2022 12:56:22'!
+ERROR!
+
+!testRun: #MarsRoverTest #test26ReceivingAnInvalidStringRaisesError stamp: 'cde 10/6/2022 12:56:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test27ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover stamp: 'cde 10/6/2022 12:56:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test25ReceivingAnInvalidStringDoesNotAlterPosition stamp: 'cde 10/6/2022 12:56:22'!
+ERROR!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/6/2022 12:56:35' prior: 50559504!
+test27ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'ffjf'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	
+	self 
+		should: [ marsRover receiveSingleInstruction: instructionFromEarth ] 
+		raise: Error  
+		withExceptionDo: [ :error | 
+			self assert: (marsRover isInPosition: (0@2) andDirection: #N).
+			self assert: error messageText equals: 'Invalid instruction!! Execution stopped.'. ]! !
+
+!testRun: #MarsRoverTest #test27ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover stamp: 'cde 10/6/2022 12:56:36'!
+FAILURE!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/6/2022 12:56:58' prior: 50559631!
+test27ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'ffjf'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	
+	self 
+		should: [ marsRover receiveInstructionString: instructionFromEarth ] 
+		raise: Error  
+		withExceptionDo: [ :error | 
+			self assert: (marsRover isInPosition: (0@2) andDirection: #N).
+			self assert: error messageText equals: 'Invalid instruction!! Execution stopped.'. ]! !
+
+!testRun: #MarsRoverTest #test27ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover stamp: 'cde 10/6/2022 12:57:03'!
+PASSED!
+
+----STARTUP---- (6 October 2022 12:57:43) as /home/carla/Downloads/linux64/CuisUniversity-5481.image!
+
+
+!classRemoval: #MarsRoverWest stamp: 'cde 10/6/2022 12:58:15'!
+MarsRoverState subclass: #MarsRoverWest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #MarsRoverSouth stamp: 'cde 10/6/2022 12:58:15'!
+MarsRoverState subclass: #MarsRoverSouth
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #MarsRoverNorth stamp: 'cde 10/6/2022 12:58:15'!
+MarsRoverState subclass: #MarsRoverNorth
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #MarsRoverEast stamp: 'cde 10/6/2022 12:58:15'!
+MarsRoverState subclass: #MarsRoverEast
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #MarsRoverState stamp: 'cde 10/6/2022 12:58:16'!
+Object subclass: #MarsRoverState
+	instanceVariableNames: 'marsRover'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #ReceiveR stamp: 'cde 10/6/2022 12:58:16'!
+MarsRoverInstructionReceiver subclass: #ReceiveR
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #ReceiveL stamp: 'cde 10/6/2022 12:58:16'!
+MarsRoverInstructionReceiver subclass: #ReceiveL
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #ReceiveInvalid stamp: 'cde 10/6/2022 12:58:17'!
+MarsRoverInstructionReceiver subclass: #ReceiveInvalid
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #ReceiveF stamp: 'cde 10/6/2022 12:58:17'!
+MarsRoverInstructionReceiver subclass: #ReceiveF
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #ReceiveB stamp: 'cde 10/6/2022 12:58:17'!
+MarsRoverInstructionReceiver subclass: #ReceiveB
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #MarsRoverInstructionReceiver stamp: 'cde 10/6/2022 12:58:18'!
+Object subclass: #MarsRoverInstructionReceiver
+	instanceVariableNames: 'marsRover'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #MarsRover stamp: 'cde 10/6/2022 12:58:18'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'position direction'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #MarsRoverTest stamp: 'cde 10/6/2022 12:58:18'!
+TestCase subclass: #MarsRoverTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+----End fileIn of /home/carla/Downloads/linux64/MarsRover.st----!
+
+!testRun: #MarsRoverTest #test01StartsAtLandingPositionAndDirection stamp: 'cde 10/6/2022 12:58:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02AtLandingIsNotInOtherPositionAndDirection stamp: 'cde 10/6/2022 12:58:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MovingForwardFacingNorthIncreasePositionsYCoordinate stamp: 'cde 10/6/2022 12:58:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MovingForwardFacingSouthDecreasePositionsYCoordinate stamp: 'cde 10/6/2022 12:58:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MovingForwardFacingEastIncreasePositionsXCoordinate stamp: 'cde 10/6/2022 12:58:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MovingForwardFacingWestDecreasePositionsYCoordinate stamp: 'cde 10/6/2022 12:58:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MovingBackwardsFacingNorthDecreasePositionsYCoordinate stamp: 'cde 10/6/2022 12:58:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsYCoordinate stamp: 'cde 10/6/2022 12:58:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MovingBackwardsFacingEastDecreasePositionsXCoordinate stamp: 'cde 10/6/2022 12:58:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MovingBackwardsFacingWestIncreasePositionsXCoordinate stamp: 'cde 10/6/2022 12:58:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RotatingLeftFacingNorthChangesDirectionToWest stamp: 'cde 10/6/2022 12:58:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RotatingRightFacingNorthChangesDirectionToEast stamp: 'cde 10/6/2022 12:58:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'cde 10/6/2022 12:58:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RotatingRightFacingSouthChangesDirectionToWest stamp: 'cde 10/6/2022 12:58:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RotatingLeftFacingEastChangesDirectionToNorth stamp: 'cde 10/6/2022 12:58:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RotatingRightFacingEastChangesDirectionToSouth stamp: 'cde 10/6/2022 12:58:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RotatingLeftFacingWestChangesDirectionToSouth stamp: 'cde 10/6/2022 12:58:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RotatingRightFacingWestChangesDirectionToNorth stamp: 'cde 10/6/2022 12:58:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19ReceivingAnFMakesRoverMoveForwards stamp: 'cde 10/6/2022 12:58:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20ReceivingABMakesRoverMoveBackwards stamp: 'cde 10/6/2022 12:58:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21ReceivingAnLMakesRoverRotateLeft stamp: 'cde 10/6/2022 12:58:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22ReceivingAnRMakesRoverRotateLeft stamp: 'cde 10/6/2022 12:58:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test23ReceivingTwoValidInstructionsThatMakeRoverStayAtStartingPoint stamp: 'cde 10/6/2022 12:58:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/6/2022 12:58:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test25ReceivingAnInvalidStringDoesNotAlterPosition stamp: 'cde 10/6/2022 12:58:36'!
+ERROR!
+
+!testRun: #MarsRoverTest #test26ReceivingAnInvalidStringRaisesError stamp: 'cde 10/6/2022 12:58:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test27ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover stamp: 'cde 10/6/2022 12:58:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test25ReceivingAnInvalidStringDoesNotAlterPosition stamp: 'cde 10/6/2022 12:58:36'!
+ERROR!
+
+!testRun: #MarsRoverTest #test26ReceivingAnInvalidStringRaisesError stamp: 'cde 10/6/2022 12:58:54'!
+PASSED!
+
+!testRun: #MarsRoverTest #test27ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover stamp: 'cde 10/6/2022 12:58:57'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01StartsAtLandingPositionAndDirection stamp: 'cde 10/6/2022 12:59:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01StartsAtLandingPositionAndDirection stamp: 'cde 10/6/2022 12:59:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02AtLandingIsNotInOtherPositionAndDirection stamp: 'cde 10/6/2022 12:59:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MovingForwardFacingNorthIncreasePositionsYCoordinate stamp: 'cde 10/6/2022 12:59:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MovingForwardFacingSouthDecreasePositionsYCoordinate stamp: 'cde 10/6/2022 12:59:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MovingForwardFacingEastIncreasePositionsXCoordinate stamp: 'cde 10/6/2022 12:59:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MovingForwardFacingWestDecreasePositionsYCoordinate stamp: 'cde 10/6/2022 12:59:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MovingBackwardsFacingNorthDecreasePositionsYCoordinate stamp: 'cde 10/6/2022 12:59:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsYCoordinate stamp: 'cde 10/6/2022 12:59:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MovingBackwardsFacingEastDecreasePositionsXCoordinate stamp: 'cde 10/6/2022 12:59:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MovingBackwardsFacingWestIncreasePositionsXCoordinate stamp: 'cde 10/6/2022 12:59:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RotatingLeftFacingNorthChangesDirectionToWest stamp: 'cde 10/6/2022 12:59:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RotatingRightFacingNorthChangesDirectionToEast stamp: 'cde 10/6/2022 12:59:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'cde 10/6/2022 12:59:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RotatingRightFacingSouthChangesDirectionToWest stamp: 'cde 10/6/2022 12:59:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RotatingLeftFacingEastChangesDirectionToNorth stamp: 'cde 10/6/2022 12:59:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RotatingRightFacingEastChangesDirectionToSouth stamp: 'cde 10/6/2022 12:59:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RotatingLeftFacingWestChangesDirectionToSouth stamp: 'cde 10/6/2022 12:59:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RotatingRightFacingWestChangesDirectionToNorth stamp: 'cde 10/6/2022 12:59:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19ReceivingAnFMakesRoverMoveForwards stamp: 'cde 10/6/2022 12:59:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20ReceivingABMakesRoverMoveBackwards stamp: 'cde 10/6/2022 12:59:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21ReceivingAnLMakesRoverRotateLeft stamp: 'cde 10/6/2022 12:59:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22ReceivingAnRMakesRoverRotateLeft stamp: 'cde 10/6/2022 12:59:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test23ReceivingTwoValidInstructionsThatMakeRoverStayAtStartingPoint stamp: 'cde 10/6/2022 12:59:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/6/2022 12:59:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test25ReceivingAnInvalidStringDoesNotAlterPosition stamp: 'cde 10/6/2022 12:59:06'!
+ERROR!
+
+!testRun: #MarsRoverTest #test26ReceivingAnInvalidStringRaisesError stamp: 'cde 10/6/2022 12:59:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test27ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover stamp: 'cde 10/6/2022 12:59:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test25ReceivingAnInvalidStringDoesNotAlterPosition stamp: 'cde 10/6/2022 12:59:06'!
+ERROR!
+
+!methodRemoval: MarsRoverTest #test25ReceivingAnInvalidStringDoesNotAlterPosition stamp: 'cde 10/6/2022 12:59:43'!
+test25ReceivingAnInvalidStringDoesNotAlterPosition
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'ffj'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover receiveInstructionString: instructionFromEarth.
+	
+	self assert: (marsRover isInPosition: (0@2) andDirection: #N).!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/6/2022 12:59:55'!
+test25ReceivingAnInvalidCharRaisesError
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := $j.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	
+	self 
+		should: [ marsRover receiveSingleInstruction: instructionFromEarth ] 
+		raise: Error  
+		withExceptionDo: [ :error | 
+			self assert: error messageText equals: 'Invalid instruction!! Execution stopped.'. ]! !
+
+!methodRemoval: MarsRoverTest #test26ReceivingAnInvalidStringRaisesError stamp: 'cde 10/6/2022 12:59:58'!
+test26ReceivingAnInvalidStringRaisesError
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := $j.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	
+	self 
+		should: [ marsRover receiveSingleInstruction: instructionFromEarth ] 
+		raise: Error  
+		withExceptionDo: [ :error | 
+			self assert: error messageText equals: 'Invalid instruction!! Execution stopped.'. ]!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/6/2022 13:00:06'!
+test26ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'ffjf'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	
+	self 
+		should: [ marsRover receiveInstructionString: instructionFromEarth ] 
+		raise: Error  
+		withExceptionDo: [ :error | 
+			self assert: (marsRover isInPosition: (0@2) andDirection: #N).
+			self assert: error messageText equals: 'Invalid instruction!! Execution stopped.'. ]! !
+
+!methodRemoval: MarsRoverTest #test27ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover stamp: 'cde 10/6/2022 13:00:08'!
+test27ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'ffjf'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	
+	self 
+		should: [ marsRover receiveInstructionString: instructionFromEarth ] 
+		raise: Error  
+		withExceptionDo: [ :error | 
+			self assert: (marsRover isInPosition: (0@2) andDirection: #N).
+			self assert: error messageText equals: 'Invalid instruction!! Execution stopped.'. ]!
+
+!testRun: #MarsRoverTest #test01StartsAtLandingPositionAndDirection stamp: 'cde 10/6/2022 13:00:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02AtLandingIsNotInOtherPositionAndDirection stamp: 'cde 10/6/2022 13:00:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MovingForwardFacingNorthIncreasePositionsYCoordinate stamp: 'cde 10/6/2022 13:00:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MovingForwardFacingSouthDecreasePositionsYCoordinate stamp: 'cde 10/6/2022 13:00:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MovingForwardFacingEastIncreasePositionsXCoordinate stamp: 'cde 10/6/2022 13:00:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MovingForwardFacingWestDecreasePositionsYCoordinate stamp: 'cde 10/6/2022 13:00:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MovingBackwardsFacingNorthDecreasePositionsYCoordinate stamp: 'cde 10/6/2022 13:00:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsYCoordinate stamp: 'cde 10/6/2022 13:00:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MovingBackwardsFacingEastDecreasePositionsXCoordinate stamp: 'cde 10/6/2022 13:00:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MovingBackwardsFacingWestIncreasePositionsXCoordinate stamp: 'cde 10/6/2022 13:00:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RotatingLeftFacingNorthChangesDirectionToWest stamp: 'cde 10/6/2022 13:00:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RotatingRightFacingNorthChangesDirectionToEast stamp: 'cde 10/6/2022 13:00:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'cde 10/6/2022 13:00:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RotatingRightFacingSouthChangesDirectionToWest stamp: 'cde 10/6/2022 13:00:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RotatingLeftFacingEastChangesDirectionToNorth stamp: 'cde 10/6/2022 13:00:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RotatingRightFacingEastChangesDirectionToSouth stamp: 'cde 10/6/2022 13:00:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RotatingLeftFacingWestChangesDirectionToSouth stamp: 'cde 10/6/2022 13:00:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RotatingRightFacingWestChangesDirectionToNorth stamp: 'cde 10/6/2022 13:00:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19ReceivingAnFMakesRoverMoveForwards stamp: 'cde 10/6/2022 13:00:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20ReceivingABMakesRoverMoveBackwards stamp: 'cde 10/6/2022 13:00:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21ReceivingAnLMakesRoverRotateLeft stamp: 'cde 10/6/2022 13:00:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22ReceivingAnRMakesRoverRotateLeft stamp: 'cde 10/6/2022 13:00:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test23ReceivingTwoValidInstructionsThatMakeRoverStayAtStartingPoint stamp: 'cde 10/6/2022 13:00:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/6/2022 13:00:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test25ReceivingAnInvalidCharRaisesError stamp: 'cde 10/6/2022 13:00:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test26ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover stamp: 'cde 10/6/2022 13:00:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01StartsAtLandingPositionAndDirection stamp: 'cde 10/6/2022 13:01:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02AtLandingIsNotInOtherPositionAndDirection stamp: 'cde 10/6/2022 13:01:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MovingForwardFacingNorthIncreasePositionsYCoordinate stamp: 'cde 10/6/2022 13:01:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MovingForwardFacingSouthDecreasePositionsYCoordinate stamp: 'cde 10/6/2022 13:01:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MovingForwardFacingEastIncreasePositionsXCoordinate stamp: 'cde 10/6/2022 13:01:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MovingForwardFacingWestDecreasePositionsYCoordinate stamp: 'cde 10/6/2022 13:01:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MovingBackwardsFacingNorthDecreasePositionsYCoordinate stamp: 'cde 10/6/2022 13:01:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsYCoordinate stamp: 'cde 10/6/2022 13:01:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MovingBackwardsFacingEastDecreasePositionsXCoordinate stamp: 'cde 10/6/2022 13:01:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MovingBackwardsFacingWestIncreasePositionsXCoordinate stamp: 'cde 10/6/2022 13:01:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RotatingLeftFacingNorthChangesDirectionToWest stamp: 'cde 10/6/2022 13:01:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RotatingRightFacingNorthChangesDirectionToEast stamp: 'cde 10/6/2022 13:01:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'cde 10/6/2022 13:01:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RotatingRightFacingSouthChangesDirectionToWest stamp: 'cde 10/6/2022 13:01:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RotatingLeftFacingEastChangesDirectionToNorth stamp: 'cde 10/6/2022 13:01:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RotatingRightFacingEastChangesDirectionToSouth stamp: 'cde 10/6/2022 13:01:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RotatingLeftFacingWestChangesDirectionToSouth stamp: 'cde 10/6/2022 13:01:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RotatingRightFacingWestChangesDirectionToNorth stamp: 'cde 10/6/2022 13:01:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19ReceivingAnFMakesRoverMoveForwards stamp: 'cde 10/6/2022 13:01:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20ReceivingABMakesRoverMoveBackwards stamp: 'cde 10/6/2022 13:01:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21ReceivingAnLMakesRoverRotateLeft stamp: 'cde 10/6/2022 13:01:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22ReceivingAnRMakesRoverRotateLeft stamp: 'cde 10/6/2022 13:01:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test23ReceivingTwoValidInstructionsThatMakeRoverStayAtStartingPoint stamp: 'cde 10/6/2022 13:01:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/6/2022 13:01:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test25ReceivingAnInvalidCharRaisesError stamp: 'cde 10/6/2022 13:01:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test26ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover stamp: 'cde 10/6/2022 13:01:32'!
+PASSED!
+
+----STARTUP---- (6 October 2022 13:01:48) as /home/carla/Downloads/linux64/CuisUniversity-5481.image!
+
+
+!classRemoval: #MarsRoverWest stamp: 'cde 10/6/2022 13:02:04'!
+MarsRoverState subclass: #MarsRoverWest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #MarsRoverSouth stamp: 'cde 10/6/2022 13:02:05'!
+MarsRoverState subclass: #MarsRoverSouth
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #MarsRoverNorth stamp: 'cde 10/6/2022 13:02:05'!
+MarsRoverState subclass: #MarsRoverNorth
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #MarsRoverEast stamp: 'cde 10/6/2022 13:02:05'!
+MarsRoverState subclass: #MarsRoverEast
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #MarsRoverState stamp: 'cde 10/6/2022 13:02:06'!
+Object subclass: #MarsRoverState
+	instanceVariableNames: 'marsRover'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #ReceiveR stamp: 'cde 10/6/2022 13:02:06'!
+MarsRoverInstructionReceiver subclass: #ReceiveR
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #ReceiveL stamp: 'cde 10/6/2022 13:02:06'!
+MarsRoverInstructionReceiver subclass: #ReceiveL
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #ReceiveInvalid stamp: 'cde 10/6/2022 13:02:06'!
+MarsRoverInstructionReceiver subclass: #ReceiveInvalid
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #ReceiveF stamp: 'cde 10/6/2022 13:02:07'!
+MarsRoverInstructionReceiver subclass: #ReceiveF
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #ReceiveB stamp: 'cde 10/6/2022 13:02:07'!
+MarsRoverInstructionReceiver subclass: #ReceiveB
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #MarsRoverInstructionReceiver stamp: 'cde 10/6/2022 13:02:07'!
+Object subclass: #MarsRoverInstructionReceiver
+	instanceVariableNames: 'marsRover'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #MarsRover stamp: 'cde 10/6/2022 13:02:08'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'position direction'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #MarsRoverTest stamp: 'cde 10/6/2022 13:02:08'!
+TestCase subclass: #MarsRoverTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+----End fileIn of /home/carla/Downloads/linux64/MarsRoverFinal.st----!
+
+----End fileIn of /home/carla/Downloads/linux64/MarsRoverFinal.st----!
+
+!testRun: #MarsRoverTest #test01StartsAtLandingPositionAndDirection stamp: 'cde 10/6/2022 13:03:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02AtLandingIsNotInOtherPositionAndDirection stamp: 'cde 10/6/2022 13:03:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MovingForwardFacingNorthIncreasePositionsYCoordinate stamp: 'cde 10/6/2022 13:03:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MovingForwardFacingSouthDecreasePositionsYCoordinate stamp: 'cde 10/6/2022 13:03:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MovingForwardFacingEastIncreasePositionsXCoordinate stamp: 'cde 10/6/2022 13:03:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MovingForwardFacingWestDecreasePositionsYCoordinate stamp: 'cde 10/6/2022 13:03:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MovingBackwardsFacingNorthDecreasePositionsYCoordinate stamp: 'cde 10/6/2022 13:03:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsYCoordinate stamp: 'cde 10/6/2022 13:03:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MovingBackwardsFacingEastDecreasePositionsXCoordinate stamp: 'cde 10/6/2022 13:03:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MovingBackwardsFacingWestIncreasePositionsXCoordinate stamp: 'cde 10/6/2022 13:03:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RotatingLeftFacingNorthChangesDirectionToWest stamp: 'cde 10/6/2022 13:03:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RotatingRightFacingNorthChangesDirectionToEast stamp: 'cde 10/6/2022 13:03:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'cde 10/6/2022 13:03:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RotatingRightFacingSouthChangesDirectionToWest stamp: 'cde 10/6/2022 13:03:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RotatingLeftFacingEastChangesDirectionToNorth stamp: 'cde 10/6/2022 13:03:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RotatingRightFacingEastChangesDirectionToSouth stamp: 'cde 10/6/2022 13:03:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RotatingLeftFacingWestChangesDirectionToSouth stamp: 'cde 10/6/2022 13:03:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RotatingRightFacingWestChangesDirectionToNorth stamp: 'cde 10/6/2022 13:03:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19ReceivingAnFMakesRoverMoveForwards stamp: 'cde 10/6/2022 13:03:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20ReceivingABMakesRoverMoveBackwards stamp: 'cde 10/6/2022 13:03:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21ReceivingAnLMakesRoverRotateLeft stamp: 'cde 10/6/2022 13:03:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22ReceivingAnRMakesRoverRotateLeft stamp: 'cde 10/6/2022 13:03:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test23ReceivingTwoValidInstructionsThatMakeRoverStayAtStartingPoint stamp: 'cde 10/6/2022 13:03:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/6/2022 13:03:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test25ReceivingAnInvalidCharRaisesError stamp: 'cde 10/6/2022 13:03:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test26ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover stamp: 'cde 10/6/2022 13:03:14'!
+PASSED!
+
+----STARTUP---- (6 October 2022 13:03:45) as /home/carla/Downloads/linux64/CuisUniversity-5481.image!
+
+
+!methodRemoval: MarsRoverTest #test25ReceivingAnInvalidStringDoesNotAlterPosition stamp: 'cde 10/6/2022 13:04:28'!
+test25ReceivingAnInvalidStringDoesNotAlterPosition
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'ffj'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	marsRover receiveInstructionString: instructionFromEarth.
+	
+	self assert: (marsRover isInPosition: (0@2) andDirection: #N).!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/6/2022 13:04:38'!
+test25ReceivingAnInvalidCharRaisesError
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := $j.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	
+	self 
+		should: [ marsRover receiveSingleInstruction: instructionFromEarth ] 
+		raise: Error  
+		withExceptionDo: [ :error | 
+			self assert: error messageText equals: 'Invalid instruction!! Execution stopped.'. ]! !
+
+!methodRemoval: MarsRoverTest #test26ReceivingAnInvalidStringRaisesError stamp: 'cde 10/6/2022 13:04:41'!
+test26ReceivingAnInvalidStringRaisesError
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := $j.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	
+	self 
+		should: [ marsRover receiveSingleInstruction: instructionFromEarth ] 
+		raise: Error  
+		withExceptionDo: [ :error | 
+			self assert: error messageText equals: 'Invalid instruction!! Execution stopped.'. ]!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/6/2022 13:04:49' prior: 50559327!
+test27ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'ffjf'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	
+	self 
+		should: [ marsRover receiveSingleInstruction: instructionFromEarth ] 
+		raise: Error  
+		withExceptionDo: [ :error | 
+			self assert: (marsRover isInPosition: (0@2) andDirection: #N).
+			self assert: error messageText equals: 'Invalid instruction!! Execution stopped.'. ]! !
+
+!testRun: #MarsRoverTest #test01StartsAtLandingPositionAndDirection stamp: 'cde 10/6/2022 13:04:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02AtLandingIsNotInOtherPositionAndDirection stamp: 'cde 10/6/2022 13:04:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MovingForwardFacingNorthIncreasePositionsYCoordinate stamp: 'cde 10/6/2022 13:04:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MovingForwardFacingSouthDecreasePositionsYCoordinate stamp: 'cde 10/6/2022 13:04:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MovingForwardFacingEastIncreasePositionsXCoordinate stamp: 'cde 10/6/2022 13:04:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MovingForwardFacingWestDecreasePositionsYCoordinate stamp: 'cde 10/6/2022 13:04:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MovingBackwardsFacingNorthDecreasePositionsYCoordinate stamp: 'cde 10/6/2022 13:04:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsYCoordinate stamp: 'cde 10/6/2022 13:04:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MovingBackwardsFacingEastDecreasePositionsXCoordinate stamp: 'cde 10/6/2022 13:04:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MovingBackwardsFacingWestIncreasePositionsXCoordinate stamp: 'cde 10/6/2022 13:04:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RotatingLeftFacingNorthChangesDirectionToWest stamp: 'cde 10/6/2022 13:04:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RotatingRightFacingNorthChangesDirectionToEast stamp: 'cde 10/6/2022 13:04:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'cde 10/6/2022 13:04:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RotatingRightFacingSouthChangesDirectionToWest stamp: 'cde 10/6/2022 13:04:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RotatingLeftFacingEastChangesDirectionToNorth stamp: 'cde 10/6/2022 13:04:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RotatingRightFacingEastChangesDirectionToSouth stamp: 'cde 10/6/2022 13:04:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RotatingLeftFacingWestChangesDirectionToSouth stamp: 'cde 10/6/2022 13:04:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RotatingRightFacingWestChangesDirectionToNorth stamp: 'cde 10/6/2022 13:04:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19ReceivingAnFMakesRoverMoveForwards stamp: 'cde 10/6/2022 13:04:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20ReceivingABMakesRoverMoveBackwards stamp: 'cde 10/6/2022 13:04:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21ReceivingAnLMakesRoverRotateLeft stamp: 'cde 10/6/2022 13:04:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22ReceivingAnRMakesRoverRotateLeft stamp: 'cde 10/6/2022 13:04:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test23ReceivingTwoValidInstructionsThatMakeRoverStayAtStartingPoint stamp: 'cde 10/6/2022 13:04:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/6/2022 13:04:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test25ReceivingAnInvalidCharRaisesError stamp: 'cde 10/6/2022 13:04:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test27ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover stamp: 'cde 10/6/2022 13:04:53'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test27ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover stamp: 'cde 10/6/2022 13:04:53'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test01StartsAtLandingPositionAndDirection stamp: 'cde 10/6/2022 13:05:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02AtLandingIsNotInOtherPositionAndDirection stamp: 'cde 10/6/2022 13:05:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MovingForwardFacingNorthIncreasePositionsYCoordinate stamp: 'cde 10/6/2022 13:05:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MovingForwardFacingSouthDecreasePositionsYCoordinate stamp: 'cde 10/6/2022 13:05:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MovingForwardFacingEastIncreasePositionsXCoordinate stamp: 'cde 10/6/2022 13:05:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MovingForwardFacingWestDecreasePositionsYCoordinate stamp: 'cde 10/6/2022 13:05:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MovingBackwardsFacingNorthDecreasePositionsYCoordinate stamp: 'cde 10/6/2022 13:05:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsYCoordinate stamp: 'cde 10/6/2022 13:05:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MovingBackwardsFacingEastDecreasePositionsXCoordinate stamp: 'cde 10/6/2022 13:05:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MovingBackwardsFacingWestIncreasePositionsXCoordinate stamp: 'cde 10/6/2022 13:05:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RotatingLeftFacingNorthChangesDirectionToWest stamp: 'cde 10/6/2022 13:05:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RotatingRightFacingNorthChangesDirectionToEast stamp: 'cde 10/6/2022 13:05:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'cde 10/6/2022 13:05:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RotatingRightFacingSouthChangesDirectionToWest stamp: 'cde 10/6/2022 13:05:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RotatingLeftFacingEastChangesDirectionToNorth stamp: 'cde 10/6/2022 13:05:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RotatingRightFacingEastChangesDirectionToSouth stamp: 'cde 10/6/2022 13:05:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RotatingLeftFacingWestChangesDirectionToSouth stamp: 'cde 10/6/2022 13:05:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RotatingRightFacingWestChangesDirectionToNorth stamp: 'cde 10/6/2022 13:05:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19ReceivingAnFMakesRoverMoveForwards stamp: 'cde 10/6/2022 13:05:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20ReceivingABMakesRoverMoveBackwards stamp: 'cde 10/6/2022 13:05:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21ReceivingAnLMakesRoverRotateLeft stamp: 'cde 10/6/2022 13:05:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22ReceivingAnRMakesRoverRotateLeft stamp: 'cde 10/6/2022 13:05:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test23ReceivingTwoValidInstructionsThatMakeRoverStayAtStartingPoint stamp: 'cde 10/6/2022 13:05:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/6/2022 13:05:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test25ReceivingAnInvalidCharRaisesError stamp: 'cde 10/6/2022 13:05:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test27ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover stamp: 'cde 10/6/2022 13:05:06'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test27ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover stamp: 'cde 10/6/2022 13:05:06'!
+FAILURE!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde 10/6/2022 13:05:27'!
+test26ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'ffjf'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	
+	self 
+		should: [ marsRover receiveInstructionString: instructionFromEarth ] 
+		raise: Error  
+		withExceptionDo: [ :error | 
+			self assert: (marsRover isInPosition: (0@2) andDirection: #N).
+			self assert: error messageText equals: 'Invalid instruction!! Execution stopped.'. ]! !
+
+!methodRemoval: MarsRoverTest #test27ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover stamp: 'cde 10/6/2022 13:05:30'!
+test27ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover
+
+	| marsRover instructionFromEarth|
+	
+	instructionFromEarth := 'ffjf'.				
+	marsRover := MarsRover withPosition: (0@0) andDirection: #N.
+	
+	self 
+		should: [ marsRover receiveSingleInstruction: instructionFromEarth ] 
+		raise: Error  
+		withExceptionDo: [ :error | 
+			self assert: (marsRover isInPosition: (0@2) andDirection: #N).
+			self assert: error messageText equals: 'Invalid instruction!! Execution stopped.'. ]!
+
+!testRun: #MarsRoverTest #test01StartsAtLandingPositionAndDirection stamp: 'cde 10/6/2022 13:05:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02AtLandingIsNotInOtherPositionAndDirection stamp: 'cde 10/6/2022 13:05:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MovingForwardFacingNorthIncreasePositionsYCoordinate stamp: 'cde 10/6/2022 13:05:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MovingForwardFacingSouthDecreasePositionsYCoordinate stamp: 'cde 10/6/2022 13:05:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MovingForwardFacingEastIncreasePositionsXCoordinate stamp: 'cde 10/6/2022 13:05:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MovingForwardFacingWestDecreasePositionsYCoordinate stamp: 'cde 10/6/2022 13:05:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MovingBackwardsFacingNorthDecreasePositionsYCoordinate stamp: 'cde 10/6/2022 13:05:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MovingBackwardsFacingSouthIncreasePositionsYCoordinate stamp: 'cde 10/6/2022 13:05:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MovingBackwardsFacingEastDecreasePositionsXCoordinate stamp: 'cde 10/6/2022 13:05:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MovingBackwardsFacingWestIncreasePositionsXCoordinate stamp: 'cde 10/6/2022 13:05:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11RotatingLeftFacingNorthChangesDirectionToWest stamp: 'cde 10/6/2022 13:05:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12RotatingRightFacingNorthChangesDirectionToEast stamp: 'cde 10/6/2022 13:05:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13RotatingLeftFacingSouthChangesDirectionToEast stamp: 'cde 10/6/2022 13:05:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14RotatingRightFacingSouthChangesDirectionToWest stamp: 'cde 10/6/2022 13:05:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15RotatingLeftFacingEastChangesDirectionToNorth stamp: 'cde 10/6/2022 13:05:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16RotatingRightFacingEastChangesDirectionToSouth stamp: 'cde 10/6/2022 13:05:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17RotatingLeftFacingWestChangesDirectionToSouth stamp: 'cde 10/6/2022 13:05:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18RotatingRightFacingWestChangesDirectionToNorth stamp: 'cde 10/6/2022 13:05:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19ReceivingAnFMakesRoverMoveForwards stamp: 'cde 10/6/2022 13:05:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20ReceivingABMakesRoverMoveBackwards stamp: 'cde 10/6/2022 13:05:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21ReceivingAnLMakesRoverRotateLeft stamp: 'cde 10/6/2022 13:05:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22ReceivingAnRMakesRoverRotateLeft stamp: 'cde 10/6/2022 13:05:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test23ReceivingTwoValidInstructionsThatMakeRoverStayAtStartingPoint stamp: 'cde 10/6/2022 13:05:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test24ReceivingThreeValidInstructionsThatMakeRoverMoveAndRotate stamp: 'cde 10/6/2022 13:05:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test25ReceivingAnInvalidCharRaisesError stamp: 'cde 10/6/2022 13:05:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test26ReceivingAnInvalidStringRaisesErrorAndDoesNotContinueMovingRover stamp: 'cde 10/6/2022 13:05:33'!
+PASSED!
+
+----SNAPSHOT----(6 October 2022 13:09:39) CuisUniversity-5481.image priorSource: 7286361!
+
+----SNAPSHOT----(6 October 2022 13:25:11) CuisUniversity-5481.image priorSource: 7289609!
+
+----STARTUP---- (6 October 2022 13:25:50) as /home/carla/Downloads/linux64/CuisUniversity-5481.image!
+
+
+!classRemoval: #MarsRoverWest stamp: 'cde 10/6/2022 13:25:55'!
+MarsRoverState subclass: #MarsRoverWest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #MarsRoverSouth stamp: 'cde 10/6/2022 13:25:55'!
+MarsRoverState subclass: #MarsRoverSouth
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #MarsRoverNorth stamp: 'cde 10/6/2022 13:25:55'!
+MarsRoverState subclass: #MarsRoverNorth
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #MarsRoverEast stamp: 'cde 10/6/2022 13:25:56'!
+MarsRoverState subclass: #MarsRoverEast
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #MarsRoverState stamp: 'cde 10/6/2022 13:25:56'!
+Object subclass: #MarsRoverState
+	instanceVariableNames: 'marsRover'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #ReceiveR stamp: 'cde 10/6/2022 13:25:56'!
+MarsRoverInstructionReceiver subclass: #ReceiveR
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #ReceiveL stamp: 'cde 10/6/2022 13:25:57'!
+MarsRoverInstructionReceiver subclass: #ReceiveL
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #ReceiveInvalid stamp: 'cde 10/6/2022 13:25:57'!
+MarsRoverInstructionReceiver subclass: #ReceiveInvalid
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #ReceiveF stamp: 'cde 10/6/2022 13:25:57'!
+MarsRoverInstructionReceiver subclass: #ReceiveF
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #ReceiveB stamp: 'cde 10/6/2022 13:25:58'!
+MarsRoverInstructionReceiver subclass: #ReceiveB
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #MarsRoverInstructionReceiver stamp: 'cde 10/6/2022 13:25:58'!
+Object subclass: #MarsRoverInstructionReceiver
+	instanceVariableNames: 'marsRover'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #MarsRover stamp: 'cde 10/6/2022 13:25:58'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'position direction'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRemoval: #MarsRoverTest stamp: 'cde 10/6/2022 13:25:59'!
+TestCase subclass: #MarsRoverTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
