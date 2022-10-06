@@ -1,0 +1,1 @@
+A partir de cierto punto del trabajo, perdimos el versionado de lo que veníamos haciendo. Por ese motivo, además de la última versión del tp, subimos una versión anterior donde se puede ver el versionado de la primera parte.
