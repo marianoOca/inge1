@@ -1,38 +1,28 @@
 !classDefinition: #PortfolioTest category: 'Portfolio-Ejercicio'!
 TestCase subclass: #PortfolioTest
-	instanceVariableNames: ''
+	instanceVariableNames: 'portfolio account'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
-!PortfolioTest methodsFor: 'test' stamp: 'MO 10/6/2022 21:04:55'!
+!PortfolioTest methodsFor: 'test' stamp: 'MO 10/17/2022 12:43:40'!
 test01PortfolioHaveZeroAsBalanceWhenCreated 
-
-	| portfolio |
-	
-	portfolio := Portfolio new.
 
 	self assert: 0 equals: portfolio balance.! !
 
-!PortfolioTest methodsFor: 'test' stamp: 'MO 10/6/2022 21:11:03'!
+!PortfolioTest methodsFor: 'test' stamp: 'MO 10/17/2022 12:44:00'!
 test02PortfolioWithOneAccountEqualsItsBalance 
-
-	| portfolio account |
-	
-	portfolio := Portfolio new.
-	account := ReceptiveAccount  new.
 	
 	portfolio add: account.
 	Deposit register: 100 on: account.
 		
 	self assert: account balance equals: portfolio balance.! !
 
-!PortfolioTest methodsFor: 'test' stamp: 'MO 10/6/2022 21:38:29'!
+!PortfolioTest methodsFor: 'test' stamp: 'MO 10/17/2022 12:44:17'!
 test03PortfolioWithVariousAccountsEqualsTheSumOfItsBalances
 
-	| portfolio account1 account2 account3|
+	| account1 account2 account3|
 	
-	portfolio := Portfolio new.
 	account1 := ReceptiveAccount  new.
 	account2 := ReceptiveAccount  new.
 	account3 := ReceptiveAccount  new.
@@ -44,12 +34,11 @@ test03PortfolioWithVariousAccountsEqualsTheSumOfItsBalances
 		
 	self assert: 1122 equals: portfolio balance.! !
 
-!PortfolioTest methodsFor: 'test' stamp: 'MO 10/6/2022 21:39:36'!
+!PortfolioTest methodsFor: 'test' stamp: 'MO 10/17/2022 12:45:14'!
 test04PortfolioWithVariousAccountsEqualsTheSumOfItsBalancesWhenSomeAreNegative
 
-	| portfolio account1 account2 account3|
-	
-	portfolio := Portfolio new.
+	| account1 account2 account3|
+
 	account1 := ReceptiveAccount  new.
 	account2 := ReceptiveAccount  new.
 	account3 := ReceptiveAccount  new.
@@ -119,123 +108,117 @@ test07PortfolioWithPortfolioAndAccountGivesCorrectBalance
 		
 	self assert: 150 equals: portfolio1 balance.! !
 
-!PortfolioTest methodsFor: 'test' stamp: 'SR 10/16/2022 01:28:18'!
-test08CantAddAnAccountToAPortfolioThatHasThatAccount
+!PortfolioTest methodsFor: 'test' stamp: 'MO 10/17/2022 12:45:48'!
+test08CantAddAFinancialServiceToAPortfolioThatAlreadyHasIt
 
-	| portfolio account |
+	| portfolio1 portfolio2 |
 	
-	portfolio := Portfolio new.
-	account := ReceptiveAccount  new.
+	portfolio1 := Portfolio new.
+	portfolio2 := Portfolio new.
 	
-	Deposit register: 100 on: account.
+	portfolio1 add: account.
+	portfolio1 add: portfolio2.
 	
-	portfolio add: account.
-	portfolio add: account.
-		
-	self assert: 100 equals: portfolio balance.! !
+	self
+	should: [ portfolio1 add: account ]
+	raise: Error 
+	withExceptionDo: [ :anError |
+		self assert: anError messageText = Portfolio alreadyInPortfolioErrorDesciptor ].
+	
+	self
+	should: [ portfolio1 add: portfolio2 ]
+	raise: Error 
+	withExceptionDo: [ :anError |
+		self assert: anError messageText = Portfolio alreadyInPortfolioErrorDesciptor ]! !
 
-!PortfolioTest methodsFor: 'test' stamp: 'SR 10/15/2022 22:34:24'!
+!PortfolioTest methodsFor: 'test' stamp: 'MO 10/17/2022 12:46:07'!
 test09CantAddAnAccountToAPortfolioThatHasAPortfolioWithThatAccount
 
-	| portfolio1 portfolio2 account |
+	| portfolio1 portfolio2 |
 	
 	portfolio1 := Portfolio new.
 	portfolio2 := Portfolio new.
-	account := ReceptiveAccount  new.
-	
-	Deposit register: 100 on: account.
 	
 	portfolio2 add: account.
 	portfolio1 add: portfolio2.
-	portfolio1 add: account.
-		
-	self assert: 100 equals: portfolio1 balance.! !
+	
+	self
+	should: [ portfolio1 add: account ]
+	raise: Error 
+	withExceptionDo: [ :anError |
+		self assert: anError messageText = Portfolio accountAlreadyInAPortfolioInThatPortfolioErrorDesciptor ]! !
 
-!PortfolioTest methodsFor: 'test' stamp: 'SR 10/15/2022 20:10:38'!
+!PortfolioTest methodsFor: 'test' stamp: 'MO 10/17/2022 12:46:19'!
 test10CantAddAPortfolioToItself
-
-	| portfolio account |
-	
-	portfolio := Portfolio new.
-	account := ReceptiveAccount  new.
-	
-	Deposit register: 100 on: account.
 	
 	portfolio add: account.
-	portfolio add: portfolio.
-		
-	self assert: 100 equals: portfolio balance.! !
+	
+	self
+	should: [ portfolio add: portfolio ]
+	raise: Error 
+	withExceptionDo: [ :anError |
+		self assert: anError messageText = Portfolio portfolioIsItselfErrorDesciptor ]! !
 
-!PortfolioTest methodsFor: 'test' stamp: 'SR 10/15/2022 20:15:54'!
+!PortfolioTest methodsFor: 'test' stamp: 'MO 10/17/2022 12:46:33'!
 test11CantAddAPortfolioWithAnAccountToAPortfolioThatHasThatAccount
 
-	| portfolio1 portfolio2 account |
+	| portfolio1 portfolio2 |
 	
 	portfolio1 := Portfolio new.
 	portfolio2 := Portfolio new.
 	
-	account := ReceptiveAccount  new.
-	Deposit register: 100 on: account.
-	
 	portfolio1 add: account.
 	portfolio2 add: account.
 	
-	portfolio1 add: portfolio2.
-		
-	self assert: 100 equals: portfolio1 balance.! !
+	self
+	should: [ portfolio1 add: portfolio2 ]
+	raise: Error 
+	withExceptionDo: [ :anError |
+		self assert: anError messageText = Portfolio portfoliosHaveTheSameAccountErrorDesciptor ]! !
 
-!PortfolioTest methodsFor: 'test' stamp: 'SR 10/16/2022 01:36:33'!
+!PortfolioTest methodsFor: 'test' stamp: 'MO 10/17/2022 12:46:42'!
 test12CantAddAnAccountToAPortfolioInsideAPortfolioWithThatAccount
 
-	| portfolio1 portfolio2 account |
+	| portfolio1 portfolio2 |
 	
 	portfolio1 := Portfolio new.
 	portfolio2 := Portfolio new.
 	
-	account := ReceptiveAccount  new.
-	Deposit register: 100 on: account.
-	
 	portfolio1 add: account.
 	portfolio1 add: portfolio2.
-	portfolio2 add: account.
-		
-	self assert: 100 equals: portfolio1 balance.! !
 
-!PortfolioTest methodsFor: 'test' stamp: 'SR 10/16/2022 03:31:53'!
+	self
+	should: [ portfolio2 add: account ]
+	raise: Error 
+	withExceptionDo: [ :anError |
+		self assert: anError messageText = Portfolio accountAlreadyInAPortfolioInThatPortfolioErrorDesciptor ]! !
+
+!PortfolioTest methodsFor: 'test' stamp: 'MO 10/17/2022 12:46:56'!
 test13CantAddAnAccountToAPortfolioInsideAPortfolioTreeWithThatAccount
 
-	| portfolio1 portfolio2 portfolio3 account |
+	| portfolio1 portfolio2 portfolio3 |
 	
 	portfolio1 := Portfolio new.
 	portfolio2 := Portfolio new.
 	portfolio3 := Portfolio new.
 	
-	account := ReceptiveAccount  new.
-	Deposit register: 100 on: account.
-	
 	portfolio1 add: account.
 	portfolio1 add: portfolio2.
 	portfolio2 add: portfolio3.
-	portfolio3 add: account.
-		
-	self assert: 100 equals: portfolio1 balance.! !
+	
+	self
+	should: [ portfolio3 add: account ]
+	raise: Error 
+	withExceptionDo: [ :anError |
+		self assert: anError messageText = Portfolio accountAlreadyInAPortfolioInThatPortfolioErrorDesciptor ]! !
 
-!PortfolioTest methodsFor: 'test' stamp: 'SR 10/16/2022 23:19:26'!
+!PortfolioTest methodsFor: 'test' stamp: 'MO 10/17/2022 12:55:54'!
 test14TransactionsOfEmptyPortfolioIsEmpty
 
-	| portfolio |
-	
-	portfolio := Portfolio new.
+	self assert: portfolio transactions isEmpty! !
 
-	self assert: 0 equals: portfolio transactions size.! !
-
-!PortfolioTest methodsFor: 'test' stamp: 'SR 10/16/2022 23:20:36'!
+!PortfolioTest methodsFor: 'test' stamp: 'MO 10/17/2022 12:47:21'!
 test15TransactionsOfPortfolioWithOneAccountEqualsAccountTransactions
-
-	| portfolio account |
-	
-	portfolio := Portfolio new.
-	account := ReceptiveAccount  new.
 	
 	Deposit register: 100 on: account.
 	
@@ -243,12 +226,11 @@ test15TransactionsOfPortfolioWithOneAccountEqualsAccountTransactions
 
 	self assert: account transactions equals: portfolio transactions.! !
 
-!PortfolioTest methodsFor: 'test' stamp: 'SR 10/17/2022 00:03:44'!
+!PortfolioTest methodsFor: 'test' stamp: 'MO 10/17/2022 12:47:37'!
 test16TransactionsOfPortfolioWithTwoAccountsEqualsThoseAccountsTransactions
 
-	| portfolio account1 account2 result |
+	| account1 account2 result |
 	
-	portfolio := Portfolio new.
 	account1 := ReceptiveAccount  new.
 	account2 := ReceptiveAccount  new.
 	
@@ -287,13 +269,8 @@ test17TransactionsOfPortfolioWithPortfoliosAndAccountEqualsThoseServicesTransact
 
 	self assert: portfolio1 transactions equals: result.! !
 
-!PortfolioTest methodsFor: 'test' stamp: 'SR 10/17/2022 00:08:04'!
+!PortfolioTest methodsFor: 'test' stamp: 'MO 10/17/2022 12:47:55'!
 test18PortfolioWithAnAccountHasRegisteredTransactionsOfThatAccount
-
-	| account portfolio |
-	
-	portfolio := Portfolio new.
-	account := ReceptiveAccount  new.
 	
 	Deposit register: 100 on: account.
 	
@@ -301,24 +278,18 @@ test18PortfolioWithAnAccountHasRegisteredTransactionsOfThatAccount
 
 	self assert: (portfolio hasRegistered: account transactions first).! !
 
-!PortfolioTest methodsFor: 'test' stamp: 'SR 10/17/2022 00:12:40'!
+!PortfolioTest methodsFor: 'test' stamp: 'MO 10/17/2022 12:59:59'!
 test19EmptyPortfolioDoesntHaveRegisteredTransactions
-
-	| account portfolio |
-	
-	portfolio := Portfolio new.
-	account := ReceptiveAccount  new.
 	
 	Deposit register: 100 on: account.
 
-	self assert: (portfolio hasRegistered: account transactions first) not.! !
+	self deny: (portfolio hasRegistered: account transactions first)! !
 
-!PortfolioTest methodsFor: 'test' stamp: 'SR 10/17/2022 00:22:09'!
+!PortfolioTest methodsFor: 'test' stamp: 'MO 10/17/2022 13:00:25'!
 test20PortfolioWithAccountsDoesntHaveRegisteredTransactionsOfOtherAccounts
 
-	| account1 account2 portfolio |
+	| account1 account2 |
 	
-	portfolio := Portfolio new.
 	account1 := ReceptiveAccount  new.
 	account2 := ReceptiveAccount  new.
 	
@@ -327,7 +298,7 @@ test20PortfolioWithAccountsDoesntHaveRegisteredTransactionsOfOtherAccounts
 	
 	portfolio add: account1.
 
-	self assert: (portfolio hasRegistered: account2 transactions first) not.! !
+	self deny: (portfolio hasRegistered: account2 transactions first)! !
 
 !PortfolioTest methodsFor: 'test' stamp: 'SR 10/17/2022 00:25:17'!
 test21PortfolioWithPortfoliosAndAccountsHasRegisteredTransactionsOfThoseServices
@@ -348,6 +319,25 @@ test21PortfolioWithPortfoliosAndAccountsHasRegisteredTransactionsOfThoseServices
 
 	self assert: (portfolio1 hasRegistered: account1 transactions first).
 	self assert: (portfolio1 hasRegistered: account2 transactions first).! !
+
+
+!PortfolioTest methodsFor: 'setUp' stamp: 'MO 10/17/2022 12:43:22'!
+setUp
+
+	| portfolio1 portfolio2 portfolio3 portfolio4 account1 account2 account3 |
+	
+	portfolio := Portfolio new.
+	portfolio1 := Portfolio new.
+	portfolio2 := Portfolio new.
+	portfolio3 := Portfolio new.
+	portfolio4 := Portfolio new.
+	account := ReceptiveAccount  new.
+	account1 := ReceptiveAccount  new.
+	account2 := ReceptiveAccount  new.
+	account3 := ReceptiveAccount  new.
+	
+	"como puedo hacer un refactoring sacando los method temp y poniendolo como instanceVariableNames: de los tests,
+	sin que sea a mano a lo largo de los 21 casos de test? "! !
 
 
 !classDefinition: #ReceptiveAccountTest category: 'Portfolio-Ejercicio'!
@@ -514,17 +504,17 @@ Object subclass: #FinancialService
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
-!FinancialService methodsFor: 'as yet unclassified' stamp: 'cde 10/13/2022 21:12:27'!
+!FinancialService methodsFor: 'operations' stamp: 'cde 10/13/2022 21:12:27'!
 balance
 
 	self subclassResponsibility ! !
 
-!FinancialService methodsFor: 'as yet unclassified' stamp: 'cde 10/13/2022 21:38:25'!
+!FinancialService methodsFor: 'operations' stamp: 'cde 10/13/2022 21:38:25'!
 hasRegistered: aTransaction
 
 	self subclassResponsibility ! !
 
-!FinancialService methodsFor: 'as yet unclassified' stamp: 'cde 10/13/2022 21:12:41'!
+!FinancialService methodsFor: 'operations' stamp: 'cde 10/13/2022 21:12:41'!
 transactions
 
 	self subclassResponsibility ! !
@@ -550,13 +540,21 @@ initialize
 	parents := OrderedCollection new.! !
 
 
-!Portfolio methodsFor: 'adding' stamp: 'SR 10/16/2022 04:42:48'!
+!Portfolio methodsFor: 'adding' stamp: 'MO 10/17/2022 12:30:58'!
 add: aFinancialService
 	
-	(self canRootsAdd: aFinancialService) ifTrue: [
-		financialServices add: aFinancialService.
-		(aFinancialService isKindOf: Portfolio) ifTrue: [ aFinancialService addParent: self ].
-		].! !
+	(self = aFinancialService) ifTrue: [ self error: self class portfolioIsItselfErrorDesciptor ].
+	(self includes: aFinancialService) ifTrue: [ self error: self class alreadyInPortfolioErrorDesciptor ].
+	
+	(self canRootsAdd: aFinancialService)
+		ifTrue: [
+			financialServices add: aFinancialService.
+			(aFinancialService isKindOf: Portfolio) ifTrue: [ aFinancialService addParent: self ].
+		]
+		ifFalse: [ (aFinancialService isKindOf: ReceptiveAccount)
+				ifTrue: [ self error: self class accountAlreadyInAPortfolioInThatPortfolioErrorDesciptor ]
+				ifFalse: [ self error: self class portfoliosHaveTheSameAccountErrorDesciptor ]
+		 ]! !
 
 !Portfolio methodsFor: 'adding' stamp: 'SR 10/16/2022 02:47:47'!
 addParent: aPortfolio
@@ -613,18 +611,23 @@ transactions
 	^result! !
 
 
-!Portfolio methodsFor: 'testing' stamp: 'SR 10/17/2022 00:31:05'!
-hasRegistered: aTransaction
-
-	"retorna verdadero si alguna de las cuentas del portfolio registró la transtacción"
-	
-	^self transactions includes: aTransaction.! !
-
 
 !Portfolio methodsFor: 'private' stamp: 'SR 10/16/2022 01:25:48'!
 financialServices
 
 	^financialServices ! !
+
+!Portfolio methodsFor: 'private' stamp: 'SR 10/17/2022 00:31:05'!
+hasRegistered: aTransaction
+
+	"retorna verdadero si alguna de las cuentas del portfolio registrÃ³ la transtacciÃ³n"
+	
+	^self transactions includes: aTransaction.! !
+
+!Portfolio methodsFor: 'private' stamp: 'MO 10/17/2022 12:30:54'!
+includes: aFinancialService
+	
+	^ financialServices includes: aFinancialService! !
 
 !Portfolio methodsFor: 'private' stamp: 'SR 10/16/2022 04:26:28'!
 rootPortfolios
@@ -640,6 +643,32 @@ rootPortfolios
 		].
 	
 	^portfolios! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'Portfolio class' category: 'Portfolio-Ejercicio'!
+Portfolio class
+	instanceVariableNames: ''!
+
+!Portfolio class methodsFor: 'error descriptions' stamp: 'MO 10/17/2022 11:06:39'!
+accountAlreadyInAPortfolioInThatPortfolioErrorDesciptor
+	
+	^ 'Can not add the account to the portfolio, because the account is already in another portfolio inside the portfolio'! !
+
+!Portfolio class methodsFor: 'error descriptions' stamp: 'MO 10/17/2022 12:09:56'!
+alreadyInPortfolioErrorDesciptor
+	
+	^ 'Can not add that account to the portfolio, because there is already in it'! !
+
+!Portfolio class methodsFor: 'error descriptions' stamp: 'MO 10/17/2022 10:58:16'!
+portfolioIsItselfErrorDesciptor
+	
+	^ 'Can not add a portfolio to itself'! !
+
+!Portfolio class methodsFor: 'error descriptions' stamp: 'MO 10/17/2022 11:10:05'!
+portfoliosHaveTheSameAccountErrorDesciptor
+	
+	^ 'Can not add that portfolio to the portfolio, because they share the same account'! !
 
 
 !classDefinition: #ReceptiveAccount category: 'Portfolio-Ejercicio'!
