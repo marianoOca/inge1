@@ -220,6 +220,135 @@ test13CantAddAnAccountToAPortfolioInsideAPortfolioTreeWithThatAccount
 		
 	self assert: 100 equals: portfolio1 balance.! !
 
+!PortfolioTest methodsFor: 'test' stamp: 'SR 10/16/2022 23:19:26'!
+test14TransactionsOfEmptyPortfolioIsEmpty
+
+	| portfolio |
+	
+	portfolio := Portfolio new.
+
+	self assert: 0 equals: portfolio transactions size.! !
+
+!PortfolioTest methodsFor: 'test' stamp: 'SR 10/16/2022 23:20:36'!
+test15TransactionsOfPortfolioWithOneAccountEqualsAccountTransactions
+
+	| portfolio account |
+	
+	portfolio := Portfolio new.
+	account := ReceptiveAccount  new.
+	
+	Deposit register: 100 on: account.
+	
+	portfolio add: account.
+
+	self assert: account transactions equals: portfolio transactions.! !
+
+!PortfolioTest methodsFor: 'test' stamp: 'SR 10/17/2022 00:03:44'!
+test16TransactionsOfPortfolioWithTwoAccountsEqualsThoseAccountsTransactions
+
+	| portfolio account1 account2 result |
+	
+	portfolio := Portfolio new.
+	account1 := ReceptiveAccount  new.
+	account2 := ReceptiveAccount  new.
+	
+	Deposit register: 100 on: account1.
+	Deposit register: 200 on: account2.
+	
+	portfolio add: account1.
+	portfolio add: account2.
+	
+	result := OrderedCollection new.
+	result addAll: account1 transactions.
+	result addAll: account2 transactions.
+
+	self assert: portfolio transactions equals: result.! !
+
+!PortfolioTest methodsFor: 'test' stamp: 'SR 10/16/2022 23:41:18'!
+test17TransactionsOfPortfolioWithPortfoliosAndAccountEqualsThoseServicesTransactions
+
+	| account1 account2 portfolio1 portfolio2 result |
+	
+	portfolio1 := Portfolio new.
+	portfolio2 := Portfolio new.
+	account1 := ReceptiveAccount  new.
+	account2 := ReceptiveAccount  new.
+	
+	Deposit register: 100 on: account1.
+	Deposit register: 200 on: account2.
+	
+	portfolio1 add: account1.
+	portfolio2 add: account2.
+	portfolio1 add: portfolio2.
+	
+	result := OrderedCollection new.
+	result addAll: account1 transactions.
+	result addAll: account2 transactions.
+
+	self assert: portfolio1 transactions equals: result.! !
+
+!PortfolioTest methodsFor: 'test' stamp: 'SR 10/17/2022 00:08:04'!
+test18PortfolioWithAnAccountHasRegisteredTransactionsOfThatAccount
+
+	| account portfolio |
+	
+	portfolio := Portfolio new.
+	account := ReceptiveAccount  new.
+	
+	Deposit register: 100 on: account.
+	
+	portfolio add: account.
+
+	self assert: (portfolio hasRegistered: account transactions first).! !
+
+!PortfolioTest methodsFor: 'test' stamp: 'SR 10/17/2022 00:12:40'!
+test19EmptyPortfolioDoesntHaveRegisteredTransactions
+
+	| account portfolio |
+	
+	portfolio := Portfolio new.
+	account := ReceptiveAccount  new.
+	
+	Deposit register: 100 on: account.
+
+	self assert: (portfolio hasRegistered: account transactions first) not.! !
+
+!PortfolioTest methodsFor: 'test' stamp: 'SR 10/17/2022 00:22:09'!
+test20PortfolioWithAccountsDoesntHaveRegisteredTransactionsOfOtherAccounts
+
+	| account1 account2 portfolio |
+	
+	portfolio := Portfolio new.
+	account1 := ReceptiveAccount  new.
+	account2 := ReceptiveAccount  new.
+	
+	Deposit register: 100 on: account1.
+	Deposit register: 200 on: account2.
+	
+	portfolio add: account1.
+
+	self assert: (portfolio hasRegistered: account2 transactions first) not.! !
+
+!PortfolioTest methodsFor: 'test' stamp: 'SR 10/17/2022 00:25:17'!
+test21PortfolioWithPortfoliosAndAccountsHasRegisteredTransactionsOfThoseServices
+
+	| account1 account2 portfolio1 portfolio2 |
+	
+	portfolio1 := Portfolio new.
+	portfolio2 := Portfolio new.
+	account1 := ReceptiveAccount  new.
+	account2 := ReceptiveAccount  new.
+	
+	Deposit register: 100 on: account1.
+	Deposit register: 200 on: account2.
+	
+	portfolio1 add: account1.
+	portfolio2 add: account2.
+	portfolio1 add: portfolio2.
+
+	self assert: (portfolio1 hasRegistered: account1 transactions first).
+	self assert: (portfolio1 hasRegistered: account2 transactions first).! !
+
 
 !classDefinition: #ReceptiveAccountTest category: 'Portfolio-Ejercicio'!
 TestCase subclass: #ReceptiveAccountTest
@@ -468,6 +597,28 @@ canRootsAdd: aFinancialService
 	canAdd := roots inject: true into: [ :res :aPortfolio | res and: [ aPortfolio canAdd: aFinancialService ] ].
 	
 	^canAdd! !
+
+
+!Portfolio methodsFor: 'transactions' stamp: 'SR 10/17/2022 00:29:14'!
+transactions
+
+	"retorna todas las transacciones de las cuentas del portfolio"
+	
+	| result |
+	
+	result := OrderedCollection new.
+	
+	financialServices do: [ :aService | result addAll: aService transactions ].
+	
+	^result! !
+
+
+!Portfolio methodsFor: 'testing' stamp: 'SR 10/17/2022 00:31:05'!
+hasRegistered: aTransaction
+
+	"retorna verdadero si alguna de las cuentas del portfolio registró la transtacción"
+	
+	^self transactions includes: aTransaction.! !
 
 
 !Portfolio methodsFor: 'private' stamp: 'SR 10/16/2022 01:25:48'!
