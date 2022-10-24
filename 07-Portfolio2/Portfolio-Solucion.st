@@ -420,6 +420,81 @@ test30AccountNetTrasferReportOnPortfolioIsCorrectWithTwoTransactions
 
 	self assert: (aPortfolio netTransferReport) equals: 'De reporte de neto de transferencias de 1.'! !
 
+!PortfolioTest methodsFor: 'tests' stamp: 'MO 10/24/2022 14:56:56'!
+test31NamedAccountHasCorrectName
+
+	| account |
+	
+	account := ReceptiveAccount named: 'Cuenta de Juan'.
+	
+	self assert: account accountName equals: 'Cuenta de Juan'.! !
+
+!PortfolioTest methodsFor: 'tests' stamp: 'MO 10/24/2022 14:57:09'!
+test32NamedPortfolioHasCorrectName
+
+	| portfolio |
+	
+	portfolio := Portfolio named: 'Portfolio familiar'.
+	
+	self assert: portfolio accountName equals: 'Portfolio familiar'.! !
+
+!PortfolioTest methodsFor: 'tests' stamp: 'MO 10/24/2022 15:13:28'!
+test33UnnamedAccountHasNoName
+
+	| account |
+	
+	account := ReceptiveAccount new.
+	
+	self 
+		should: [ account accountName ]
+		raise: Error
+		withExceptionDo: [ :anError | self assert: Account accountHasNoName equals: anError messageText ]! !
+
+!PortfolioTest methodsFor: 'tests' stamp: 'MO 10/24/2022 15:13:20'!
+test34UnnamedPortfolioHasNoName
+
+	| portfolio |
+	
+	portfolio := Portfolio new.
+	
+	self 
+		should: [ portfolio accountName ]
+		raise: Error
+		withExceptionDo: [ :anError | self assert: Account accountHasNoName equals: anError messageText ]! !
+
+!PortfolioTest methodsFor: 'tests' stamp: 'MO 10/24/2022 15:23:09'!
+test35NamedPortfolioReportsItself
+
+	| portfolio |
+	
+	portfolio := Portfolio named: 'Portfolio familiar'.
+	
+	self assert: (portfolio structureReport at: 1) equals: 'Portfolio familiar'! !
+
+!PortfolioTest methodsFor: 'tests' stamp: 'MO 10/24/2022 15:35:34'!
+test36NamedPortfolioReportsWithOneAccountReportCorrectly
+
+	| account portfolio |
+
+	account := ReceptiveAccount named: 'vacio'.
+	portfolio := Portfolio named: 'Portfolio familiar' with: account.
+
+	self assert: (portfolio structureReport at: 1) equals: 'Portfolio familiar'.
+	self assert: (portfolio structureReport at: 2) equals: '   vacio'! !
+
+!PortfolioTest methodsFor: 'tests' stamp: 'MO 10/24/2022 15:35:23'!
+test37NamedPortfolioReportsWithTwoAccountsReportCorrectly
+
+	| anAccount anotherAccount portfolio |
+
+	anAccount := ReceptiveAccount named: 'Hijo Prodigio'.
+	anotherAccount := ReceptiveAccount named: 'El Otro'.
+	portfolio := Portfolio named: 'Portfolio familiar' with: anAccount with: anotherAccount.
+
+	self assert: (portfolio structureReport at: 1) equals: 'Portfolio familiar'.
+	self assert: (portfolio structureReport at: 2) equals: '   Hijo Prodigio'.
+	self assert: (portfolio structureReport at: 3) equals: '   El Otro'! !
+
 
 !classDefinition: #ReceptiveAccountTest category: 'Portfolio-Solucion'!
 TestCase subclass: #ReceptiveAccountTest
@@ -514,7 +589,7 @@ test07AccountKnowsItsTransactions
 
 !classDefinition: #Account category: 'Portfolio-Solucion'!
 Object subclass: #Account
-	instanceVariableNames: ''
+	instanceVariableNames: 'accountName'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Portfolio-Solucion'!
@@ -547,10 +622,41 @@ transactions
 	self subclassResponsibility ! !
 
 
+!Account methodsFor: 'name' stamp: 'MO 10/24/2022 15:17:20'!
+accountName
+	
+	accountName ifNil: [ self error: self class accountHasNoName ].
+	
+	^ accountName! !
+
+
 !Account methodsFor: 'composition' stamp: 'HAW 5/25/2019 12:24:04'!
 addedTo: aPortfolio
 
 	self subclassResponsibility ! !
+
+
+!Account methodsFor: 'initialization' stamp: 'MO 10/24/2022 15:50:46'!
+initializeNamed: aName 
+
+	accountName := aName asString! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'Account class' category: 'Portfolio-Solucion'!
+Account class
+	instanceVariableNames: ''!
+
+!Account class methodsFor: 'instance creation' stamp: 'MO 10/24/2022 15:01:16'!
+named: aName 
+
+	^self new initializeNamed: aName! !
+
+
+!Account class methodsFor: 'error messages' stamp: 'MO 10/24/2022 15:14:31'!
+accountHasNoName
+	
+	^ 'No se puede obtener el nombre de la cuenta porque no tiene'! !
 
 
 !classDefinition: #Portfolio category: 'Portfolio-Solucion'!
@@ -692,11 +798,39 @@ collectTransfers
 	
 	^ accounts sum: [ :anAccount | anAccount collectTransfers ] ifEmpty: [ 0 ]! !
 
+!Portfolio methodsFor: 'reports' stamp: 'MO 10/24/2022 15:51:24'!
+indentar: anAccountNamesCollection
 
-!Portfolio methodsFor: 'as yet unclassified' stamp: 'MO 10/24/2022 00:07:22'!
+	anAccountNamesCollection collect: [ :aName | '   ' asString , aName]! !
+
+!Portfolio methodsFor: 'reports' stamp: 'MO 10/24/2022 00:07:22'!
 netTransferReport
 	
 	^ 'De reporte de neto de transferencias de ', self collectTransfers asString, '.'! !
+
+!Portfolio methodsFor: 'reports' stamp: 'MO 10/24/2022 15:55:13'!
+structureReport
+	
+	^ self treeStructureWithIndent: 0! !
+
+!Portfolio methodsFor: 'reports' stamp: 'MO 10/24/2022 15:54:22'!
+treeStructureWithIndent: indentCount
+
+	| result accName |
+
+	result := OrderedCollection new.
+	
+	accName := ''.
+	
+	indentCount timesRepeat: [ accName := accName , '   ' ].
+	
+	accName := accName , accountName.
+	
+	result add: accName.
+	
+	accounts do: [ :account | result addAll: (account treeStructureWithIndent: (indentCount + 1)) ].
+	
+	^result! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -704,25 +838,41 @@ netTransferReport
 Portfolio class
 	instanceVariableNames: ''!
 
-!Portfolio class methodsFor: 'as yet unclassified' stamp: 'HAW 5/25/2019 11:48:55'!
-canNotAddAccountErrorMessage
-	
-	^'Can not add repeated account to a portfolio'! !
+!Portfolio class methodsFor: 'instance creation' stamp: 'MO 10/24/2022 15:03:18'!
+named: aName with: anAccount
 
-!Portfolio class methodsFor: 'as yet unclassified' stamp: 'HAW 5/25/2019 11:18:21'!
+	^ self new initializeNamed: aName;
+		add: anAccount;
+		yourself! !
+
+!Portfolio class methodsFor: 'instance creation' stamp: 'MO 10/24/2022 15:04:02'!
+named: aName with: anAccount with: anotherAccount
+
+	^ self new initializeNamed: aName;
+		add: anAccount;
+		add: anotherAccount;
+		yourself! !
+
+!Portfolio class methodsFor: 'instance creation' stamp: 'HAW 5/25/2019 11:18:21'!
 with: anAccount
 
 	^self new 
 		add: anAccount;
 		yourself! !
 
-!Portfolio class methodsFor: 'as yet unclassified' stamp: 'HAW 5/25/2019 11:23:59'!
+!Portfolio class methodsFor: 'instance creation' stamp: 'HAW 5/25/2019 11:23:59'!
 with: anAccount with: anotherAccount
 
 	^self new 
 		add: anAccount;
 		add: anotherAccount;
 		yourself! !
+
+
+!Portfolio class methodsFor: 'error messages' stamp: 'HAW 5/25/2019 11:48:55'!
+canNotAddAccountErrorMessage
+	
+	^'Can not add repeated account to a portfolio'! !
 
 
 !classDefinition: #ReceptiveAccount category: 'Portfolio-Solucion'!
@@ -817,6 +967,19 @@ collectTransfers
 netTransferReport
 	
 	^ 'De reporte de neto de transferencias de ', self collectTransfers asString, '.'! !
+
+!ReceptiveAccount methodsFor: 'reports' stamp: 'MO 10/24/2022 15:54:40'!
+treeStructureWithIndent: indentCount
+
+	| result |
+	
+	result := ''.
+	
+	indentCount timesRepeat: [ result := result , '   ' ].
+	
+	result := result , accountName.
+	
+	^(OrderedCollection with: result)! !
 
 
 !classDefinition: #AccountTransaction category: 'Portfolio-Solucion'!
