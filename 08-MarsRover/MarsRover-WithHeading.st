@@ -169,16 +169,13 @@ test16ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingWest
 		heading: self west 
 ! !
 
-!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 11:21:14'!
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 13:11:38'!
 test17MarsRoverHasNoMovementLogsWhenInitialized
 	
-	|aMarsRover aLogBook|
-	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
-	aLogBook := MovementLogBook for: aMarsRover. 
-	
-	self assert: (aLogBook isEmpty)! !
+	self assert: ( (MovementLogBook for: (MarsRover at: 0@0 heading: MarsRoverHeadingNorth)) isEmpty )
+	! !
 
-!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 11:55:12'!
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 13:12:06'!
 test18MarsRoverMovementLogsSinglePositionInLogBook
 	
 	
@@ -191,11 +188,9 @@ test18MarsRoverMovementLogsSinglePositionInLogBook
 	
 	self assert: (aLogBook logBookEntries at: 1) equals: '0@1'.
 	self assert: (aLogBook size) equals: 1
-
-	
 	! !
 
-!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 11:55:21'!
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 13:12:14'!
 test19MarsRoverMovementLogsSingleRotationInLogBook
 	
 	
@@ -208,10 +203,9 @@ test19MarsRoverMovementLogsSingleRotationInLogBook
 	
 	self assert: (aLogBook logBookEntries at: 1) equals: 'East'.
 	self assert: (aLogBook size) equals: 1
-	
 	! !
 
-!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 11:55:42'!
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 13:12:21'!
 test20MarsRoverMovementLogsMoreThanOnePositionInLogBook
 
 	| aMarsRover aLogBook |
@@ -225,14 +219,16 @@ test20MarsRoverMovementLogsMoreThanOnePositionInLogBook
 	self assert: (aLogBook logBookEntries at: 2) equals: 'West'.
 	self assert: (aLogBook logBookEntries at: 3) equals: '1@1'.
 	self assert: (aLogBook logBookEntries at: 4) equals: 'North'.
-	self assert: (aLogBook size) equals: 4! !
+	self assert: (aLogBook size) equals: 4
+	! !
 
-!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 11:53:30'!
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 13:12:28'!
 test21MarsRoverHasNoHeadingLogsWhenInitialized
 	
-	self assert: ( (HeadingLogBook for: (MarsRover at: 0@0 heading: MarsRoverHeadingNorth)) isEmpty )! !
+	self assert: ( (HeadingLogBook for: (MarsRover at: 0@0 heading: MarsRoverHeadingNorth)) isEmpty )
+	! !
 
-!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 11:54:08'!
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 13:12:34'!
 test22MarsRoverHasNoHeadingLogsWhenMovingFowardOrBackwards
 	
 	| aMarsRover aLogBook |
@@ -242,9 +238,10 @@ test22MarsRoverHasNoHeadingLogsWhenMovingFowardOrBackwards
 	
 	aMarsRover process: 'fb'.
 	
-	self assert: aLogBook isEmpty! !
+	self assert: aLogBook isEmpty
+	! !
 
-!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 11:57:35'!
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 13:12:43'!
 test23MarsRoverHeadingLogsSingleRotationInLogBook
 	
 	| aMarsRover aLogBook |
@@ -256,10 +253,9 @@ test23MarsRoverHeadingLogsSingleRotationInLogBook
 	
 	self assert: (aLogBook logBookEntries at: 1) equals: 'East'.
 	self assert: (aLogBook size) equals: 1
-	
 	! !
 
-!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 11:59:01'!
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 13:12:50'!
 test24MarsRoverHeadingLogsMoreThanOneHeadingInLogBook
 
 	| aMarsRover aLogBook |
@@ -271,14 +267,16 @@ test24MarsRoverHeadingLogsMoreThanOneHeadingInLogBook
 
 	self assert: (aLogBook logBookEntries at: 1) equals: 'West'.
 	self assert: (aLogBook logBookEntries at: 2) equals: 'North'.
-	self assert: (aLogBook size) equals: 2! !
+	self assert: (aLogBook size) equals: 2
+	! !
 
-!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 12:01:08'!
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 13:12:57'!
 test25MarsRoverHasNoPositionsLogsWhenInitialized
 	
-	self assert: ( (PositionsLogBook for: (MarsRover at: 0@0 heading: MarsRoverHeadingNorth)) isEmpty )! !
+	self assert: ( (PositionsLogBook for: (MarsRover at: 0@0 heading: MarsRoverHeadingNorth)) isEmpty )
+	! !
 
-!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 12:01:38'!
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 13:13:06'!
 test26MarsRoverHasNoPositionsLogsWhenMovingFowardOrBackwards
 	
 	| aMarsRover aLogBook |
@@ -290,7 +288,7 @@ test26MarsRoverHasNoPositionsLogsWhenMovingFowardOrBackwards
 	
 	self assert: aLogBook isEmpty! !
 
-!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 12:05:52'!
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 13:13:14'!
 test27MarsRoverPositionsLogsSinglePositionInLogBook
 	
 	| aMarsRover aLogBook |
@@ -301,11 +299,9 @@ test27MarsRoverPositionsLogsSinglePositionInLogBook
 	aMarsRover process: 'f'. 
 	
 	self assert: (aLogBook logBookEntries at: 1) equals: '0@1'.
-	self assert: (aLogBook size) equals: 1
-	
-	! !
+	self assert: (aLogBook size) equals: 1! !
 
-!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 12:05:06'!
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 13:13:27'!
 test28MarsRoverPositionsLogsMoreThanOnePositionsInLogBook
 
 	| aMarsRover aLogBook |
@@ -318,6 +314,112 @@ test28MarsRoverPositionsLogsMoreThanOnePositionsInLogBook
 	self assert: (aLogBook logBookEntries at: 1) equals: '0@1'.
 	self assert: (aLogBook logBookEntries at: 2) equals: '1@1'.
 	self assert: (aLogBook size) equals: 2! !
+
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 13:09:08'!
+test29MarsRoverWindowPositionTrackerShowsCorrectPositionAfterFCommand
+	
+	
+	| aMarsRover aTracker |
+	
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aTracker := WindowPositionTracker for: aMarsRover. 
+	aMarsRover process: 'f'. 
+
+	self assert: (aTracker currentPosition) equals: '0@1'.
+	! !
+
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 13:09:14'!
+test30MarsRoverWindowPositionTrackerShowsCorrectPositionAfterFBCommand
+	
+	
+	| aMarsRover aTracker |
+	
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aTracker := WindowPositionTracker for: aMarsRover. 
+	aMarsRover process: 'fb'. 
+
+	self assert: (aTracker currentPosition) equals: '0@0'.
+	! !
+
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 13:09:26'!
+test31MarsRoverWindowPositionTrackerIgnoresRotation
+	
+	
+	| aMarsRover aTracker |
+	
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aTracker := WindowPositionTracker for: aMarsRover. 
+	aMarsRover process: 'frf'. 
+
+	self assert: (aTracker currentPosition) equals: '1@1'.
+	! !
+
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 13:09:32'!
+test32MarsRoverWindowHeadingTrackerShowsCorrectHeadingAfterRCommand
+	
+	
+	| aMarsRover aTracker |
+	
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aTracker := WindowHeadingTracker for: aMarsRover. 
+	aMarsRover process: 'r'. 
+
+	self assert: (aTracker currentHeading) equals: 'East'.
+	! !
+
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 13:09:38'!
+test33MarsRoverWindowHeadingTrackerShowsCorrectHeadingAfterRRCommand
+	
+	
+	| aMarsRover aTracker |
+	
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aTracker := WindowHeadingTracker for: aMarsRover. 
+	aMarsRover process: 'rr'. 
+
+	self assert: (aTracker currentHeading) equals: 'South'.
+	! !
+
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 13:09:47'!
+test34MarsRoverWindowHeadingTrackerIgnoresPosition
+	
+	
+	| aMarsRover aTracker |
+	
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aTracker := WindowHeadingTracker for: aMarsRover. 
+	aMarsRover process: 'frf'. 
+
+	self assert: (aTracker currentHeading) equals: 'East'.
+	! !
+
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 13:09:58'!
+test35MarsRoverWindowMovementTrackerShowsCorrectPositionAndHeading
+	
+	
+	| aMarsRover aTracker |
+	
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aTracker := WindowMovementTracker for: aMarsRover. 
+	aMarsRover process: 'frf'. 
+
+	self assert: (aTracker currentPosition) equals: '1@1'.
+	self assert: (aTracker currentHeading) equals: 'East'.
+	! !
+
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 13:10:10'!
+test36MarsRoverWindowMovementTrackerShowsCorrectPositionAndHeadingAfterMultipleCommands
+	
+	
+	| aMarsRover aTracker |
+	
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aTracker := WindowMovementTracker for: aMarsRover. 
+	aMarsRover process: 'frflf'.
+
+	self assert: (aTracker currentPosition) equals: '1@2'.
+	self assert: (aTracker currentHeading) equals: 'North'.
+	! !
 
 
 !MarsRoverTest methodsFor: 'headings' stamp: 'HAW 10/7/2021 20:09:31'!
@@ -360,13 +462,13 @@ Object subclass: #LogBook
 	poolDictionaries: ''
 	category: 'MarsRover-WithHeading'!
 
-!LogBook methodsFor: 'initialization' stamp: 'MO 10/26/2022 12:22:42'!
+!LogBook methodsFor: 'initialization' stamp: 'SR 10/26/2022 00:17:36'!
 initializeFor: aMarsRover
 	
 	logBookEntries := OrderedCollection new.
 	aMarsRover addRecipient: self.
-	TranscriptWindow openTranscript.
-	Transcript clear.				! !
+	"TranscriptWindow openTranscript.
+	Transcript clear.				"! !
 
 
 !LogBook methodsFor: 'receive' stamp: 'cde4 10/24/2022 20:44:42'!
@@ -379,30 +481,30 @@ receiveHeading: aHeading
 
 	self subclassResponsibility ! !
 
-!LogBook methodsFor: 'receive' stamp: 'cde4 10/24/2022 21:55:23'!
-receiveNotification: aNotification
-
-	self addEntry: aNotification. 
-	
-	Transcript show: aNotification.! !
-
 !LogBook methodsFor: 'receive' stamp: 'cde4 10/24/2022 22:01:50'!
 receivePosition: aPosition
 
 	self subclassResponsibility! !
 
+!LogBook methodsFor: 'receive' stamp: 'SR 10/26/2022 00:17:27'!
+saveLog: aNotification
 
-!LogBook methodsFor: 'content' stamp: 'MO 10/26/2022 11:50:57'!
+	self addEntry: aNotification. 
+	
+	"Transcript show: aNotification."! !
+
+
+!LogBook methodsFor: 'content' stamp: 'cde4 10/24/2022 20:51:06'!
 isEmpty
 
-	^ logBookEntries isEmpty! !
+	 ^ logBookEntries isEmpty.! !
 
-!LogBook methodsFor: 'content' stamp: 'MO 10/26/2022 11:50:42'!
+!LogBook methodsFor: 'content' stamp: 'MO 10/26/2022 13:15:24'!
 logBookEntries
 
 	^ logBookEntries! !
 
-!LogBook methodsFor: 'content' stamp: 'MO 10/26/2022 11:50:28'!
+!LogBook methodsFor: 'content' stamp: 'MO 10/26/2022 13:15:29'!
 size
 
 	^ logBookEntries size! !
@@ -426,12 +528,12 @@ LogBook subclass: #HeadingLogBook
 	poolDictionaries: ''
 	category: 'MarsRover-WithHeading'!
 
-!HeadingLogBook methodsFor: 'receive' stamp: 'cde4 10/24/2022 21:59:16'!
+!HeadingLogBook methodsFor: 'receive' stamp: 'SR 10/26/2022 00:18:00'!
 receiveHeading: aHeading
 
-	self addEntry: aHeading. 
+	self saveLog: aHeading. 
 	
-	Transcript show: aHeading.! !
+	"Transcript show: aHeading."! !
 
 !HeadingLogBook methodsFor: 'receive' stamp: 'cde4 10/24/2022 22:01:08'!
 receivePosition: aPosition! !
@@ -444,15 +546,15 @@ LogBook subclass: #MovementLogBook
 	poolDictionaries: ''
 	category: 'MarsRover-WithHeading'!
 
-!MovementLogBook methodsFor: 'receive' stamp: 'cde4 10/24/2022 22:07:01'!
+!MovementLogBook methodsFor: 'receive' stamp: 'SR 10/26/2022 00:17:20'!
 receiveHeading: aHeading
 
-	self receiveNotification: aHeading! !
+	self saveLog: aHeading! !
 
-!MovementLogBook methodsFor: 'receive' stamp: 'cde4 10/24/2022 22:06:41'!
+!MovementLogBook methodsFor: 'receive' stamp: 'SR 10/26/2022 00:17:20'!
 receivePosition: aPosition
 
-	self receiveNotification: aPosition! !
+	self saveLog: aPosition! !
 
 
 !classDefinition: #PositionsLogBook category: 'MarsRover-WithHeading'!
@@ -465,12 +567,12 @@ LogBook subclass: #PositionsLogBook
 !PositionsLogBook methodsFor: 'receive' stamp: 'cde4 10/24/2022 22:01:18'!
 receiveHeading: aHeading! !
 
-!PositionsLogBook methodsFor: 'receive' stamp: 'cde4 10/24/2022 21:59:43'!
+!PositionsLogBook methodsFor: 'receive' stamp: 'SR 10/26/2022 00:18:15'!
 receivePosition: aPosition
 
-	self addEntry: aPosition. 
+	self saveLog: aPosition. 
 	
-	Transcript show: aPosition.! !
+	"Transcript show: aPosition."! !
 
 
 !classDefinition: #MarsRover category: 'MarsRover-WithHeading'!
@@ -563,10 +665,10 @@ addRecipient: aRecipient
 
 	recipients add: aRecipient! !
 
-!MarsRover methodsFor: 'recipients' stamp: 'cde4 10/24/2022 21:44:12'!
+!MarsRover methodsFor: 'recipients' stamp: 'SR 10/26/2022 00:17:20'!
 notify: aNotification
 
-	recipients do: [ :aRecipient | aRecipient receiveNotification: aNotification ]! !
+	recipients do: [ :aRecipient | aRecipient saveLog: aNotification ]! !
 
 !MarsRover methodsFor: 'recipients' stamp: 'cde4 10/24/2022 22:00:52'!
 notifyHeading: aHeading
@@ -837,3 +939,130 @@ rotateRight
 asString
 
 	^ 'West'! !
+
+
+!classDefinition: #WindowTracker category: 'MarsRover-WithHeading'!
+Object subclass: #WindowTracker
+	instanceVariableNames: 'currentPosition currentHeading'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!WindowTracker methodsFor: 'as yet unclassified' stamp: 'SR 10/26/2022 00:56:11'!
+currentHeading
+
+	^currentHeading.! !
+
+!WindowTracker methodsFor: 'as yet unclassified' stamp: 'SR 10/26/2022 00:56:16'!
+currentPosition
+
+	^currentPosition ! !
+
+!WindowTracker methodsFor: 'as yet unclassified' stamp: 'SR 10/26/2022 00:58:58'!
+initializeFor: aMarsRover
+	
+	aMarsRover addRecipient: self.
+	currentPosition := ''.
+	currentHeading := ''.
+	TranscriptWindow openTranscript.
+	Transcript clear.! !
+
+!WindowTracker methodsFor: 'as yet unclassified' stamp: 'SR 10/26/2022 00:57:53'!
+printCurrentTrack
+
+	Transcript clear.
+	Transcript show: currentPosition.
+	Transcript show: currentHeading.! !
+
+!WindowTracker methodsFor: 'as yet unclassified' stamp: 'SR 10/26/2022 00:55:45'!
+printLoggs
+
+	Transcript clear.
+	Transcript show: currentPosition.
+	Transcript show: currentHeading.! !
+
+!WindowTracker methodsFor: 'as yet unclassified' stamp: 'SR 10/26/2022 00:57:50'!
+printTrack
+
+	Transcript clear.
+	Transcript show: currentPosition.
+	Transcript show: currentHeading.! !
+
+!WindowTracker methodsFor: 'as yet unclassified' stamp: 'SR 10/26/2022 00:54:09'!
+receiveHeading: aHeading
+
+	self subclassResponsibility .! !
+
+!WindowTracker methodsFor: 'as yet unclassified' stamp: 'SR 10/26/2022 00:54:20'!
+receivePosition: aPosition
+
+	self subclassResponsibility.! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'WindowTracker class' category: 'MarsRover-WithHeading'!
+WindowTracker class
+	instanceVariableNames: ''!
+
+!WindowTracker class methodsFor: 'as yet unclassified' stamp: 'SR 10/26/2022 00:51:03'!
+for: aMarsRover
+	
+	^ self new initializeFor: aMarsRover.! !
+
+
+!classDefinition: #WindowHeadingTracker category: 'MarsRover-WithHeading'!
+WindowTracker subclass: #WindowHeadingTracker
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!WindowHeadingTracker methodsFor: 'as yet unclassified' stamp: 'SR 10/26/2022 00:58:10'!
+receiveHeading: aHeading
+
+	currentHeading := aHeading.
+	self printCurrentTrack.! !
+
+!WindowHeadingTracker methodsFor: 'as yet unclassified' stamp: 'SR 10/26/2022 00:41:40'!
+receivePosition: aPosition
+
+	! !
+
+
+!classDefinition: #WindowMovementTracker category: 'MarsRover-WithHeading'!
+WindowTracker subclass: #WindowMovementTracker
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!WindowMovementTracker methodsFor: 'as yet unclassified' stamp: 'SR 10/26/2022 00:58:14'!
+receiveHeading: aHeading
+
+	currentHeading := aHeading.
+	self printCurrentTrack.! !
+
+!WindowMovementTracker methodsFor: 'as yet unclassified' stamp: 'SR 10/26/2022 00:58:17'!
+receivePosition: aPosition
+
+	currentPosition := aPosition.
+	self printCurrentTrack.! !
+
+
+!classDefinition: #WindowPositionTracker category: 'MarsRover-WithHeading'!
+WindowTracker subclass: #WindowPositionTracker
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!WindowPositionTracker methodsFor: 'as yet unclassified' stamp: 'SR 10/26/2022 00:40:36'!
+receiveHeading: aHeading
+
+	! !
+
+!WindowPositionTracker methodsFor: 'as yet unclassified' stamp: 'SR 10/26/2022 00:58:21'!
+receivePosition: aPosition
+
+	currentPosition := aPosition.
+	self printCurrentTrack.! !
