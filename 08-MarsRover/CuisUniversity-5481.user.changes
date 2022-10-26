@@ -1,0 +1,3645 @@
+
+
+----QUIT----(11 September 2022 19:10:09) CuisUniversity-5481.image priorSource: 2810882!
+
+----STARTUP---- (11 September 2022 19:10:10) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5481.image!
+
+
+----QUIT----(11 September 2022 19:10:10) CuisUniversity-5481.image priorSource: 7059465!
+
+----STARTUP---- (24 October 2022 19:52:12) as /home/clinux01/Escritorio/CuisUniversity/CuisUniversity-5481.image!
+
+
+----End fileIn of /home/clinux01/Documentos/ingsoft1-24-10/2022-2c-main/08-MarsRover-ElRegreso/MarsRover-WithHeading.st----!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde4 10/24/2022 19:56:19'!
+test17MarsRoverHasNoLogsWhenInitialized
+	self 
+		assertIsAt: 0@2 
+		heading: self north 
+		afterProcessing: 'ffblrr' 
+		whenStartingAt: 1@2 
+		heading: self west 
+! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde4 10/24/2022 19:57:26' prior: 50552761!
+test17MarsRoverHasNoLogsWhenInitialized
+	self 
+		assertIsAt: 1@2 
+		heading: self north 
+		afterProcessing: '' 
+		whenStartingAt: 1@2 
+		heading: self north 
+! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde4 10/24/2022 20:05:34' prior: 50552769!
+test17MarsRoverHasNoLogsWhenInitialized
+	
+	|aMarsRover|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde4 10/24/2022 20:09:27' prior: 50552777!
+test17MarsRoverHasNoLogsWhenInitialized
+	
+	|aMarsRover|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	
+	self assert: (aMarsRover logBook isEmpty)! !
+
+!testRun: #MarsRoverTest #test17MarsRoverHasNoLogsWhenInitialized stamp: 'cde4 10/24/2022 20:09:34'!
+ERROR!
+!MarsRover methodsFor: 'logs' stamp: 'cde4 10/24/2022 20:10:03'!
+logBook
+	self shouldBeImplemented.! !
+
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head logBookEntries'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #MarsRover category: 'MarsRover-WithHeading' stamp: 'cde4 10/24/2022 20:11:19'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head logBookEntries'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!MarsRover methodsFor: 'logs' stamp: 'cde4 10/24/2022 20:11:44' prior: 50552795!
+logBook
+	logBookEntries := OrderedCollection  new.! !
+
+!testRun: #MarsRoverTest #test17MarsRoverHasNoLogsWhenInitialized stamp: 'cde4 10/24/2022 20:12:00'!
+ERROR!
+
+!testRun: #MarsRoverTest #test17MarsRoverHasNoLogsWhenInitialized stamp: 'cde4 10/24/2022 20:12:00'!
+ERROR!
+!MarsRover methodsFor: 'initialization' stamp: 'cde4 10/24/2022 20:13:31' prior: 50552462!
+initializeAt: aPosition heading: aHeadingType
+
+	position := aPosition.
+	head := aHeadingType for: self.
+	logBookEntries := OrderedCollection  new. ! !
+!MarsRover methodsFor: 'logs' stamp: 'cde4 10/24/2022 20:13:47' prior: 50552813!
+logBook
+	^ logBookEntries.! !
+
+!testRun: #MarsRoverTest #test17MarsRoverHasNoLogsWhenInitialized stamp: 'cde4 10/24/2022 20:13:51'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde4 10/24/2022 20:18:32'!
+test18MarsRoverLogsPositionInLogBook
+	
+	
+	|aMarsRover|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aMarsRover process: 'f'. 
+	
+	self assert: (aMarsRover logBook at: 1) equals: '0@1'.! !
+
+!testRun: #MarsRoverTest #test18MarsRoverLogsPositionInLogBook stamp: 'cde4 10/24/2022 20:18:33'!
+ERROR!
+
+!testRun: #MarsRoverTest #test18MarsRoverLogsPositionInLogBook stamp: 'cde4 10/24/2022 20:18:53'!
+FAILURE!
+
+----End fileIn of /home/clinux01/Escritorio/CuisUniversity/Packages/TerseGuide.pck.st----!
+!MarsRover methodsFor: 'moving' stamp: 'cde4 10/24/2022 20:21:42' prior: 50552526!
+moveNorth
+	
+	position := position + (0@1).
+	logBookEntries add: 0@1 asString.! !
+
+!testRun: #MarsRoverTest #test01DoesNotMoveWhenNoCommand stamp: 'cde4 10/24/2022 20:21:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02IsAtFailsForDifferentPosition stamp: 'cde4 10/24/2022 20:21:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03IsAtFailsForDifferentHeading stamp: 'cde4 10/24/2022 20:21:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04IncrementsYAfterMovingForwardWhenHeadingNorth stamp: 'cde4 10/24/2022 20:21:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06DecrementsYAfterMovingBackwardsWhenHeadingNorth stamp: 'cde4 10/24/2022 20:21:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07PointToEashAfterRotatingRightWhenHeadingNorth stamp: 'cde4 10/24/2022 20:21:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08PointsToWestAfterRotatingLeftWhenPointingNorth stamp: 'cde4 10/24/2022 20:21:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09DoesNotProcessInvalidCommand stamp: 'cde4 10/24/2022 20:21:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanProcessMoreThanOneCommand stamp: 'cde4 10/24/2022 20:21:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11IncrementsXAfterMovingForwareWhenHeadingEast stamp: 'cde4 10/24/2022 20:21:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12DecrementsXAfterMovingBackwardWhenHeadingEast stamp: 'cde4 10/24/2022 20:21:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13PointsToSouthAfterRotatingRightWhenHeadingEast stamp: 'cde4 10/24/2022 20:21:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14PointsToNorthAfterRotatingLeftWhenPointingEast stamp: 'cde4 10/24/2022 20:21:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingSouth stamp: 'cde4 10/24/2022 20:21:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingWest stamp: 'cde4 10/24/2022 20:21:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17MarsRoverHasNoLogsWhenInitialized stamp: 'cde4 10/24/2022 20:21:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18MarsRoverLogsPositionInLogBook stamp: 'cde4 10/24/2022 20:21:45'!
+ERROR!
+
+!testRun: #MarsRoverTest #test18MarsRoverLogsPositionInLogBook stamp: 'cde4 10/24/2022 20:21:45'!
+ERROR!
+!MarsRover methodsFor: 'moving' stamp: 'cde4 10/24/2022 20:22:10' prior: 50555776!
+moveNorth
+	
+	position := position + (0@1).
+	logBookEntries add: (0@1 asString).! !
+
+!testRun: #MarsRoverTest #test01DoesNotMoveWhenNoCommand stamp: 'cde4 10/24/2022 20:22:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02IsAtFailsForDifferentPosition stamp: 'cde4 10/24/2022 20:22:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03IsAtFailsForDifferentHeading stamp: 'cde4 10/24/2022 20:22:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04IncrementsYAfterMovingForwardWhenHeadingNorth stamp: 'cde4 10/24/2022 20:22:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06DecrementsYAfterMovingBackwardsWhenHeadingNorth stamp: 'cde4 10/24/2022 20:22:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07PointToEashAfterRotatingRightWhenHeadingNorth stamp: 'cde4 10/24/2022 20:22:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08PointsToWestAfterRotatingLeftWhenPointingNorth stamp: 'cde4 10/24/2022 20:22:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09DoesNotProcessInvalidCommand stamp: 'cde4 10/24/2022 20:22:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanProcessMoreThanOneCommand stamp: 'cde4 10/24/2022 20:22:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11IncrementsXAfterMovingForwareWhenHeadingEast stamp: 'cde4 10/24/2022 20:22:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12DecrementsXAfterMovingBackwardWhenHeadingEast stamp: 'cde4 10/24/2022 20:22:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13PointsToSouthAfterRotatingRightWhenHeadingEast stamp: 'cde4 10/24/2022 20:22:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14PointsToNorthAfterRotatingLeftWhenPointingEast stamp: 'cde4 10/24/2022 20:22:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingSouth stamp: 'cde4 10/24/2022 20:22:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingWest stamp: 'cde4 10/24/2022 20:22:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17MarsRoverHasNoLogsWhenInitialized stamp: 'cde4 10/24/2022 20:22:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18MarsRoverLogsPositionInLogBook stamp: 'cde4 10/24/2022 20:22:11'!
+ERROR!
+
+!testRun: #MarsRoverTest #test18MarsRoverLogsPositionInLogBook stamp: 'cde4 10/24/2022 20:22:11'!
+ERROR!
+
+!testRun: #MarsRoverTest #test01DoesNotMoveWhenNoCommand stamp: 'cde4 10/24/2022 20:22:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02IsAtFailsForDifferentPosition stamp: 'cde4 10/24/2022 20:22:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03IsAtFailsForDifferentHeading stamp: 'cde4 10/24/2022 20:22:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04IncrementsYAfterMovingForwardWhenHeadingNorth stamp: 'cde4 10/24/2022 20:22:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06DecrementsYAfterMovingBackwardsWhenHeadingNorth stamp: 'cde4 10/24/2022 20:22:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07PointToEashAfterRotatingRightWhenHeadingNorth stamp: 'cde4 10/24/2022 20:22:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08PointsToWestAfterRotatingLeftWhenPointingNorth stamp: 'cde4 10/24/2022 20:22:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09DoesNotProcessInvalidCommand stamp: 'cde4 10/24/2022 20:22:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanProcessMoreThanOneCommand stamp: 'cde4 10/24/2022 20:22:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11IncrementsXAfterMovingForwareWhenHeadingEast stamp: 'cde4 10/24/2022 20:22:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12DecrementsXAfterMovingBackwardWhenHeadingEast stamp: 'cde4 10/24/2022 20:22:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13PointsToSouthAfterRotatingRightWhenHeadingEast stamp: 'cde4 10/24/2022 20:22:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14PointsToNorthAfterRotatingLeftWhenPointingEast stamp: 'cde4 10/24/2022 20:22:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingSouth stamp: 'cde4 10/24/2022 20:22:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingWest stamp: 'cde4 10/24/2022 20:22:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17MarsRoverHasNoLogsWhenInitialized stamp: 'cde4 10/24/2022 20:22:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18MarsRoverLogsPositionInLogBook stamp: 'cde4 10/24/2022 20:22:15'!
+ERROR!
+
+!testRun: #MarsRoverTest #test18MarsRoverLogsPositionInLogBook stamp: 'cde4 10/24/2022 20:22:15'!
+ERROR!
+!MarsRover methodsFor: 'moving' stamp: 'cde4 10/24/2022 20:22:49' prior: 50555847!
+moveNorth
+	
+	position := position + (0@1).
+	logBookEntries add: (0@1) asString.! !
+
+!testRun: #MarsRoverTest #test01DoesNotMoveWhenNoCommand stamp: 'cde4 10/24/2022 20:22:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02IsAtFailsForDifferentPosition stamp: 'cde4 10/24/2022 20:22:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03IsAtFailsForDifferentHeading stamp: 'cde4 10/24/2022 20:22:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04IncrementsYAfterMovingForwardWhenHeadingNorth stamp: 'cde4 10/24/2022 20:22:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06DecrementsYAfterMovingBackwardsWhenHeadingNorth stamp: 'cde4 10/24/2022 20:22:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07PointToEashAfterRotatingRightWhenHeadingNorth stamp: 'cde4 10/24/2022 20:22:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08PointsToWestAfterRotatingLeftWhenPointingNorth stamp: 'cde4 10/24/2022 20:22:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09DoesNotProcessInvalidCommand stamp: 'cde4 10/24/2022 20:22:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanProcessMoreThanOneCommand stamp: 'cde4 10/24/2022 20:22:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11IncrementsXAfterMovingForwareWhenHeadingEast stamp: 'cde4 10/24/2022 20:22:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12DecrementsXAfterMovingBackwardWhenHeadingEast stamp: 'cde4 10/24/2022 20:22:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13PointsToSouthAfterRotatingRightWhenHeadingEast stamp: 'cde4 10/24/2022 20:22:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14PointsToNorthAfterRotatingLeftWhenPointingEast stamp: 'cde4 10/24/2022 20:22:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingSouth stamp: 'cde4 10/24/2022 20:22:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingWest stamp: 'cde4 10/24/2022 20:22:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17MarsRoverHasNoLogsWhenInitialized stamp: 'cde4 10/24/2022 20:22:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18MarsRoverLogsPositionInLogBook stamp: 'cde4 10/24/2022 20:22:50'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde4 10/24/2022 20:23:24'!
+test18MarsRoverLogsSinglePositionInLogBook
+	
+	
+	|aMarsRover|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aMarsRover process: 'f'. 
+	
+	self assert: (aMarsRover logBook at: 1) equals: '0@1'.
+	
+	! !
+
+!methodRemoval: MarsRoverTest #test18MarsRoverLogsPositionInLogBook stamp: 'cde4 10/24/2022 20:23:26'!
+test18MarsRoverLogsPositionInLogBook
+	
+	
+	|aMarsRover|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aMarsRover process: 'f'. 
+	
+	self assert: (aMarsRover logBook at: 1) equals: '0@1'.!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde4 10/24/2022 20:24:01'!
+test18MarsRoverLogsMoreThanOnePositionInLogBook
+	
+	
+	|aMarsRover|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aMarsRover process: 'ff'. 
+	
+	self assert: (aMarsRover logBook at: 1) equals: '0@1'.
+	self assert: (aMarsRover logBook at: 2) equals: '0@2'.
+	
+	! !
+
+!testRun: #MarsRoverTest #test18MarsRoverLogsMoreThanOnePositionInLogBook stamp: 'cde4 10/24/2022 20:24:02'!
+FAILURE!
+!MarsRover methodsFor: 'moving' stamp: 'cde4 10/24/2022 20:24:29' prior: 50555984!
+moveNorth
+	
+	position := position + (0@1).
+	logBookEntries add: (position) asString.! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde4 10/24/2022 20:24:40'!
+test19MarsRoverLogsMoreThanOnePositionInLogBook
+	
+	
+	|aMarsRover|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aMarsRover process: 'ff'. 
+	
+	self assert: (aMarsRover logBook at: 1) equals: '0@1'.
+	self assert: (aMarsRover logBook at: 2) equals: '0@2'.
+	
+	! !
+
+!methodRemoval: MarsRoverTest #test18MarsRoverLogsMoreThanOnePositionInLogBook stamp: 'cde4 10/24/2022 20:24:42'!
+test18MarsRoverLogsMoreThanOnePositionInLogBook
+	
+	
+	|aMarsRover|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aMarsRover process: 'ff'. 
+	
+	self assert: (aMarsRover logBook at: 1) equals: '0@1'.
+	self assert: (aMarsRover logBook at: 2) equals: '0@2'.
+	
+	!
+
+!testRun: #MarsRoverTest #test19MarsRoverLogsMoreThanOnePositionInLogBook stamp: 'cde4 10/24/2022 20:24:44'!
+PASSED!
+!MarsRover methodsFor: 'moving' stamp: 'cde4 10/24/2022 20:26:34' prior: 50556087!
+moveNorth
+	
+	position := position + (0@1).! !
+!MarsRover methodsFor: 'moving' stamp: 'cde4 10/24/2022 20:26:36' prior: 50556120!
+moveNorth
+	
+	position := position + (0@1)! !
+!MarsRover methodsFor: 'moving' stamp: 'cde4 10/24/2022 20:28:35' prior: 50552522!
+moveForward
+	
+	head moveForward.
+	
+	logBookEntries add: (position) asString! !
+!MarsRover methodsFor: 'moving' stamp: 'cde4 10/24/2022 20:28:46' prior: 50552514!
+moveBackward
+	
+	head moveBackward.
+	
+	logBookEntries add: (position) asString! !
+
+!testRun: #MarsRoverTest #test01DoesNotMoveWhenNoCommand stamp: 'cde4 10/24/2022 20:28:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02IsAtFailsForDifferentPosition stamp: 'cde4 10/24/2022 20:28:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03IsAtFailsForDifferentHeading stamp: 'cde4 10/24/2022 20:28:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04IncrementsYAfterMovingForwardWhenHeadingNorth stamp: 'cde4 10/24/2022 20:28:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06DecrementsYAfterMovingBackwardsWhenHeadingNorth stamp: 'cde4 10/24/2022 20:28:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07PointToEashAfterRotatingRightWhenHeadingNorth stamp: 'cde4 10/24/2022 20:28:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08PointsToWestAfterRotatingLeftWhenPointingNorth stamp: 'cde4 10/24/2022 20:28:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09DoesNotProcessInvalidCommand stamp: 'cde4 10/24/2022 20:28:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanProcessMoreThanOneCommand stamp: 'cde4 10/24/2022 20:28:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11IncrementsXAfterMovingForwareWhenHeadingEast stamp: 'cde4 10/24/2022 20:28:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12DecrementsXAfterMovingBackwardWhenHeadingEast stamp: 'cde4 10/24/2022 20:28:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13PointsToSouthAfterRotatingRightWhenHeadingEast stamp: 'cde4 10/24/2022 20:28:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14PointsToNorthAfterRotatingLeftWhenPointingEast stamp: 'cde4 10/24/2022 20:28:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingSouth stamp: 'cde4 10/24/2022 20:28:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingWest stamp: 'cde4 10/24/2022 20:28:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17MarsRoverHasNoLogsWhenInitialized stamp: 'cde4 10/24/2022 20:28:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18MarsRoverLogsSinglePositionInLogBook stamp: 'cde4 10/24/2022 20:28:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19MarsRoverLogsMoreThanOnePositionInLogBook stamp: 'cde4 10/24/2022 20:28:58'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde4 10/24/2022 20:29:32'!
+test20MarsRoverLogsSingleRotationInLogBook
+	
+	
+	|aMarsRover|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aMarsRover process: 'r'. 
+	
+	self assert: (aMarsRover logBook at: 1) equals: ''.
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde4 10/24/2022 20:29:44' prior: 50556092!
+test19MarsRoverLogsMoreThanOnePositionInLogBook
+	
+	
+	|aMarsRover|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aMarsRover process: 'ffb'. 
+	
+	self assert: (aMarsRover logBook at: 1) equals: '0@1'.
+	self assert: (aMarsRover logBook at: 2) equals: '0@2'.
+	self assert: (aMarsRover logBook at: 2) equals: '0@1'.
+	
+	! !
+
+!testRun: #MarsRoverTest #test19MarsRoverLogsMoreThanOnePositionInLogBook stamp: 'cde4 10/24/2022 20:29:45'!
+FAILURE!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde4 10/24/2022 20:29:50' prior: 50556216!
+test19MarsRoverLogsMoreThanOnePositionInLogBook
+	
+	
+	|aMarsRover|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aMarsRover process: 'ffb'. 
+	
+	self assert: (aMarsRover logBook at: 1) equals: '0@1'.
+	self assert: (aMarsRover logBook at: 2) equals: '0@2'.
+	self assert: (aMarsRover logBook at: 3) equals: '0@1'.
+	
+	! !
+
+!testRun: #MarsRoverTest #test19MarsRoverLogsMoreThanOnePositionInLogBook stamp: 'cde4 10/24/2022 20:29:51'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01DoesNotMoveWhenNoCommand stamp: 'cde4 10/24/2022 20:29:51'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02IsAtFailsForDifferentPosition stamp: 'cde4 10/24/2022 20:29:51'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03IsAtFailsForDifferentHeading stamp: 'cde4 10/24/2022 20:29:51'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04IncrementsYAfterMovingForwardWhenHeadingNorth stamp: 'cde4 10/24/2022 20:29:51'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06DecrementsYAfterMovingBackwardsWhenHeadingNorth stamp: 'cde4 10/24/2022 20:29:51'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07PointToEashAfterRotatingRightWhenHeadingNorth stamp: 'cde4 10/24/2022 20:29:51'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08PointsToWestAfterRotatingLeftWhenPointingNorth stamp: 'cde4 10/24/2022 20:29:51'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09DoesNotProcessInvalidCommand stamp: 'cde4 10/24/2022 20:29:51'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanProcessMoreThanOneCommand stamp: 'cde4 10/24/2022 20:29:51'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11IncrementsXAfterMovingForwareWhenHeadingEast stamp: 'cde4 10/24/2022 20:29:51'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12DecrementsXAfterMovingBackwardWhenHeadingEast stamp: 'cde4 10/24/2022 20:29:51'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13PointsToSouthAfterRotatingRightWhenHeadingEast stamp: 'cde4 10/24/2022 20:29:51'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14PointsToNorthAfterRotatingLeftWhenPointingEast stamp: 'cde4 10/24/2022 20:29:51'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingSouth stamp: 'cde4 10/24/2022 20:29:51'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingWest stamp: 'cde4 10/24/2022 20:29:51'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17MarsRoverHasNoLogsWhenInitialized stamp: 'cde4 10/24/2022 20:29:51'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18MarsRoverLogsSinglePositionInLogBook stamp: 'cde4 10/24/2022 20:29:51'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19MarsRoverLogsMoreThanOnePositionInLogBook stamp: 'cde4 10/24/2022 20:29:51'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20MarsRoverLogsSingleRotationInLogBook stamp: 'cde4 10/24/2022 20:29:51'!
+ERROR!
+
+!testRun: #MarsRoverTest #test20MarsRoverLogsSingleRotationInLogBook stamp: 'cde4 10/24/2022 20:29:51'!
+ERROR!
+
+!testRun: #MarsRoverTest #test19MarsRoverLogsMoreThanOnePositionInLogBook stamp: 'cde4 10/24/2022 20:30:34'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde4 10/24/2022 20:39:18' prior: 50556206!
+test20MarsRoverLogsSingleRotationInLogBook
+	
+	
+	|aMarsRover|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aMarsRover process: 'r'. 
+	
+	self assert: (aMarsRover logBook at: 1) equals: 'East'.
+	
+	! !
+
+Object subclass: #LogBook
+	instanceVariableNames: 'logBookEntries'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #LogBook category: 'MarsRover-WithHeading' stamp: 'cde4 10/24/2022 20:43:39'!
+Object subclass: #LogBook
+	instanceVariableNames: 'logBookEntries'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!LogBook methodsFor: 'no messages' stamp: 'cde4 10/24/2022 20:44:05'!
+logBookEntries
+	^logBookEntries! !
+!LogBook methodsFor: 'as yet unclassified' stamp: 'cde4 10/24/2022 20:44:10' prior: 50556349!
+logBookEntries
+	^logBookEntries copy! !
+!LogBook methodsFor: 'as yet unclassified' stamp: 'cde4 10/24/2022 20:44:42'!
+addEntry: anEntry
+
+	logBookEntries add: anEntry! !
+!LogBook methodsFor: 'as yet unclassified' stamp: 'cde4 10/24/2022 20:46:22' overrides: 16920235!
+initialize
+
+	 logBookEntries := OrderedCollection new.! !
+!MarsRover methodsFor: 'initialization' stamp: 'cde4 10/24/2022 20:46:38' prior: 50552825!
+initializeAt: aPosition heading: aHeadingType
+
+	position := aPosition.
+	head := aHeadingType for: self.
+	logBookEntries := LogBook new. ! !
+!MarsRover methodsFor: 'logs' stamp: 'cde4 10/24/2022 20:47:30' prior: 50552833!
+logBook
+	^ logBookEntries .! !
+
+!testRun: #MarsRoverTest #test17MarsRoverHasNoLogsWhenInitialized stamp: 'cde4 10/24/2022 20:47:44'!
+ERROR!
+
+!testRun: #MarsRoverTest #test17MarsRoverHasNoLogsWhenInitialized stamp: 'cde4 10/24/2022 20:47:44'!
+ERROR!
+
+!classDefinition: #MarsRover category: 'MarsRover-WithHeading' stamp: 'cde4 10/24/2022 20:48:53'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head logBook'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'cde4 10/24/2022 20:48:53' prior: 50556375!
+logBook
+	^ logBook .! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'cde4 10/24/2022 20:48:53' prior: 50556135!
+moveBackward
+	
+	head moveBackward.
+	
+	logBook add: (position) asString! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'cde4 10/24/2022 20:48:53' prior: 50556129!
+moveForward
+	
+	head moveForward.
+	
+	logBook add: (position) asString! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'cde4 10/24/2022 20:48:53' prior: 50556368!
+initializeAt: aPosition heading: aHeadingType
+
+	position := aPosition.
+	head := aHeadingType for: self.
+	logBook := LogBook new. ! !
+!MarsRover methodsFor: 'logs' stamp: 'cde4 10/24/2022 20:49:52'!
+logs
+	^ logBook .! !
+
+!methodRemoval: MarsRover #logBook stamp: 'cde4 10/24/2022 20:49:52'!
+logBook
+	^ logBook .!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde4 10/24/2022 20:50:01' prior: 50552784!
+test17MarsRoverHasNoLogsWhenInitialized
+	
+	|aMarsRover|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	
+	self assert: (aMarsRover logs isEmpty)! !
+
+!testRun: #MarsRoverTest #test17MarsRoverHasNoLogsWhenInitialized stamp: 'cde4 10/24/2022 20:50:02'!
+ERROR!
+!LogBook methodsFor: 'as yet unclassified' stamp: 'cde4 10/24/2022 20:51:06'!
+isEmpty
+
+	 ^ logBookEntries isEmpty.! !
+
+!testRun: #MarsRoverTest #test17MarsRoverHasNoLogsWhenInitialized stamp: 'cde4 10/24/2022 20:51:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18MarsRoverLogsSinglePositionInLogBook stamp: 'cde4 10/24/2022 20:51:14'!
+ERROR!
+
+!testRun: #MarsRoverTest #test18MarsRoverLogsSinglePositionInLogBook stamp: 'cde4 10/24/2022 20:51:14'!
+ERROR!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde4 10/24/2022 20:51:27' prior: 50556052!
+test18MarsRoverLogsSinglePositionInLogBook
+	
+	
+	|aMarsRover|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aMarsRover process: 'f'. 
+	
+	self assert: (aMarsRover logs at: 1) equals: '0@1'.
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde4 10/24/2022 20:51:36' prior: 50556233!
+test19MarsRoverLogsMoreThanOnePositionInLogBook
+	
+	
+	|aMarsRover|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aMarsRover process: 'ffb'. 
+	
+	self assert: (aMarsRover logs at: 1) equals: '0@1'.
+	self assert: (aMarsRover logs at: 2) equals: '0@2'.
+	self assert: (aMarsRover logs at: 3) equals: '0@1'.
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde4 10/24/2022 20:51:40' prior: 50556327!
+test20MarsRoverLogsSingleRotationInLogBook
+	
+	
+	|aMarsRover|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aMarsRover process: 'r'. 
+	
+	self assert: (aMarsRover logs at: 1) equals: 'East'.
+	
+	! !
+
+!testRun: #MarsRoverTest #test18MarsRoverLogsSinglePositionInLogBook stamp: 'cde4 10/24/2022 20:51:45'!
+ERROR!
+
+!testRun: #MarsRoverTest #test18MarsRoverLogsSinglePositionInLogBook stamp: 'cde4 10/24/2022 20:51:45'!
+ERROR!
+
+Object subclass: #LogBook
+	instanceVariableNames: 'logBookEntries marsRover'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #LogBook category: 'MarsRover-WithHeading' stamp: 'cde4 10/24/2022 20:53:14'!
+Object subclass: #LogBook
+	instanceVariableNames: 'logBookEntries marsRover'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!LogBook class methodsFor: 'no messages' stamp: 'cde4 10/24/2022 20:54:46'!
+for: aMarsRover
+	
+	^ self new initializeFor: aMarsRover.! !
+!LogBook methodsFor: 'as yet unclassified' stamp: 'cde4 10/24/2022 20:55:31'!
+initializeFor: aMarsRover
+	
+	marsRover := aMarsRover.! !
+!LogBook methodsFor: 'as yet unclassified' stamp: 'cde4 10/24/2022 20:56:22' prior: 50556509!
+initializeFor: aMarsRover
+	
+	logBookEntries := OrderedCollection new.
+	marsRover := aMarsRover.! !
+
+!methodRemoval: LogBook #initialize stamp: 'cde4 10/24/2022 20:56:27'!
+initialize
+
+	 logBookEntries := OrderedCollection new.!
+!MarsRover methodsFor: 'moving' stamp: 'cde4 10/24/2022 20:56:44' prior: 50556398!
+moveBackward
+	
+	head moveBackward.
+	
+! !
+!MarsRover methodsFor: 'moving' stamp: 'cde4 10/24/2022 20:56:48' prior: 50556404!
+moveForward
+	
+	head moveForward.
+	
+	! !
+
+!methodRemoval: MarsRover #logs stamp: 'cde4 10/24/2022 20:56:53'!
+logs
+	^ logBook .!
+
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #MarsRover category: 'MarsRover-WithHeading' stamp: 'cde4 10/24/2022 20:57:00'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde4 10/24/2022 20:58:18' prior: 50556424!
+test17MarsRoverHasNoLogsWhenInitialized
+	
+	|aMarsRover aLogBook|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := LogBook for: aMarsRover. 
+	
+	self assert: (aMarsRover logs isEmpty)! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde4 10/24/2022 20:58:48' prior: 50556548!
+test17MarsRoverHasNoLogsWhenInitialized
+	
+	|aMarsRover aLogBook|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := LogBook for: aMarsRover. 
+	
+	self assert: (aLogBook isEmpty)! !
+
+!testRun: #MarsRoverTest #test17MarsRoverHasNoLogsWhenInitialized stamp: 'cde4 10/24/2022 20:58:52'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde4 10/24/2022 21:00:22' prior: 50556451!
+test18MarsRoverLogsSinglePositionInLogBook
+	
+	
+	|aMarsRover aLogBook|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aMarsRover process: 'f'. 
+	aLogBook := LogBook for: aMarsRover. 
+	
+	self assert: (aLogBook logBookEntries at: 1) equals: '0@1'
+
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde4 10/24/2022 21:00:35' prior: 50556571!
+test18MarsRoverLogsSinglePositionInLogBook
+	
+	
+	|aMarsRover aLogBook|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := LogBook for: aMarsRover. 
+	
+	aMarsRover process: 'f'. 
+	
+	self assert: (aLogBook logBookEntries at: 1) equals: '0@1'
+
+	
+	! !
+
+!testRun: #MarsRoverTest #test18MarsRoverLogsSinglePositionInLogBook stamp: 'cde4 10/24/2022 21:00:38'!
+ERROR!
+!LogBook methodsFor: 'as yet unclassified' stamp: 'cde4 10/24/2022 21:01:19'!
+enterLog
+
+	logBookEntries add: '0@1'.! !
+
+!testRun: #MarsRoverTest #test18MarsRoverLogsSinglePositionInLogBook stamp: 'cde4 10/24/2022 21:01:25'!
+ERROR!
+
+!testRun: #MarsRoverTest #test18MarsRoverLogsSinglePositionInLogBook stamp: 'cde4 10/24/2022 21:01:25'!
+ERROR!
+
+!testRun: #MarsRoverTest #test18MarsRoverLogsSinglePositionInLogBook stamp: 'cde4 10/24/2022 21:01:33'!
+ERROR!
+
+!testRun: #MarsRoverTest #test18MarsRoverLogsSinglePositionInLogBook stamp: 'cde4 10/24/2022 21:01:33'!
+ERROR!
+!LogBook methodsFor: 'as yet unclassified' stamp: 'cde4 10/24/2022 21:01:55' prior: 50556354!
+logBookEntries
+	^logBookEntries.! !
+
+!testRun: #MarsRoverTest #test18MarsRoverLogsSinglePositionInLogBook stamp: 'cde4 10/24/2022 21:02:01'!
+ERROR!
+
+!testRun: #MarsRoverTest #test18MarsRoverLogsSinglePositionInLogBook stamp: 'cde4 10/24/2022 21:02:01'!
+ERROR!
+!MarsRover methodsFor: 'moving' stamp: 'cde4 10/24/2022 20:56:48' prior: 50556528!
+moveForward
+	
+	head moveForward.
+	
+	! !
+!MarsRover methodsFor: 'moving' stamp: 'cde4 10/24/2022 20:56:48' prior: 50556628!
+moveForward
+	
+	head moveForward.
+	
+	! !
+!MarsRover methodsFor: 'moving' stamp: 'cde4 10/24/2022 20:48:53' prior: 50556632!
+moveForward
+	
+	head moveForward.
+	
+	logBook add: (position) asString! !
+!MarsRover methodsFor: 'moving' stamp: 'cde4 10/24/2022 20:48:53' prior: 50556636!
+moveForward
+	
+	head moveForward.
+	
+	logBook add: (position) asString! !
+!MarsRover methodsFor: 'moving' stamp: 'cde4 10/24/2022 20:28:35' prior: 50556641!
+moveForward
+	
+	head moveForward.
+	
+	logBookEntries add: (position) asString! !
+
+!methodRemoval: LogBook #enterLog stamp: 'cde4 10/24/2022 21:04:31'!
+enterLog
+
+	logBookEntries add: '0@1'.!
+
+MarsRover class
+	instanceVariableNames: 'headings observers'!
+
+!classDefinition: 'MarsRover class' category: 'MarsRover-WithHeading' stamp: 'cde4 10/24/2022 21:15:11'!
+MarsRover class
+	instanceVariableNames: 'headings observers'!
+
+MarsRover class
+	instanceVariableNames: 'headings recipients'!
+
+!classDefinition: 'MarsRover class' category: 'MarsRover-WithHeading' stamp: 'cde4 10/24/2022 21:15:39'!
+MarsRover class
+	instanceVariableNames: 'headings recipients'!
+
+MarsRover class
+	instanceVariableNames: 'headings'!
+
+!classDefinition: 'MarsRover class' category: 'MarsRover-WithHeading' stamp: 'cde4 10/24/2022 21:16:02'!
+MarsRover class
+	instanceVariableNames: 'headings'!
+
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head recipients'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #MarsRover category: 'MarsRover-WithHeading' stamp: 'cde4 10/24/2022 21:16:10'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head recipients'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!MarsRover methodsFor: 'initialization' stamp: 'cde4 10/24/2022 21:16:29' prior: 50556410!
+initializeAt: aPosition heading: aHeadingType
+
+	position := aPosition.
+	head := aHeadingType for: self.! !
+!MarsRover methodsFor: 'initialization' stamp: 'cde4 10/24/2022 21:17:06' prior: 50556689!
+initializeAt: aPosition heading: aHeadingType
+
+	position := aPosition.
+	head := aHeadingType for: self.
+	recipients := OrderedCollection new.! !
+!MarsRover methodsFor: 'initialization' stamp: 'cde4 10/24/2022 21:17:59'!
+addRecipient: aRecipient
+
+	recipients add: aRecipient! !
+!MarsRover methodsFor: 'moving' stamp: 'cde4 10/24/2022 21:19:01' prior: 50556646!
+moveForward
+	
+	head moveForward.
+	
+	self notify: (position) asString! !
+!MarsRover methodsFor: 'moving' stamp: 'cde4 10/24/2022 21:19:09' prior: 50556524!
+moveBackward
+	
+	head moveBackward.
+	
+	self notify: (position) asString! !
+!MarsRover methodsFor: 'recipients' stamp: 'cde4 10/24/2022 21:21:23' overrides: 16902144!
+notify: aNotification
+
+	recipients do: [ :aRecipient | aRecipient recieveNotification: aNotification ]! !
+!MarsRover methodsFor: 'recipients' stamp: 'cde4 10/24/2022 21:21:44' prior: 50556719 overrides: 16902144!
+notify: aNotification
+
+	recipients do: [ :aRecipient | aRecipient receiveNotification: aNotification ]! !
+!LogBook methodsFor: 'as yet unclassified' stamp: 'cde4 10/24/2022 21:23:30' prior: 50556514!
+initializeFor: aMarsRover
+	
+	logBookEntries := OrderedCollection new.
+	aMarsRover addRecipient: self! !
+!LogBook methodsFor: 'as yet unclassified' stamp: 'cde4 10/24/2022 21:25:30'!
+receiveNotification: aNotification
+
+	self addEntry: aNotification asString! !
+!MarsRover methodsFor: 'moving' stamp: 'cde4 10/24/2022 21:25:55' prior: 50556713!
+moveBackward
+	
+	head moveBackward.
+	
+	self notify: position! !
+!MarsRover methodsFor: 'moving' stamp: 'cde4 10/24/2022 21:26:02' prior: 50556708!
+moveForward
+	
+	head moveForward.
+	
+	self notify: position! !
+
+!testRun: #MarsRoverTest #test17MarsRoverHasNoLogsWhenInitialized stamp: 'cde4 10/24/2022 21:26:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18MarsRoverLogsSinglePositionInLogBook stamp: 'cde4 10/24/2022 21:26:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18MarsRoverLogsSinglePositionInLogBook stamp: 'cde4 10/24/2022 21:26:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18MarsRoverLogsSinglePositionInLogBook stamp: 'cde4 10/24/2022 21:26:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19MarsRoverLogsMoreThanOnePositionInLogBook stamp: 'cde4 10/24/2022 21:26:29'!
+ERROR!
+
+!testRun: #MarsRoverTest #test19MarsRoverLogsMoreThanOnePositionInLogBook stamp: 'cde4 10/24/2022 21:26:29'!
+ERROR!
+
+!testRun: #MarsRoverTest #test19MarsRoverLogsMoreThanOnePositionInLogBook stamp: 'cde4 10/24/2022 21:26:39'!
+ERROR!
+
+!testRun: #MarsRoverTest #test19MarsRoverLogsMoreThanOnePositionInLogBook stamp: 'cde4 10/24/2022 21:26:39'!
+ERROR!
+
+!testRun: #MarsRoverTest #test18MarsRoverLogsSinglePositionInLogBook stamp: 'cde4 10/24/2022 21:26:52'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde4 10/24/2022 21:28:11' prior: 50556461!
+test19MarsRoverLogsMoreThanOnePositionInLogBook
+	
+	
+	|aMarsRover aLogBook|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := LogBook for: aMarsRover. 
+	
+	aMarsRover process: 'ffb'. 
+	
+	self assert: (aMarsRover logBookEntries at: 1) equals: '0@1'.
+	self assert: (aMarsRover logBookEntries at: 2) equals: '0@2'.
+	self assert: (aMarsRover logBookEntries at: 3) equals: '0@1'.
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde4 10/24/2022 21:28:25' prior: 50556787!
+test19MarsRoverLogsMoreThanOnePositionInLogBook
+	
+	
+	|aMarsRover aLogBook|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := LogBook for: aMarsRover. 
+	
+	aMarsRover process: 'ffb'. 
+	
+	self assert: (aLogBook logBookEntries at: 1) equals: '0@1'.
+	self assert: (aLogBook logBookEntries at: 2) equals: '0@2'.
+	self assert: (aLogBook logBookEntries at: 3) equals: '0@1'.
+	
+	! !
+
+!testRun: #MarsRoverTest #test19MarsRoverLogsMoreThanOnePositionInLogBook stamp: 'cde4 10/24/2022 21:28:28'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde4 10/24/2022 21:29:03' prior: 50556474!
+test20MarsRoverLogsSingleRotationInLogBook
+	
+	
+	|aMarsRover aLogBook|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := LogBook for: aMarsRover. 
+	aMarsRover process: 'r'. 
+	
+	self assert: (aLogBook logBookEntries at: 1) equals: 'East'.
+	
+	! !
+
+!testRun: #MarsRoverTest #test20MarsRoverLogsSingleRotationInLogBook stamp: 'cde4 10/24/2022 21:29:04'!
+ERROR!
+!MarsRover methodsFor: 'heading' stamp: 'cde4 10/24/2022 21:30:04' prior: 50552484!
+rotateLeft
+	
+	head rotateLeft.
+	self notify: head.! !
+!MarsRover methodsFor: 'heading' stamp: 'cde4 10/24/2022 21:30:09' prior: 50552488!
+rotateRight
+	
+	head rotateRight.
+	self notify: head.! !
+!MarsRoverHeading methodsFor: 'printing' stamp: 'cde4 10/24/2022 21:31:55' overrides: 16901837!
+asString
+	self subclassResponsibility .! !
+!MarsRoverHeadingEast methodsFor: 'printing' stamp: 'cde4 10/24/2022 21:32:42' overrides: 50556847!
+asString
+
+	^ 'East'! !
+!MarsRoverHeadingNorth methodsFor: 'printing' stamp: 'cde4 10/24/2022 21:32:55' overrides: 50556847!
+asString
+
+	^ 'North'! !
+!MarsRoverHeadingSouth methodsFor: 'printing' stamp: 'cde4 10/24/2022 21:33:12' overrides: 50556847!
+asString
+
+	^ 'South'! !
+!MarsRoverHeadingWest methodsFor: 'printing' stamp: 'cde4 10/24/2022 21:33:25' overrides: 50556847!
+asString
+
+	^ 'West'! !
+!MarsRover methodsFor: 'recipients' stamp: 'cde4 10/24/2022 21:34:53'!
+notifyPosition: aNotification
+
+	recipients do: [ :aRecipient | aRecipient receiveNotification: aNotification ]! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'cde4 10/24/2022 21:34:53' prior: 50556750!
+moveForward
+	
+	head moveForward.
+	
+	self notifyPosition: position! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'cde4 10/24/2022 21:34:53' prior: 50556837!
+rotateLeft
+	
+	head rotateLeft.
+	self notifyPosition: head.! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'cde4 10/24/2022 21:34:53' prior: 50556842!
+rotateRight
+	
+	head rotateRight.
+	self notifyPosition: head.! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'cde4 10/24/2022 21:34:53' prior: 50556745!
+moveBackward
+	
+	head moveBackward.
+	
+	self notifyPosition: position! !
+
+!methodRemoval: MarsRover #notify: stamp: 'cde4 10/24/2022 21:34:53'!
+notify: aNotification
+
+	recipients do: [ :aRecipient | aRecipient receiveNotification: aNotification ]!
+!MarsRover methodsFor: 'recipients' stamp: 'cde4 10/24/2022 21:35:09'!
+notifyHead: aNotification
+
+	recipients do: [ :aRecipient | aRecipient receiveNotification: aNotification ]! !
+!MarsRover methodsFor: 'recipients' stamp: 'cde4 10/24/2022 21:35:34' prior: 50556900!
+notifyHead: aNotification
+
+	recipients do: [ :aRecipient | aRecipient receiveHead: aNotification ]! !
+!MarsRover methodsFor: 'recipients' stamp: 'cde4 10/24/2022 21:35:42' prior: 50556867!
+notifyPosition: aNotification
+
+	recipients do: [ :aRecipient | aRecipient receivePosition: aNotification ]! !
+!LogBook methodsFor: 'as yet unclassified' stamp: 'cde4 10/24/2022 21:36:08'!
+receivePosition: aNotification
+
+	self addEntry: aNotification asString! !
+
+!methodRemoval: LogBook #receiveNotification: stamp: 'cde4 10/24/2022 21:36:08'!
+receiveNotification: aNotification
+
+	self addEntry: aNotification asString!
+!LogBook methodsFor: 'as yet unclassified' stamp: 'cde4 10/24/2022 21:36:26' prior: 50556919!
+receivePosition: aPosition
+
+	self addEntry: aPosition asString! !
+!LogBook methodsFor: 'as yet unclassified' stamp: 'cde4 10/24/2022 21:37:40'!
+receiveNotification: aPosition
+
+	self addEntry: aPosition asString! !
+
+!methodRemoval: LogBook #receivePosition: stamp: 'cde4 10/24/2022 21:37:40'!
+receivePosition: aPosition
+
+	self addEntry: aPosition asString!
+!LogBook methodsFor: 'as yet unclassified' stamp: 'cde4 10/24/2022 21:38:20' prior: 50556935!
+receiveNotification: aNotification
+
+	self addEntry: aNotification asString! !
+!MarsRover methodsFor: 'heading' stamp: 'cde4 10/24/2022 21:38:34' prior: 50556880!
+rotateLeft
+	
+	head rotateLeft.
+	self notifyPosition: head asString.! !
+!MarsRover methodsFor: 'heading' stamp: 'cde4 10/24/2022 21:38:49' prior: 50556951!
+rotateLeft
+	
+	head rotateLeft.
+	self notifyPosition: (head asString).! !
+!MarsRover methodsFor: 'heading' stamp: 'cde4 10/24/2022 21:38:54' prior: 50556885!
+rotateRight
+	
+	head rotateRight.
+	self notifyPosition: (head asString).! !
+!MarsRover methodsFor: 'moving' stamp: 'cde4 10/24/2022 21:39:14' prior: 50556874!
+moveForward
+	
+	head moveForward.
+	
+	self notifyPosition: position asString.! !
+!MarsRover methodsFor: 'moving' stamp: 'cde4 10/24/2022 21:39:18' prior: 50556890!
+moveBackward
+	
+	head moveBackward.
+	
+	self notifyPosition: position asString.! !
+!LogBook methodsFor: 'as yet unclassified' stamp: 'cde4 10/24/2022 21:39:24' prior: 50556945!
+receiveNotification: aNotification
+
+	self addEntry: aNotification ! !
+
+!testRun: #MarsRoverTest #test17MarsRoverHasNoLogsWhenInitialized stamp: 'cde4 10/24/2022 21:39:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18MarsRoverLogsSinglePositionInLogBook stamp: 'cde4 10/24/2022 21:39:38'!
+ERROR!
+
+!testRun: #MarsRoverTest #test18MarsRoverLogsSinglePositionInLogBook stamp: 'cde4 10/24/2022 21:39:38'!
+ERROR!
+
+!testRun: #MarsRoverTest #test18MarsRoverLogsSinglePositionInLogBook stamp: 'cde4 10/24/2022 21:40:03'!
+ERROR!
+
+!testRun: #MarsRoverTest #test18MarsRoverLogsSinglePositionInLogBook stamp: 'cde4 10/24/2022 21:40:03'!
+ERROR!
+!MarsRover methodsFor: 'recipients' stamp: 'cde4 10/24/2022 21:41:12' prior: 50556913!
+notifyPosition: aNotification
+
+	recipients do: [ :aRecipient | aRecipient receiveNotification: aNotification ]! !
+
+!testRun: #MarsRoverTest #test18MarsRoverLogsSinglePositionInLogBook stamp: 'cde4 10/24/2022 21:41:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19MarsRoverLogsMoreThanOnePositionInLogBook stamp: 'cde4 10/24/2022 21:41:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20MarsRoverLogsSingleRotationInLogBook stamp: 'cde4 10/24/2022 21:41:22'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde4 10/24/2022 21:43:13'!
+test21MarsRoverLogsDoubleRotationInLogBook
+	
+	
+	|aMarsRover aLogBook|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := LogBook for: aMarsRover. 
+	aMarsRover process: 'rr'. 
+	
+	self assert: (aLogBook logBookEntries at: 1) equals: 'East'.
+	self assert: (aLogBook logBookEntries at: 2) equals: 'South'.
+	
+	! !
+
+!methodRemoval: MarsRover #notifyHead: stamp: 'cde4 10/24/2022 21:43:50'!
+notifyHead: aNotification
+
+	recipients do: [ :aRecipient | aRecipient receiveHead: aNotification ]!
+!MarsRover methodsFor: 'recipients' stamp: 'cde4 10/24/2022 21:44:12' overrides: 16902144!
+notify: aNotification
+
+	recipients do: [ :aRecipient | aRecipient receiveNotification: aNotification ]! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'cde4 10/24/2022 21:44:12' prior: 50556966!
+moveForward
+	
+	head moveForward.
+	
+	self notify: position asString.! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'cde4 10/24/2022 21:44:12' prior: 50556961!
+rotateRight
+	
+	head rotateRight.
+	self notify: (head asString).! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'cde4 10/24/2022 21:44:12' prior: 50556972!
+moveBackward
+	
+	head moveBackward.
+	
+	self notify: position asString.! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'cde4 10/24/2022 21:44:12' prior: 50556956!
+rotateLeft
+	
+	head rotateLeft.
+	self notify: (head asString).! !
+
+!methodRemoval: MarsRover #notifyPosition: stamp: 'cde4 10/24/2022 21:44:12'!
+notifyPosition: aNotification
+
+	recipients do: [ :aRecipient | aRecipient receiveNotification: aNotification ]!
+
+!testRun: #MarsRoverTest #test01DoesNotMoveWhenNoCommand stamp: 'cde4 10/24/2022 21:44:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02IsAtFailsForDifferentPosition stamp: 'cde4 10/24/2022 21:44:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03IsAtFailsForDifferentHeading stamp: 'cde4 10/24/2022 21:44:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04IncrementsYAfterMovingForwardWhenHeadingNorth stamp: 'cde4 10/24/2022 21:44:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06DecrementsYAfterMovingBackwardsWhenHeadingNorth stamp: 'cde4 10/24/2022 21:44:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07PointToEashAfterRotatingRightWhenHeadingNorth stamp: 'cde4 10/24/2022 21:44:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08PointsToWestAfterRotatingLeftWhenPointingNorth stamp: 'cde4 10/24/2022 21:44:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09DoesNotProcessInvalidCommand stamp: 'cde4 10/24/2022 21:44:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanProcessMoreThanOneCommand stamp: 'cde4 10/24/2022 21:44:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11IncrementsXAfterMovingForwareWhenHeadingEast stamp: 'cde4 10/24/2022 21:44:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12DecrementsXAfterMovingBackwardWhenHeadingEast stamp: 'cde4 10/24/2022 21:44:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13PointsToSouthAfterRotatingRightWhenHeadingEast stamp: 'cde4 10/24/2022 21:44:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14PointsToNorthAfterRotatingLeftWhenPointingEast stamp: 'cde4 10/24/2022 21:44:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingSouth stamp: 'cde4 10/24/2022 21:44:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingWest stamp: 'cde4 10/24/2022 21:44:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17MarsRoverHasNoLogsWhenInitialized stamp: 'cde4 10/24/2022 21:44:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18MarsRoverLogsSinglePositionInLogBook stamp: 'cde4 10/24/2022 21:44:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19MarsRoverLogsMoreThanOnePositionInLogBook stamp: 'cde4 10/24/2022 21:44:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20MarsRoverLogsSingleRotationInLogBook stamp: 'cde4 10/24/2022 21:44:14'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21MarsRoverLogsDoubleRotationInLogBook stamp: 'cde4 10/24/2022 21:44:14'!
+PASSED!
+!LogBook methodsFor: 'as yet unclassified' stamp: 'cde4 10/24/2022 21:50:01' prior: 50556978!
+receiveNotification: aNotification
+
+	self addEntry: aNotification. 
+	Transcript show: aNotification.! !
+
+!testRun: #MarsRoverTest #test20MarsRoverLogsSingleRotationInLogBook stamp: 'cde4 10/24/2022 21:50:08'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19MarsRoverLogsMoreThanOnePositionInLogBook stamp: 'cde4 10/24/2022 21:50:26'!
+PASSED!
+!LogBook methodsFor: 'as yet unclassified' stamp: 'cde4 10/24/2022 21:51:00' prior: 50557147!
+receiveNotification: aNotification
+
+	self addEntry: aNotification. 
+	TranscriptWindow openTranscript show: aNotification.! !
+
+!testRun: #MarsRoverTest #test19MarsRoverLogsMoreThanOnePositionInLogBook stamp: 'cde4 10/24/2022 21:51:14'!
+ERROR!
+
+!testRun: #MarsRoverTest #test19MarsRoverLogsMoreThanOnePositionInLogBook stamp: 'cde4 10/24/2022 21:51:14'!
+ERROR!
+!LogBook methodsFor: 'as yet unclassified' stamp: 'cde4 10/24/2022 21:51:37' prior: 50557161!
+receiveNotification: aNotification
+
+	self addEntry: aNotification. 
+	TranscriptWindow openTranscript.
+	Transcript show: aNotification.! !
+
+!testRun: #MarsRoverTest #test19MarsRoverLogsMoreThanOnePositionInLogBook stamp: 'cde4 10/24/2022 21:51:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19MarsRoverLogsMoreThanOnePositionInLogBook stamp: 'cde4 10/24/2022 21:51:54'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19MarsRoverLogsMoreThanOnePositionInLogBook stamp: 'cde4 10/24/2022 21:52:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21MarsRoverLogsDoubleRotationInLogBook stamp: 'cde4 10/24/2022 21:52:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21MarsRoverLogsDoubleRotationInLogBook stamp: 'cde4 10/24/2022 21:53:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20MarsRoverLogsSingleRotationInLogBook stamp: 'cde4 10/24/2022 21:54:30'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde4 10/24/2022 21:54:37' prior: 50556822!
+test20MarsRoverLogsSingleRotationInLogBook
+	
+	
+	|aMarsRover aLogBook|
+	TranscriptWindow openTranscript.
+	Transcript clear.				
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := LogBook for: aMarsRover. 
+	aMarsRover process: 'r'. 
+	
+	self assert: (aLogBook logBookEntries at: 1) equals: 'East'.
+	
+	! !
+
+!testRun: #MarsRoverTest #test20MarsRoverLogsSingleRotationInLogBook stamp: 'cde4 10/24/2022 21:54:40'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde4 10/24/2022 21:55:04' prior: 50557018!
+test21MarsRoverLogsDoubleRotationInLogBook
+	
+	
+	|aMarsRover aLogBook|
+	TranscriptWindow openTranscript.
+	Transcript clear.				
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := LogBook for: aMarsRover. 
+	aMarsRover process: 'rr'. 
+	
+	self assert: (aLogBook logBookEntries at: 1) equals: 'East'.
+	self assert: (aLogBook logBookEntries at: 2) equals: 'South'.
+	
+	! !
+
+!testRun: #MarsRoverTest #test21MarsRoverLogsDoubleRotationInLogBook stamp: 'cde4 10/24/2022 21:55:07'!
+PASSED!
+!LogBook methodsFor: 'as yet unclassified' stamp: 'cde4 10/24/2022 21:55:23' prior: 50557176!
+receiveNotification: aNotification
+
+	self addEntry: aNotification. 
+	
+	Transcript show: aNotification.! !
+!LogBook methodsFor: 'as yet unclassified' stamp: 'cde4 10/24/2022 21:55:34' prior: 50556733!
+initializeFor: aMarsRover
+	
+	logBookEntries := OrderedCollection new.
+	aMarsRover addRecipient: self.
+	TranscriptWindow openTranscript.
+	Transcript clear.				! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde4 10/24/2022 21:55:43' prior: 50557222!
+test21MarsRoverLogsDoubleRotationInLogBook
+	
+	
+	|aMarsRover aLogBook|
+	
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := LogBook for: aMarsRover. 
+	aMarsRover process: 'rr'. 
+
+	self assert: (aLogBook logBookEntries at: 1) equals: 'East'.
+	self assert: (aLogBook logBookEntries at: 2) equals: 'South'.
+	
+	! !
+
+!testRun: #MarsRoverTest #test18MarsRoverLogsSinglePositionInLogBook stamp: 'cde4 10/24/2022 21:55:46'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20MarsRoverLogsSingleRotationInLogBook stamp: 'cde4 10/24/2022 21:55:51'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde4 10/24/2022 21:56:03' prior: 50557205!
+test20MarsRoverLogsSingleRotationInLogBook
+	
+	
+	|aMarsRover aLogBook|
+
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := LogBook for: aMarsRover. 
+	aMarsRover process: 'r'. 
+	
+	self assert: (aLogBook logBookEntries at: 1) equals: 'East'.
+	
+	! !
+
+!testRun: #MarsRoverTest #test21MarsRoverLogsDoubleRotationInLogBook stamp: 'cde4 10/24/2022 21:56:06'!
+PASSED!
+
+LogBook subclass: #PositionsLogBook
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #PositionsLogBook category: 'MarsRover-WithHeading' stamp: 'cde4 10/24/2022 21:57:19'!
+LogBook subclass: #PositionsLogBook
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+LogBook subclass: #HeadingLogBook
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #HeadingLogBook category: 'MarsRover-WithHeading' stamp: 'cde4 10/24/2022 21:57:34'!
+LogBook subclass: #HeadingLogBook
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+Object subclass: #LogBook
+	instanceVariableNames: 'logBookEntries'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #LogBook category: 'MarsRover-WithHeading' stamp: 'cde4 10/24/2022 21:57:40'!
+Object subclass: #LogBook
+	instanceVariableNames: 'logBookEntries'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!testRun: #MarsRoverTest #test01DoesNotMoveWhenNoCommand stamp: 'cde4 10/24/2022 21:57:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02IsAtFailsForDifferentPosition stamp: 'cde4 10/24/2022 21:57:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03IsAtFailsForDifferentHeading stamp: 'cde4 10/24/2022 21:57:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04IncrementsYAfterMovingForwardWhenHeadingNorth stamp: 'cde4 10/24/2022 21:57:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06DecrementsYAfterMovingBackwardsWhenHeadingNorth stamp: 'cde4 10/24/2022 21:57:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07PointToEashAfterRotatingRightWhenHeadingNorth stamp: 'cde4 10/24/2022 21:57:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08PointsToWestAfterRotatingLeftWhenPointingNorth stamp: 'cde4 10/24/2022 21:57:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09DoesNotProcessInvalidCommand stamp: 'cde4 10/24/2022 21:57:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanProcessMoreThanOneCommand stamp: 'cde4 10/24/2022 21:57:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11IncrementsXAfterMovingForwareWhenHeadingEast stamp: 'cde4 10/24/2022 21:57:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12DecrementsXAfterMovingBackwardWhenHeadingEast stamp: 'cde4 10/24/2022 21:57:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13PointsToSouthAfterRotatingRightWhenHeadingEast stamp: 'cde4 10/24/2022 21:57:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14PointsToNorthAfterRotatingLeftWhenPointingEast stamp: 'cde4 10/24/2022 21:57:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingSouth stamp: 'cde4 10/24/2022 21:57:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingWest stamp: 'cde4 10/24/2022 21:57:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17MarsRoverHasNoLogsWhenInitialized stamp: 'cde4 10/24/2022 21:57:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18MarsRoverLogsSinglePositionInLogBook stamp: 'cde4 10/24/2022 21:57:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19MarsRoverLogsMoreThanOnePositionInLogBook stamp: 'cde4 10/24/2022 21:57:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20MarsRoverLogsSingleRotationInLogBook stamp: 'cde4 10/24/2022 21:57:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21MarsRoverLogsDoubleRotationInLogBook stamp: 'cde4 10/24/2022 21:57:59'!
+PASSED!
+!HeadingLogBook methodsFor: 'no messages' stamp: 'cde4 10/24/2022 21:59:16'!
+receiveHeading: aHeading
+
+	self addEntry: aHeading. 
+	
+	Transcript show: aHeading.! !
+!PositionsLogBook methodsFor: 'no messages' stamp: 'cde4 10/24/2022 21:59:43'!
+receivePosition: aPosition
+
+	self addEntry: aPosition. 
+	
+	Transcript show: aPosition.! !
+!MarsRover methodsFor: 'recipients' stamp: 'cde4 10/24/2022 22:00:31'!
+notifyPosition: aPosition
+
+	recipients do: [ :aRecipient | aRecipient receivePosition: aPosition ]! !
+!MarsRover methodsFor: 'recipients' stamp: 'cde4 10/24/2022 22:00:52'!
+notifyHeading: aHeading
+
+	recipients do: [ :aRecipient | aRecipient receiveHeading: aHeading ]! !
+!HeadingLogBook methodsFor: 'as yet unclassified' stamp: 'cde4 10/24/2022 22:01:08'!
+receivePosition: aPosition! !
+!PositionsLogBook methodsFor: 'as yet unclassified' stamp: 'cde4 10/24/2022 22:01:18'!
+receiveHeading: aHeading! !
+!LogBook methodsFor: 'as yet unclassified' stamp: 'cde4 10/24/2022 22:01:35'!
+receiveHeading: aHeading
+
+	self subclassResponsibility ! !
+!LogBook methodsFor: 'as yet unclassified' stamp: 'cde4 10/24/2022 22:01:50'!
+receivePosition: aPosition
+
+	self subclassResponsibility! !
+
+LogBook subclass: #MovementLogBook
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #MovementLogBook category: 'MarsRover-WithHeading' stamp: 'cde4 10/24/2022 22:05:42'!
+LogBook subclass: #MovementLogBook
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!MovementLogBook methodsFor: 'no messages' stamp: 'cde4 10/24/2022 22:05:53' overrides: 50557434!
+receiveHeading: aHeading
+
+	self addEntry: aHeading. 
+	
+	Transcript show: aHeading.! !
+!MovementLogBook methodsFor: 'as yet unclassified' stamp: 'cde4 10/24/2022 22:06:07' overrides: 50557439!
+receivePosition: aPosition
+
+	self addEntry: aPosition. 
+	
+	Transcript show: aPosition.! !
+!MovementLogBook methodsFor: 'receive' stamp: 'cde4 10/24/2022 22:06:41' prior: 50557463 overrides: 50557439!
+receivePosition: aPosition
+
+	self receiveNotification: aPosition! !
+!MovementLogBook methodsFor: 'receive' stamp: 'cde4 10/24/2022 22:07:01' prior: 50557457 overrides: 50557434!
+receiveHeading: aHeading
+
+	self receiveNotification: aHeading! !
+
+!testRun: #MarsRoverTest #test01DoesNotMoveWhenNoCommand stamp: 'cde4 10/24/2022 22:07:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02IsAtFailsForDifferentPosition stamp: 'cde4 10/24/2022 22:07:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03IsAtFailsForDifferentHeading stamp: 'cde4 10/24/2022 22:07:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04IncrementsYAfterMovingForwardWhenHeadingNorth stamp: 'cde4 10/24/2022 22:07:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06DecrementsYAfterMovingBackwardsWhenHeadingNorth stamp: 'cde4 10/24/2022 22:07:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07PointToEashAfterRotatingRightWhenHeadingNorth stamp: 'cde4 10/24/2022 22:07:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08PointsToWestAfterRotatingLeftWhenPointingNorth stamp: 'cde4 10/24/2022 22:07:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09DoesNotProcessInvalidCommand stamp: 'cde4 10/24/2022 22:07:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanProcessMoreThanOneCommand stamp: 'cde4 10/24/2022 22:07:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11IncrementsXAfterMovingForwareWhenHeadingEast stamp: 'cde4 10/24/2022 22:07:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12DecrementsXAfterMovingBackwardWhenHeadingEast stamp: 'cde4 10/24/2022 22:07:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13PointsToSouthAfterRotatingRightWhenHeadingEast stamp: 'cde4 10/24/2022 22:07:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14PointsToNorthAfterRotatingLeftWhenPointingEast stamp: 'cde4 10/24/2022 22:07:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingSouth stamp: 'cde4 10/24/2022 22:07:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingWest stamp: 'cde4 10/24/2022 22:07:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17MarsRoverHasNoLogsWhenInitialized stamp: 'cde4 10/24/2022 22:07:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18MarsRoverLogsSinglePositionInLogBook stamp: 'cde4 10/24/2022 22:07:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19MarsRoverLogsMoreThanOnePositionInLogBook stamp: 'cde4 10/24/2022 22:07:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20MarsRoverLogsSingleRotationInLogBook stamp: 'cde4 10/24/2022 22:07:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21MarsRoverLogsDoubleRotationInLogBook stamp: 'cde4 10/24/2022 22:07:28'!
+PASSED!
+!MarsRover methodsFor: 'moving' stamp: 'cde4 10/24/2022 22:08:37' prior: 50557056!
+moveBackward
+	
+	head moveBackward.
+	
+	self notifyPotion: position.! !
+!MarsRover methodsFor: 'moving' stamp: 'cde4 10/24/2022 22:08:50' prior: 50557554!
+moveBackward
+	
+	head moveBackward.
+	
+	self notifyPosition: position asString.! !
+!MarsRover methodsFor: 'moving' stamp: 'cde4 10/24/2022 22:08:55' prior: 50557044!
+moveForward
+	
+	head moveForward.
+	
+	self notifyPosition: position asString.! !
+!MarsRover methodsFor: 'heading' stamp: 'cde4 10/24/2022 22:09:13' prior: 50557062!
+rotateLeft
+	
+	head rotateLeft.
+	self notifyHeading: (head asString).! !
+!MarsRover methodsFor: 'heading' stamp: 'cde4 10/24/2022 22:09:17' prior: 50557050!
+rotateRight
+	
+	head rotateRight.
+	self notifyHeading: (head asString).! !
+
+!testRun: #MarsRoverTest #test01DoesNotMoveWhenNoCommand stamp: 'cde4 10/24/2022 22:09:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02IsAtFailsForDifferentPosition stamp: 'cde4 10/24/2022 22:09:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03IsAtFailsForDifferentHeading stamp: 'cde4 10/24/2022 22:09:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04IncrementsYAfterMovingForwardWhenHeadingNorth stamp: 'cde4 10/24/2022 22:09:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06DecrementsYAfterMovingBackwardsWhenHeadingNorth stamp: 'cde4 10/24/2022 22:09:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07PointToEashAfterRotatingRightWhenHeadingNorth stamp: 'cde4 10/24/2022 22:09:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08PointsToWestAfterRotatingLeftWhenPointingNorth stamp: 'cde4 10/24/2022 22:09:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09DoesNotProcessInvalidCommand stamp: 'cde4 10/24/2022 22:09:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanProcessMoreThanOneCommand stamp: 'cde4 10/24/2022 22:09:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11IncrementsXAfterMovingForwareWhenHeadingEast stamp: 'cde4 10/24/2022 22:09:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12DecrementsXAfterMovingBackwardWhenHeadingEast stamp: 'cde4 10/24/2022 22:09:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13PointsToSouthAfterRotatingRightWhenHeadingEast stamp: 'cde4 10/24/2022 22:09:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14PointsToNorthAfterRotatingLeftWhenPointingEast stamp: 'cde4 10/24/2022 22:09:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingSouth stamp: 'cde4 10/24/2022 22:09:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingWest stamp: 'cde4 10/24/2022 22:09:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17MarsRoverHasNoLogsWhenInitialized stamp: 'cde4 10/24/2022 22:09:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18MarsRoverLogsSinglePositionInLogBook stamp: 'cde4 10/24/2022 22:09:22'!
+ERROR!
+
+!testRun: #MarsRoverTest #test19MarsRoverLogsMoreThanOnePositionInLogBook stamp: 'cde4 10/24/2022 22:09:22'!
+ERROR!
+
+!testRun: #MarsRoverTest #test20MarsRoverLogsSingleRotationInLogBook stamp: 'cde4 10/24/2022 22:09:22'!
+ERROR!
+
+!testRun: #MarsRoverTest #test21MarsRoverLogsDoubleRotationInLogBook stamp: 'cde4 10/24/2022 22:09:22'!
+ERROR!
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde4 10/24/2022 22:10:05' prior: 50556558!
+test17MarsRoverHasNoLogsWhenInitialized
+	
+	|aMarsRover aLogBook|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := MovementLogBook for: aMarsRover. 
+	
+	self assert: (aLogBook isEmpty)! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde4 10/24/2022 22:10:08' prior: 50556583!
+test18MarsRoverLogsSinglePositionInLogBook
+	
+	
+	|aMarsRover aLogBook|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := MovementLogBook for: aMarsRover. 
+	
+	aMarsRover process: 'f'. 
+	
+	self assert: (aLogBook logBookEntries at: 1) equals: '0@1'
+
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde4 10/24/2022 22:10:11' prior: 50556803!
+test19MarsRoverLogsMoreThanOnePositionInLogBook
+	
+	
+	|aMarsRover aLogBook|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := MovementLogBook for: aMarsRover. 
+	
+	aMarsRover process: 'ffb'. 
+	
+	self assert: (aLogBook logBookEntries at: 1) equals: '0@1'.
+	self assert: (aLogBook logBookEntries at: 2) equals: '0@2'.
+	self assert: (aLogBook logBookEntries at: 3) equals: '0@1'.
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde4 10/24/2022 22:10:14' prior: 50557277!
+test20MarsRoverLogsSingleRotationInLogBook
+	
+	
+	|aMarsRover aLogBook|
+
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := MovementLogBook for: aMarsRover. 
+	aMarsRover process: 'r'. 
+	
+	self assert: (aLogBook logBookEntries at: 1) equals: 'East'.
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'cde4 10/24/2022 22:10:18' prior: 50557256!
+test21MarsRoverLogsDoubleRotationInLogBook
+	
+	
+	|aMarsRover aLogBook|
+	
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := MovementLogBook for: aMarsRover. 
+	aMarsRover process: 'rr'. 
+
+	self assert: (aLogBook logBookEntries at: 1) equals: 'East'.
+	self assert: (aLogBook logBookEntries at: 2) equals: 'South'.
+	
+	! !
+
+!testRun: #MarsRoverTest #test01DoesNotMoveWhenNoCommand stamp: 'cde4 10/24/2022 22:10:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02IsAtFailsForDifferentPosition stamp: 'cde4 10/24/2022 22:10:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03IsAtFailsForDifferentHeading stamp: 'cde4 10/24/2022 22:10:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04IncrementsYAfterMovingForwardWhenHeadingNorth stamp: 'cde4 10/24/2022 22:10:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06DecrementsYAfterMovingBackwardsWhenHeadingNorth stamp: 'cde4 10/24/2022 22:10:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07PointToEashAfterRotatingRightWhenHeadingNorth stamp: 'cde4 10/24/2022 22:10:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08PointsToWestAfterRotatingLeftWhenPointingNorth stamp: 'cde4 10/24/2022 22:10:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09DoesNotProcessInvalidCommand stamp: 'cde4 10/24/2022 22:10:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanProcessMoreThanOneCommand stamp: 'cde4 10/24/2022 22:10:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11IncrementsXAfterMovingForwareWhenHeadingEast stamp: 'cde4 10/24/2022 22:10:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12DecrementsXAfterMovingBackwardWhenHeadingEast stamp: 'cde4 10/24/2022 22:10:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13PointsToSouthAfterRotatingRightWhenHeadingEast stamp: 'cde4 10/24/2022 22:10:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14PointsToNorthAfterRotatingLeftWhenPointingEast stamp: 'cde4 10/24/2022 22:10:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingSouth stamp: 'cde4 10/24/2022 22:10:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingWest stamp: 'cde4 10/24/2022 22:10:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17MarsRoverHasNoLogsWhenInitialized stamp: 'cde4 10/24/2022 22:10:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18MarsRoverLogsSinglePositionInLogBook stamp: 'cde4 10/24/2022 22:10:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19MarsRoverLogsMoreThanOnePositionInLogBook stamp: 'cde4 10/24/2022 22:10:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20MarsRoverLogsSingleRotationInLogBook stamp: 'cde4 10/24/2022 22:10:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21MarsRoverLogsDoubleRotationInLogBook stamp: 'cde4 10/24/2022 22:10:24'!
+PASSED!
+
+----SNAPSHOT----(24 October 2022 22:11:22) CuisUniversity-5481.image priorSource: 7059698!
+
+----SNAPSHOT----(24 October 2022 22:12:51) CuisUniversity-5481.image priorSource: 7236512!
+
+----STARTUP---- (26 October 2022 11:19:06) as C:\Users\maria\Desktop\Facultad\Taller\Inge1\CuisUniversity-windows64\CuisUniversity-5481.image!
+
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 11:21:14'!
+test17MarsRoverHasNoMovementLogsWhenInitialized
+	
+	|aMarsRover aLogBook|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := MovementLogBook for: aMarsRover. 
+	
+	self assert: (aLogBook isEmpty)! !
+
+!methodRemoval: MarsRoverTest #test17MarsRoverHasNoLogsWhenInitialized stamp: 'MO 10/26/2022 11:21:15'!
+test17MarsRoverHasNoLogsWhenInitialized
+	
+	|aMarsRover aLogBook|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := MovementLogBook for: aMarsRover. 
+	
+	self assert: (aLogBook isEmpty)!
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 11:21:34'!
+test18MarsRoverMovementLogsSinglePositionInLogBook
+	
+	
+	|aMarsRover aLogBook|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := MovementLogBook for: aMarsRover. 
+	
+	aMarsRover process: 'f'. 
+	
+	self assert: (aLogBook logBookEntries at: 1) equals: '0@1'
+
+	
+	! !
+
+!methodRemoval: MarsRoverTest #test18MarsRoverLogsSinglePositionInLogBook stamp: 'MO 10/26/2022 11:21:34'!
+test18MarsRoverLogsSinglePositionInLogBook
+	
+	
+	|aMarsRover aLogBook|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := MovementLogBook for: aMarsRover. 
+	
+	aMarsRover process: 'f'. 
+	
+	self assert: (aLogBook logBookEntries at: 1) equals: '0@1'
+
+	
+	!
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 11:21:42'!
+test19MarsRoverMovementLogsMoreThanOnePositionInLogBook
+	
+	
+	|aMarsRover aLogBook|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := MovementLogBook for: aMarsRover. 
+	
+	aMarsRover process: 'ffb'. 
+	
+	self assert: (aLogBook logBookEntries at: 1) equals: '0@1'.
+	self assert: (aLogBook logBookEntries at: 2) equals: '0@2'.
+	self assert: (aLogBook logBookEntries at: 3) equals: '0@1'.
+	
+	! !
+
+!methodRemoval: MarsRoverTest #test19MarsRoverLogsMoreThanOnePositionInLogBook stamp: 'MO 10/26/2022 11:21:42'!
+test19MarsRoverLogsMoreThanOnePositionInLogBook
+	
+	
+	|aMarsRover aLogBook|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := MovementLogBook for: aMarsRover. 
+	
+	aMarsRover process: 'ffb'. 
+	
+	self assert: (aLogBook logBookEntries at: 1) equals: '0@1'.
+	self assert: (aLogBook logBookEntries at: 2) equals: '0@2'.
+	self assert: (aLogBook logBookEntries at: 3) equals: '0@1'.
+	
+	!
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 11:21:55'!
+test20MarsRoverMovementLogsSingleRotationInLogBook
+	
+	
+	|aMarsRover aLogBook|
+
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := MovementLogBook for: aMarsRover. 
+	aMarsRover process: 'r'. 
+	
+	self assert: (aLogBook logBookEntries at: 1) equals: 'East'.
+	
+	! !
+
+!methodRemoval: MarsRoverTest #test20MarsRoverLogsSingleRotationInLogBook stamp: 'MO 10/26/2022 11:21:57'!
+test20MarsRoverLogsSingleRotationInLogBook
+	
+	
+	|aMarsRover aLogBook|
+
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := MovementLogBook for: aMarsRover. 
+	aMarsRover process: 'r'. 
+	
+	self assert: (aLogBook logBookEntries at: 1) equals: 'East'.
+	
+	!
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 11:22:14'!
+test21MarsRoverMovementLogsDoubleRotationInLogBook
+	
+	
+	|aMarsRover aLogBook|
+	
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := MovementLogBook for: aMarsRover. 
+	aMarsRover process: 'rr'. 
+
+	self assert: (aLogBook logBookEntries at: 1) equals: 'East'.
+	self assert: (aLogBook logBookEntries at: 2) equals: 'South'.
+	
+	! !
+
+!methodRemoval: MarsRoverTest #test21MarsRoverLogsDoubleRotationInLogBook stamp: 'MO 10/26/2022 11:22:14'!
+test21MarsRoverLogsDoubleRotationInLogBook
+	
+	
+	|aMarsRover aLogBook|
+	
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := MovementLogBook for: aMarsRover. 
+	aMarsRover process: 'rr'. 
+
+	self assert: (aLogBook logBookEntries at: 1) equals: 'East'.
+	self assert: (aLogBook logBookEntries at: 2) equals: 'South'.
+	
+	!
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 11:26:15' prior: 50557902!
+test21MarsRoverMovementLogsDoubleRotationInLogBook
+	
+	
+	|aMarsRover aLogBook|
+	
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := MovementLogBook for: aMarsRover. 
+	aMarsRover process: 'rrl'. 
+
+	self assert: (aLogBook logBookEntries at: 1) equals: 'East'.
+	self assert: (aLogBook logBookEntries at: 2) equals: 'South'.
+	self assert: (aLogBook logBookEntries at: 3) equals: 'East'.
+	
+	! !
+
+!testRun: #MarsRoverTest #test21MarsRoverMovementLogsDoubleRotationInLogBook stamp: 'MO 10/26/2022 11:26:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01DoesNotMoveWhenNoCommand stamp: 'MO 10/26/2022 11:26:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02IsAtFailsForDifferentPosition stamp: 'MO 10/26/2022 11:26:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03IsAtFailsForDifferentHeading stamp: 'MO 10/26/2022 11:26:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04IncrementsYAfterMovingForwardWhenHeadingNorth stamp: 'MO 10/26/2022 11:26:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06DecrementsYAfterMovingBackwardsWhenHeadingNorth stamp: 'MO 10/26/2022 11:26:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07PointToEashAfterRotatingRightWhenHeadingNorth stamp: 'MO 10/26/2022 11:26:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08PointsToWestAfterRotatingLeftWhenPointingNorth stamp: 'MO 10/26/2022 11:26:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09DoesNotProcessInvalidCommand stamp: 'MO 10/26/2022 11:26:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanProcessMoreThanOneCommand stamp: 'MO 10/26/2022 11:26:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11IncrementsXAfterMovingForwareWhenHeadingEast stamp: 'MO 10/26/2022 11:26:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12DecrementsXAfterMovingBackwardWhenHeadingEast stamp: 'MO 10/26/2022 11:26:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13PointsToSouthAfterRotatingRightWhenHeadingEast stamp: 'MO 10/26/2022 11:26:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14PointsToNorthAfterRotatingLeftWhenPointingEast stamp: 'MO 10/26/2022 11:26:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingSouth stamp: 'MO 10/26/2022 11:26:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingWest stamp: 'MO 10/26/2022 11:26:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17MarsRoverHasNoMovementLogsWhenInitialized stamp: 'MO 10/26/2022 11:26:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18MarsRoverMovementLogsSinglePositionInLogBook stamp: 'MO 10/26/2022 11:26:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19MarsRoverMovementLogsMoreThanOnePositionInLogBook stamp: 'MO 10/26/2022 11:26:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20MarsRoverMovementLogsSingleRotationInLogBook stamp: 'MO 10/26/2022 11:26:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21MarsRoverMovementLogsDoubleRotationInLogBook stamp: 'MO 10/26/2022 11:26:19'!
+PASSED!
+!LogBook methodsFor: 'initialization' stamp: 'MO 10/26/2022 11:26:53' prior: 50557248!
+initializeFor: aMarsRover
+	
+	logBookEntries := OrderedCollection new.
+	aMarsRover addRecipient: self.
+	"TranscriptWindow openTranscript."
+	Transcript clear.				! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 11:28:33'!
+test22MarsRoverHasNoHeadingLogsWhenInitialized
+	
+	|aMarsRover aLogBook|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := HeadingLogBook for: aMarsRover. 
+	
+	self assert: ( (HeadingLogBook for: (MarsRover at: 0@0 heading: MarsRoverHeadingNorth)) isEmpty)! !
+
+!testRun: #MarsRoverTest #test22MarsRoverHasNoHeadingLogsWhenInitialized stamp: 'MO 10/26/2022 11:28:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01DoesNotMoveWhenNoCommand stamp: 'MO 10/26/2022 11:28:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02IsAtFailsForDifferentPosition stamp: 'MO 10/26/2022 11:28:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03IsAtFailsForDifferentHeading stamp: 'MO 10/26/2022 11:28:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04IncrementsYAfterMovingForwardWhenHeadingNorth stamp: 'MO 10/26/2022 11:28:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06DecrementsYAfterMovingBackwardsWhenHeadingNorth stamp: 'MO 10/26/2022 11:28:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07PointToEashAfterRotatingRightWhenHeadingNorth stamp: 'MO 10/26/2022 11:28:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08PointsToWestAfterRotatingLeftWhenPointingNorth stamp: 'MO 10/26/2022 11:28:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09DoesNotProcessInvalidCommand stamp: 'MO 10/26/2022 11:28:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanProcessMoreThanOneCommand stamp: 'MO 10/26/2022 11:28:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11IncrementsXAfterMovingForwareWhenHeadingEast stamp: 'MO 10/26/2022 11:28:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12DecrementsXAfterMovingBackwardWhenHeadingEast stamp: 'MO 10/26/2022 11:28:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13PointsToSouthAfterRotatingRightWhenHeadingEast stamp: 'MO 10/26/2022 11:28:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14PointsToNorthAfterRotatingLeftWhenPointingEast stamp: 'MO 10/26/2022 11:28:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingSouth stamp: 'MO 10/26/2022 11:28:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingWest stamp: 'MO 10/26/2022 11:28:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17MarsRoverHasNoMovementLogsWhenInitialized stamp: 'MO 10/26/2022 11:28:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18MarsRoverMovementLogsSinglePositionInLogBook stamp: 'MO 10/26/2022 11:28:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19MarsRoverMovementLogsMoreThanOnePositionInLogBook stamp: 'MO 10/26/2022 11:28:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20MarsRoverMovementLogsSingleRotationInLogBook stamp: 'MO 10/26/2022 11:28:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21MarsRoverMovementLogsDoubleRotationInLogBook stamp: 'MO 10/26/2022 11:28:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22MarsRoverHasNoHeadingLogsWhenInitialized stamp: 'MO 10/26/2022 11:28:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22MarsRoverHasNoHeadingLogsWhenInitialized stamp: 'MO 10/26/2022 11:28:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01DoesNotMoveWhenNoCommand stamp: 'MO 10/26/2022 11:28:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02IsAtFailsForDifferentPosition stamp: 'MO 10/26/2022 11:28:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03IsAtFailsForDifferentHeading stamp: 'MO 10/26/2022 11:28:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04IncrementsYAfterMovingForwardWhenHeadingNorth stamp: 'MO 10/26/2022 11:28:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06DecrementsYAfterMovingBackwardsWhenHeadingNorth stamp: 'MO 10/26/2022 11:28:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07PointToEashAfterRotatingRightWhenHeadingNorth stamp: 'MO 10/26/2022 11:28:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08PointsToWestAfterRotatingLeftWhenPointingNorth stamp: 'MO 10/26/2022 11:28:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09DoesNotProcessInvalidCommand stamp: 'MO 10/26/2022 11:28:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanProcessMoreThanOneCommand stamp: 'MO 10/26/2022 11:28:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11IncrementsXAfterMovingForwareWhenHeadingEast stamp: 'MO 10/26/2022 11:28:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12DecrementsXAfterMovingBackwardWhenHeadingEast stamp: 'MO 10/26/2022 11:28:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13PointsToSouthAfterRotatingRightWhenHeadingEast stamp: 'MO 10/26/2022 11:28:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14PointsToNorthAfterRotatingLeftWhenPointingEast stamp: 'MO 10/26/2022 11:28:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingSouth stamp: 'MO 10/26/2022 11:28:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingWest stamp: 'MO 10/26/2022 11:28:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17MarsRoverHasNoMovementLogsWhenInitialized stamp: 'MO 10/26/2022 11:28:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18MarsRoverMovementLogsSinglePositionInLogBook stamp: 'MO 10/26/2022 11:28:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19MarsRoverMovementLogsMoreThanOnePositionInLogBook stamp: 'MO 10/26/2022 11:28:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20MarsRoverMovementLogsSingleRotationInLogBook stamp: 'MO 10/26/2022 11:28:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21MarsRoverMovementLogsDoubleRotationInLogBook stamp: 'MO 10/26/2022 11:28:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22MarsRoverHasNoHeadingLogsWhenInitialized stamp: 'MO 10/26/2022 11:28:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22MarsRoverHasNoHeadingLogsWhenInitialized stamp: 'MO 10/26/2022 11:29:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21MarsRoverMovementLogsDoubleRotationInLogBook stamp: 'MO 10/26/2022 11:29:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20MarsRoverMovementLogsSingleRotationInLogBook stamp: 'MO 10/26/2022 11:29:08'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19MarsRoverMovementLogsMoreThanOnePositionInLogBook stamp: 'MO 10/26/2022 11:29:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18MarsRoverMovementLogsSinglePositionInLogBook stamp: 'MO 10/26/2022 11:29:11'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 11:30:17' prior: 50558031!
+test22MarsRoverHasNoHeadingLogsWhenInitialized
+	
+	self assert: ( (HeadingLogBook for: (MarsRover at: 0@0 heading: MarsRoverHeadingNorth)) isEmpty)! !
+
+!testRun: #MarsRoverTest #test22MarsRoverHasNoHeadingLogsWhenInitialized stamp: 'MO 10/26/2022 11:30:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01DoesNotMoveWhenNoCommand stamp: 'MO 10/26/2022 11:30:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02IsAtFailsForDifferentPosition stamp: 'MO 10/26/2022 11:30:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03IsAtFailsForDifferentHeading stamp: 'MO 10/26/2022 11:30:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04IncrementsYAfterMovingForwardWhenHeadingNorth stamp: 'MO 10/26/2022 11:30:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06DecrementsYAfterMovingBackwardsWhenHeadingNorth stamp: 'MO 10/26/2022 11:30:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07PointToEashAfterRotatingRightWhenHeadingNorth stamp: 'MO 10/26/2022 11:30:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08PointsToWestAfterRotatingLeftWhenPointingNorth stamp: 'MO 10/26/2022 11:30:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09DoesNotProcessInvalidCommand stamp: 'MO 10/26/2022 11:30:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanProcessMoreThanOneCommand stamp: 'MO 10/26/2022 11:30:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11IncrementsXAfterMovingForwareWhenHeadingEast stamp: 'MO 10/26/2022 11:30:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12DecrementsXAfterMovingBackwardWhenHeadingEast stamp: 'MO 10/26/2022 11:30:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13PointsToSouthAfterRotatingRightWhenHeadingEast stamp: 'MO 10/26/2022 11:30:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14PointsToNorthAfterRotatingLeftWhenPointingEast stamp: 'MO 10/26/2022 11:30:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingSouth stamp: 'MO 10/26/2022 11:30:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingWest stamp: 'MO 10/26/2022 11:30:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17MarsRoverHasNoMovementLogsWhenInitialized stamp: 'MO 10/26/2022 11:30:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18MarsRoverMovementLogsSinglePositionInLogBook stamp: 'MO 10/26/2022 11:30:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19MarsRoverMovementLogsMoreThanOnePositionInLogBook stamp: 'MO 10/26/2022 11:30:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20MarsRoverMovementLogsSingleRotationInLogBook stamp: 'MO 10/26/2022 11:30:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21MarsRoverMovementLogsDoubleRotationInLogBook stamp: 'MO 10/26/2022 11:30:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22MarsRoverHasNoHeadingLogsWhenInitialized stamp: 'MO 10/26/2022 11:30:20'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 11:30:32' prior: 50558223!
+test22MarsRoverHasNoHeadingLogsWhenInitialized
+	
+	self assert: ( (HeadingLogBook for: (MarsRover at: 0@0 heading: MarsRoverHeadingNorth)) isEmpty )! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 11:33:24'!
+test22MarsRoverHasNoHeadingLogsWhenMovingFowardOrBackwards
+	
+	| aMarsRover aLogBook |
+	
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := HeadingLogBook for: aMarsRover. 
+	
+	aMarsRover process: 'f'.
+	aMarsRover process: 'b'.
+	
+	self assert: aLogBook isEmpty! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 11:33:43'!
+test23MarsRoverHasNoHeadingLogsWhenMovingFowardOrBackwards
+	
+	| aMarsRover aLogBook |
+	
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := HeadingLogBook for: aMarsRover. 
+	
+	aMarsRover process: 'f'.
+	aMarsRover process: 'b'.
+	
+	self assert: aLogBook isEmpty! !
+
+!methodRemoval: MarsRoverTest #test22MarsRoverHasNoHeadingLogsWhenMovingFowardOrBackwards stamp: 'MO 10/26/2022 11:33:43'!
+test22MarsRoverHasNoHeadingLogsWhenMovingFowardOrBackwards
+	
+	| aMarsRover aLogBook |
+	
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := HeadingLogBook for: aMarsRover. 
+	
+	aMarsRover process: 'f'.
+	aMarsRover process: 'b'.
+	
+	self assert: aLogBook isEmpty!
+
+!testRun: #MarsRoverTest #test23MarsRoverHasNoHeadingLogsWhenMovingFowardOrBackwards stamp: 'MO 10/26/2022 11:34:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01DoesNotMoveWhenNoCommand stamp: 'MO 10/26/2022 11:34:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02IsAtFailsForDifferentPosition stamp: 'MO 10/26/2022 11:34:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03IsAtFailsForDifferentHeading stamp: 'MO 10/26/2022 11:34:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04IncrementsYAfterMovingForwardWhenHeadingNorth stamp: 'MO 10/26/2022 11:34:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06DecrementsYAfterMovingBackwardsWhenHeadingNorth stamp: 'MO 10/26/2022 11:34:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07PointToEashAfterRotatingRightWhenHeadingNorth stamp: 'MO 10/26/2022 11:34:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08PointsToWestAfterRotatingLeftWhenPointingNorth stamp: 'MO 10/26/2022 11:34:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09DoesNotProcessInvalidCommand stamp: 'MO 10/26/2022 11:34:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanProcessMoreThanOneCommand stamp: 'MO 10/26/2022 11:34:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11IncrementsXAfterMovingForwareWhenHeadingEast stamp: 'MO 10/26/2022 11:34:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12DecrementsXAfterMovingBackwardWhenHeadingEast stamp: 'MO 10/26/2022 11:34:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13PointsToSouthAfterRotatingRightWhenHeadingEast stamp: 'MO 10/26/2022 11:34:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14PointsToNorthAfterRotatingLeftWhenPointingEast stamp: 'MO 10/26/2022 11:34:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingSouth stamp: 'MO 10/26/2022 11:34:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingWest stamp: 'MO 10/26/2022 11:34:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17MarsRoverHasNoMovementLogsWhenInitialized stamp: 'MO 10/26/2022 11:34:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18MarsRoverMovementLogsSinglePositionInLogBook stamp: 'MO 10/26/2022 11:34:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19MarsRoverMovementLogsMoreThanOnePositionInLogBook stamp: 'MO 10/26/2022 11:34:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20MarsRoverMovementLogsSingleRotationInLogBook stamp: 'MO 10/26/2022 11:34:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21MarsRoverMovementLogsDoubleRotationInLogBook stamp: 'MO 10/26/2022 11:34:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22MarsRoverHasNoHeadingLogsWhenInitialized stamp: 'MO 10/26/2022 11:34:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test23MarsRoverHasNoHeadingLogsWhenMovingFowardOrBackwards stamp: 'MO 10/26/2022 11:34:04'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 11:35:16'!
+test24MarsRoverHeadingLogsSingleRotationInLogBook
+	
+	| aMarsRover aLogBook |
+
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := HeadingLogBook for: aMarsRover. 
+	
+	aMarsRover process: 'r'. 
+	
+	self assert: (aLogBook logBookEntries at: 1) equals: 'East'.
+	
+	! !
+
+!testRun: #MarsRoverTest #test24MarsRoverHeadingLogsSingleRotationInLogBook stamp: 'MO 10/26/2022 11:35:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01DoesNotMoveWhenNoCommand stamp: 'MO 10/26/2022 11:35:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02IsAtFailsForDifferentPosition stamp: 'MO 10/26/2022 11:35:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03IsAtFailsForDifferentHeading stamp: 'MO 10/26/2022 11:35:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04IncrementsYAfterMovingForwardWhenHeadingNorth stamp: 'MO 10/26/2022 11:35:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06DecrementsYAfterMovingBackwardsWhenHeadingNorth stamp: 'MO 10/26/2022 11:35:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07PointToEashAfterRotatingRightWhenHeadingNorth stamp: 'MO 10/26/2022 11:35:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08PointsToWestAfterRotatingLeftWhenPointingNorth stamp: 'MO 10/26/2022 11:35:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09DoesNotProcessInvalidCommand stamp: 'MO 10/26/2022 11:35:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanProcessMoreThanOneCommand stamp: 'MO 10/26/2022 11:35:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11IncrementsXAfterMovingForwareWhenHeadingEast stamp: 'MO 10/26/2022 11:35:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12DecrementsXAfterMovingBackwardWhenHeadingEast stamp: 'MO 10/26/2022 11:35:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13PointsToSouthAfterRotatingRightWhenHeadingEast stamp: 'MO 10/26/2022 11:35:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14PointsToNorthAfterRotatingLeftWhenPointingEast stamp: 'MO 10/26/2022 11:35:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingSouth stamp: 'MO 10/26/2022 11:35:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingWest stamp: 'MO 10/26/2022 11:35:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17MarsRoverHasNoMovementLogsWhenInitialized stamp: 'MO 10/26/2022 11:35:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18MarsRoverMovementLogsSinglePositionInLogBook stamp: 'MO 10/26/2022 11:35:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19MarsRoverMovementLogsMoreThanOnePositionInLogBook stamp: 'MO 10/26/2022 11:35:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20MarsRoverMovementLogsSingleRotationInLogBook stamp: 'MO 10/26/2022 11:35:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21MarsRoverMovementLogsDoubleRotationInLogBook stamp: 'MO 10/26/2022 11:35:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22MarsRoverHasNoHeadingLogsWhenInitialized stamp: 'MO 10/26/2022 11:35:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test23MarsRoverHasNoHeadingLogsWhenMovingFowardOrBackwards stamp: 'MO 10/26/2022 11:35:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test24MarsRoverHeadingLogsSingleRotationInLogBook stamp: 'MO 10/26/2022 11:35:23'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 11:36:41'!
+test19MarsRoverMovementLogsSingleRotationInLogBook
+	
+	
+	| aMarsRover aLogBook |
+
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := MovementLogBook for: aMarsRover. 
+	
+	aMarsRover process: 'r'.
+	
+	self assert: (aLogBook logBookEntries at: 1) equals: 'East'.
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 11:39:35' prior: 50557846!
+test19MarsRoverMovementLogsMoreThanOnePositionInLogBook
+	
+	
+	|aMarsRover aLogBook|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := MovementLogBook for: aMarsRover. 
+	
+	aMarsRover process: 'frbl'. 
+	
+	self assert: (aLogBook logBookEntries at: 1) equals: '0@1'.
+	self assert: (aLogBook logBookEntries at: 2) equals: 'East'.
+	self assert: (aLogBook logBookEntries at: 3) equals: '1@1'.
+	self assert: (aLogBook logBookEntries at: 3) equals: 'North'.
+	
+	! !
+
+!testRun: #MarsRoverTest #test19MarsRoverMovementLogsMoreThanOnePositionInLogBook stamp: 'MO 10/26/2022 11:39:37'!
+FAILURE!
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 11:39:47' prior: 50558551!
+test19MarsRoverMovementLogsMoreThanOnePositionInLogBook
+	
+	
+	|aMarsRover aLogBook|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := MovementLogBook for: aMarsRover. 
+	
+	aMarsRover process: 'frbl'. 
+	
+	self assert: (aLogBook logBookEntries at: 1) equals: '0@1'.
+	self assert: (aLogBook logBookEntries at: 2) equals: 'East'.
+	self assert: (aLogBook logBookEntries at: 3) equals: '-1@1'.
+	self assert: (aLogBook logBookEntries at: 3) equals: 'North'.
+	
+	! !
+
+!testRun: #MarsRoverTest #test19MarsRoverMovementLogsMoreThanOnePositionInLogBook stamp: 'MO 10/26/2022 11:39:49'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test19MarsRoverMovementLogsMoreThanOnePositionInLogBook stamp: 'MO 10/26/2022 11:40:13'!
+FAILURE!
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 11:40:50' prior: 50558573!
+test19MarsRoverMovementLogsMoreThanOnePositionInLogBook
+	
+	
+	|aMarsRover aLogBook|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := MovementLogBook for: aMarsRover. 
+	
+	aMarsRover process: 'frbl'. 
+	
+	self assert: (aLogBook logBookEntries at: 1) equals: '0@1'.
+	self assert: (aLogBook logBookEntries at: 2) equals: 'East'.
+	self assert: (aLogBook logBookEntries at: 3) equals: '-1@1'.
+	self assert: (aLogBook logBookEntries at: 3) equals: 'North'.
+	! !
+
+!testRun: #MarsRoverTest #test19MarsRoverMovementLogsMoreThanOnePositionInLogBook stamp: 'MO 10/26/2022 11:40:52'!
+FAILURE!
+!LogBook methodsFor: 'initialization' stamp: 'MO 10/26/2022 11:41:23' prior: 50558023!
+initializeFor: aMarsRover
+	
+	logBookEntries := OrderedCollection new.
+	aMarsRover addRecipient: self.
+	TranscriptWindow openTranscript.
+	Transcript clear.				! !
+
+!testRun: #MarsRoverTest #test19MarsRoverMovementLogsMoreThanOnePositionInLogBook stamp: 'MO 10/26/2022 11:41:29'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test19MarsRoverMovementLogsMoreThanOnePositionInLogBook stamp: 'MO 10/26/2022 11:41:29'!
+FAILURE!
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 11:46:25' prior: 50558599!
+test19MarsRoverMovementLogsMoreThanOnePositionInLogBook
+	
+	
+	|aMarsRover aLogBook|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := MovementLogBook for: aMarsRover. 
+	
+	aMarsRover process: 'frbl'. 
+	
+	self assert: (aLogBook logBookEntries at: 1) equals: '0@1'.
+	self assert: (aLogBook logBookEntries at: 2) equals: 'East'.
+	self assert: (aLogBook logBookEntries at: 3) equals: '-1@1'.
+	self assert: (aLogBook logBookEntries at: 4) equals: 'North'.
+	! !
+!LogBook methodsFor: 'initialization' stamp: 'MO 10/26/2022 11:46:58' prior: 50558621!
+initializeFor: aMarsRover
+	
+	logBookEntries := OrderedCollection new.
+	aMarsRover addRecipient: self.
+	"TranscriptWindow openTranscript."
+	Transcript clear.				! !
+
+!testRun: #MarsRoverTest #test01DoesNotMoveWhenNoCommand stamp: 'MO 10/26/2022 11:47:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02IsAtFailsForDifferentPosition stamp: 'MO 10/26/2022 11:47:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03IsAtFailsForDifferentHeading stamp: 'MO 10/26/2022 11:47:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04IncrementsYAfterMovingForwardWhenHeadingNorth stamp: 'MO 10/26/2022 11:47:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06DecrementsYAfterMovingBackwardsWhenHeadingNorth stamp: 'MO 10/26/2022 11:47:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07PointToEashAfterRotatingRightWhenHeadingNorth stamp: 'MO 10/26/2022 11:47:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08PointsToWestAfterRotatingLeftWhenPointingNorth stamp: 'MO 10/26/2022 11:47:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09DoesNotProcessInvalidCommand stamp: 'MO 10/26/2022 11:47:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanProcessMoreThanOneCommand stamp: 'MO 10/26/2022 11:47:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11IncrementsXAfterMovingForwareWhenHeadingEast stamp: 'MO 10/26/2022 11:47:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12DecrementsXAfterMovingBackwardWhenHeadingEast stamp: 'MO 10/26/2022 11:47:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13PointsToSouthAfterRotatingRightWhenHeadingEast stamp: 'MO 10/26/2022 11:47:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14PointsToNorthAfterRotatingLeftWhenPointingEast stamp: 'MO 10/26/2022 11:47:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingSouth stamp: 'MO 10/26/2022 11:47:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingWest stamp: 'MO 10/26/2022 11:47:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17MarsRoverHasNoMovementLogsWhenInitialized stamp: 'MO 10/26/2022 11:47:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18MarsRoverMovementLogsSinglePositionInLogBook stamp: 'MO 10/26/2022 11:47:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19MarsRoverMovementLogsMoreThanOnePositionInLogBook stamp: 'MO 10/26/2022 11:47:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19MarsRoverMovementLogsSingleRotationInLogBook stamp: 'MO 10/26/2022 11:47:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20MarsRoverMovementLogsSingleRotationInLogBook stamp: 'MO 10/26/2022 11:47:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21MarsRoverMovementLogsDoubleRotationInLogBook stamp: 'MO 10/26/2022 11:47:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22MarsRoverHasNoHeadingLogsWhenInitialized stamp: 'MO 10/26/2022 11:47:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test23MarsRoverHasNoHeadingLogsWhenMovingFowardOrBackwards stamp: 'MO 10/26/2022 11:47:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test24MarsRoverHeadingLogsSingleRotationInLogBook stamp: 'MO 10/26/2022 11:47:26'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 11:48:14'!
+test20MarsRoverMovementLogsMoreThanOnePositionInLogBook
+	
+	
+	|aMarsRover aLogBook|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := MovementLogBook for: aMarsRover. 
+	
+	aMarsRover process: 'frbl'. 
+	
+	self assert: (aLogBook logBookEntries at: 1) equals: '0@1'.
+	self assert: (aLogBook logBookEntries at: 2) equals: 'East'.
+	self assert: (aLogBook logBookEntries at: 3) equals: '-1@1'.
+	self assert: (aLogBook logBookEntries at: 4) equals: 'North'.
+	! !
+
+!methodRemoval: MarsRoverTest #test19MarsRoverMovementLogsMoreThanOnePositionInLogBook stamp: 'MO 10/26/2022 11:48:14'!
+test19MarsRoverMovementLogsMoreThanOnePositionInLogBook
+	
+	
+	|aMarsRover aLogBook|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := MovementLogBook for: aMarsRover. 
+	
+	aMarsRover process: 'frbl'. 
+	
+	self assert: (aLogBook logBookEntries at: 1) equals: '0@1'.
+	self assert: (aLogBook logBookEntries at: 2) equals: 'East'.
+	self assert: (aLogBook logBookEntries at: 3) equals: '-1@1'.
+	self assert: (aLogBook logBookEntries at: 4) equals: 'North'.
+	!
+
+!methodRemoval: MarsRoverTest #test20MarsRoverMovementLogsSingleRotationInLogBook stamp: 'MO 10/26/2022 11:48:40'!
+test20MarsRoverMovementLogsSingleRotationInLogBook
+	
+	
+	|aMarsRover aLogBook|
+
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := MovementLogBook for: aMarsRover. 
+	aMarsRover process: 'r'. 
+	
+	self assert: (aLogBook logBookEntries at: 1) equals: 'East'.
+	
+	!
+!LogBook methodsFor: 'content' stamp: 'MO 10/26/2022 11:50:28' overrides: 16901663!
+size
+
+	^ logBookEntries size! !
+!LogBook methodsFor: 'content' stamp: 'MO 10/26/2022 11:50:42' prior: 50556617!
+logBookEntries
+
+	^ logBookEntries! !
+!LogBook methodsFor: 'content' stamp: 'MO 10/26/2022 11:50:54' prior: 50556436!
+isEmpty
+
+	^ logBookEntries isEmpty.! !
+!LogBook methodsFor: 'content' stamp: 'MO 10/26/2022 11:50:57' prior: 50558809!
+isEmpty
+
+	^ logBookEntries isEmpty! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 11:52:32' prior: 50558751!
+test20MarsRoverMovementLogsMoreThanOnePositionInLogBook
+	
+	
+	|aMarsRover aLogBook|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := MovementLogBook for: aMarsRover. 
+	
+	aMarsRover process: 'flbr'. 
+	
+	self assert: (aLogBook logBookEntries at: 1) equals: '0@1'.
+	self assert: (aLogBook logBookEntries at: 2) equals: 'West'.
+	self assert: (aLogBook logBookEntries at: 3) equals: '1@1'.
+	self assert: (aLogBook logBookEntries at: 4) equals: 'North'.
+	! !
+
+!testRun: #MarsRoverTest #test20MarsRoverMovementLogsMoreThanOnePositionInLogBook stamp: 'MO 10/26/2022 11:52:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01DoesNotMoveWhenNoCommand stamp: 'MO 10/26/2022 11:52:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02IsAtFailsForDifferentPosition stamp: 'MO 10/26/2022 11:52:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03IsAtFailsForDifferentHeading stamp: 'MO 10/26/2022 11:52:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04IncrementsYAfterMovingForwardWhenHeadingNorth stamp: 'MO 10/26/2022 11:52:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06DecrementsYAfterMovingBackwardsWhenHeadingNorth stamp: 'MO 10/26/2022 11:52:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07PointToEashAfterRotatingRightWhenHeadingNorth stamp: 'MO 10/26/2022 11:52:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08PointsToWestAfterRotatingLeftWhenPointingNorth stamp: 'MO 10/26/2022 11:52:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09DoesNotProcessInvalidCommand stamp: 'MO 10/26/2022 11:52:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanProcessMoreThanOneCommand stamp: 'MO 10/26/2022 11:52:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11IncrementsXAfterMovingForwareWhenHeadingEast stamp: 'MO 10/26/2022 11:52:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12DecrementsXAfterMovingBackwardWhenHeadingEast stamp: 'MO 10/26/2022 11:52:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13PointsToSouthAfterRotatingRightWhenHeadingEast stamp: 'MO 10/26/2022 11:52:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14PointsToNorthAfterRotatingLeftWhenPointingEast stamp: 'MO 10/26/2022 11:52:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingSouth stamp: 'MO 10/26/2022 11:52:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingWest stamp: 'MO 10/26/2022 11:52:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17MarsRoverHasNoMovementLogsWhenInitialized stamp: 'MO 10/26/2022 11:52:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18MarsRoverMovementLogsSinglePositionInLogBook stamp: 'MO 10/26/2022 11:52:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19MarsRoverMovementLogsSingleRotationInLogBook stamp: 'MO 10/26/2022 11:52:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20MarsRoverMovementLogsMoreThanOnePositionInLogBook stamp: 'MO 10/26/2022 11:52:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21MarsRoverMovementLogsDoubleRotationInLogBook stamp: 'MO 10/26/2022 11:52:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22MarsRoverHasNoHeadingLogsWhenInitialized stamp: 'MO 10/26/2022 11:52:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test23MarsRoverHasNoHeadingLogsWhenMovingFowardOrBackwards stamp: 'MO 10/26/2022 11:52:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test24MarsRoverHeadingLogsSingleRotationInLogBook stamp: 'MO 10/26/2022 11:52:34'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 11:53:04' prior: 50558817!
+test20MarsRoverMovementLogsMoreThanOnePositionInLogBook
+	
+	
+	| aMarsRover aLogBook |
+	
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := MovementLogBook for: aMarsRover. 
+	
+	aMarsRover process: 'flbr'. 
+	
+	self assert: (aLogBook logBookEntries at: 1) equals: '0@1'.
+	self assert: (aLogBook logBookEntries at: 2) equals: 'West'.
+	self assert: (aLogBook logBookEntries at: 3) equals: '1@1'.
+	self assert: (aLogBook logBookEntries at: 4) equals: 'North'.
+	! !
+
+!methodRemoval: MarsRoverTest #test21MarsRoverMovementLogsDoubleRotationInLogBook stamp: 'MO 10/26/2022 11:53:14'!
+test21MarsRoverMovementLogsDoubleRotationInLogBook
+	
+	
+	|aMarsRover aLogBook|
+	
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := MovementLogBook for: aMarsRover. 
+	aMarsRover process: 'rrl'. 
+
+	self assert: (aLogBook logBookEntries at: 1) equals: 'East'.
+	self assert: (aLogBook logBookEntries at: 2) equals: 'South'.
+	self assert: (aLogBook logBookEntries at: 3) equals: 'East'.
+	
+	!
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 11:53:30'!
+test21MarsRoverHasNoHeadingLogsWhenInitialized
+	
+	self assert: ( (HeadingLogBook for: (MarsRover at: 0@0 heading: MarsRoverHeadingNorth)) isEmpty )! !
+
+!methodRemoval: MarsRoverTest #test22MarsRoverHasNoHeadingLogsWhenInitialized stamp: 'MO 10/26/2022 11:53:31'!
+test22MarsRoverHasNoHeadingLogsWhenInitialized
+	
+	self assert: ( (HeadingLogBook for: (MarsRover at: 0@0 heading: MarsRoverHeadingNorth)) isEmpty )!
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 11:53:51'!
+test22MarsRoverHasNoHeadingLogsWhenMovingFowardOrBackwards
+	
+	| aMarsRover aLogBook |
+	
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := HeadingLogBook for: aMarsRover. 
+	
+	aMarsRover process: 'f'.
+	aMarsRover process: 'b'.
+	
+	self assert: aLogBook isEmpty! !
+
+!methodRemoval: MarsRoverTest #test23MarsRoverHasNoHeadingLogsWhenMovingFowardOrBackwards stamp: 'MO 10/26/2022 11:53:52'!
+test23MarsRoverHasNoHeadingLogsWhenMovingFowardOrBackwards
+	
+	| aMarsRover aLogBook |
+	
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := HeadingLogBook for: aMarsRover. 
+	
+	aMarsRover process: 'f'.
+	aMarsRover process: 'b'.
+	
+	self assert: aLogBook isEmpty!
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 11:54:08' prior: 50558973!
+test22MarsRoverHasNoHeadingLogsWhenMovingFowardOrBackwards
+	
+	| aMarsRover aLogBook |
+	
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := HeadingLogBook for: aMarsRover. 
+	
+	aMarsRover process: 'fb'.
+	
+	self assert: aLogBook isEmpty! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 11:55:05' prior: 50557822!
+test18MarsRoverMovementLogsSinglePositionInLogBook
+	
+	
+	|aMarsRover aLogBook|
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := MovementLogBook for: aMarsRover. 
+	
+	aMarsRover process: 'f'. 
+	
+	self assert: (aLogBook logBookEntries at: 1) equals: '0@1'.
+	self assert: (aLogBook size) equals: 1
+
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 11:55:12' prior: 50559009!
+test18MarsRoverMovementLogsSinglePositionInLogBook
+	
+	
+	| aMarsRover aLogBook |
+	
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := MovementLogBook for: aMarsRover. 
+	
+	aMarsRover process: 'f'. 
+	
+	self assert: (aLogBook logBookEntries at: 1) equals: '0@1'.
+	self assert: (aLogBook size) equals: 1
+
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 11:55:21' prior: 50558539!
+test19MarsRoverMovementLogsSingleRotationInLogBook
+	
+	
+	| aMarsRover aLogBook |
+
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := MovementLogBook for: aMarsRover. 
+	
+	aMarsRover process: 'r'.
+	
+	self assert: (aLogBook logBookEntries at: 1) equals: 'East'.
+	self assert: (aLogBook size) equals: 1
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 11:55:31' prior: 50558924!
+test20MarsRoverMovementLogsMoreThanOnePositionInLogBook
+	
+	
+	| aMarsRover aLogBook |
+	
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := MovementLogBook for: aMarsRover. 
+	
+	aMarsRover process: 'flbr'. 
+	
+	self assert: (aLogBook logBookEntries at: 1) equals: '0@1'.
+	self assert: (aLogBook logBookEntries at: 2) equals: 'West'.
+	self assert: (aLogBook logBookEntries at: 3) equals: '1@1'.
+	self assert: (aLogBook logBookEntries at: 4) equals: 'North'.
+	self assert: (aLogBook size) equals: 4
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 11:55:42' prior: 50559049!
+test20MarsRoverMovementLogsMoreThanOnePositionInLogBook
+
+	| aMarsRover aLogBook |
+
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := MovementLogBook for: aMarsRover. 
+
+	aMarsRover process: 'flbr'. 
+
+	self assert: (aLogBook logBookEntries at: 1) equals: '0@1'.
+	self assert: (aLogBook logBookEntries at: 2) equals: 'West'.
+	self assert: (aLogBook logBookEntries at: 3) equals: '1@1'.
+	self assert: (aLogBook logBookEntries at: 4) equals: 'North'.
+	self assert: (aLogBook size) equals: 4! !
+
+!testRun: #MarsRoverTest #test20MarsRoverMovementLogsMoreThanOnePositionInLogBook stamp: 'MO 10/26/2022 11:56:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20MarsRoverMovementLogsMoreThanOnePositionInLogBook stamp: 'MO 10/26/2022 11:56:08'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01DoesNotMoveWhenNoCommand stamp: 'MO 10/26/2022 11:56:08'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02IsAtFailsForDifferentPosition stamp: 'MO 10/26/2022 11:56:08'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03IsAtFailsForDifferentHeading stamp: 'MO 10/26/2022 11:56:08'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04IncrementsYAfterMovingForwardWhenHeadingNorth stamp: 'MO 10/26/2022 11:56:08'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06DecrementsYAfterMovingBackwardsWhenHeadingNorth stamp: 'MO 10/26/2022 11:56:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07PointToEashAfterRotatingRightWhenHeadingNorth stamp: 'MO 10/26/2022 11:56:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08PointsToWestAfterRotatingLeftWhenPointingNorth stamp: 'MO 10/26/2022 11:56:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09DoesNotProcessInvalidCommand stamp: 'MO 10/26/2022 11:56:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanProcessMoreThanOneCommand stamp: 'MO 10/26/2022 11:56:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11IncrementsXAfterMovingForwareWhenHeadingEast stamp: 'MO 10/26/2022 11:56:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12DecrementsXAfterMovingBackwardWhenHeadingEast stamp: 'MO 10/26/2022 11:56:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13PointsToSouthAfterRotatingRightWhenHeadingEast stamp: 'MO 10/26/2022 11:56:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14PointsToNorthAfterRotatingLeftWhenPointingEast stamp: 'MO 10/26/2022 11:56:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingSouth stamp: 'MO 10/26/2022 11:56:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingWest stamp: 'MO 10/26/2022 11:56:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17MarsRoverHasNoMovementLogsWhenInitialized stamp: 'MO 10/26/2022 11:56:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18MarsRoverMovementLogsSinglePositionInLogBook stamp: 'MO 10/26/2022 11:56:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19MarsRoverMovementLogsSingleRotationInLogBook stamp: 'MO 10/26/2022 11:56:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20MarsRoverMovementLogsMoreThanOnePositionInLogBook stamp: 'MO 10/26/2022 11:56:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21MarsRoverHasNoHeadingLogsWhenInitialized stamp: 'MO 10/26/2022 11:56:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22MarsRoverHasNoHeadingLogsWhenMovingFowardOrBackwards stamp: 'MO 10/26/2022 11:56:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test24MarsRoverHeadingLogsSingleRotationInLogBook stamp: 'MO 10/26/2022 11:56:09'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 11:57:20' prior: 50558439!
+test24MarsRoverHeadingLogsSingleRotationInLogBook
+	
+	| aMarsRover aLogBook |
+
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := HeadingLogBook for: aMarsRover. 
+	
+	aMarsRover process: 'r'. 
+	
+	self assert: (aLogBook logBookEntries at: 1) equals: 'East'.
+	self assert: (aLogBook size) equals: 1
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 11:57:35'!
+test23MarsRoverHeadingLogsSingleRotationInLogBook
+	
+	| aMarsRover aLogBook |
+
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := HeadingLogBook for: aMarsRover. 
+	
+	aMarsRover process: 'r'. 
+	
+	self assert: (aLogBook logBookEntries at: 1) equals: 'East'.
+	self assert: (aLogBook size) equals: 1
+	
+	! !
+
+!methodRemoval: MarsRoverTest #test24MarsRoverHeadingLogsSingleRotationInLogBook stamp: 'MO 10/26/2022 11:57:35'!
+test24MarsRoverHeadingLogsSingleRotationInLogBook
+	
+	| aMarsRover aLogBook |
+
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := HeadingLogBook for: aMarsRover. 
+	
+	aMarsRover process: 'r'. 
+	
+	self assert: (aLogBook logBookEntries at: 1) equals: 'East'.
+	self assert: (aLogBook size) equals: 1
+	
+	!
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 11:59:01'!
+test24MarsRoverHeadingLogsMoreThanOneHeadingInLogBook
+
+	| aMarsRover aLogBook |
+
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := HeadingLogBook for: aMarsRover. 
+
+	aMarsRover process: 'flbr'. 
+
+	self assert: (aLogBook logBookEntries at: 1) equals: 'West'.
+	self assert: (aLogBook logBookEntries at: 2) equals: 'North'.
+	self assert: (aLogBook size) equals: 2! !
+
+!testRun: #MarsRoverTest #test24MarsRoverHeadingLogsMoreThanOneHeadingInLogBook stamp: 'MO 10/26/2022 11:59:37'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01DoesNotMoveWhenNoCommand stamp: 'MO 10/26/2022 11:59:37'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02IsAtFailsForDifferentPosition stamp: 'MO 10/26/2022 11:59:37'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03IsAtFailsForDifferentHeading stamp: 'MO 10/26/2022 11:59:37'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04IncrementsYAfterMovingForwardWhenHeadingNorth stamp: 'MO 10/26/2022 11:59:37'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06DecrementsYAfterMovingBackwardsWhenHeadingNorth stamp: 'MO 10/26/2022 11:59:37'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07PointToEashAfterRotatingRightWhenHeadingNorth stamp: 'MO 10/26/2022 11:59:37'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08PointsToWestAfterRotatingLeftWhenPointingNorth stamp: 'MO 10/26/2022 11:59:37'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09DoesNotProcessInvalidCommand stamp: 'MO 10/26/2022 11:59:37'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanProcessMoreThanOneCommand stamp: 'MO 10/26/2022 11:59:37'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11IncrementsXAfterMovingForwareWhenHeadingEast stamp: 'MO 10/26/2022 11:59:37'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12DecrementsXAfterMovingBackwardWhenHeadingEast stamp: 'MO 10/26/2022 11:59:37'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13PointsToSouthAfterRotatingRightWhenHeadingEast stamp: 'MO 10/26/2022 11:59:37'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14PointsToNorthAfterRotatingLeftWhenPointingEast stamp: 'MO 10/26/2022 11:59:37'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingSouth stamp: 'MO 10/26/2022 11:59:37'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingWest stamp: 'MO 10/26/2022 11:59:37'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17MarsRoverHasNoMovementLogsWhenInitialized stamp: 'MO 10/26/2022 11:59:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18MarsRoverMovementLogsSinglePositionInLogBook stamp: 'MO 10/26/2022 11:59:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19MarsRoverMovementLogsSingleRotationInLogBook stamp: 'MO 10/26/2022 11:59:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20MarsRoverMovementLogsMoreThanOnePositionInLogBook stamp: 'MO 10/26/2022 11:59:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21MarsRoverHasNoHeadingLogsWhenInitialized stamp: 'MO 10/26/2022 11:59:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22MarsRoverHasNoHeadingLogsWhenMovingFowardOrBackwards stamp: 'MO 10/26/2022 11:59:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test23MarsRoverHeadingLogsSingleRotationInLogBook stamp: 'MO 10/26/2022 11:59:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test24MarsRoverHeadingLogsMoreThanOneHeadingInLogBook stamp: 'MO 10/26/2022 11:59:38'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 12:01:08'!
+test25MarsRoverHasNoPositionsLogsWhenInitialized
+	
+	self assert: ( (PositionsLogBook for: (MarsRover at: 0@0 heading: MarsRoverHeadingNorth)) isEmpty )! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 12:01:38'!
+test26MarsRoverHasNoPositionsLogsWhenMovingFowardOrBackwards
+	
+	| aMarsRover aLogBook |
+	
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := PositionsLogBook for: aMarsRover. 
+	
+	aMarsRover process: 'rl'.
+	
+	self assert: aLogBook isEmpty! !
+
+!testRun: #MarsRoverTest #test26MarsRoverHasNoPositionsLogsWhenMovingFowardOrBackwards stamp: 'MO 10/26/2022 12:01:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01DoesNotMoveWhenNoCommand stamp: 'MO 10/26/2022 12:01:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02IsAtFailsForDifferentPosition stamp: 'MO 10/26/2022 12:01:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03IsAtFailsForDifferentHeading stamp: 'MO 10/26/2022 12:01:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04IncrementsYAfterMovingForwardWhenHeadingNorth stamp: 'MO 10/26/2022 12:01:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06DecrementsYAfterMovingBackwardsWhenHeadingNorth stamp: 'MO 10/26/2022 12:01:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07PointToEashAfterRotatingRightWhenHeadingNorth stamp: 'MO 10/26/2022 12:01:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08PointsToWestAfterRotatingLeftWhenPointingNorth stamp: 'MO 10/26/2022 12:01:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09DoesNotProcessInvalidCommand stamp: 'MO 10/26/2022 12:01:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanProcessMoreThanOneCommand stamp: 'MO 10/26/2022 12:01:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11IncrementsXAfterMovingForwareWhenHeadingEast stamp: 'MO 10/26/2022 12:01:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12DecrementsXAfterMovingBackwardWhenHeadingEast stamp: 'MO 10/26/2022 12:01:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13PointsToSouthAfterRotatingRightWhenHeadingEast stamp: 'MO 10/26/2022 12:01:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14PointsToNorthAfterRotatingLeftWhenPointingEast stamp: 'MO 10/26/2022 12:01:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingSouth stamp: 'MO 10/26/2022 12:01:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingWest stamp: 'MO 10/26/2022 12:01:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17MarsRoverHasNoMovementLogsWhenInitialized stamp: 'MO 10/26/2022 12:01:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18MarsRoverMovementLogsSinglePositionInLogBook stamp: 'MO 10/26/2022 12:01:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19MarsRoverMovementLogsSingleRotationInLogBook stamp: 'MO 10/26/2022 12:01:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20MarsRoverMovementLogsMoreThanOnePositionInLogBook stamp: 'MO 10/26/2022 12:01:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21MarsRoverHasNoHeadingLogsWhenInitialized stamp: 'MO 10/26/2022 12:01:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22MarsRoverHasNoHeadingLogsWhenMovingFowardOrBackwards stamp: 'MO 10/26/2022 12:01:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test23MarsRoverHeadingLogsSingleRotationInLogBook stamp: 'MO 10/26/2022 12:01:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test24MarsRoverHeadingLogsMoreThanOneHeadingInLogBook stamp: 'MO 10/26/2022 12:01:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test25MarsRoverHasNoPositionsLogsWhenInitialized stamp: 'MO 10/26/2022 12:01:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test26MarsRoverHasNoPositionsLogsWhenMovingFowardOrBackwards stamp: 'MO 10/26/2022 12:01:41'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 12:02:25'!
+test27MarsRoverPositionsLogsSingleRotationInLogBook
+	
+	| aMarsRover aLogBook |
+
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := PositionsLogBook for: aMarsRover. 
+	
+	aMarsRover process: 'f'. 
+	
+	self assert: (aLogBook logBookEntries at: 1) equals: '1@1'.
+	self assert: (aLogBook size) equals: 1
+	
+	! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 12:02:54'!
+test27MarsRoverPositionsLogsSinglePositionInLogBook
+	
+	| aMarsRover aLogBook |
+
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := PositionsLogBook for: aMarsRover. 
+	
+	aMarsRover process: 'f'. 
+	
+	self assert: (aLogBook logBookEntries at: 1) equals: '1@1'.
+	self assert: (aLogBook size) equals: 1
+	
+	! !
+
+!methodRemoval: MarsRoverTest #test27MarsRoverPositionsLogsSingleRotationInLogBook stamp: 'MO 10/26/2022 12:03:02'!
+test27MarsRoverPositionsLogsSingleRotationInLogBook
+	
+	| aMarsRover aLogBook |
+
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := PositionsLogBook for: aMarsRover. 
+	
+	aMarsRover process: 'f'. 
+	
+	self assert: (aLogBook logBookEntries at: 1) equals: '1@1'.
+	self assert: (aLogBook size) equals: 1
+	
+	!
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 12:03:53'!
+test24MarsRoverPositionsLogsMoreThanOnePositionsInLogBook
+
+	| aMarsRover aLogBook |
+
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := PositionsLogBook for: aMarsRover. 
+
+	aMarsRover process: 'flbr'. 
+
+	self assert: (aLogBook logBookEntries at: 1) equals: 'West'.
+	self assert: (aLogBook logBookEntries at: 2) equals: 'North'.
+	self assert: (aLogBook size) equals: 2! !
+
+!testRun: #MarsRoverTest #test24MarsRoverPositionsLogsMoreThanOnePositionsInLogBook stamp: 'MO 10/26/2022 12:03:58'!
+FAILURE!
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 12:04:14' prior: 50559474!
+test24MarsRoverPositionsLogsMoreThanOnePositionsInLogBook
+
+	| aMarsRover aLogBook |
+
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := PositionsLogBook for: aMarsRover. 
+
+	aMarsRover process: 'flbr'. 
+
+	self assert: (aLogBook logBookEntries at: 1) equals: '0@1'.
+	self assert: (aLogBook logBookEntries at: 2) equals: '1@1'.
+	self assert: (aLogBook size) equals: 2! !
+
+!testRun: #MarsRoverTest #test24MarsRoverPositionsLogsMoreThanOnePositionsInLogBook stamp: 'MO 10/26/2022 12:04:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01DoesNotMoveWhenNoCommand stamp: 'MO 10/26/2022 12:04:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02IsAtFailsForDifferentPosition stamp: 'MO 10/26/2022 12:04:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03IsAtFailsForDifferentHeading stamp: 'MO 10/26/2022 12:04:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04IncrementsYAfterMovingForwardWhenHeadingNorth stamp: 'MO 10/26/2022 12:04:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06DecrementsYAfterMovingBackwardsWhenHeadingNorth stamp: 'MO 10/26/2022 12:04:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07PointToEashAfterRotatingRightWhenHeadingNorth stamp: 'MO 10/26/2022 12:04:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08PointsToWestAfterRotatingLeftWhenPointingNorth stamp: 'MO 10/26/2022 12:04:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09DoesNotProcessInvalidCommand stamp: 'MO 10/26/2022 12:04:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanProcessMoreThanOneCommand stamp: 'MO 10/26/2022 12:04:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11IncrementsXAfterMovingForwareWhenHeadingEast stamp: 'MO 10/26/2022 12:04:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12DecrementsXAfterMovingBackwardWhenHeadingEast stamp: 'MO 10/26/2022 12:04:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13PointsToSouthAfterRotatingRightWhenHeadingEast stamp: 'MO 10/26/2022 12:04:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14PointsToNorthAfterRotatingLeftWhenPointingEast stamp: 'MO 10/26/2022 12:04:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingSouth stamp: 'MO 10/26/2022 12:04:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingWest stamp: 'MO 10/26/2022 12:04:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17MarsRoverHasNoMovementLogsWhenInitialized stamp: 'MO 10/26/2022 12:04:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18MarsRoverMovementLogsSinglePositionInLogBook stamp: 'MO 10/26/2022 12:04:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19MarsRoverMovementLogsSingleRotationInLogBook stamp: 'MO 10/26/2022 12:04:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20MarsRoverMovementLogsMoreThanOnePositionInLogBook stamp: 'MO 10/26/2022 12:04:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21MarsRoverHasNoHeadingLogsWhenInitialized stamp: 'MO 10/26/2022 12:04:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22MarsRoverHasNoHeadingLogsWhenMovingFowardOrBackwards stamp: 'MO 10/26/2022 12:04:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test23MarsRoverHeadingLogsSingleRotationInLogBook stamp: 'MO 10/26/2022 12:04:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test24MarsRoverHeadingLogsMoreThanOneHeadingInLogBook stamp: 'MO 10/26/2022 12:04:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test24MarsRoverPositionsLogsMoreThanOnePositionsInLogBook stamp: 'MO 10/26/2022 12:04:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test25MarsRoverHasNoPositionsLogsWhenInitialized stamp: 'MO 10/26/2022 12:04:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test26MarsRoverHasNoPositionsLogsWhenMovingFowardOrBackwards stamp: 'MO 10/26/2022 12:04:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test27MarsRoverPositionsLogsSinglePositionInLogBook stamp: 'MO 10/26/2022 12:04:17'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test27MarsRoverPositionsLogsSinglePositionInLogBook stamp: 'MO 10/26/2022 12:04:17'!
+FAILURE!
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 12:05:06'!
+test28MarsRoverPositionsLogsMoreThanOnePositionsInLogBook
+
+	| aMarsRover aLogBook |
+
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := PositionsLogBook for: aMarsRover. 
+
+	aMarsRover process: 'flbr'. 
+
+	self assert: (aLogBook logBookEntries at: 1) equals: '0@1'.
+	self assert: (aLogBook logBookEntries at: 2) equals: '1@1'.
+	self assert: (aLogBook size) equals: 2! !
+
+!methodRemoval: MarsRoverTest #test24MarsRoverPositionsLogsMoreThanOnePositionsInLogBook stamp: 'MO 10/26/2022 12:05:06'!
+test24MarsRoverPositionsLogsMoreThanOnePositionsInLogBook
+
+	| aMarsRover aLogBook |
+
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := PositionsLogBook for: aMarsRover. 
+
+	aMarsRover process: 'flbr'. 
+
+	self assert: (aLogBook logBookEntries at: 1) equals: '0@1'.
+	self assert: (aLogBook logBookEntries at: 2) equals: '1@1'.
+	self assert: (aLogBook size) equals: 2!
+
+!testRun: #MarsRoverTest #test27MarsRoverPositionsLogsSinglePositionInLogBook stamp: 'MO 10/26/2022 12:05:13'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test27MarsRoverPositionsLogsSinglePositionInLogBook stamp: 'MO 10/26/2022 12:05:13'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test27MarsRoverPositionsLogsSinglePositionInLogBook stamp: 'MO 10/26/2022 12:05:16'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test27MarsRoverPositionsLogsSinglePositionInLogBook stamp: 'MO 10/26/2022 12:05:20'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test27MarsRoverPositionsLogsSinglePositionInLogBook stamp: 'MO 10/26/2022 12:05:20'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test26MarsRoverHasNoPositionsLogsWhenMovingFowardOrBackwards stamp: 'MO 10/26/2022 12:05:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test25MarsRoverHasNoPositionsLogsWhenInitialized stamp: 'MO 10/26/2022 12:05:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test24MarsRoverHeadingLogsMoreThanOneHeadingInLogBook stamp: 'MO 10/26/2022 12:05:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test23MarsRoverHeadingLogsSingleRotationInLogBook stamp: 'MO 10/26/2022 12:05:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test26MarsRoverHasNoPositionsLogsWhenMovingFowardOrBackwards stamp: 'MO 10/26/2022 12:05:35'!
+PASSED!
+
+!testRun: #MarsRoverTest #test27MarsRoverPositionsLogsSinglePositionInLogBook stamp: 'MO 10/26/2022 12:05:36'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test27MarsRoverPositionsLogsSinglePositionInLogBook stamp: 'MO 10/26/2022 12:05:36'!
+FAILURE!
+!MarsRoverTest methodsFor: 'tests' stamp: 'MO 10/26/2022 12:05:52' prior: 50559447!
+test27MarsRoverPositionsLogsSinglePositionInLogBook
+	
+	| aMarsRover aLogBook |
+
+	aMarsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	aLogBook := PositionsLogBook for: aMarsRover. 
+	
+	aMarsRover process: 'f'. 
+	
+	self assert: (aLogBook logBookEntries at: 1) equals: '0@1'.
+	self assert: (aLogBook size) equals: 1
+	
+	! !
+
+!testRun: #MarsRoverTest #test27MarsRoverPositionsLogsSinglePositionInLogBook stamp: 'MO 10/26/2022 12:05:55'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01DoesNotMoveWhenNoCommand stamp: 'MO 10/26/2022 12:05:55'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02IsAtFailsForDifferentPosition stamp: 'MO 10/26/2022 12:05:55'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03IsAtFailsForDifferentHeading stamp: 'MO 10/26/2022 12:05:55'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04IncrementsYAfterMovingForwardWhenHeadingNorth stamp: 'MO 10/26/2022 12:05:55'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06DecrementsYAfterMovingBackwardsWhenHeadingNorth stamp: 'MO 10/26/2022 12:05:55'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07PointToEashAfterRotatingRightWhenHeadingNorth stamp: 'MO 10/26/2022 12:05:55'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08PointsToWestAfterRotatingLeftWhenPointingNorth stamp: 'MO 10/26/2022 12:05:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09DoesNotProcessInvalidCommand stamp: 'MO 10/26/2022 12:05:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10CanProcessMoreThanOneCommand stamp: 'MO 10/26/2022 12:05:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11IncrementsXAfterMovingForwareWhenHeadingEast stamp: 'MO 10/26/2022 12:05:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12DecrementsXAfterMovingBackwardWhenHeadingEast stamp: 'MO 10/26/2022 12:05:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13PointsToSouthAfterRotatingRightWhenHeadingEast stamp: 'MO 10/26/2022 12:05:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14PointsToNorthAfterRotatingLeftWhenPointingEast stamp: 'MO 10/26/2022 12:05:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingSouth stamp: 'MO 10/26/2022 12:05:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16ForwardBackwardsAndRotateRightWorkAsExpectedWhenPointingWest stamp: 'MO 10/26/2022 12:05:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17MarsRoverHasNoMovementLogsWhenInitialized stamp: 'MO 10/26/2022 12:05:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18MarsRoverMovementLogsSinglePositionInLogBook stamp: 'MO 10/26/2022 12:05:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19MarsRoverMovementLogsSingleRotationInLogBook stamp: 'MO 10/26/2022 12:05:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20MarsRoverMovementLogsMoreThanOnePositionInLogBook stamp: 'MO 10/26/2022 12:05:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21MarsRoverHasNoHeadingLogsWhenInitialized stamp: 'MO 10/26/2022 12:05:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test22MarsRoverHasNoHeadingLogsWhenMovingFowardOrBackwards stamp: 'MO 10/26/2022 12:05:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test23MarsRoverHeadingLogsSingleRotationInLogBook stamp: 'MO 10/26/2022 12:05:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test24MarsRoverHeadingLogsMoreThanOneHeadingInLogBook stamp: 'MO 10/26/2022 12:05:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test25MarsRoverHasNoPositionsLogsWhenInitialized stamp: 'MO 10/26/2022 12:05:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test26MarsRoverHasNoPositionsLogsWhenMovingFowardOrBackwards stamp: 'MO 10/26/2022 12:05:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test27MarsRoverPositionsLogsSinglePositionInLogBook stamp: 'MO 10/26/2022 12:05:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test28MarsRoverPositionsLogsMoreThanOnePositionsInLogBook stamp: 'MO 10/26/2022 12:05:56'!
+PASSED!
+!LogBook methodsFor: 'initialization' stamp: 'MO 10/26/2022 12:22:42' prior: 50558655!
+initializeFor: aMarsRover
+	
+	logBookEntries := OrderedCollection new.
+	aMarsRover addRecipient: self.
+	TranscriptWindow openTranscript.
+	Transcript clear.				! !
+
+----QUIT----(26 October 2022 12:23:04) CuisUniversity-5481.image priorSource: 7236604!
