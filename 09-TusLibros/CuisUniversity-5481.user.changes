@@ -1,0 +1,962 @@
+
+
+----QUIT----(11 September 2022 19:10:09) CuisUniversity-5481.image priorSource: 2810882!
+
+----STARTUP---- (11 September 2022 19:10:10) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5481.image!
+
+
+----QUIT----(11 September 2022 19:10:10) CuisUniversity-5481.image priorSource: 7059465!
+
+----STARTUP---- (27 October 2022 19:31:52) as C:\Users\maria\Desktop\Facultad\Taller\Inge1\CuisUniversity-windows64\CuisUniversity-5481.image!
+
+
+Object subclass: #Chango
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #Chango category: 'TusLibros' stamp: 'MO 10/27/2022 20:20:53'!
+Object subclass: #Chango
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+TestCase subclass: #ChangoTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #ChangoTest category: 'TusLibros' stamp: 'MO 10/27/2022 20:21:10'!
+TestCase subclass: #ChangoTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!ChangoTest methodsFor: 'no messages' stamp: 'MO 10/27/2022 20:26:07'!
+test01CuandoSeCreaUnChangoEstaVacio! !
+!ChangoTest methodsFor: 'as yet unclassified' stamp: 'MO 10/27/2022 20:26:37'!
+test02CuandoSeAgregaUnLibroAUnCarritoVacioEsteDejaDeEstarVacio! !
+!ChangoTest methodsFor: 'as yet unclassified' stamp: 'MO 10/27/2022 20:27:19'!
+test03NoSePuedenAgregarProductosFueraDelCatalogoAlChango! !
+!ChangoTest methodsFor: 'as yet unclassified' stamp: 'MO 10/27/2022 20:27:38'!
+test02CuandoSeAgregaUnLibroAUnChangoVacioEsteDejaDeEstarVacio! !
+
+!methodRemoval: ChangoTest #test02CuandoSeAgregaUnLibroAUnCarritoVacioEsteDejaDeEstarVacio stamp: 'MO 10/27/2022 20:27:39'!
+test02CuandoSeAgregaUnLibroAUnCarritoVacioEsteDejaDeEstarVacio!
+!ChangoTest methodsFor: 'as yet unclassified' stamp: 'MO 10/27/2022 20:34:21'!
+test04NoSePuedeAgregarMenosDeUnaUnidadDelProductosAlChango! !
+!ChangoTest methodsFor: 'as yet unclassified' stamp: 'MO 10/27/2022 20:35:12' prior: 50552295!
+test01CuandoSeCreaUnChangoEstaVacio
+
+	self assert: (Chango new) estaVacio! !
+!ChangoTest methodsFor: 'as yet unclassified' stamp: 'MO 10/27/2022 20:35:23' prior: 50552325!
+test01CuandoSeCreaUnChangoEstaVacio
+
+	self assert: Chango new estaVacio! !
+
+!classDefinition: #Chango category: 'TusLibros' stamp: 'MO 10/27/2022 20:37:11'!
+Object subclass: #Chango
+	instanceVariableNames: 'contenido'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!Chango methodsFor: 'no messages' stamp: 'MO 10/27/2022 20:37:08'!
+estaVacio
+
+	^ contenido isEmpty! !
+!Chango methodsFor: 'as yet unclassified' stamp: 'MO 10/27/2022 20:43:15' overrides: 16920235!
+initialize
+
+	contenido := Bag new! !
+
+!testRun: #ChangoTest #test01CuandoSeCreaUnChangoEstaVacio stamp: 'MO 10/27/2022 20:43:36'!
+PASSED!
+!ChangoTest methodsFor: 'tests' stamp: 'MO 10/27/2022 20:43:50' prior: 50552309!
+test02CuandoSeAgregaUnLibroAUnChangoVacioEsteDejaDeEstarVacio
+
+	! !
+
+!classDefinition: #Libro category: 'TusLibros' stamp: 'MO 10/27/2022 20:49:01'!
+Object subclass: #Libro
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!ChangoTest methodsFor: 'tests' stamp: 'MO 10/27/2022 20:48:43' prior: 50552355!
+test02CuandoSeAgregaUnLibroAUnChangoVacioEsteDejaDeEstarVacio
+
+	self deny: (Chango con: Libro new) estaVacio! !
+!Chango methodsFor: 'as yet unclassified' stamp: 'MO 10/27/2022 20:50:03'!
+initializeWith: unLibro
+
+	contenido := Bag with: unLibro! !
+!Chango class methodsFor: 'no messages' stamp: 'MO 10/27/2022 20:51:19'!
+con: unLibro
+
+	^ self new initializeWith: unLibro! !
+
+!testRun: #ChangoTest #test02CuandoSeAgregaUnLibroAUnChangoVacioEsteDejaDeEstarVacio stamp: 'MO 10/27/2022 20:52:15'!
+PASSED!
+
+!testRun: #ChangoTest #test01CuandoSeCreaUnChangoEstaVacio stamp: 'MO 10/27/2022 20:52:15'!
+PASSED!
+
+!testRun: #ChangoTest #test02CuandoSeAgregaUnLibroAUnChangoVacioEsteDejaDeEstarVacio stamp: 'MO 10/27/2022 20:52:15'!
+PASSED!
+
+!testRun: #ChangoTest #test03NoSePuedenAgregarProductosFueraDelCatalogoAlChango stamp: 'MO 10/27/2022 20:52:15'!
+PASSED!
+
+!testRun: #ChangoTest #test04NoSePuedeAgregarMenosDeUnaUnidadDelProductosAlChango stamp: 'MO 10/27/2022 20:52:15'!
+PASSED!
+!ChangoTest methodsFor: 'tests' stamp: 'MO 10/27/2022 20:57:07' prior: 50552304!
+test03NoSePuedenAgregarProductosFueraDelCatalogoAlChango
+
+	| unChango libroProhibido |
+	
+	unChango := Chango new.
+	
+	self 
+		should: [ unChango agregarLibro: libroProhibido ]
+		raise: Error 
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Chango libroFueraDelCatalogoDescripcionDeError.
+			self assert: unChango estaVacio]! !
+!ChangoTest methodsFor: 'tests' stamp: 'MO 10/27/2022 21:05:21' prior: 50552400!
+test03NoSePuedenAgregarProductosFueraDelCatalogoAlChango
+
+	| unChango libroProhibido |
+	
+	libroProhibido := Libro new.
+	unChango := Chango new.
+	
+	self 
+		should: [ unChango agregarLibro: libroProhibido ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Chango libroFueraDelCatalogoDescripcionDeError.
+			self assert: unChango estaVacio]! !
+!Chango methodsFor: 'as yet unclassified' stamp: 'MO 10/27/2022 21:06:23'!
+agregarLibro: unLibro
+
+	self error: self libroFueraDelCatalogoDescripcionDeError ! !
+!Chango class methodsFor: 'descripcion de errores' stamp: 'MO 10/27/2022 21:08:22'!
+libroFueraDelCatalogoDescripcionDeError
+	
+	^ 'no la verdad que no juno ese librito, sori maquina'! !
+
+!testRun: #ChangoTest #test03NoSePuedenAgregarProductosFueraDelCatalogoAlChango stamp: 'MO 10/27/2022 21:08:27'!
+FAILURE!
+!Chango class methodsFor: 'descripcion de errores' stamp: 'MO 10/27/2022 21:09:12' prior: 50552435!
+libroFueraDelCatalogoDescripcionDeError
+	
+	^ 'no la verdad que no juno ese librito, sori maquina'! !
+!Chango methodsFor: 'as yet unclassified' stamp: 'MO 10/27/2022 21:09:30' prior: 50552429!
+agregarLibro: unLibro
+
+	self error: self class libroFueraDelCatalogoDescripcionDeError ! !
+
+!testRun: #ChangoTest #test03NoSePuedenAgregarProductosFueraDelCatalogoAlChango stamp: 'MO 10/27/2022 21:09:33'!
+PASSED!
+
+!testRun: #ChangoTest #test01CuandoSeCreaUnChangoEstaVacio stamp: 'MO 10/27/2022 21:09:33'!
+PASSED!
+
+!testRun: #ChangoTest #test02CuandoSeAgregaUnLibroAUnChangoVacioEsteDejaDeEstarVacio stamp: 'MO 10/27/2022 21:09:33'!
+PASSED!
+
+!testRun: #ChangoTest #test03NoSePuedenAgregarProductosFueraDelCatalogoAlChango stamp: 'MO 10/27/2022 21:09:33'!
+PASSED!
+
+!testRun: #ChangoTest #test04NoSePuedeAgregarMenosDeUnaUnidadDelProductosAlChango stamp: 'MO 10/27/2022 21:09:33'!
+PASSED!
+
+!testRun: #ChangoTest #test03NoSePuedenAgregarProductosFueraDelCatalogoAlChango stamp: 'MO 10/27/2022 21:09:44'!
+PASSED!
+
+!testRun: #ChangoTest #test01CuandoSeCreaUnChangoEstaVacio stamp: 'MO 10/27/2022 21:09:44'!
+PASSED!
+
+!testRun: #ChangoTest #test02CuandoSeAgregaUnLibroAUnChangoVacioEsteDejaDeEstarVacio stamp: 'MO 10/27/2022 21:09:44'!
+PASSED!
+
+!testRun: #ChangoTest #test03NoSePuedenAgregarProductosFueraDelCatalogoAlChango stamp: 'MO 10/27/2022 21:09:44'!
+PASSED!
+
+!testRun: #ChangoTest #test04NoSePuedeAgregarMenosDeUnaUnidadDelProductosAlChango stamp: 'MO 10/27/2022 21:09:44'!
+PASSED!
+!ChangoTest methodsFor: 'tests' stamp: 'MO 10/27/2022 21:10:20'!
+test04NoSePuedeAgregarMenosDeUnaUnidadDelProductoAlChango! !
+
+!methodRemoval: ChangoTest #test04NoSePuedeAgregarMenosDeUnaUnidadDelProductosAlChango stamp: 'MO 10/27/2022 21:10:20'!
+test04NoSePuedeAgregarMenosDeUnaUnidadDelProductosAlChango!
+!ChangoTest methodsFor: 'tests' stamp: 'MO 10/27/2022 21:13:31' prior: 50552495!
+test04NoSePuedeAgregarMenosDeUnaUnidadDelProductoAlChango
+
+	| unChango libroNOProhibido |
+	
+	libroNOProhibido := Libro new.
+	unChango := Chango new.
+	
+	self 
+		should: [ unChango agregar: 0 libros: libroNOProhibido ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Chango seDebenAgregarUnLibroOMasDescripcionDeError.
+			self assert: unChango estaVacio]
+	! !
+!Chango methodsFor: 'as yet unclassified' stamp: 'MO 10/27/2022 21:14:06'!
+agregar: cantidadDelLibro libros: elLibro
+
+	self error: self class seDebenAgregarUnLibroOMasDescripcionDeError ! !
+!Chango class methodsFor: 'descripcion de errores' stamp: 'MO 10/27/2022 21:14:58'!
+seDebenAgregarUnLibroOMasDescripcionDeError
+	
+	^ 'y no maquina, no se pueden agregar 0 libros o libros negativos, no es howartz esto'! !
+!Chango class methodsFor: 'descripcion de errores' stamp: 'MO 10/27/2022 21:15:21' prior: 50552528!
+seDebenAgregarUnLibroOMasDescripcionDeError
+	
+	^ 'y no maquina, no se pueden agregar 0 libros o libros negativos, no es jowartz esto'! !
+
+!testRun: #ChangoTest #test04NoSePuedeAgregarMenosDeUnaUnidadDelProductoAlChango stamp: 'MO 10/27/2022 21:15:27'!
+PASSED!
+
+!testRun: #ChangoTest #test01CuandoSeCreaUnChangoEstaVacio stamp: 'MO 10/27/2022 21:15:28'!
+PASSED!
+
+!testRun: #ChangoTest #test02CuandoSeAgregaUnLibroAUnChangoVacioEsteDejaDeEstarVacio stamp: 'MO 10/27/2022 21:15:28'!
+PASSED!
+
+!testRun: #ChangoTest #test03NoSePuedenAgregarProductosFueraDelCatalogoAlChango stamp: 'MO 10/27/2022 21:15:28'!
+PASSED!
+
+!testRun: #ChangoTest #test04NoSePuedeAgregarMenosDeUnaUnidadDelProductoAlChango stamp: 'MO 10/27/2022 21:15:28'!
+PASSED!
+
+!testRun: #ChangoTest #test01CuandoSeCreaUnChangoEstaVacio stamp: 'MO 10/27/2022 21:16:00'!
+PASSED!
+
+!testRun: #ChangoTest #test01CuandoSeCreaUnChangoEstaVacio stamp: 'MO 10/27/2022 21:16:06'!
+PASSED!
+
+!testRun: #ChangoTest #test02CuandoSeAgregaUnLibroAUnChangoVacioEsteDejaDeEstarVacio stamp: 'MO 10/27/2022 21:16:06'!
+PASSED!
+
+!testRun: #ChangoTest #test03NoSePuedenAgregarProductosFueraDelCatalogoAlChango stamp: 'MO 10/27/2022 21:16:06'!
+PASSED!
+
+!testRun: #ChangoTest #test04NoSePuedeAgregarMenosDeUnaUnidadDelProductoAlChango stamp: 'MO 10/27/2022 21:16:06'!
+PASSED!
+!ChangoTest methodsFor: 'tests' stamp: 'MO 10/27/2022 21:16:53'!
+test05SePuedenAgregarProductosDentroDelCatalogoAlChango
+
+	| unChango libroProhibido |
+	
+	libroProhibido := Libro new.
+	unChango := Chango new.
+	
+	self 
+		should: [ unChango agregarLibro: libroProhibido ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Chango libroFueraDelCatalogoDescripcionDeError.
+			self assert: unChango estaVacio]! !
+
+Object subclass: #Chango
+	instanceVariableNames: 'catalogo contenido'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #Chango category: 'TusLibros' stamp: 'MO 10/27/2022 21:20:41'!
+Object subclass: #Chango
+	instanceVariableNames: 'catalogo contenido'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+Object subclass: #Catalogo
+	instanceVariableNames: 'librosRegistrados'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #Catalogo category: 'TusLibros' stamp: 'MO 10/27/2022 21:21:39'!
+Object subclass: #Catalogo
+	instanceVariableNames: 'librosRegistrados'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!Catalogo methodsFor: 'no messages' stamp: 'MO 10/27/2022 21:22:18' overrides: 16920235!
+initialize
+	
+	librosRegistrados := Set new! !
+
+TestCase subclass: #CatalogoTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #CatalogoTest category: 'TusLibros' stamp: 'MO 10/27/2022 21:23:15'!
+TestCase subclass: #CatalogoTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!CatalogoTest methodsFor: 'no messages' stamp: 'MO 10/27/2022 21:24:10'!
+test01CuandoSeCreaUnCatalogoEstaVacio
+
+	self assert: Catalogo new estaVacio! !
+!Catalogo methodsFor: 'inicialiacion' stamp: 'MO 10/27/2022 21:24:42'!
+estaVacio
+	
+	^ librosRegistrados isEmpty! !
+
+!classRemoval: #CatalogoTest stamp: 'MO 10/27/2022 21:31:26'!
+TestCase subclass: #CatalogoTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!Catalogo methodsFor: 'xxxxxx' stamp: 'MO 10/27/2022 21:32:06'!
+registrarLibro: unLibro
+	
+	^ librosRegistrados add: unLibro! !
+
+TestCase subclass: #ChangoTest
+	instanceVariableNames: 'catalogo'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #ChangoTest category: 'TusLibros' stamp: 'MO 10/27/2022 21:33:04'!
+TestCase subclass: #ChangoTest
+	instanceVariableNames: 'catalogo'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+TestCase subclass: #ChangoTest
+	instanceVariableNames: 'catalogo libroEnElCatalogo'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #ChangoTest category: 'TusLibros' stamp: 'MO 10/27/2022 21:34:11'!
+TestCase subclass: #ChangoTest
+	instanceVariableNames: 'catalogo libroEnElCatalogo'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!ChangoTest methodsFor: 'tests' stamp: 'MO 10/27/2022 21:35:06' overrides: 16961394!
+setUp
+
+	libroEnElCatalogo := Libro new.
+	catalogo := Set with: libroEnElCatalogo.! !
+!ChangoTest methodsFor: 'tests' stamp: 'MO 10/27/2022 21:35:44' prior: 50552579!
+test05SePuedenAgregarProductosDentroDelCatalogoAlChango
+
+	| unChango libro |
+	
+	libro := Libro new.
+	unChango := Chango new.
+	
+	self 
+		should: [ unChango agregarLibro: libro ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Chango libroFueraDelCatalogoDescripcionDeError.
+			self assert: unChango estaVacio]! !
+!ChangoTest methodsFor: 'tests' stamp: 'MO 10/27/2022 21:36:00' prior: 50552414!
+test03NoSePuedenAgregarProductosFueraDelCatalogoAlChango
+
+	| unChango libro |
+	
+	libro := Libro new.
+	unChango := Chango new.
+	
+	self 
+		should: [ unChango agregarLibro: libro ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Chango libroFueraDelCatalogoDescripcionDeError.
+			self assert: unChango estaVacio]! !
+
+TestCase subclass: #ChangoTest
+	instanceVariableNames: 'catalogo libroEnElCatalogo libroProhibido'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #ChangoTest category: 'TusLibros' stamp: 'MO 10/27/2022 21:36:13'!
+TestCase subclass: #ChangoTest
+	instanceVariableNames: 'catalogo libroEnElCatalogo libroProhibido'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!ChangoTest methodsFor: 'tests' stamp: 'MO 10/27/2022 21:36:30' prior: 50552676 overrides: 16961394!
+setUp
+
+	libroEnElCatalogo := Libro new.
+	libroProhibido := Libro new.
+	catalogo := Set with: libroEnElCatalogo.! !
+!Chango methodsFor: 'inicializacion' stamp: 'MO 10/27/2022 21:39:03'!
+initializeConCatalogo: unCatalogo
+
+	catalogo := unCatalogo.
+	contenido := Bag new.! !
+!Chango methodsFor: 'inicializacion' stamp: 'MO 10/27/2022 21:41:15'!
+initializeConCatalogo: unCatalogo with: unLibro
+
+	catalogo := unCatalogo.
+	
+	(catalogo includes: unLibro) ifFalse: [ self error: self class libroFueraDelCatalogoDescripcionDeError].
+	
+	contenido := Bag with: unLibro! !
+!Chango methodsFor: 'as yet unclassified' stamp: 'MO 10/27/2022 21:42:30' prior: 50552452!
+agregarLibro: unLibro
+
+	(catalogo includes: unLibro) ifFalse: [ self error: self class libroFueraDelCatalogoDescripcionDeError].
+	
+	contenido add: unLibro! !
+!Chango methodsFor: 'inicializacion' stamp: 'MO 10/27/2022 21:42:56' prior: 50552735!
+initializeConCatalogo: unCatalogo with: unLibro
+
+	catalogo := unCatalogo.
+	contenido := Bag new.
+	
+	self agregarLibro: unLibro! !
+!Chango class methodsFor: 'creacion de instancias' stamp: 'MO 10/27/2022 21:43:37'!
+conLibro: unLibro
+
+	^ self new initializeWith: unLibro! !
+
+!methodRemoval: Chango class #con: stamp: 'MO 10/27/2022 21:43:37'!
+con: unLibro
+
+	^ self new initializeWith: unLibro!
+!Chango class methodsFor: 'creacion de instancias' stamp: 'MO 10/27/2022 21:44:11'!
+conCatalogo: unCatalogo conLibro: unLibro
+
+	^ self new initializeConCatalogo: unCatalogo with: unLibro! !
+!Chango class methodsFor: 'creacion de instancias' stamp: 'MO 10/27/2022 21:44:19'!
+conCatalogo: unCatalogo
+
+	^ self new initializeConCatalogo: unCatalogo! !
+!ChangoTest methodsFor: 'tests' stamp: 'MO 10/27/2022 21:44:52' prior: 50552366!
+test02CuandoSeAgregaUnLibroAUnChangoVacioEsteDejaDeEstarVacio
+
+	self deny: (Chango conLibro: Libro new) estaVacio! !
+
+!testRun: #ChangoTest #test02CuandoSeAgregaUnLibroAUnChangoVacioEsteDejaDeEstarVacio stamp: 'MO 10/27/2022 21:44:54'!
+PASSED!
+
+!testRun: #ChangoTest #test01CuandoSeCreaUnChangoEstaVacio stamp: 'MO 10/27/2022 21:44:54'!
+PASSED!
+
+!testRun: #ChangoTest #test02CuandoSeAgregaUnLibroAUnChangoVacioEsteDejaDeEstarVacio stamp: 'MO 10/27/2022 21:44:54'!
+PASSED!
+
+!testRun: #ChangoTest #test03NoSePuedenAgregarProductosFueraDelCatalogoAlChango stamp: 'MO 10/27/2022 21:44:54'!
+FAILURE!
+
+!testRun: #ChangoTest #test04NoSePuedeAgregarMenosDeUnaUnidadDelProductoAlChango stamp: 'MO 10/27/2022 21:44:54'!
+PASSED!
+
+!testRun: #ChangoTest #test05SePuedenAgregarProductosDentroDelCatalogoAlChango stamp: 'MO 10/27/2022 21:44:54'!
+FAILURE!
+
+!testRun: #ChangoTest #test02CuandoSeAgregaUnLibroAUnChangoVacioEsteDejaDeEstarVacio stamp: 'MO 10/27/2022 21:46:24'!
+PASSED!
+!ChangoTest methodsFor: 'tests' stamp: 'MO 10/27/2022 21:47:36' prior: 50552780!
+test02CuandoSeAgregaUnLibroAUnChangoVacioEsteDejaDeEstarVacio
+
+	self deny: (Chango conCatalogo: catalogo conLibro: libroEnElCatalogo) estaVacio! !
+
+!methodRemoval: Chango class #conLibro: stamp: 'MO 10/27/2022 21:47:47'!
+conLibro: unLibro
+
+	^ self new initializeWith: unLibro!
+
+!methodRemoval: Chango #initializeWith: stamp: 'MO 10/27/2022 21:48:19'!
+initializeWith: unLibro
+
+	contenido := Bag with: unLibro!
+!ChangoTest methodsFor: 'tests' stamp: 'MO 10/27/2022 21:49:18' prior: 50552696!
+test03NoSePuedenAgregarProductosFueraDelCatalogoAlChango
+
+	| unChango |
+	
+	unChango := Chango conCatalogo: catalogo.
+	
+	self 
+		should: [ unChango agregarLibro: libroProhibido ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Chango libroFueraDelCatalogoDescripcionDeError.
+			self assert: unChango estaVacio]! !
+
+!testRun: #ChangoTest #test03NoSePuedenAgregarProductosFueraDelCatalogoAlChango stamp: 'MO 10/27/2022 21:49:19'!
+PASSED!
+
+!testRun: #ChangoTest #test01CuandoSeCreaUnChangoEstaVacio stamp: 'MO 10/27/2022 21:49:19'!
+PASSED!
+
+!testRun: #ChangoTest #test02CuandoSeAgregaUnLibroAUnChangoVacioEsteDejaDeEstarVacio stamp: 'MO 10/27/2022 21:49:19'!
+PASSED!
+
+!testRun: #ChangoTest #test03NoSePuedenAgregarProductosFueraDelCatalogoAlChango stamp: 'MO 10/27/2022 21:49:19'!
+PASSED!
+
+!testRun: #ChangoTest #test04NoSePuedeAgregarMenosDeUnaUnidadDelProductoAlChango stamp: 'MO 10/27/2022 21:49:19'!
+PASSED!
+
+!testRun: #ChangoTest #test05SePuedenAgregarProductosDentroDelCatalogoAlChango stamp: 'MO 10/27/2022 21:49:20'!
+FAILURE!
+
+!testRun: #ChangoTest #test05SePuedenAgregarProductosDentroDelCatalogoAlChango stamp: 'MO 10/27/2022 21:49:20'!
+FAILURE!
+
+!testRun: #ChangoTest #test03NoSePuedenAgregarProductosFueraDelCatalogoAlChango stamp: 'MO 10/27/2022 21:49:24'!
+PASSED!
+
+!testRun: #ChangoTest #test02CuandoSeAgregaUnLibroAUnChangoVacioEsteDejaDeEstarVacio stamp: 'MO 10/27/2022 21:49:27'!
+PASSED!
+
+!testRun: #ChangoTest #test01CuandoSeCreaUnChangoEstaVacio stamp: 'MO 10/27/2022 21:49:30'!
+PASSED!
+!ChangoTest methodsFor: 'tests' stamp: 'MO 10/27/2022 21:49:59' prior: 50552506!
+test04NoSePuedeAgregarMenosDeUnaUnidadDelProductoAlChango
+
+	| unChango |
+	
+	unChango := Chango conCatalogo: catalogo.
+	
+	self 
+		should: [ unChango agregar: 0 libros: libroEnElCatalogo ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Chango seDebenAgregarUnLibroOMasDescripcionDeError.
+			self assert: unChango estaVacio]
+	! !
+
+!testRun: #ChangoTest #test04NoSePuedeAgregarMenosDeUnaUnidadDelProductoAlChango stamp: 'MO 10/27/2022 21:50:07'!
+PASSED!
+!ChangoTest methodsFor: 'tests' stamp: 'MO 10/27/2022 21:50:46' prior: 50552682!
+test05SePuedenAgregarProductosDentroDelCatalogoAlChango
+
+	| unChango |
+	
+	unChango := Chango conCatalogo: catalogo.
+	
+	self 
+		should: [ unChango agregarLibro: libroEnElCatalogo ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: Chango libroFueraDelCatalogoDescripcionDeError.
+			self assert: unChango estaVacio]! !
+
+!testRun: #ChangoTest #test05SePuedenAgregarProductosDentroDelCatalogoAlChango stamp: 'MO 10/27/2022 21:50:47'!
+FAILURE!
+!Chango methodsFor: 'as yet unclassified' stamp: 'MO 10/27/2022 21:53:30' prior: 50552521!
+agregar: cantidadDelLibro libros: elLibro
+
+	(cantidadDelLibro < 1) ifTrue: [self error: self class seDebenAgregarUnLibroOMasDescripcionDeError].
+	
+	contenido add: elLibro withOccurrences: cantidadDelLibro! !
+!ChangoTest methodsFor: 'tests' stamp: 'MO 10/27/2022 21:55:53' prior: 50552898!
+test05SePuedenAgregarProductosDentroDelCatalogoAlChango
+
+	| unChango |
+	
+	unChango := Chango conCatalogo: catalogo.
+	
+	unChango agregarLibro: libroEnElCatalogo.
+	unChango agregar: 2 libros: libroEnElCatalogo.
+	
+	self assert: (unChango contenido occurrencesOf: libroEnElCatalogo) equals: 3! !
+!ChangoTest methodsFor: 'tests' stamp: 'MO 10/27/2022 21:56:04' prior: 50552926!
+test05SePuedenAgregarProductosDentroDelCatalogoAlChango
+
+	| unChango |
+	
+	unChango := Chango conCatalogo: catalogo.
+	
+	unChango agregarLibro: libroEnElCatalogo.
+	unChango agregar: 2 libros: libroEnElCatalogo.
+	
+	self assert: ((unChango contenido) occurrencesOf: libroEnElCatalogo) equals: 3! !
+!Chango methodsFor: 'as yet unclassified' stamp: 'MO 10/27/2022 21:56:17'!
+contenido
+
+	^ contenido copy! !
+
+!testRun: #ChangoTest #test05SePuedenAgregarProductosDentroDelCatalogoAlChango stamp: 'MO 10/27/2022 21:56:19'!
+PASSED!
+
+!testRun: #ChangoTest #test01CuandoSeCreaUnChangoEstaVacio stamp: 'MO 10/27/2022 21:56:19'!
+PASSED!
+
+!testRun: #ChangoTest #test02CuandoSeAgregaUnLibroAUnChangoVacioEsteDejaDeEstarVacio stamp: 'MO 10/27/2022 21:56:19'!
+PASSED!
+
+!testRun: #ChangoTest #test03NoSePuedenAgregarProductosFueraDelCatalogoAlChango stamp: 'MO 10/27/2022 21:56:19'!
+PASSED!
+
+!testRun: #ChangoTest #test04NoSePuedeAgregarMenosDeUnaUnidadDelProductoAlChango stamp: 'MO 10/27/2022 21:56:19'!
+PASSED!
+
+!testRun: #ChangoTest #test05SePuedenAgregarProductosDentroDelCatalogoAlChango stamp: 'MO 10/27/2022 21:56:19'!
+PASSED!
+
+!testRun: #ChangoTest #test05SePuedenAgregarProductosDentroDelCatalogoAlChango stamp: 'MO 10/27/2022 23:45:33'!
+PASSED!
+
+!testRun: #ChangoTest #test01CuandoSeCreaUnChangoEstaVacio stamp: 'MO 10/27/2022 23:45:33'!
+PASSED!
+
+!testRun: #ChangoTest #test02CuandoSeAgregaUnLibroAUnChangoVacioEsteDejaDeEstarVacio stamp: 'MO 10/27/2022 23:45:33'!
+PASSED!
+
+!testRun: #ChangoTest #test03NoSePuedenAgregarProductosFueraDelCatalogoAlChango stamp: 'MO 10/27/2022 23:45:33'!
+PASSED!
+
+!testRun: #ChangoTest #test04NoSePuedeAgregarMenosDeUnaUnidadDelProductoAlChango stamp: 'MO 10/27/2022 23:45:33'!
+PASSED!
+
+!testRun: #ChangoTest #test05SePuedenAgregarProductosDentroDelCatalogoAlChango stamp: 'MO 10/27/2022 23:45:33'!
+PASSED!
+!ChangoTest methodsFor: 'setUp' stamp: 'MO 10/28/2022 00:05:34' prior: 50552724 overrides: 16961394!
+setUp
+	
+	"por ahora, modelamos los libros como su id"
+	libroEnElCatalogo := '001'.
+	libroProhibido := '002'.
+	
+	"por ahora, modelamos un catálogo como un set de libros"
+	catalogo := Set with: libroEnElCatalogo.! !
+!ChangoTest methodsFor: 'tests' stamp: 'MO 10/28/2022 00:06:23'!
+test05UnChangoPuedeMostrarSuContenido
+
+	| unChango |
+	
+	unChango := Chango conCatalogo: catalogo.
+	
+	unChango agregarLibro: libroEnElCatalogo.
+	unChango agregar: 2 libros: libroEnElCatalogo.
+	
+	self assert: ((unChango contenido) occurrencesOf: libroEnElCatalogo) equals: 3! !
+!ChangoTest methodsFor: 'tests' stamp: 'MO 10/28/2022 00:11:51' prior: 50553008!
+test05UnChangoPuedeMostrarSuContenido
+
+	| unChango libro1 libro2 libro3 |
+	
+	unChango := Chango conCatalogo: catalogo.
+	libro1 := '01'. libro2 := '02'. libro3 := '03'.	
+	catalogo add: libro3; add: libro2; add: libro3.
+	
+	unChango agregarLibro: libro1.
+	unChango agregar: 2 libros: libro2.
+	unChango agregarLibro: libro3.
+	
+	self assert: (unChango contenido) includes: libro1.
+	self assert: ((unChango contenido) occurrencesOf: libro2) equals: 2.
+	self assert: (unChango contenido) includes: libro3.
+	self assert: (unChango contenido size) equals: 4! !
+
+!testRun: #ChangoTest #test05UnChangoPuedeMostrarSuContenido stamp: 'MO 10/28/2022 00:11:55'!
+ERROR!
+
+!testRun: #ChangoTest #test05SePuedenAgregarProductosDentroDelCatalogoAlChango stamp: 'MO 10/28/2022 00:12:07'!
+PASSED!
+
+!testRun: #ChangoTest #test05UnChangoPuedeMostrarSuContenido stamp: 'MO 10/28/2022 00:12:10'!
+ERROR!
+
+!testRun: #ChangoTest #test05UnChangoPuedeMostrarSuContenido stamp: 'MO 10/28/2022 00:12:10'!
+ERROR!
+
+!testRun: #ChangoTest #test05UnChangoPuedeMostrarSuContenido stamp: 'MO 10/28/2022 00:14:50'!
+PASSED!
+
+!testRun: #ChangoTest #test05UnChangoPuedeMostrarSuContenido stamp: 'MO 10/28/2022 00:14:55'!
+ERROR!
+!ChangoTest methodsFor: 'tests' stamp: 'MO 10/28/2022 00:15:27' prior: 50553020!
+test05UnChangoPuedeMostrarSuContenido
+
+	| unChango libro1 libro2 libro3 |
+	
+	unChango := Chango conCatalogo: catalogo.
+	libro1 := '01'. libro2 := '02'. libro3 := '03'.	
+	catalogo add: libro3; add: libro2; add: libro3.
+	
+	unChango agregarLibro: libro1.
+	unChango agregar: 2 libros: libro2.
+	"unChango agregarLibro: libro3."
+	
+	self assert: (unChango contenido) includes: libro1.
+	self assert: ((unChango contenido) occurrencesOf: libro2) equals: 2.
+	"self assert: (unChango contenido) includes: libro3."
+	self assert: (unChango contenido size) equals: 4! !
+
+!testRun: #ChangoTest #test05UnChangoPuedeMostrarSuContenido stamp: 'MO 10/28/2022 00:15:28'!
+ERROR!
+!ChangoTest methodsFor: 'tests' stamp: 'MO 10/28/2022 00:16:51' prior: 50553060!
+test05UnChangoPuedeMostrarSuContenido
+
+	| unChango libro1 libro2 libro3 |
+	
+	unChango := Chango conCatalogo: catalogo.
+	libro1 := '01'. libro2 := '02'. libro3 := '03'.	
+	catalogo := Set with: libro3 with: libro2 with: libro3.
+	
+	unChango agregarLibro: libro1.
+	unChango agregar: 2 libros: libro2.
+	unChango agregarLibro: libro3.
+	
+	self assert: (unChango contenido) includes: libro1.
+	self assert: ((unChango contenido) occurrencesOf: libro2) equals: 2.
+	self assert: (unChango contenido) includes: libro3.
+	self assert: (unChango contenido size) equals: 4! !
+
+!testRun: #ChangoTest #test05UnChangoPuedeMostrarSuContenido stamp: 'MO 10/28/2022 00:16:52'!
+ERROR!
+!ChangoTest methodsFor: 'tests' stamp: 'MO 10/28/2022 00:11:51' prior: 50553084!
+test05UnChangoPuedeMostrarSuContenido
+
+	| unChango libro1 libro2 libro3 |
+	
+	unChango := Chango conCatalogo: catalogo.
+	libro1 := '01'. libro2 := '02'. libro3 := '03'.	
+	catalogo add: libro3; add: libro2; add: libro3.
+	
+	unChango agregarLibro: libro1.
+	unChango agregar: 2 libros: libro2.
+	unChango agregarLibro: libro3.
+	
+	self assert: (unChango contenido) includes: libro1.
+	self assert: ((unChango contenido) occurrencesOf: libro2) equals: 2.
+	self assert: (unChango contenido) includes: libro3.
+	self assert: (unChango contenido size) equals: 4! !
+!ChangoTest methodsFor: 'tests' stamp: 'MO 10/28/2022 00:18:05' prior: 50553108!
+test05UnChangoPuedeMostrarSuContenido
+
+	| unChango libro1 libro2 libro3 |
+	
+	unChango := Chango conCatalogo: catalogo.
+	libro1 := '01'. libro2 := '02'. libro3 := '03'.	
+	catalogo add: libro1; add: libro2; add: libro3.
+	
+	unChango agregarLibro: libro1.
+	unChango agregar: 2 libros: libro2.
+	unChango agregarLibro: libro3.
+	
+	self assert: (unChango contenido) includes: libro1.
+	self assert: ((unChango contenido) occurrencesOf: libro2) equals: 2.
+	self assert: (unChango contenido) includes: libro3.
+	self assert: (unChango contenido size) equals: 4! !
+
+!testRun: #ChangoTest #test05UnChangoPuedeMostrarSuContenido stamp: 'MO 10/28/2022 00:18:10'!
+PASSED!
+
+!testRun: #ChangoTest #test01CuandoSeCreaUnChangoEstaVacio stamp: 'MO 10/28/2022 00:18:10'!
+PASSED!
+
+!testRun: #ChangoTest #test02CuandoSeAgregaUnLibroAUnChangoVacioEsteDejaDeEstarVacio stamp: 'MO 10/28/2022 00:18:10'!
+PASSED!
+
+!testRun: #ChangoTest #test03NoSePuedenAgregarProductosFueraDelCatalogoAlChango stamp: 'MO 10/28/2022 00:18:10'!
+PASSED!
+
+!testRun: #ChangoTest #test04NoSePuedeAgregarMenosDeUnaUnidadDelProductoAlChango stamp: 'MO 10/28/2022 00:18:10'!
+PASSED!
+
+!testRun: #ChangoTest #test05SePuedenAgregarProductosDentroDelCatalogoAlChango stamp: 'MO 10/28/2022 00:18:10'!
+PASSED!
+
+!testRun: #ChangoTest #test05UnChangoPuedeMostrarSuContenido stamp: 'MO 10/28/2022 00:18:10'!
+PASSED!
+!ChangoTest methodsFor: 'tests' stamp: 'MO 10/28/2022 00:19:26' prior: 50552938!
+test05SePuedenAgregarProductosDentroDelCatalogoAlChango
+
+	| unChango |
+	
+	unChango := Chango conCatalogo: catalogo.
+	
+	unChango agregarLibro: libroEnElCatalogo.
+	unChango agregar: 2 libros: libroEnElCatalogo.
+	
+	self assert: (unChango contenido occurrencesOf: libroEnElCatalogo) equals: 3! !
+
+!testRun: #ChangoTest #test05SePuedenAgregarProductosDentroDelCatalogoAlChango stamp: 'MO 10/28/2022 00:19:27'!
+PASSED!
+
+!testRun: #ChangoTest #test01CuandoSeCreaUnChangoEstaVacio stamp: 'MO 10/28/2022 00:19:27'!
+PASSED!
+
+!testRun: #ChangoTest #test02CuandoSeAgregaUnLibroAUnChangoVacioEsteDejaDeEstarVacio stamp: 'MO 10/28/2022 00:19:27'!
+PASSED!
+
+!testRun: #ChangoTest #test03NoSePuedenAgregarProductosFueraDelCatalogoAlChango stamp: 'MO 10/28/2022 00:19:27'!
+PASSED!
+
+!testRun: #ChangoTest #test04NoSePuedeAgregarMenosDeUnaUnidadDelProductoAlChango stamp: 'MO 10/28/2022 00:19:27'!
+PASSED!
+
+!testRun: #ChangoTest #test05SePuedenAgregarProductosDentroDelCatalogoAlChango stamp: 'MO 10/28/2022 00:19:27'!
+PASSED!
+
+!testRun: #ChangoTest #test05UnChangoPuedeMostrarSuContenido stamp: 'MO 10/28/2022 00:19:27'!
+PASSED!
+!ChangoTest methodsFor: 'tests' stamp: 'MO 10/28/2022 00:19:57' prior: 50553128!
+test05UnChangoPuedeMostrarSuContenido
+
+	| unChango libro1 libro2 libro3 |
+	
+	unChango := Chango conCatalogo: catalogo.
+	libro1 := '01'. libro2 := '02'. libro3 := '03'.	
+	catalogo add: libro1; add: libro2; add: libro3.
+	
+	unChango agregarLibro: libro1.
+	unChango agregar: 2 libros: libro2.
+	unChango agregarLibro: libro3.
+	
+	self assert: unChango contenido includes: libro1.
+	self assert: (unChango contenido occurrencesOf: libro2) equals: 2.
+	self assert: unChango contenido includes: libro3.
+	self assert: (unChango contenido size) equals: 4! !
+
+!testRun: #ChangoTest #test05UnChangoPuedeMostrarSuContenido stamp: 'MO 10/28/2022 00:19:58'!
+PASSED!
+
+!testRun: #ChangoTest #test01CuandoSeCreaUnChangoEstaVacio stamp: 'MO 10/28/2022 00:19:58'!
+PASSED!
+
+!testRun: #ChangoTest #test02CuandoSeAgregaUnLibroAUnChangoVacioEsteDejaDeEstarVacio stamp: 'MO 10/28/2022 00:19:58'!
+PASSED!
+
+!testRun: #ChangoTest #test03NoSePuedenAgregarProductosFueraDelCatalogoAlChango stamp: 'MO 10/28/2022 00:19:58'!
+PASSED!
+
+!testRun: #ChangoTest #test04NoSePuedeAgregarMenosDeUnaUnidadDelProductoAlChango stamp: 'MO 10/28/2022 00:19:58'!
+PASSED!
+
+!testRun: #ChangoTest #test05SePuedenAgregarProductosDentroDelCatalogoAlChango stamp: 'MO 10/28/2022 00:19:58'!
+PASSED!
+
+!testRun: #ChangoTest #test05UnChangoPuedeMostrarSuContenido stamp: 'MO 10/28/2022 00:19:58'!
+PASSED!
+!ChangoTest methodsFor: 'tests' stamp: 'MO 10/28/2022 00:20:39'!
+test06UnChangoPuedeMostrarSuContenido
+
+	| unChango libro1 libro2 libro3 |
+	
+	unChango := Chango conCatalogo: catalogo.
+	libro1 := '01'. libro2 := '02'. libro3 := '03'.	
+	catalogo add: libro1; add: libro2; add: libro3.
+	
+	unChango agregarLibro: libro1.
+	unChango agregar: 2 libros: libro2.
+	unChango agregarLibro: libro3.
+	
+	self assert: unChango contenido includes: libro1.
+	self assert: (unChango contenido occurrencesOf: libro2) equals: 2.
+	self assert: unChango contenido includes: libro3.
+	self assert: (unChango contenido size) equals: 4! !
+
+!methodRemoval: ChangoTest #test05UnChangoPuedeMostrarSuContenido stamp: 'MO 10/28/2022 00:20:39'!
+test05UnChangoPuedeMostrarSuContenido
+
+	| unChango libro1 libro2 libro3 |
+	
+	unChango := Chango conCatalogo: catalogo.
+	libro1 := '01'. libro2 := '02'. libro3 := '03'.	
+	catalogo add: libro1; add: libro2; add: libro3.
+	
+	unChango agregarLibro: libro1.
+	unChango agregar: 2 libros: libro2.
+	unChango agregarLibro: libro3.
+	
+	self assert: unChango contenido includes: libro1.
+	self assert: (unChango contenido occurrencesOf: libro2) equals: 2.
+	self assert: unChango contenido includes: libro3.
+	self assert: (unChango contenido size) equals: 4!
+!ChangoTest methodsFor: 'tests' stamp: 'MO 10/28/2022 00:53:13'!
+test07UnChangoPuedeDejarDeSerValido
+
+	| unChango |
+	
+	unChango := Chango new.
+	
+	unChango invalidar.
+	
+	self assert: unChango isNil! !
+!Chango methodsFor: 'inicializacion' stamp: 'MO 10/28/2022 00:59:13'!
+invalidar
+
+	self delete! !
+
+!testRun: #ChangoTest #test07UnChangoPuedeDejarDeSerValido stamp: 'MO 10/28/2022 00:59:17'!
+ERROR!
+!Chango methodsFor: 'inicializacion' stamp: 'MO 10/28/2022 01:00:16' prior: 50553303!
+invalidar
+
+	self! !
+!ChangoTest methodsFor: 'tests' stamp: 'MO 10/28/2022 01:00:26' prior: 50553296!
+test07UnChangoPuedeDejarDeSerValido
+
+	| unChango |
+	
+	unChango := Chango new.
+	
+	unChango invalidar.
+	
+	unChango delete
+	
+	self assert: unChango isNil! !
+
+!testRun: #ChangoTest #test07UnChangoPuedeDejarDeSerValido stamp: 'MO 10/28/2022 01:00:28'!
+ERROR!
+!Chango methodsFor: 'inicializacion' stamp: 'MO 10/28/2022 01:02:06' prior: 50553310!
+invalidar
+
+	Smalltalk garbageCollect! !
+!ChangoTest methodsFor: 'tests' stamp: 'MO 10/28/2022 01:02:13' prior: 50553314!
+test07UnChangoPuedeDejarDeSerValido
+
+	| unChango |
+	
+	unChango := Chango new.
+	
+	unChango invalidar.
+	
+	self assert: unChango isNil! !
+
+!testRun: #ChangoTest #test07UnChangoPuedeDejarDeSerValido stamp: 'MO 10/28/2022 01:02:14'!
+FAILURE!
+!Chango methodsFor: 'inicializacion' stamp: 'MO 10/28/2022 00:59:13' prior: 50553325!
+invalidar
+
+	self delete! !
+
+!methodRemoval: ChangoTest #test07UnChangoPuedeDejarDeSerValido stamp: 'MO 10/28/2022 01:04:51'!
+test07UnChangoPuedeDejarDeSerValido
+
+	| unChango |
+	
+	unChango := Chango new.
+	
+	unChango invalidar.
+	
+	self assert: unChango isNil!
+
+!methodRemoval: Chango #invalidar stamp: 'MO 10/28/2022 01:04:56'!
+invalidar
+
+	self delete!
+
+----QUIT----(28 October 2022 01:05:35) CuisUniversity-5481.image priorSource: 7059698!
