@@ -960,3 +960,40 @@ invalidar
 	self delete!
 
 ----QUIT----(28 October 2022 01:05:35) CuisUniversity-5481.image priorSource: 7059698!
+
+----STARTUP---- (30 October 2022 20:06:38) as C:\Users\maria\Desktop\Facultad\Taller\Inge1\CuisUniversity-windows64\CuisUniversity-5481.image!
+
+
+!classRemoval: #Catalogo stamp: 'MO 10/30/2022 20:10:44'!
+Object subclass: #Catalogo
+	instanceVariableNames: 'librosRegistrados'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classRemoval: #Libro stamp: 'MO 10/30/2022 20:10:48'!
+Object subclass: #Libro
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!testRun: #ChangoTest #test01CuandoSeCreaUnChangoEstaVacio stamp: 'MO 10/30/2022 20:10:51'!
+PASSED!
+
+!testRun: #ChangoTest #test02CuandoSeAgregaUnLibroAUnChangoVacioEsteDejaDeEstarVacio stamp: 'MO 10/30/2022 20:10:51'!
+PASSED!
+
+!testRun: #ChangoTest #test03NoSePuedenAgregarProductosFueraDelCatalogoAlChango stamp: 'MO 10/30/2022 20:10:51'!
+PASSED!
+
+!testRun: #ChangoTest #test04NoSePuedeAgregarMenosDeUnaUnidadDelProductoAlChango stamp: 'MO 10/30/2022 20:10:51'!
+PASSED!
+
+!testRun: #ChangoTest #test05SePuedenAgregarProductosDentroDelCatalogoAlChango stamp: 'MO 10/30/2022 20:10:51'!
+PASSED!
+
+!testRun: #ChangoTest #test06UnChangoPuedeMostrarSuContenido stamp: 'MO 10/30/2022 20:10:51'!
+PASSED!
+
+----QUIT----(30 October 2022 20:11:30) CuisUniversity-5481.image priorSource: 7094494!

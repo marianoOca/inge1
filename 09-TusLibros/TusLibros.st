@@ -86,30 +86,6 @@ test06UnChangoPuedeMostrarSuContenido
 	self assert: (unChango contenido size) equals: 4! !
 
 
-!classDefinition: #Catalogo category: 'TusLibros'!
-Object subclass: #Catalogo
-	instanceVariableNames: 'librosRegistrados'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TusLibros'!
-
-!Catalogo methodsFor: 'inicialiacion' stamp: 'MO 10/27/2022 21:22:18'!
-initialize
-	
-	librosRegistrados := Set new! !
-
-
-!Catalogo methodsFor: 'xxxxxx' stamp: 'MO 10/27/2022 21:24:42'!
-estaVacio
-	
-	^ librosRegistrados isEmpty! !
-
-!Catalogo methodsFor: 'xxxxxx' stamp: 'MO 10/27/2022 21:32:06'!
-registrarLibro: unLibro
-	
-	^ librosRegistrados add: unLibro! !
-
-
 !classDefinition: #Chango category: 'TusLibros'!
 Object subclass: #Chango
 	instanceVariableNames: 'catalogo contenido'
@@ -187,11 +163,3 @@ libroFueraDelCatalogoDescripcionDeError
 seDebenAgregarUnLibroOMasDescripcionDeError
 	
 	^ 'y no maquina, no se pueden agregar 0 libros o libros negativos, no es jowartz esto'! !
-
-
-!classDefinition: #Libro category: 'TusLibros'!
-Object subclass: #Libro
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TusLibros'!
