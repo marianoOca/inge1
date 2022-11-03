@@ -1,0 +1,1948 @@
+
+
+----QUIT----(26 October 2022 08:07:27) CuisUniversity-5510.image priorSource: 2900072!
+
+----STARTUP---- (26 October 2022 08:07:28) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5510.image!
+
+
+----QUIT----(26 October 2022 08:07:28) CuisUniversity-5510.image priorSource: 7154921!
+
+----STARTUP---- (2 November 2022 19:41:44) as /home/carla/Desktop/linux64/CuisUniversity-5510.image!
+
+
+----End fileIn of /home/carla/Desktop/linux64/TusLibros.st----!
+
+----End fileIn of /home/carla/Desktop/linux64/Packages/TerseGuide.pck.st----!
+!CashierTest methodsFor: 'tests' stamp: 'cde 11/2/2022 21:17:27'!
+test06CannotCheckoutWithInvalidTransactionAmount
+	
+	| unChango unCashier unPlasticoValido |
+	
+	unCashier := self createCashierWithDefaultDate.
+	unChango := self createCart.
+	unChango add: (self itemSellByTheStore ).
+	unChango add: (self itemSellByTheStore ).
+	unPlasticoValido := self createAValidCard.
+	
+	self 
+		should: [ unCashier checkOut: unChango withCard: unPlasticoValido ]
+		raise: Error 
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Cashier canNotCheckOutWithInvalidTransactionAmount.
+			self assert: unCashier salesHistory isEmpty]
+	! !
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 21:17:32'!
+FAILURE!
+!CashierTest methodsFor: 'tests' stamp: 'cde 11/2/2022 21:18:00' prior: 50558743!
+test06CannotCheckoutWithInvalidTransactionAmount
+	
+	| unChango unCashier unPlasticoValido |
+	
+	unCashier := self createCashierWithDefaultDate.
+	unChango := self createCart.
+	unChango add: (self itemSellByTheStore ).
+	unChango add: (self itemSellByTheStore ).
+	unPlasticoValido := self createAValidCard.
+	
+	self 
+		should: [ unCashier checkOut: unChango withCard: unPlasticoValido ]
+		raise: Error 
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Cashier canNotCheckOutWithInvalidTransactionAmountErrorDescription.
+			self assert: unCashier salesHistory isEmpty]
+	! !
+!CashierTest methodsFor: 'tests' stamp: 'cde 11/2/2022 21:18:17' prior: 50558768!
+test06CannotCheckoutWithInvalidTransactionAmount
+	
+	| unChango unCashier unPlasticoValido |
+	
+	unCashier := self createCashierWithDefaultDate.
+	unChango := self createCart.
+	unChango add: (self itemSellByTheStore ).
+	unChango add: (self itemSellByTheStore ).
+	unPlasticoValido := self createAValidCard.
+	
+	self 
+		should: [ unCashier checkOut: unChango withCard: unPlasticoValido ]
+		raise: Error 
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Cashier canNotCheckOutWithInvalidTransactionAmountErrorDescription.
+			self assert: unCashier salesHistory isEmpty]
+	! !
+!Cashier class methodsFor: 'error descriptions' stamp: 'cde 11/2/2022 21:18:45'!
+canNotCheckOutWithInvalidTransactionAmountErrorDescription
+
+	^ 'Uff, es re caro tu changuito. Tanto no puedo procesar.'! !
+!Cashier class methodsFor: 'error descriptions' stamp: 'cde 11/2/2022 21:24:46' prior: 50558810!
+canNotCheckOutWithInvalidTransactionAmountErrorDescription
+
+	^ 'Mm esa transaccion esta rara'! !
+!Cashier methodsFor: 'assertions' stamp: 'cde 11/2/2022 21:24:53'!
+assertValidTransaction: aTransactionAmount
+	
+	((aTransactionAmount < 0 or: aTransactionAmount integerPart > ((10 ^ 15) - 1)) or: aTransactionAmount fractionPart > 99 ) ifTrue: [self error: self class canNotCheckOutWithInvalidTransactionAmountErrorDescription]! !
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 21:24:59'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 21:24:59'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 21:27:10'!
+FAILURE!
+!Cashier methodsFor: 'operations' stamp: 'cde 11/2/2022 21:32:49' prior: 50555726!
+checkOut: unChango
+	
+	self assertValidCart: unChango.
+	self assertValidTransaction: unChango itemsValue.
+		
+	^ unChango itemsValue! !
+
+!testRun: #CashierTest #test01CannotCheckoutWithEmptyCart stamp: 'cde 11/2/2022 21:32:51'!
+PASSED!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 21:32:51'!
+ERROR!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'cde 11/2/2022 21:32:51'!
+ERROR!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'cde 11/2/2022 21:32:51'!
+PASSED!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'cde 11/2/2022 21:32:51'!
+PASSED!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 21:32:51'!
+FAILURE!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'cde 11/2/2022 21:33:22'!
+PASSED!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 21:33:26'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 21:33:26'!
+FAILURE!
+!Cashier methodsFor: 'operations' stamp: 'cde 11/2/2022 21:35:39' prior: 50558845!
+checkOut: unChango
+	
+	self assertValidCart: unChango.
+	self assertValidTransaction: (unChango itemsValue)..
+		
+	^ unChango itemsValue! !
+
+!testRun: #CashierTest #test01CannotCheckoutWithEmptyCart stamp: 'cde 11/2/2022 21:35:40'!
+PASSED!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 21:35:40'!
+ERROR!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'cde 11/2/2022 21:35:40'!
+ERROR!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'cde 11/2/2022 21:35:40'!
+PASSED!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'cde 11/2/2022 21:35:40'!
+PASSED!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 21:35:40'!
+FAILURE!
+!CashierTest methodsFor: 'support' stamp: 'cde 11/2/2022 21:40:57'!
+expensiveItemSellByTheStore
+	
+	^ 'Como mantener a un alumno despierto en dos simples pasos'! !
+!CashierTest methodsFor: 'support' stamp: 'cde 11/2/2022 21:41:45' prior: 50555468!
+defaultCatalog
+	|catalogo|
+	catalogo := Dictionary new.
+	catalogo add: (self itemSellByTheStore) -> (10000 * dollar).
+	catalogo add: (self otherItemSellByTheStore) -> (58 * dollar).
+	catalogo add: (self anOtherItemSellByTheStore) -> (123.50 * dollar).
+	catalogo add: (self expensiveItemSellByTheStore ) -> (10000000000000000000000000000000000000000000000000000000000000000.50 * dollar).
+	^ catalogo.! !
+!CashierTest methodsFor: 'tests' stamp: 'cde 11/2/2022 21:42:10' prior: 50558789!
+test06CannotCheckoutWithInvalidTransactionAmount
+	
+	| unChango unCashier unPlasticoValido |
+	
+	unCashier := self createCashierWithDefaultDate.
+	unChango := self createCart.
+	unChango add: (self expensiveItemSellByTheStore ).
+	unPlasticoValido := self createAValidCard.
+	
+	self 
+		should: [ unCashier checkOut: unChango withCard: unPlasticoValido ]
+		raise: Error 
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Cashier canNotCheckOutWithInvalidTransactionAmountErrorDescription.
+			self assert: unCashier salesHistory isEmpty]
+	! !
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 21:42:11'!
+FAILURE!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'cde 11/2/2022 21:42:30'!
+ERROR!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'cde 11/2/2022 21:42:30'!
+ERROR!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'cde 11/2/2022 21:42:53'!
+ERROR!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'cde 11/2/2022 21:42:53'!
+ERROR!
+
+!testRun: #CashierTest #test01CannotCheckoutWithEmptyCart stamp: 'cde 11/2/2022 21:42:58'!
+PASSED!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 21:42:58'!
+ERROR!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'cde 11/2/2022 21:42:58'!
+ERROR!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'cde 11/2/2022 21:42:58'!
+PASSED!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'cde 11/2/2022 21:42:58'!
+PASSED!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 21:42:58'!
+FAILURE!
+!Cashier methodsFor: 'assertions' stamp: 'cde 11/2/2022 21:45:42' prior: 50558823!
+assertValidTransaction: aTransactionAmount
+	
+	((aTransactionAmount < 0 or: aTransactionAmount  > ((10 ^ 15) - 1))) ifTrue: [self error: self class canNotCheckOutWithInvalidTransactionAmountErrorDescription]! !
+
+!testRun: #CashierTest #test01CannotCheckoutWithEmptyCart stamp: 'cde 11/2/2022 21:45:51'!
+PASSED!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 21:45:51'!
+ERROR!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'cde 11/2/2022 21:45:51'!
+ERROR!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'cde 11/2/2022 21:45:51'!
+PASSED!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'cde 11/2/2022 21:45:51'!
+PASSED!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 21:45:51'!
+FAILURE!
+!Cashier methodsFor: 'operations' stamp: 'cde 11/2/2022 21:46:28' prior: 50558883!
+checkOut: unChango
+	
+	self assertValidCart: unChango.
+	self assertValidTransaction: (unChango itemsValue).
+		
+	^ unChango itemsValue! !
+
+!testRun: #CashierTest #test01CannotCheckoutWithEmptyCart stamp: 'cde 11/2/2022 21:46:30'!
+PASSED!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 21:46:30'!
+ERROR!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'cde 11/2/2022 21:46:30'!
+ERROR!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'cde 11/2/2022 21:46:30'!
+PASSED!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'cde 11/2/2022 21:46:30'!
+PASSED!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 21:46:30'!
+FAILURE!
+!Cashier methodsFor: 'assertions' stamp: 'cde 11/2/2022 21:48:44' prior: 50558988!
+assertValidTransaction: aTransactionAmount
+	
+	(aTransactionAmount < 0 or: aTransactionAmount  > ((10 ^ 15) - 1)) ifTrue: [self error: self class canNotCheckOutWithInvalidTransactionAmountErrorDescription]! !
+
+!testRun: #CashierTest #test01CannotCheckoutWithEmptyCart stamp: 'cde 11/2/2022 21:48:55'!
+PASSED!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 21:48:55'!
+ERROR!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'cde 11/2/2022 21:48:55'!
+ERROR!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'cde 11/2/2022 21:48:55'!
+PASSED!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'cde 11/2/2022 21:48:55'!
+PASSED!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 21:48:55'!
+FAILURE!
+!Cashier methodsFor: 'assertions' stamp: 'cde 11/2/2022 21:48:44' prior: 50559044!
+assertValidTransaction: aTransactionAmount
+	
+	(aTransactionAmount < 0 or: aTransactionAmount  > ((10 ^ 15) - 1)) ifTrue: [self error: self class canNotCheckOutWithInvalidTransactionAmountErrorDescription]! !
+!Cashier methodsFor: 'assertions' stamp: 'cde 11/2/2022 21:45:42' prior: 50559073!
+assertValidTransaction: aTransactionAmount
+	
+	((aTransactionAmount < 0 or: aTransactionAmount  > ((10 ^ 15) - 1))) ifTrue: [self error: self class canNotCheckOutWithInvalidTransactionAmountErrorDescription]! !
+!Cashier methodsFor: 'assertions' stamp: 'cde 11/2/2022 21:45:42' prior: 50559083!
+assertValidTransaction: aTransactionAmount
+	
+	((aTransactionAmount < 0 or: aTransactionAmount  > ((10 ^ 15) - 1))) ifTrue: [self error: self class canNotCheckOutWithInvalidTransactionAmountErrorDescription]! !
+!Cashier methodsFor: 'assertions' stamp: 'cde 11/2/2022 21:54:58' prior: 50559093!
+assertValidTransaction: aTransactionAmount
+	
+	((aTransactionAmount < 0 or: aTransactionAmount integerPart > ((10 ^ 15) - 1)) or: aTransactionAmount fractionPart > 99) ifTrue: [self error: self class canNotCheckOutWithInvalidTransactionAmountErrorDescription]! !
+!Cashier methodsFor: 'assertions' stamp: 'cde 11/2/2022 23:00:12' prior: 50559103!
+assertValidTransaction: aTransactionAmount
+	
+	((aTransactionAmount < 0 or: aTransactionAmount integerPart > ((10 ^ 15) - 1)) or: aTransactionAmount fractionPart > 0.99) ifTrue: [self error: self class canNotCheckOutWithInvalidTransactionAmountErrorDescription]! !
+!Cashier methodsFor: 'assertions' stamp: 'cde 11/2/2022 23:02:20' prior: 50559114!
+assertValidTransaction: aTransactionAmount
+	
+	((aTransactionAmount < 0 or: aTransactionAmount integerPart > ((10 ^ 15) - 1)) or: (aTransactionAmount fractionPart * 100) = 0) ifTrue: [self error: self class canNotCheckOutWithInvalidTransactionAmountErrorDescription]! !
+!CashierTest methodsFor: 'support' stamp: 'cde 11/2/2022 23:03:48' prior: 50558916!
+defaultCatalog
+	|catalogo|
+	catalogo := Dictionary new.
+	catalogo add: (self itemSellByTheStore) -> (10000 * dollar).
+	catalogo add: (self otherItemSellByTheStore) -> (58 * dollar).
+	catalogo add: (self anOtherItemSellByTheStore) -> (123.50 * dollar).
+	catalogo add: (self expensiveItemSellByTheStore ) -> (1000000000000000000000000000000000000000000000000000000000.50 * dollar).
+	^ catalogo.! !
+!CashierTest methodsFor: 'support' stamp: 'cde 11/2/2022 23:04:00' prior: 50559137!
+defaultCatalog
+	|catalogo|
+	catalogo := Dictionary new.
+	catalogo add: (self itemSellByTheStore) -> (10000 * dollar).
+	catalogo add: (self otherItemSellByTheStore) -> (58 * dollar).
+	catalogo add: (self anOtherItemSellByTheStore) -> (123.50 * dollar).
+	catalogo add: (self expensiveItemSellByTheStore ) -> (10000000000000000000000000000000000000000000000000000.50 * dollar).
+	^ catalogo.! !
+!CashierTest methodsFor: 'support' stamp: 'cde 11/2/2022 23:04:14' prior: 50559152!
+defaultCatalog
+	|catalogo|
+	catalogo := Dictionary new.
+	catalogo add: (self itemSellByTheStore) -> (10000 * dollar).
+	catalogo add: (self otherItemSellByTheStore) -> (58 * dollar).
+	catalogo add: (self anOtherItemSellByTheStore) -> (123.50 * dollar).
+	catalogo add: (self expensiveItemSellByTheStore ) -> (10000000000000000000.50 * dollar).
+	^ catalogo.! !
+
+!testRun: #CashierTest #test01CannotCheckoutWithEmptyCart stamp: 'cde 11/2/2022 23:04:27'!
+PASSED!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:04:27'!
+ERROR!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'cde 11/2/2022 23:04:27'!
+ERROR!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'cde 11/2/2022 23:04:27'!
+PASSED!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'cde 11/2/2022 23:04:27'!
+PASSED!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:04:27'!
+FAILURE!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:05:23'!
+ERROR!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:05:23'!
+ERROR!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:07:10'!
+ERROR!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:07:10'!
+ERROR!
+!Cashier methodsFor: 'assertions' stamp: 'cde 11/2/2022 23:07:47' prior: 50559125!
+assertValidTransaction: aTransactionAmount
+	|aTransactionAmountUnDolarized|
+	aTransactionAmountUnDolarized := aTransactionAmount / dollar.
+	((aTransactionAmountUnDolarized < 0 or: aTransactionAmountUnDolarized integerPart > ((10 ^ 15) - 1)) or: (aTransactionAmountUnDolarized fractionPart * 100) = 0) ifTrue: [self error: self class canNotCheckOutWithInvalidTransactionAmountErrorDescription]! !
+
+!testRun: #CashierTest #test01CannotCheckoutWithEmptyCart stamp: 'cde 11/2/2022 23:07:50'!
+PASSED!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:07:50'!
+ERROR!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'cde 11/2/2022 23:07:50'!
+ERROR!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'cde 11/2/2022 23:07:50'!
+PASSED!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'cde 11/2/2022 23:07:50'!
+PASSED!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:07:50'!
+FAILURE!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:07:57'!
+ERROR!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:07:57'!
+ERROR!
+!Cashier methodsFor: 'assertions' stamp: 'cde 11/2/2022 23:08:44' prior: 50559213!
+assertValidTransaction: aTransactionAmount
+	|aTransactionAmountUnDolarized|
+	aTransactionAmountUnDolarized := aTransactionAmount amount.
+	((aTransactionAmountUnDolarized < 0 or: aTransactionAmountUnDolarized integerPart > ((10 ^ 15) - 1)) or: (aTransactionAmountUnDolarized fractionPart * 100) = 0) ifTrue: [self error: self class canNotCheckOutWithInvalidTransactionAmountErrorDescription]! !
+!Cashier methodsFor: 'assertions' stamp: 'cde 11/2/2022 23:08:46' prior: 50559254!
+assertValidTransaction: aTransactionAmount
+	|aTransactionAmountUnDolarized|
+	aTransactionAmountUnDolarized := aTransactionAmount amount.
+	
+	((aTransactionAmountUnDolarized < 0 or: aTransactionAmountUnDolarized integerPart > ((10 ^ 15) - 1)) or: (aTransactionAmountUnDolarized fractionPart * 100) = 0) ifTrue: [self error: self class canNotCheckOutWithInvalidTransactionAmountErrorDescription]! !
+
+!testRun: #CashierTest #test01CannotCheckoutWithEmptyCart stamp: 'cde 11/2/2022 23:08:50'!
+PASSED!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:08:51'!
+ERROR!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'cde 11/2/2022 23:08:51'!
+ERROR!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'cde 11/2/2022 23:08:51'!
+PASSED!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'cde 11/2/2022 23:08:51'!
+PASSED!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:08:51'!
+FAILURE!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:08:57'!
+ERROR!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:08:57'!
+ERROR!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:09:19'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:09:19'!
+FAILURE!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'cde 11/2/2022 23:09:26'!
+ERROR!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'cde 11/2/2022 23:09:26'!
+ERROR!
+
+!testRun: #CashierTest #test01CannotCheckoutWithEmptyCart stamp: 'cde 11/2/2022 23:09:36'!
+PASSED!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'cde 11/2/2022 23:09:40'!
+PASSED!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:09:53'!
+ERROR!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:09:53'!
+ERROR!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:09:57'!
+ERROR!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:09:57'!
+ERROR!
+!Cashier methodsFor: 'assertions' stamp: 'cde 11/2/2022 23:14:30' prior: 50559269!
+assertValidTransaction: aTransactionAmount
+	|aTransactionAmountUnDolarized|
+	aTransactionAmountUnDolarized := aTransactionAmount amount.
+	
+	aTransactionAmountUnDolarized < 0 or: [
+		aTransactionAmountUnDolarized integerPart > ((10 ^ 15) - 1) or: [
+			aTransactionAmountUnDolarized fractionPart * 100 = 0
+	 ifTrue: [self error: self class canNotCheckOutWithInvalidTransactionAmountErrorDescription]
+			]
+		]! !
+
+!testRun: #CashierTest #test01CannotCheckoutWithEmptyCart stamp: 'cde 11/2/2022 23:14:37'!
+PASSED!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:14:37'!
+ERROR!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'cde 11/2/2022 23:14:37'!
+ERROR!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'cde 11/2/2022 23:14:37'!
+PASSED!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'cde 11/2/2022 23:14:37'!
+PASSED!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:14:37'!
+FAILURE!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:14:43'!
+ERROR!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:14:43'!
+ERROR!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:16:23'!
+ERROR!
+!Cashier methodsFor: 'assertions' stamp: 'cde 11/2/2022 23:17:14' prior: 50559342!
+assertValidTransaction: aTransactionAmount
+	|aTransactionAmountUnDolarized|
+	aTransactionAmountUnDolarized := aTransactionAmount amount.
+	
+	aTransactionAmountUnDolarized < 0 or: [
+		aTransactionAmountUnDolarized integerPart > ((10 ^ 15) - 1) or: [
+			aTransactionAmountUnDolarized fractionPart * 100 ~= 0
+	 ifTrue: [self error: self class canNotCheckOutWithInvalidTransactionAmountErrorDescription]
+			]
+		]! !
+
+!testRun: #CashierTest #test01CannotCheckoutWithEmptyCart stamp: 'cde 11/2/2022 23:17:16'!
+PASSED!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:17:16'!
+PASSED!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'cde 11/2/2022 23:17:16'!
+PASSED!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'cde 11/2/2022 23:17:16'!
+PASSED!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'cde 11/2/2022 23:17:16'!
+PASSED!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:17:16'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:17:16'!
+FAILURE!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:17:24'!
+PASSED!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'cde 11/2/2022 23:17:27'!
+PASSED!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'cde 11/2/2022 23:17:29'!
+PASSED!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'cde 11/2/2022 23:17:32'!
+PASSED!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:17:35'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:17:35'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:18:09'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:18:36'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:18:36'!
+FAILURE!
+!CashierTest methodsFor: 'tests' stamp: 'cde 11/2/2022 23:19:36' prior: 50558932!
+test06CannotCheckoutWithInvalidTransactionAmount
+	
+	| unChango unCashier unPlasticoValido |
+	
+	unCashier := self createCashierWithDefaultDate.
+	unChango := self createCart.
+	unChango add: (self expensiveItemSellByTheStore ).
+	unPlasticoValido := self createAValidCard.
+	
+	self 
+		should: [ unCashier checkOut: unChango ]
+		raise: Error 
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Cashier canNotCheckOutWithInvalidTransactionAmountErrorDescription.
+			self assert: unCashier salesHistory isEmpty]
+	! !
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:19:40'!
+FAILURE!
+!CashierTest methodsFor: 'tests' stamp: 'cde 11/2/2022 23:19:49' prior: 50559457!
+test06CannotCheckoutWithInvalidTransactionAmount
+	
+	| unChango unCashier unPlasticoValido |
+	
+	unCashier := self createCashierWithDefaultDate.
+	unChango := self createCart.
+	unChango add: (self expensiveItemSellByTheStore ).
+	unPlasticoValido := self createAValidCard.
+	
+	self 
+		should: [ unCashier checkOut: unChango withCard: unPlasticoValido ]
+		raise: Error 
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Cashier canNotCheckOutWithInvalidTransactionAmountErrorDescription.
+			self assert: unCashier salesHistory isEmpty]
+	! !
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:19:50'!
+FAILURE!
+!Cashier methodsFor: 'operations' stamp: 'cde 11/2/2022 23:22:20' prior: 50555731!
+checkOut: unChango withCard: aCard
+	
+	| unMerchant response |
+	
+	self assertValidCart: unChango.
+	self assertValidCard: aCard.
+	self assertValidTransaction: (unChango itemsValue).
+	
+	unMerchant := MerchantSimulator new.
+	response := unMerchant debit: (unChango itemsValue) fromCreditCardNumber: (aCard number) withOwner: (aCard owner) andExpireDate: (aCard expiration).
+	
+	"si merchant retorna ok se registra la venta"
+	(response = 'HTTP 200') ifTrue: [ salesBook add: [ unChango ] ].
+	
+	^ unChango itemsValue! !
+
+!testRun: #CashierTest #test01CannotCheckoutWithEmptyCart stamp: 'cde 11/2/2022 23:22:21'!
+PASSED!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:22:21'!
+PASSED!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'cde 11/2/2022 23:22:21'!
+PASSED!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'cde 11/2/2022 23:22:22'!
+PASSED!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'cde 11/2/2022 23:22:22'!
+ERROR!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:22:22'!
+FAILURE!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'cde 11/2/2022 23:22:52'!
+ERROR!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'cde 11/2/2022 23:22:52'!
+ERROR!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'cde 11/2/2022 23:23:03'!
+ERROR!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'cde 11/2/2022 23:23:29'!
+ERROR!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'cde 11/2/2022 23:23:49'!
+ERROR!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'cde 11/2/2022 23:24:03'!
+ERROR!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'cde 11/2/2022 23:24:03'!
+ERROR!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'cde 11/2/2022 23:24:42'!
+ERROR!
+!Cashier methodsFor: 'assertions' stamp: 'cde 11/2/2022 23:26:37' prior: 50559387!
+assertValidTransaction: aTransactionAmount
+	|aTransactionAmountUnDolarized|
+	aTransactionAmountUnDolarized := aTransactionAmount amount.
+	
+	aTransactionAmountUnDolarized < 0 or: [
+		aTransactionAmountUnDolarized integerPart > ((10 ^ 15) - 1) or: [
+			aTransactionAmountUnDolarized * 100 fractionPart = 0
+	 ifTrue: [self error: self class canNotCheckOutWithInvalidTransactionAmountErrorDescription]
+			]
+		]! !
+
+!testRun: #CashierTest #test01CannotCheckoutWithEmptyCart stamp: 'cde 11/2/2022 23:26:40'!
+PASSED!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:26:40'!
+ERROR!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'cde 11/2/2022 23:26:40'!
+ERROR!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'cde 11/2/2022 23:26:40'!
+PASSED!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'cde 11/2/2022 23:26:40'!
+ERROR!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:26:40'!
+FAILURE!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:27:00'!
+ERROR!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:27:00'!
+ERROR!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:27:06'!
+ERROR!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:27:11'!
+ERROR!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:27:11'!
+ERROR!
+!Cashier methodsFor: 'assertions' stamp: 'cde 11/2/2022 23:27:57' prior: 50559573!
+assertValidTransaction: aTransactionAmount
+	|aTransactionAmountUnDolarized|
+	aTransactionAmountUnDolarized := aTransactionAmount amount.
+	
+	aTransactionAmountUnDolarized < 0 or: [
+		aTransactionAmountUnDolarized integerPart > ((10 ^ 15) - 1) or: [
+			(aTransactionAmountUnDolarized * 100) fractionPart = 0
+	 ifTrue: [self error: self class canNotCheckOutWithInvalidTransactionAmountErrorDescription]
+			]
+		]! !
+
+!testRun: #CashierTest #test01CannotCheckoutWithEmptyCart stamp: 'cde 11/2/2022 23:27:59'!
+PASSED!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:27:59'!
+ERROR!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'cde 11/2/2022 23:27:59'!
+ERROR!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'cde 11/2/2022 23:27:59'!
+PASSED!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'cde 11/2/2022 23:27:59'!
+ERROR!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:27:59'!
+FAILURE!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:28:14'!
+ERROR!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:28:14'!
+ERROR!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:28:33'!
+ERROR!
+!Cashier methodsFor: 'assertions' stamp: 'cde 11/2/2022 23:29:32' prior: 50559624!
+assertValidTransaction: aTransactionAmount
+	|aTransactionAmountUnDolarized integerPart fractionPart|
+	aTransactionAmountUnDolarized := aTransactionAmount amount.
+	integerPart := aTransactionAmountUnDolarized integerPart.
+	fractionPart := (aTransactionAmountUnDolarized * 100) fractionPart .
+	
+	aTransactionAmountUnDolarized < 0 or: [
+		aTransactionAmountUnDolarized integerPart > ((10 ^ 15) - 1) or: [
+			(aTransactionAmountUnDolarized * 100) fractionPart = 0
+	 ifTrue: [self error: self class canNotCheckOutWithInvalidTransactionAmountErrorDescription]
+			]
+		]! !
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:29:42'!
+ERROR!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:29:42'!
+ERROR!
+!Cashier methodsFor: 'assertions' stamp: 'cde 11/2/2022 23:31:09' prior: 50559669!
+assertValidTransaction: aTransactionAmount
+	|aTransactionAmountUnDolarized integerPart fractionPart|
+	aTransactionAmountUnDolarized := aTransactionAmount amount.
+	integerPart := aTransactionAmountUnDolarized integerPart.
+	fractionPart := (aTransactionAmountUnDolarized * 100) fractionPart .
+	
+	aTransactionAmountUnDolarized < 0 or: [
+		aTransactionAmountUnDolarized integerPart > ((10 ^ 15) - 1) or: [
+			(aTransactionAmountUnDolarized * 100) fractionPart ~= 0
+	 ifTrue: [self error: self class canNotCheckOutWithInvalidTransactionAmountErrorDescription]
+			]
+		]! !
+
+!testRun: #CashierTest #test01CannotCheckoutWithEmptyCart stamp: 'cde 11/2/2022 23:31:23'!
+PASSED!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:31:23'!
+PASSED!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'cde 11/2/2022 23:31:23'!
+PASSED!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'cde 11/2/2022 23:31:23'!
+PASSED!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'cde 11/2/2022 23:31:23'!
+PASSED!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:31:23'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:31:23'!
+FAILURE!
+
+!testRun: #CashierTest #test01CannotCheckoutWithEmptyCart stamp: 'cde 11/2/2022 23:31:28'!
+PASSED!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:31:28'!
+PASSED!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'cde 11/2/2022 23:31:28'!
+PASSED!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'cde 11/2/2022 23:31:28'!
+PASSED!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'cde 11/2/2022 23:31:28'!
+PASSED!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:31:28'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:31:28'!
+FAILURE!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:31:32'!
+PASSED!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'cde 11/2/2022 23:31:35'!
+PASSED!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'cde 11/2/2022 23:31:38'!
+PASSED!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'cde 11/2/2022 23:31:40'!
+PASSED!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:31:45'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:31:45'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:32:09'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:32:32'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:32:32'!
+FAILURE!
+!CashierTest methodsFor: 'tests' stamp: 'cde 11/2/2022 23:32:46' prior: 50559480!
+test06CannotCheckoutWithInvalidTransactionAmount
+	
+	| unChango unCashier unPlasticoValido |
+	
+	unCashier := self createCashierWithDefaultDate.
+	unChango := self createCart.
+	unChango add: (self expensiveItemSellByTheStore ).
+	unPlasticoValido := self createAValidCard.
+	unCashier checkOut: unChango withCard: unPlasticoValido.
+	
+	! !
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:32:47'!
+PASSED!
+
+!testRun: #CashierTest #test01CannotCheckoutWithEmptyCart stamp: 'cde 11/2/2022 23:32:47'!
+PASSED!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:32:47'!
+PASSED!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'cde 11/2/2022 23:32:47'!
+PASSED!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'cde 11/2/2022 23:32:47'!
+PASSED!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'cde 11/2/2022 23:32:47'!
+PASSED!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:32:47'!
+PASSED!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:32:51'!
+PASSED!
+
+!testRun: #CashierTest #test01CannotCheckoutWithEmptyCart stamp: 'cde 11/2/2022 23:32:51'!
+PASSED!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:32:51'!
+PASSED!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'cde 11/2/2022 23:32:51'!
+PASSED!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'cde 11/2/2022 23:32:51'!
+PASSED!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'cde 11/2/2022 23:32:51'!
+PASSED!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:32:51'!
+PASSED!
+!CashierTest methodsFor: 'tests' stamp: 'cde 11/2/2022 23:33:11' prior: 50559795!
+test06CannotCheckoutWithInvalidTransactionAmount
+	
+	| unChango unCashier unPlasticoValido |
+	
+	unCashier := self createCashierWithDefaultDate.
+	unChango := self createCart.
+	unChango add: (self expensiveItemSellByTheStore ).
+	unPlasticoValido := self createAValidCard.
+	 unCashier checkOut: unChango withCard: unPlasticoValido.
+	self 
+		should: [ unCashier checkOut: unChango withCard: unPlasticoValido ]
+		raise: Error 
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Cashier canNotCheckOutWithInvalidTransactionAmountErrorDescription.
+			self assert: unCashier salesHistory isEmpty]
+	! !
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:33:11'!
+FAILURE!
+!CashierTest methodsFor: 'tests' stamp: 'cde 11/2/2022 23:34:47' prior: 50559855!
+test06CannotCheckoutWithInvalidTransactionAmount
+	
+	| unChango unCashier unPlasticoValido |
+	
+	unCashier := self createCashierWithDefaultDate.
+	unChango := self createCart.
+	unChango add: (self expensiveItemSellByTheStore ).
+	unPlasticoValido := self createAValidCard.
+	 unCashier checkOut: unChango withCard: unPlasticoValido.
+	self 
+		should: [ unCashier checkOut: unChango  ]
+		raise: Error 
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Cashier canNotCheckOutWithInvalidTransactionAmountErrorDescription.
+			self assert: unCashier salesHistory isEmpty]
+	! !
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:34:47'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:34:52'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:34:52'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:34:59'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:34:59'!
+FAILURE!
+!CashierTest methodsFor: 'tests' stamp: 'cde 11/2/2022 23:36:04' prior: 50559881!
+test06CannotCheckoutWithInvalidTransactionAmount
+	
+	| unChango unCashier unPlasticoValido |
+	
+	unCashier := self createCashierWithDefaultDate.
+	unChango := self createCart.
+	unChango add: (self expensiveItemSellByTheStore ).
+	unPlasticoValido := self createAValidCard.
+	 unCashier checkOut: unChango.
+	self 
+		should: [ unCashier checkOut: unChango withCard: unPlasticoValido ]
+		raise: Error 
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Cashier canNotCheckOutWithInvalidTransactionAmountErrorDescription.
+			self assert: unCashier salesHistory isEmpty]
+	! !
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:36:07'!
+FAILURE!
+!Cashier methodsFor: 'assertions' stamp: 'cde 11/2/2022 23:38:29' prior: 50559696!
+assertValidTransaction: aTransactionAmount
+	|aTransactionAmountUnDolarized integerPart fractionPart|
+	aTransactionAmountUnDolarized := aTransactionAmount amount.
+	integerPart := aTransactionAmountUnDolarized integerPart.
+	fractionPart := (aTransactionAmountUnDolarized * 100) fractionPart .
+	
+	aTransactionAmountUnDolarized < 0 or: [
+		aTransactionAmountUnDolarized integerPart > ((10 ^ 15) - 1) or: [
+			(aTransactionAmountUnDolarized * 100) fractionPart ~= 0
+	 ifTrue: [^ self error: self class canNotCheckOutWithInvalidTransactionAmountErrorDescription]
+			]
+		]! !
+
+!testRun: #CashierTest #test01CannotCheckoutWithEmptyCart stamp: 'cde 11/2/2022 23:38:36'!
+PASSED!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:38:36'!
+PASSED!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'cde 11/2/2022 23:38:36'!
+PASSED!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'cde 11/2/2022 23:38:36'!
+PASSED!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'cde 11/2/2022 23:38:36'!
+PASSED!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:38:36'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:38:36'!
+FAILURE!
+!Cashier methodsFor: 'assertions' stamp: 'cde 11/2/2022 23:39:08' prior: 50559945!
+assertValidTransaction: aTransactionAmount
+	|aTransactionAmountUnDolarized integerPart fractionPart|
+	aTransactionAmountUnDolarized := aTransactionAmount amount.
+	integerPart := aTransactionAmountUnDolarized integerPart.
+	fractionPart := (aTransactionAmountUnDolarized * 100) fractionPart .
+	
+	aTransactionAmountUnDolarized < 0 or: [
+		aTransactionAmountUnDolarized integerPart > ((10 ^ 15) - 1) or: [
+			(aTransactionAmountUnDolarized * 100) fractionPart ~= 0
+	 ifTrue: [self error: self class canNotCheckOutWithInvalidTransactionAmountErrorDescription]
+			]
+		]! !
+!Cashier methodsFor: 'assertions' stamp: 'cde 11/2/2022 23:39:21' prior: 50559989!
+assertValidTransaction: aTransactionAmount
+	|aTransactionAmountUnDolarized  |
+	aTransactionAmountUnDolarized := aTransactionAmount amount.
+	
+	aTransactionAmountUnDolarized < 0 or: [
+		aTransactionAmountUnDolarized integerPart > ((10 ^ 15) - 1) or: [
+			(aTransactionAmountUnDolarized * 100) fractionPart ~= 0
+	 ifTrue: [self error: self class canNotCheckOutWithInvalidTransactionAmountErrorDescription]
+			]
+		]! !
+!Cashier methodsFor: 'assertions' stamp: 'cde 11/2/2022 23:43:36' prior: 50560010!
+assertValidTransaction: aTransactionAmount
+	|aTransactionAmountUnDolarized  isInvalid|
+	aTransactionAmountUnDolarized := aTransactionAmount amount.
+	
+	isInvalid := [aTransactionAmountUnDolarized < 0] or: [
+		aTransactionAmountUnDolarized integerPart > ((10 ^ 15) - 1) or: [
+			(aTransactionAmountUnDolarized * 100) fractionPart ~= 0]].
+	
+	isInvalid ifTrue: [self error: self class canNotCheckOutWithInvalidTransactionAmountErrorDescription]
+			! !
+
+!testRun: #CashierTest #test01CannotCheckoutWithEmptyCart stamp: 'cde 11/2/2022 23:43:38'!
+PASSED!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:43:38'!
+ERROR!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'cde 11/2/2022 23:43:38'!
+ERROR!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'cde 11/2/2022 23:43:38'!
+PASSED!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'cde 11/2/2022 23:43:38'!
+ERROR!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:43:38'!
+ERROR!
+!Cashier methodsFor: 'assertions' stamp: 'cde 11/2/2022 23:44:36' prior: 50560026!
+assertValidTransaction: aTransactionAmount
+	|aTransactionAmountUnDolarized integerPart fractionPart|
+	aTransactionAmountUnDolarized := aTransactionAmount amount.
+	integerPart := aTransactionAmountUnDolarized integerPart.
+	fractionPart := (aTransactionAmountUnDolarized * 100) fractionPart .
+	
+	aTransactionAmountUnDolarized < 0 or: [
+		aTransactionAmountUnDolarized integerPart > ((10 ^ 15) - 1) or: [
+			(aTransactionAmountUnDolarized * 100) fractionPart ~= 0
+	 ifTrue: [self error: self class canNotCheckOutWithInvalidTransactionAmountErrorDescription]
+			]
+		]! !
+
+!testRun: #CashierTest #test01CannotCheckoutWithEmptyCart stamp: 'cde 11/2/2022 23:44:40'!
+PASSED!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:44:40'!
+PASSED!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'cde 11/2/2022 23:44:40'!
+PASSED!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'cde 11/2/2022 23:44:40'!
+PASSED!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'cde 11/2/2022 23:44:40'!
+PASSED!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:44:40'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'cde 11/2/2022 23:44:40'!
+FAILURE!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'cde 11/2/2022 23:44:47'!
+PASSED!
+
+!testRun: #CashierTest #test01CannotCheckoutWithEmptyCart stamp: 'cde 11/2/2022 23:44:50'!
+PASSED!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'cde 11/2/2022 23:44:53'!
+PASSED!
+
+----SNAPSHOT----(2 November 2022 23:45:56) CuisUniversity-5510.image priorSource: 7155150!
+
+----STARTUP---- (2 November 2022 23:50:11) as C:\Users\sarod\Desktop\windows64\CuisUniversity-5510.image!
+
+
+----End fileIn of C:\Users\sarod\Desktop\windows64\TusLibros.st----!
+
+!testRun: #CashierTest #test01CannotCheckoutWithEmptyCart stamp: 'SR 11/2/2022 23:50:34'!
+PASSED!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'SR 11/2/2022 23:50:34'!
+PASSED!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'SR 11/2/2022 23:50:34'!
+PASSED!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'SR 11/2/2022 23:50:34'!
+PASSED!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'SR 11/2/2022 23:50:34'!
+PASSED!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/2/2022 23:50:34'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/2/2022 23:50:34'!
+FAILURE!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'SR 11/2/2022 23:51:42'!
+PASSED!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'SR 11/2/2022 23:51:44'!
+PASSED!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'SR 11/2/2022 23:51:45'!
+PASSED!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'SR 11/2/2022 23:51:46'!
+PASSED!
+
+!testRun: #CashierTest #test01CannotCheckoutWithEmptyCart stamp: 'SR 11/2/2022 23:51:48'!
+PASSED!
+!CashierTest methodsFor: 'support' stamp: 'SR 11/2/2022 23:59:43' prior: 50555469!
+defaultCatalog
+	|catalogo|
+	catalogo := Dictionary new.
+	catalogo add: (self itemSellByTheStore) -> (10000 * dollar).
+	catalogo add: (self otherItemSellByTheStore) -> (58 * dollar).
+	catalogo add: (self anOtherItemSellByTheStore) -> (123.50 * dollar).
+	catalogo add: (self expensiveItemSellByTheStore ) -> (1000000000000000.50 * dollar).
+	^ catalogo.! !
+
+!testRun: #CashierTest #test01CannotCheckoutWithEmptyCart stamp: 'SR 11/3/2022 00:00:49'!
+PASSED!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'SR 11/3/2022 00:00:50'!
+PASSED!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'SR 11/3/2022 00:00:52'!
+PASSED!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'SR 11/3/2022 00:00:53'!
+PASSED!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'SR 11/3/2022 00:00:54'!
+PASSED!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/3/2022 00:00:55'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/3/2022 00:00:55'!
+FAILURE!
+!CashierTest methodsFor: 'tests' stamp: 'SR 11/3/2022 00:01:32' prior: 50555566!
+test06CannotCheckoutWithInvalidTransactionAmount
+	
+	| unChango unCashier unPlasticoValido |
+	
+	unCashier := self createCashierWithDefaultDate.
+	unChango := self createCart.
+	unChango add: (self expensiveItemSellByTheStore ).
+	unPlasticoValido := self createAValidCard.
+	
+	self 
+		should: [ unCashier checkOut: unChango withCard: unPlasticoValido ]
+		raise: Error 
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Cashier canNotCheckOutWithInvalidTransactionAmountErrorDescription.
+			self assert: unCashier salesHistory isEmpty]
+	! !
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/3/2022 00:01:33'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/3/2022 00:01:34'!
+FAILURE!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'SR 11/3/2022 00:01:59'!
+PASSED!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'SR 11/3/2022 00:02:10'!
+PASSED!
+!Cashier methodsFor: 'assertions' stamp: 'SR 11/3/2022 00:02:46' prior: 50555806!
+assertValidTransaction: aTransactionAmount
+
+	| aTransactionAmountUnDolarized integerPart fractionPart |
+	
+	aTransactionAmountUnDolarized := aTransactionAmount amount.
+	
+	integerPart := aTransactionAmountUnDolarized integerPart.
+	fractionPart := (aTransactionAmountUnDolarized * 100) fractionPart .
+	
+	aTransactionAmountUnDolarized < 0 or: [
+		aTransactionAmountUnDolarized integerPart > ((10 ^ 15) - 1) or: [
+			(aTransactionAmountUnDolarized * 100) fractionPart ~= 0
+	 ifTrue: [self error: self class canNotCheckOutWithInvalidTransactionAmountErrorDescription]
+			]
+		]! !
+!Cashier methodsFor: 'assertions' stamp: 'SR 11/3/2022 00:03:15' prior: 50555996!
+assertValidTransaction: aTransactionAmount
+
+	| aTransactionAmountUnDolarized integerPart fractionPart |
+	
+	aTransactionAmountUnDolarized := aTransactionAmount amount.
+	
+	integerPart := aTransactionAmountUnDolarized integerPart.
+	fractionPart := (aTransactionAmountUnDolarized * 100) fractionPart .
+	
+	(aTransactionAmountUnDolarized < 0) or: [
+		(aTransactionAmountUnDolarized integerPart > 10^15-1) or: [
+			(aTransactionAmountUnDolarized * 100) fractionPart ~= 0
+	 ifTrue: [self error: self class canNotCheckOutWithInvalidTransactionAmountErrorDescription]
+			]
+		]! !
+!Cashier methodsFor: 'assertions' stamp: 'SR 11/3/2022 00:05:20' prior: 50556017!
+assertValidTransaction: aTransactionAmount
+
+	| aTransactionAmountUnDolarized integerPart fractionPart |
+	
+	aTransactionAmountUnDolarized := aTransactionAmount amount.
+	
+	integerPart := aTransactionAmountUnDolarized integerPart.
+	fractionPart := (aTransactionAmountUnDolarized * 100) fractionPart .
+	
+	(aTransactionAmountUnDolarized < 0) or: [
+		(aTransactionAmountUnDolarized integerPart > ((10^15)-1)) or: [
+			((aTransactionAmountUnDolarized * 100) fractionPart ~= 0) ifTrue: [
+				self error: self class canNotCheckOutWithInvalidTransactionAmountErrorDescription.
+				].
+			].
+		].! !
+
+!testRun: #CashierTest #test01CannotCheckoutWithEmptyCart stamp: 'SR 11/3/2022 00:05:31'!
+PASSED!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'SR 11/3/2022 00:05:31'!
+PASSED!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'SR 11/3/2022 00:05:31'!
+PASSED!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'SR 11/3/2022 00:05:31'!
+PASSED!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'SR 11/3/2022 00:05:31'!
+PASSED!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/3/2022 00:05:31'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/3/2022 00:05:31'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/3/2022 00:05:35'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/3/2022 00:05:35'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/3/2022 00:05:58'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/3/2022 00:06:10'!
+PASSED!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/3/2022 00:07:28'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/3/2022 00:07:28'!
+FAILURE!
+!Cashier methodsFor: 'assertions' stamp: 'SR 11/3/2022 00:08:07' prior: 50555793!
+assertValidCard: aCard
+
+	(aCard isExpierdOn: monthAndYearOfToday) ifTrue: [ ^self error: self class canNotCheckOutWithExpiredCardErrorDescription]! !
+!Cashier methodsFor: 'assertions' stamp: 'SR 11/3/2022 00:08:11' prior: 50555800!
+assertValidCart: unChango
+	
+	(unChango isEmpty) ifTrue: [ ^self error: self class canNotCheckoutEmptyCartErrorDescription]! !
+!Cashier methodsFor: 'assertions' stamp: 'SR 11/3/2022 00:08:16' prior: 50556038!
+assertValidTransaction: aTransactionAmount
+
+	| aTransactionAmountUnDolarized integerPart fractionPart |
+	
+	aTransactionAmountUnDolarized := aTransactionAmount amount.
+	
+	integerPart := aTransactionAmountUnDolarized integerPart.
+	fractionPart := (aTransactionAmountUnDolarized * 100) fractionPart .
+	
+	(aTransactionAmountUnDolarized < 0) or: [
+		(aTransactionAmountUnDolarized integerPart > ((10^15)-1)) or: [
+			((aTransactionAmountUnDolarized * 100) fractionPart ~= 0) ifTrue: [
+				^self error: self class canNotCheckOutWithInvalidTransactionAmountErrorDescription.
+				].
+			].
+		].! !
+
+!testRun: #CashierTest #test01CannotCheckoutWithEmptyCart stamp: 'SR 11/3/2022 00:08:20'!
+PASSED!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'SR 11/3/2022 00:08:20'!
+PASSED!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'SR 11/3/2022 00:08:20'!
+PASSED!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'SR 11/3/2022 00:08:20'!
+PASSED!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'SR 11/3/2022 00:08:20'!
+PASSED!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/3/2022 00:08:20'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/3/2022 00:08:20'!
+FAILURE!
+
+!testRun: #CashierTest #test01CannotCheckoutWithEmptyCart stamp: 'SR 11/3/2022 00:08:26'!
+PASSED!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'SR 11/3/2022 00:08:28'!
+PASSED!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'SR 11/3/2022 00:08:29'!
+PASSED!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'SR 11/3/2022 00:08:30'!
+PASSED!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'SR 11/3/2022 00:08:31'!
+PASSED!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/3/2022 00:08:32'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/3/2022 00:08:32'!
+FAILURE!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'SR 11/3/2022 00:09:25'!
+PASSED!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'SR 11/3/2022 00:10:12'!
+PASSED!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/3/2022 00:10:14'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/3/2022 00:10:14'!
+FAILURE!
+
+!testRun: #CashierTest #test01CannotCheckoutWithEmptyCart stamp: 'SR 11/3/2022 00:11:52'!
+PASSED!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'SR 11/3/2022 00:11:52'!
+PASSED!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'SR 11/3/2022 00:11:52'!
+PASSED!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'SR 11/3/2022 00:11:52'!
+PASSED!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'SR 11/3/2022 00:11:52'!
+PASSED!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/3/2022 00:11:52'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/3/2022 00:11:52'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/3/2022 00:13:54'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/3/2022 00:14:24'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/3/2022 00:14:56'!
+FAILURE!
+!CashierTest methodsFor: 'tests' stamp: 'SR 11/3/2022 00:15:25' prior: 50555962!
+test06CannotCheckoutWithInvalidTransactionAmount
+	
+	| unChango unCashier unPlasticoValido |
+	
+	unCashier := self createCashierWithDefaultDate.
+	unChango := self createCart.
+	unChango add: (self expensiveItemSellByTheStore ).
+	unPlasticoValido := self createAValidCard.
+	unCashier checkOut: unChango withCard: unPlasticoValido.
+	
+	self 
+		should: [ unCashier checkOut: unChango withCard: unPlasticoValido ]
+		raise: Error 
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Cashier canNotCheckOutWithInvalidTransactionAmountErrorDescription.
+			self assert: unCashier salesHistory isEmpty]
+	! !
+
+!testRun: #CashierTest #test01CannotCheckoutWithEmptyCart stamp: 'SR 11/3/2022 00:15:27'!
+PASSED!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'SR 11/3/2022 00:15:28'!
+PASSED!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'SR 11/3/2022 00:15:28'!
+PASSED!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'SR 11/3/2022 00:15:28'!
+PASSED!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'SR 11/3/2022 00:15:28'!
+PASSED!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/3/2022 00:15:28'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/3/2022 00:15:28'!
+FAILURE!
+!Cashier methodsFor: 'assertions' stamp: 'SR 11/3/2022 00:19:49' prior: 50556119!
+assertValidTransaction: aTransactionAmount
+
+	| aTransactionAmountUnDolarized integerPart fractionPart menosQueCero masDeQuinceDigitos masDeDosDecimales |
+	
+	aTransactionAmountUnDolarized := aTransactionAmount amount.
+	
+	integerPart := aTransactionAmountUnDolarized integerPart.
+	fractionPart := (aTransactionAmountUnDolarized * 100) fractionPart .
+	
+	menosQueCero := aTransactionAmountUnDolarized < 0.
+	masDeQuinceDigitos := aTransactionAmountUnDolarized integerPart > ((10^15)-1).
+	masDeDosDecimales := (aTransactionAmountUnDolarized * 100) fractionPart ~= 0.
+	
+	menosQueCero or: [
+		masDeQuinceDigitos or: [
+			masDeDosDecimales ifTrue: [
+				^self error: self class canNotCheckOutWithInvalidTransactionAmountErrorDescription.
+				].
+			].
+		].! !
+!Cashier methodsFor: 'assertions' stamp: 'SR 11/3/2022 00:20:11' prior: 50556279!
+assertValidTransaction: aTransactionAmount
+
+	| aTransactionAmountUnDolarized integerPart fractionPart menosQueCero masDeQuinceDigitos masDeDosDecimales |
+	
+	aTransactionAmountUnDolarized := aTransactionAmount amount.
+	
+	integerPart := aTransactionAmountUnDolarized integerPart.
+	fractionPart := (aTransactionAmountUnDolarized * 100) fractionPart .
+	
+	menosQueCero := aTransactionAmountUnDolarized < 0.
+	masDeQuinceDigitos := integerPart > ((10^15)-1).
+	masDeDosDecimales := fractionPart ~= 0.
+	
+	menosQueCero or: [
+		masDeQuinceDigitos or: [
+			masDeDosDecimales ifTrue: [
+				^self error: self class canNotCheckOutWithInvalidTransactionAmountErrorDescription.
+				].
+			].
+		].! !
+!CashierTest methodsFor: 'tests' stamp: 'SR 11/3/2022 00:22:43' prior: 50556234!
+test06CannotCheckoutWithInvalidTransactionAmount
+	
+	| unChango unCashier unPlasticoValido |
+	
+	unCashier := self createCashierWithDefaultDate.
+	unChango := self createCart.
+	unChango add: (self expensiveItemSellByTheStore ).
+	unPlasticoValido := self createAValidCard.
+	unCashier checkOut: unChango withCard: unPlasticoValido.
+	
+	self 
+		should: [ unCashier checkOut: unChango withCard: unPlasticoValido ]
+		raise: Error 
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Cashier canNotCheckOutWithInvalidTransactionAmountErrorDescription.
+			]
+	! !
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/3/2022 00:22:46'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/3/2022 00:22:46'!
+FAILURE!
+!CashierTest methodsFor: 'tests' stamp: 'SR 11/3/2022 00:22:53' prior: 50556329!
+test06CannotCheckoutWithInvalidTransactionAmount
+	
+	| unChango unCashier unPlasticoValido |
+	
+	unCashier := self createCashierWithDefaultDate.
+	unChango := self createCart.
+	unChango add: (self expensiveItemSellByTheStore ).
+	unPlasticoValido := self createAValidCard.
+	unCashier checkOut: unChango withCard: unPlasticoValido.
+	
+	self 
+		should: [ unCashier checkOut: unChango withCard: unPlasticoValido ]
+		raise: Error 
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Cashier canNotCheckOutWithInvalidTransactionAmountErrorDescription.
+			self assert: unCashier salesHistory isEmpty]
+	! !
+!CashierTest methodsFor: 'tests' stamp: 'SR 11/3/2022 00:22:57' prior: 50556357!
+test06CannotCheckoutWithInvalidTransactionAmount
+	
+	| unChango unCashier unPlasticoValido |
+	
+	unCashier := self createCashierWithDefaultDate.
+	unChango := self createCart.
+	unChango add: (self expensiveItemSellByTheStore ).
+	unPlasticoValido := self createAValidCard.
+	unCashier checkOut: unChango withCard: unPlasticoValido.
+	
+	self 
+		should: [ unCashier checkOut: unChango withCard: unPlasticoValido ]
+		raise: Error 
+		withExceptionDo: [ :anError |
+			
+			self assert: unCashier salesHistory isEmpty]
+	! !
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/3/2022 00:22:59'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/3/2022 00:22:59'!
+FAILURE!
+!CashierTest methodsFor: 'tests' stamp: 'SR 11/3/2022 00:23:06' prior: 50556379!
+test06CannotCheckoutWithInvalidTransactionAmount
+	
+	| unChango unCashier unPlasticoValido |
+	
+	unCashier := self createCashierWithDefaultDate.
+	unChango := self createCart.
+	unChango add: (self expensiveItemSellByTheStore ).
+	unPlasticoValido := self createAValidCard.
+	unCashier checkOut: unChango withCard: unPlasticoValido.
+	
+	self 
+		should: [ unCashier checkOut: unChango withCard: unPlasticoValido ]
+		raise: Error 
+		withExceptionDo: [ :anError |
+			]
+	! !
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/3/2022 00:23:08'!
+FAILURE!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/3/2022 00:23:08'!
+FAILURE!
+!CashierTest methodsFor: 'tests' stamp: 'SR 11/3/2022 00:23:14' prior: 50556405!
+test06CannotCheckoutWithInvalidTransactionAmount
+	
+	| unChango unCashier unPlasticoValido |
+	
+	unCashier := self createCashierWithDefaultDate.
+	unChango := self createCart.
+	unChango add: (self expensiveItemSellByTheStore ).
+	unPlasticoValido := self createAValidCard.
+	unCashier checkOut: unChango withCard: unPlasticoValido.
+	
+	self 
+		should: [ unCashier checkOut: unChango withCard: unPlasticoValido ]
+		raise: Error 
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Cashier canNotCheckOutWithInvalidTransactionAmountErrorDescription.
+			self assert: unCashier salesHistory isEmpty]
+	! !
+!CashierTest methodsFor: 'tests' stamp: 'SR 11/3/2022 00:23:50' prior: 50555532!
+test04CanNotCheckOutWithExpiredCard
+	
+	| unChango unCashier unPlasticoViejo |
+	
+	unCashier := self createCashierWithDefaultDate.
+	unChango := self createCart.
+	unChango add: (self itemSellByTheStore).
+	unPlasticoViejo := self createAnExpiredCard.
+	unCashier checkOut: unChango withCard: unPlasticoViejo.
+	self 
+		should: [ unCashier checkOut: unChango withCard: unPlasticoViejo ]
+		raise: Error 
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Cashier canNotCheckOutWithExpiredCardErrorDescription.
+			self assert: unCashier salesHistory isEmpty]
+	
+	
+	
+	
+	
+! !
+!Cashier methodsFor: 'assertions' stamp: 'SR 11/3/2022 00:28:10' prior: 50556305!
+assertValidTransaction: aTransactionAmount
+
+	| aTransactionAmountUnDolarized integerPart fractionPart menosQueCero masDeQuinceDigitos masDeDosDecimales |
+	
+	aTransactionAmountUnDolarized := aTransactionAmount amount.
+	
+	integerPart := aTransactionAmountUnDolarized integerPart.
+	fractionPart := (aTransactionAmountUnDolarized * 100) fractionPart .
+	
+	menosQueCero := aTransactionAmountUnDolarized < 0.
+	masDeQuinceDigitos := integerPart > ((10^15)-1).
+	masDeDosDecimales := fractionPart ~= 0.
+	
+	(menosQueCero or: [		masDeQuinceDigitos or: [			masDeDosDecimales ] ]) ifTrue: [ ^self error: self class canNotCheckOutWithInvalidTransactionAmountErrorDescription. ].! !
+
+!testRun: #CashierTest #test01CannotCheckoutWithEmptyCart stamp: 'SR 11/3/2022 00:28:14'!
+PASSED!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'SR 11/3/2022 00:28:14'!
+PASSED!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'SR 11/3/2022 00:28:14'!
+PASSED!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'SR 11/3/2022 00:28:14'!
+ERROR!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'SR 11/3/2022 00:28:14'!
+PASSED!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/3/2022 00:28:14'!
+ERROR!
+
+!testRun: #CashierTest #test01CannotCheckoutWithEmptyCart stamp: 'SR 11/3/2022 00:28:25'!
+PASSED!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'SR 11/3/2022 00:28:25'!
+PASSED!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'SR 11/3/2022 00:28:25'!
+PASSED!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'SR 11/3/2022 00:28:25'!
+ERROR!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'SR 11/3/2022 00:28:25'!
+PASSED!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/3/2022 00:28:25'!
+ERROR!
+!Cashier methodsFor: 'assertions' stamp: 'SR 11/3/2022 00:28:41' prior: 50556473!
+assertValidTransaction: aTransactionAmount
+
+	| aTransactionAmountUnDolarized integerPart fractionPart menosQueCero masDeQuinceDigitos masDeDosDecimales |
+	
+	aTransactionAmountUnDolarized := aTransactionAmount amount.
+	
+	integerPart := aTransactionAmountUnDolarized integerPart.
+	fractionPart := (aTransactionAmountUnDolarized * 100) fractionPart .
+	
+	menosQueCero := aTransactionAmountUnDolarized < 0.
+	masDeQuinceDigitos := integerPart > ((10^15)-1).
+	masDeDosDecimales := fractionPart ~= 0.
+	
+	(menosQueCero or: [		masDeQuinceDigitos or: [			masDeDosDecimales ] ]) ifTrue: [ self error: self class canNotCheckOutWithInvalidTransactionAmountErrorDescription. ].! !
+
+!testRun: #CashierTest #test01CannotCheckoutWithEmptyCart stamp: 'SR 11/3/2022 00:28:43'!
+PASSED!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'SR 11/3/2022 00:28:43'!
+PASSED!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'SR 11/3/2022 00:28:43'!
+PASSED!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'SR 11/3/2022 00:28:43'!
+ERROR!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'SR 11/3/2022 00:28:43'!
+PASSED!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/3/2022 00:28:43'!
+ERROR!
+!Cashier methodsFor: 'assertions' stamp: 'SR 11/3/2022 00:28:52' prior: 50556536!
+assertValidTransaction: aTransactionAmount
+
+	| aTransactionAmountUnDolarized integerPart fractionPart menosQueCero masDeQuinceDigitos masDeDosDecimales |
+	
+	aTransactionAmountUnDolarized := aTransactionAmount amount.
+	
+	integerPart := aTransactionAmountUnDolarized integerPart.
+	fractionPart := (aTransactionAmountUnDolarized * 100) fractionPart .
+	
+	menosQueCero := aTransactionAmountUnDolarized < 0.
+	masDeQuinceDigitos := integerPart > ((10^15)-1).
+	masDeDosDecimales := fractionPart ~= 0.
+	
+	(menosQueCero or: [		masDeQuinceDigitos or: [			masDeDosDecimales ] ]) ifTrue: [ ^self error: self class canNotCheckOutWithInvalidTransactionAmountErrorDescription. ].! !
+!Cashier methodsFor: 'assertions' stamp: 'SR 11/3/2022 00:29:04' prior: 50556579!
+assertValidTransaction: aTransactionAmount
+
+	| aTransactionAmountUnDolarized integerPart fractionPart menosQueCero masDeQuinceDigitos masDeDosDecimales |
+	
+	aTransactionAmountUnDolarized := aTransactionAmount amount.
+	
+	integerPart := aTransactionAmountUnDolarized integerPart.
+	fractionPart := (aTransactionAmountUnDolarized * 100) fractionPart .
+	
+	menosQueCero := aTransactionAmountUnDolarized < 0.
+	masDeQuinceDigitos := integerPart > ((10^15)-1).
+	masDeDosDecimales := fractionPart ~= 0.
+	
+	(menosQueCero or: [		masDeQuinceDigitos or: [			masDeDosDecimales ] ]) ifTrue: [ ^self error: self class canNotCheckOutWithInvalidTransactionAmountErrorDescription ].! !
+
+!testRun: #CashierTest #test01CannotCheckoutWithEmptyCart stamp: 'SR 11/3/2022 00:29:20'!
+PASSED!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'SR 11/3/2022 00:29:20'!
+PASSED!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'SR 11/3/2022 00:29:20'!
+PASSED!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'SR 11/3/2022 00:29:20'!
+ERROR!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'SR 11/3/2022 00:29:20'!
+PASSED!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/3/2022 00:29:20'!
+ERROR!
+!CashierTest methodsFor: 'tests' stamp: 'SR 11/3/2022 00:29:43' prior: 50556452!
+test04CanNotCheckOutWithExpiredCard
+	
+	| unChango unCashier unPlasticoViejo |
+	
+	unCashier := self createCashierWithDefaultDate.
+	unChango := self createCart.
+	unChango add: (self itemSellByTheStore).
+	unPlasticoViejo := self createAnExpiredCard.
+
+	self 
+		should: [ unCashier checkOut: unChango withCard: unPlasticoViejo ]
+		raise: Error 
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Cashier canNotCheckOutWithExpiredCardErrorDescription.
+			self assert: unCashier salesHistory isEmpty]
+	
+	
+	
+	
+	
+! !
+!CashierTest methodsFor: 'tests' stamp: 'SR 11/3/2022 00:29:47' prior: 50556430!
+test06CannotCheckoutWithInvalidTransactionAmount
+	
+	| unChango unCashier unPlasticoValido |
+	
+	unCashier := self createCashierWithDefaultDate.
+	unChango := self createCart.
+	unChango add: (self expensiveItemSellByTheStore ).
+	unPlasticoValido := self createAValidCard.
+	
+	self 
+		should: [ unCashier checkOut: unChango withCard: unPlasticoValido ]
+		raise: Error 
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Cashier canNotCheckOutWithInvalidTransactionAmountErrorDescription.
+			self assert: unCashier salesHistory isEmpty]
+	! !
+
+!testRun: #CashierTest #test01CannotCheckoutWithEmptyCart stamp: 'SR 11/3/2022 00:29:49'!
+PASSED!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'SR 11/3/2022 00:29:49'!
+PASSED!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'SR 11/3/2022 00:29:49'!
+PASSED!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'SR 11/3/2022 00:29:49'!
+PASSED!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'SR 11/3/2022 00:29:49'!
+PASSED!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/3/2022 00:29:49'!
+PASSED!
+!MerchantSimulator methodsFor: 'as yet unclassified' stamp: 'SR 11/3/2022 00:30:18' prior: 50555870!
+debit: anAmount fromCreditCardNumber: aCardNumber withOwner: aCardOwner andExpireDate: anExpireDate
+
+	aCardNumber = 5400000000000001 and: [
+		aCardOwner = 'PEPE SANCHEZ' and: [
+			anExpireDate = (GregorianMonthOfYear julyOf: 2011) and: [
+				anAmount = (123.50 * dollar) ifTrue: [ ^'HTTP 200' ].
+				].
+			].
+		].
+	
+	^'HTTP 400'.! !
+
+!testRun: #CashierTest #test01CannotCheckoutWithEmptyCart stamp: 'SR 11/3/2022 00:31:03'!
+PASSED!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'SR 11/3/2022 00:31:03'!
+PASSED!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'SR 11/3/2022 00:31:03'!
+PASSED!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'SR 11/3/2022 00:31:03'!
+PASSED!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'SR 11/3/2022 00:31:03'!
+PASSED!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/3/2022 00:31:03'!
+PASSED!
+!MerchantSimulator methodsFor: 'as yet unclassified' stamp: 'SR 11/3/2022 00:32:23' prior: 50556706!
+debit: anAmount fromCreditCardNumber: aCardNumber withOwner: aCardOwner andExpireDate: anExpireDate
+
+	(aCardNumber = 5400000000000001 and: [
+		aCardOwner = 'PEPE SANCHEZ' and: [
+			anExpireDate = (GregorianMonthOfYear julyOf: 2011) and: [
+				anAmount = (123.50 * dollar)
+				].
+			].
+		]) ifTrue: [ ^'HTTP 200' ].
+	
+	^'HTTP 400'.! !
+
+!testRun: #CashierTest #test01CannotCheckoutWithEmptyCart stamp: 'SR 11/3/2022 00:32:25'!
+PASSED!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'SR 11/3/2022 00:32:25'!
+PASSED!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'SR 11/3/2022 00:32:25'!
+PASSED!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'SR 11/3/2022 00:32:25'!
+PASSED!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'SR 11/3/2022 00:32:25'!
+PASSED!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/3/2022 00:32:25'!
+PASSED!
+!MerchantSimulator methodsFor: 'as yet unclassified' stamp: 'SR 11/3/2022 00:37:17' prior: 50556740!
+debit: anAmount fromCreditCardNumber: aCardNumber withOwner: aCardOwner andExpireDate: anExpireDate
+
+	"si es una tarjeta válida"
+	(aCardNumber = 5400000000000001 and: [
+		aCardOwner = 'PEPE SANCHEZ' and: [
+			anExpireDate = (GregorianMonthOfYear julyOf: 2011) and: [
+				anAmount = (123.50 * dollar)
+				].
+			].
+		]) ifTrue: [ ^'HTTP 200' ].
+	
+	"cualquier otra tarjeta es inválida"
+	^'HTTP 400'.! !
+!CashierTest methodsFor: 'tests' stamp: 'SR 11/3/2022 00:38:40'!
+test07CannotCheckoutWithAnInvalidCard
+	
+	! !
+!CashierTest methodsFor: 'support' stamp: 'SR 11/3/2022 00:40:44'!
+createAnInvalidCard
+
+	^ Card withName: 'LEO MESSI' withNumber: 1111111111111111 withExpiration: (GregorianMonthOfYear julyOf: 2011)! !
+!CashierTest methodsFor: 'tests' stamp: 'SR 11/3/2022 00:41:15' prior: 50555551!
+test05CheckoutWithValidCardIsRegistersSaleInSalesBook
+	
+	| unChango unCashier unPlasticoValido |
+	
+	unCashier := self createCashierWithDefaultDate.
+	unChango := self createCart.
+	unChango add: (self anOtherItemSellByTheStore).
+	unPlasticoValido := self createAnInvalidCard.
+
+	unCashier checkOut: unChango withCard: unPlasticoValido.
+	
+	self assert: (unCashier salesHistory size) equals: 0.! !
+!CashierTest methodsFor: 'tests' stamp: 'SR 11/3/2022 00:41:22' prior: 50556800!
+test05CheckoutWithValidCardIsRegistersSaleInSalesBook
+	
+	| unChango unCashier unPlasticoValido |
+	
+	unCashier := self createCashierWithDefaultDate.
+	unChango := self createCart.
+	unChango add: (self anOtherItemSellByTheStore).
+	unPlasticoValido := self createAValidCard.
+
+	unCashier checkOut: unChango withCard: unPlasticoValido.
+	
+	self assert: (unCashier salesHistory size) equals: 1.! !
+!CashierTest methodsFor: 'tests' stamp: 'SR 11/3/2022 00:41:34' prior: 50556789!
+test07CannotCheckoutWithAnInvalidCard
+	
+	| unChango unCashier unPlasticoValido |
+	
+	unCashier := self createCashierWithDefaultDate.
+	unChango := self createCart.
+	unChango add: (self anOtherItemSellByTheStore).
+	unPlasticoValido := self createAnInvalidCard .
+
+	unCashier checkOut: unChango withCard: unPlasticoValido.
+	
+	self assert: (unCashier salesHistory size) equals: 0.! !
+
+!testRun: #CashierTest #test07CannotCheckoutWithAnInvalidCard stamp: 'SR 11/3/2022 00:41:37'!
+PASSED!
+!CashierTest methodsFor: 'support' stamp: 'SR 11/3/2022 00:42:15' prior: 50555445!
+createAValidCard
+
+	"tarjeta válida para el Merchant"
+	^ Card withName: 'PEPE SANCHEZ' withNumber: 5400000000000001 withExpiration: (GregorianMonthOfYear julyOf: 2011)! !
+!CashierTest methodsFor: 'support' stamp: 'SR 11/3/2022 00:42:36' prior: 50556793!
+createAnInvalidCard
+
+	"tarjeta inválida para el merchant"
+	^ Card withName: 'LEO MESSI' withNumber: 1111111111111111 withExpiration: (GregorianMonthOfYear julyOf: 2011)! !
+
+!testRun: #CashierTest #test01CannotCheckoutWithEmptyCart stamp: 'SR 11/3/2022 00:42:39'!
+PASSED!
+
+!testRun: #CashierTest #test02CanCheckOutWithSingleBook stamp: 'SR 11/3/2022 00:42:39'!
+PASSED!
+
+!testRun: #CashierTest #test03CanCheckOutWithManyBooks stamp: 'SR 11/3/2022 00:42:39'!
+PASSED!
+
+!testRun: #CashierTest #test04CanNotCheckOutWithExpiredCard stamp: 'SR 11/3/2022 00:42:39'!
+PASSED!
+
+!testRun: #CashierTest #test05CheckoutWithValidCardIsRegistersSaleInSalesBook stamp: 'SR 11/3/2022 00:42:39'!
+PASSED!
+
+!testRun: #CashierTest #test06CannotCheckoutWithInvalidTransactionAmount stamp: 'SR 11/3/2022 00:42:39'!
+PASSED!
+
+!testRun: #CashierTest #test07CannotCheckoutWithAnInvalidCard stamp: 'SR 11/3/2022 00:42:39'!
+PASSED!
+
+----SNAPSHOT----(3 November 2022 00:42:58) CuisUniversity-5510.image priorSource: 7155150!
