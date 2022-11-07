@@ -5784,3 +5784,3343 @@ PASSED!
 PASSED!
 
 ----SNAPSHOT----(7 November 2022 00:34:05) CuisUniversity-5510.image priorSource: 7385146!
+
+----STARTUP---- (7 November 2022 11:30:32) as C:\Users\maria\Desktop\Facultad\Taller\Inge1\CuisUniversity-windows64\CuisUniversity-5510.image!
+
+
+!testRun: #InterfazTest #test01createCartDaErrorConUsuarioInvalido stamp: 'MO 11/7/2022 11:35:13'!
+PASSED!
+
+!testRun: #InterfazTest #test02createCartDaErrorConContraseniaInvalida stamp: 'MO 11/7/2022 11:35:13'!
+PASSED!
+
+!testRun: #InterfazTest #test03createCartFuncionaConUnUsuarioYContraseniaValidos stamp: 'MO 11/7/2022 11:35:13'!
+PASSED!
+
+!testRun: #InterfazTest #test04addCartNoFuncionaConUnIDInvalido stamp: 'MO 11/7/2022 11:35:13'!
+PASSED!
+
+!testRun: #InterfazTest #test05addCartNoFuncionaConUnLibroInvalido stamp: 'MO 11/7/2022 11:35:13'!
+PASSED!
+
+!testRun: #InterfazTest #test06addCartNoFuncionaConUnaCantidadInvalida stamp: 'MO 11/7/2022 11:35:13'!
+PASSED!
+
+!testRun: #InterfazTest #test07AddToCartAgregaUnLibroCorrectamente stamp: 'MO 11/7/2022 11:35:13'!
+PASSED!
+
+!testRun: #InterfazTest #test08ListCartNoFuncionaConCartIDInvalida stamp: 'MO 11/7/2022 11:35:13'!
+PASSED!
+
+!testRun: #InterfazTest #test09ListCartACartConUnLibroRetornaColeccionConEseLibro stamp: 'MO 11/7/2022 11:35:13'!
+PASSED!
+
+!testRun: #InterfazTest #test10ListCartACartConMultiplesLibrosRetornaColeccionConEsosLibros stamp: 'MO 11/7/2022 11:35:13'!
+PASSED!
+
+!testRun: #InterfazTest #test11CheckOutACartWithInvalidIDRaisesException stamp: 'MO 11/7/2022 11:35:13'!
+PASSED!
+
+!testRun: #InterfazTest #test12CheckOutACartWithExpiredCardRaisesException stamp: 'MO 11/7/2022 11:35:13'!
+PASSED!
+
+!testRun: #InterfazTest #test13CheckOutACartWithInvalidNumberedCardRaisesException stamp: 'MO 11/7/2022 11:35:13'!
+PASSED!
+
+!testRun: #InterfazTest #test14CheckOutACartWithOneBookRegistersSaleCorrectly stamp: 'MO 11/7/2022 11:35:13'!
+PASSED!
+
+!testRun: #InterfazTest #test15CannotListPurchasesIfAuthenticationFails stamp: 'MO 11/7/2022 11:35:13'!
+PASSED!
+
+!testRun: #InterfazTest #test16ListPurchasesWithoutSalesReturnsEmptyCollection stamp: 'MO 11/7/2022 11:35:14'!
+PASSED!
+
+!testRun: #InterfazTest #test17ListPurchasesWithoutOneSaleReturnsACollectionWithThatSale stamp: 'MO 11/7/2022 11:35:14'!
+PASSED!
+
+!testRun: #CreditCardTest #test01CannotCreateCardWithInvalidNumber stamp: 'MO 11/7/2022 11:35:16'!
+PASSED!
+
+!testRun: #CreditCardTest #test02CannotCreateCardWithEmptyOwner stamp: 'MO 11/7/2022 11:35:17'!
+PASSED!
+
+!testRun: #CreditCardTest #test03CardCreatedWithValidNumberAndOwnerStoresCorrectInfo stamp: 'MO 11/7/2022 11:35:17'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'MO 11/7/2022 11:35:19'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'MO 11/7/2022 11:35:19'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'MO 11/7/2022 11:35:19'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'MO 11/7/2022 11:35:19'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'MO 11/7/2022 11:35:19'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'MO 11/7/2022 11:35:19'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'MO 11/7/2022 11:35:21'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'MO 11/7/2022 11:35:21'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'MO 11/7/2022 11:35:21'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'MO 11/7/2022 11:35:21'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'MO 11/7/2022 11:35:21'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'MO 11/7/2022 11:35:21'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'MO 11/7/2022 11:35:21'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'MO 11/7/2022 11:35:21'!
+PASSED!
+
+Object subclass: #Interfaz
+	instanceVariableNames: 'authenticator catalog merchantProcessor clock cartIDtoCart cartIDManager saleSummary'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #Interfaz category: 'TusLibros' stamp: 'MO 11/7/2022 11:47:41'!
+Object subclass: #Interfaz
+	instanceVariableNames: 'authenticator catalog merchantProcessor clock cartIDtoCart cartIDManager saleSummary'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!Interfaz methodsFor: 'operations' stamp: 'MO 11/7/2022 11:50:17' prior: 50562827!
+checkOutCart: cartID withCard: cardNumber expiringOn: aDate withOwner: aName registeringOn: aSalesRegister
+
+	| aCard aCashier |
+	
+	self assertValidCart: cartID.
+	
+	aCard := CreditCard expiringOn: aDate withNumber: cardNumber withOwner: aName.
+	aCashier := Cashier toCheckout: (cartIDtoCart at: cartID) charging: aCard throught: merchantProcessor on: (DateAndTime now) registeringOn: aSalesRegister.
+	saleSummary := aCashier saleSummary.
+	
+	^aCashier checkOut.! !
+!Interfaz methodsFor: 'initialization' stamp: 'MO 11/7/2022 11:51:04'!
+initializeWith: anAuthenticator with: aCatalog with: aMerchantProcesor
+
+	authenticator := anAuthenticator.
+	catalog  := aCatalog.
+	merchantProcessor := aMerchantProcesor.
+	cartIDtoCart := Dictionary new.
+	cartIDManager := 0.
+	saleSummary := OrderedCollection new.! !
+
+!methodRemoval: Interfaz #initializeWith:with: stamp: 'MO 11/7/2022 11:51:11'!
+initializeWith: anAuthenticator with: aCatalog 
+
+	authenticator := anAuthenticator.
+	catalog  := aCatalog.
+	cartIDtoCart := Dictionary new.
+	cartIDManager := 0.
+	saleSummary := OrderedCollection new.!
+!Interfaz class methodsFor: 'instance creation' stamp: 'MO 11/7/2022 11:51:47'!
+withAuthenticator: anAuthenticator withCatalog: aCatalog withMerchantProcessor: aMerchantProcessor
+	
+	^ self new initializeWith: anAuthenticator with: aCatalog with: aMerchantProcessor
+	! !
+
+!methodRemoval: Interfaz class #withAuthenticator:withCatalog: stamp: 'MO 11/7/2022 11:51:51'!
+withAuthenticator: anAuthenticator withCatalog: aCatalog 
+	
+	^ self new initializeWith: anAuthenticator with: aCatalog
+	!
+!StoreTestObjectsFactory methodsFor: 'interfaz' stamp: 'MO 11/7/2022 11:53:04' prior: 50553776!
+createInterfaz: anAuthenticator
+	
+	^ Interfaz withAuthenticator: anAuthenticator withCatalog: self defaultCatalog withMerchantProcessor: (MerchantProcessorSimulator new)! !
+
+!testRun: #InterfazTest #test01createCartDaErrorConUsuarioInvalido stamp: 'MO 11/7/2022 11:53:23'!
+PASSED!
+
+!testRun: #InterfazTest #test02createCartDaErrorConContraseniaInvalida stamp: 'MO 11/7/2022 11:53:23'!
+PASSED!
+
+!testRun: #InterfazTest #test03createCartFuncionaConUnUsuarioYContraseniaValidos stamp: 'MO 11/7/2022 11:53:23'!
+PASSED!
+
+!testRun: #InterfazTest #test04addCartNoFuncionaConUnIDInvalido stamp: 'MO 11/7/2022 11:53:23'!
+PASSED!
+
+!testRun: #InterfazTest #test05addCartNoFuncionaConUnLibroInvalido stamp: 'MO 11/7/2022 11:53:23'!
+PASSED!
+
+!testRun: #InterfazTest #test06addCartNoFuncionaConUnaCantidadInvalida stamp: 'MO 11/7/2022 11:53:23'!
+PASSED!
+
+!testRun: #InterfazTest #test07AddToCartAgregaUnLibroCorrectamente stamp: 'MO 11/7/2022 11:53:23'!
+PASSED!
+
+!testRun: #InterfazTest #test08ListCartNoFuncionaConCartIDInvalida stamp: 'MO 11/7/2022 11:53:23'!
+PASSED!
+
+!testRun: #InterfazTest #test09ListCartACartConUnLibroRetornaColeccionConEseLibro stamp: 'MO 11/7/2022 11:53:24'!
+PASSED!
+
+!testRun: #InterfazTest #test10ListCartACartConMultiplesLibrosRetornaColeccionConEsosLibros stamp: 'MO 11/7/2022 11:53:24'!
+PASSED!
+
+!testRun: #InterfazTest #test11CheckOutACartWithInvalidIDRaisesException stamp: 'MO 11/7/2022 11:53:24'!
+PASSED!
+
+!testRun: #InterfazTest #test12CheckOutACartWithExpiredCardRaisesException stamp: 'MO 11/7/2022 11:53:24'!
+PASSED!
+
+!testRun: #InterfazTest #test13CheckOutACartWithInvalidNumberedCardRaisesException stamp: 'MO 11/7/2022 11:53:24'!
+PASSED!
+
+!testRun: #InterfazTest #test14CheckOutACartWithOneBookRegistersSaleCorrectly stamp: 'MO 11/7/2022 11:53:24'!
+PASSED!
+
+!testRun: #InterfazTest #test15CannotListPurchasesIfAuthenticationFails stamp: 'MO 11/7/2022 11:53:24'!
+PASSED!
+
+!testRun: #InterfazTest #test16ListPurchasesWithoutSalesReturnsEmptyCollection stamp: 'MO 11/7/2022 11:53:24'!
+PASSED!
+
+!testRun: #InterfazTest #test17ListPurchasesWithoutOneSaleReturnsACollectionWithThatSale stamp: 'MO 11/7/2022 11:53:24'!
+PASSED!
+!Interfaz methodsFor: 'operations' stamp: 'MO 11/7/2022 11:55:09' prior: 50563727!
+checkOutCart: cartID withCard: cardNumber expiringOn: aDate withOwner: aName registeringOn: aSalesRegister
+
+	| aCard aCashier |
+	
+	self assertValidCart: cartID.
+	
+	aCard := CreditCard expiringOn: aDate withNumber: cardNumber withOwner: aName.
+	aCashier := Cashier toCheckout: (cartIDtoCart at: cartID) charging: aCard throught: merchantProcessor on: clock registeringOn: aSalesRegister.
+	saleSummary := aCashier saleSummary.
+	
+	^aCashier checkOut.! !
+!Interfaz methodsFor: 'initialization' stamp: 'MO 11/7/2022 11:55:33' prior: 50563744!
+initializeWith: anAuthenticator with: aCatalog with: aMerchantProcesor
+
+	authenticator := anAuthenticator.
+	catalog  := aCatalog.
+	merchantProcessor := aMerchantProcesor.
+	clock := DateAndTime now.
+	cartIDtoCart := Dictionary new.
+	cartIDManager := 0.
+	saleSummary := OrderedCollection new.! !
+
+!testRun: #InterfazTest #test01createCartDaErrorConUsuarioInvalido stamp: 'MO 11/7/2022 11:56:04'!
+PASSED!
+
+!testRun: #InterfazTest #test02createCartDaErrorConContraseniaInvalida stamp: 'MO 11/7/2022 11:56:04'!
+PASSED!
+
+!testRun: #InterfazTest #test03createCartFuncionaConUnUsuarioYContraseniaValidos stamp: 'MO 11/7/2022 11:56:04'!
+PASSED!
+
+!testRun: #InterfazTest #test04addCartNoFuncionaConUnIDInvalido stamp: 'MO 11/7/2022 11:56:04'!
+PASSED!
+
+!testRun: #InterfazTest #test05addCartNoFuncionaConUnLibroInvalido stamp: 'MO 11/7/2022 11:56:04'!
+PASSED!
+
+!testRun: #InterfazTest #test06addCartNoFuncionaConUnaCantidadInvalida stamp: 'MO 11/7/2022 11:56:04'!
+PASSED!
+
+!testRun: #InterfazTest #test07AddToCartAgregaUnLibroCorrectamente stamp: 'MO 11/7/2022 11:56:04'!
+PASSED!
+
+!testRun: #InterfazTest #test08ListCartNoFuncionaConCartIDInvalida stamp: 'MO 11/7/2022 11:56:04'!
+PASSED!
+
+!testRun: #InterfazTest #test09ListCartACartConUnLibroRetornaColeccionConEseLibro stamp: 'MO 11/7/2022 11:56:04'!
+PASSED!
+
+!testRun: #InterfazTest #test10ListCartACartConMultiplesLibrosRetornaColeccionConEsosLibros stamp: 'MO 11/7/2022 11:56:04'!
+PASSED!
+
+!testRun: #InterfazTest #test11CheckOutACartWithInvalidIDRaisesException stamp: 'MO 11/7/2022 11:56:04'!
+PASSED!
+
+!testRun: #InterfazTest #test12CheckOutACartWithExpiredCardRaisesException stamp: 'MO 11/7/2022 11:56:04'!
+PASSED!
+
+!testRun: #InterfazTest #test13CheckOutACartWithInvalidNumberedCardRaisesException stamp: 'MO 11/7/2022 11:56:04'!
+PASSED!
+
+!testRun: #InterfazTest #test14CheckOutACartWithOneBookRegistersSaleCorrectly stamp: 'MO 11/7/2022 11:56:04'!
+PASSED!
+
+!testRun: #InterfazTest #test15CannotListPurchasesIfAuthenticationFails stamp: 'MO 11/7/2022 11:56:04'!
+PASSED!
+
+!testRun: #InterfazTest #test16ListPurchasesWithoutSalesReturnsEmptyCollection stamp: 'MO 11/7/2022 11:56:05'!
+PASSED!
+
+!testRun: #InterfazTest #test17ListPurchasesWithoutOneSaleReturnsACollectionWithThatSale stamp: 'MO 11/7/2022 11:56:05'!
+PASSED!
+
+!classDefinition: #InterfazTest category: 'TusLibros' stamp: 'MO 11/7/2022 12:04:12'!
+TestCase subclass: #InterfazTest
+	instanceVariableNames: 'testObjectsFactory authenticatorBehavior laInterfaz debitBehavior'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!InterfazTest methodsFor: 'setUp' stamp: 'MO 11/7/2022 12:04:04' prior: 50553954 overrides: 16961394!
+setUp 
+
+	testObjectsFactory := StoreTestObjectsFactory new.
+	authenticatorBehavior := [ :aUser :aPassword | true ].
+	debitBehavior := [ :anAmount :aCreditCard | ].
+	
+	laInterfaz := testObjectsFactory createInterfaz: self.! !
+!InterfazTest methodsFor: 'merchant processor protocol' stamp: 'MO 11/7/2022 12:04:41'!
+debit: anAmount from: aCreditCard 
+
+	^debitBehavior value: anAmount value: aCreditCard ! !
+!StoreTestObjectsFactory methodsFor: 'interfaz' stamp: 'MO 11/7/2022 12:05:42' prior: 50563780!
+createInterfaz: aSimulator
+	
+	^ Interfaz withAuthenticator: aSimulator withCatalog: self defaultCatalog withMerchantProcessor: aSimulator! !
+
+!testRun: #InterfazTest #test01createCartDaErrorConUsuarioInvalido stamp: 'MO 11/7/2022 12:05:48'!
+PASSED!
+
+!testRun: #InterfazTest #test02createCartDaErrorConContraseniaInvalida stamp: 'MO 11/7/2022 12:05:48'!
+PASSED!
+
+!testRun: #InterfazTest #test03createCartFuncionaConUnUsuarioYContraseniaValidos stamp: 'MO 11/7/2022 12:05:48'!
+PASSED!
+
+!testRun: #InterfazTest #test04addCartNoFuncionaConUnIDInvalido stamp: 'MO 11/7/2022 12:05:48'!
+PASSED!
+
+!testRun: #InterfazTest #test05addCartNoFuncionaConUnLibroInvalido stamp: 'MO 11/7/2022 12:05:48'!
+PASSED!
+
+!testRun: #InterfazTest #test06addCartNoFuncionaConUnaCantidadInvalida stamp: 'MO 11/7/2022 12:05:48'!
+PASSED!
+
+!testRun: #InterfazTest #test07AddToCartAgregaUnLibroCorrectamente stamp: 'MO 11/7/2022 12:05:48'!
+PASSED!
+
+!testRun: #InterfazTest #test08ListCartNoFuncionaConCartIDInvalida stamp: 'MO 11/7/2022 12:05:48'!
+PASSED!
+
+!testRun: #InterfazTest #test09ListCartACartConUnLibroRetornaColeccionConEseLibro stamp: 'MO 11/7/2022 12:05:48'!
+PASSED!
+
+!testRun: #InterfazTest #test10ListCartACartConMultiplesLibrosRetornaColeccionConEsosLibros stamp: 'MO 11/7/2022 12:05:48'!
+PASSED!
+
+!testRun: #InterfazTest #test11CheckOutACartWithInvalidIDRaisesException stamp: 'MO 11/7/2022 12:05:48'!
+PASSED!
+
+!testRun: #InterfazTest #test12CheckOutACartWithExpiredCardRaisesException stamp: 'MO 11/7/2022 12:05:48'!
+PASSED!
+
+!testRun: #InterfazTest #test13CheckOutACartWithInvalidNumberedCardRaisesException stamp: 'MO 11/7/2022 12:05:48'!
+PASSED!
+
+!testRun: #InterfazTest #test14CheckOutACartWithOneBookRegistersSaleCorrectly stamp: 'MO 11/7/2022 12:05:48'!
+PASSED!
+
+!testRun: #InterfazTest #test15CannotListPurchasesIfAuthenticationFails stamp: 'MO 11/7/2022 12:05:48'!
+PASSED!
+
+!testRun: #InterfazTest #test16ListPurchasesWithoutSalesReturnsEmptyCollection stamp: 'MO 11/7/2022 12:05:48'!
+PASSED!
+
+!testRun: #InterfazTest #test17ListPurchasesWithoutOneSaleReturnsACollectionWithThatSale stamp: 'MO 11/7/2022 12:05:48'!
+PASSED!
+
+!classRemoval: #MerchantProcessorSimulator stamp: 'MO 11/7/2022 12:06:08'!
+Object subclass: #MerchantProcessorSimulator
+	instanceVariableNames: 'debitBehavior'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!testRun: #CreditCardTest #test01CannotCreateCardWithInvalidNumber stamp: 'MO 11/7/2022 12:06:12'!
+PASSED!
+
+!testRun: #CreditCardTest #test02CannotCreateCardWithEmptyOwner stamp: 'MO 11/7/2022 12:06:12'!
+PASSED!
+
+!testRun: #CreditCardTest #test03CardCreatedWithValidNumberAndOwnerStoresCorrectInfo stamp: 'MO 11/7/2022 12:06:12'!
+PASSED!
+
+!testRun: #InterfazTest #test01createCartDaErrorConUsuarioInvalido stamp: 'MO 11/7/2022 12:06:15'!
+PASSED!
+
+!testRun: #InterfazTest #test02createCartDaErrorConContraseniaInvalida stamp: 'MO 11/7/2022 12:06:15'!
+PASSED!
+
+!testRun: #InterfazTest #test03createCartFuncionaConUnUsuarioYContraseniaValidos stamp: 'MO 11/7/2022 12:06:15'!
+PASSED!
+
+!testRun: #InterfazTest #test04addCartNoFuncionaConUnIDInvalido stamp: 'MO 11/7/2022 12:06:15'!
+PASSED!
+
+!testRun: #InterfazTest #test05addCartNoFuncionaConUnLibroInvalido stamp: 'MO 11/7/2022 12:06:15'!
+PASSED!
+
+!testRun: #InterfazTest #test06addCartNoFuncionaConUnaCantidadInvalida stamp: 'MO 11/7/2022 12:06:15'!
+PASSED!
+
+!testRun: #InterfazTest #test07AddToCartAgregaUnLibroCorrectamente stamp: 'MO 11/7/2022 12:06:15'!
+PASSED!
+
+!testRun: #InterfazTest #test08ListCartNoFuncionaConCartIDInvalida stamp: 'MO 11/7/2022 12:06:15'!
+PASSED!
+
+!testRun: #InterfazTest #test09ListCartACartConUnLibroRetornaColeccionConEseLibro stamp: 'MO 11/7/2022 12:06:15'!
+PASSED!
+
+!testRun: #InterfazTest #test10ListCartACartConMultiplesLibrosRetornaColeccionConEsosLibros stamp: 'MO 11/7/2022 12:06:15'!
+PASSED!
+
+!testRun: #InterfazTest #test11CheckOutACartWithInvalidIDRaisesException stamp: 'MO 11/7/2022 12:06:15'!
+PASSED!
+
+!testRun: #InterfazTest #test12CheckOutACartWithExpiredCardRaisesException stamp: 'MO 11/7/2022 12:06:15'!
+PASSED!
+
+!testRun: #InterfazTest #test13CheckOutACartWithInvalidNumberedCardRaisesException stamp: 'MO 11/7/2022 12:06:15'!
+PASSED!
+
+!testRun: #InterfazTest #test14CheckOutACartWithOneBookRegistersSaleCorrectly stamp: 'MO 11/7/2022 12:06:15'!
+PASSED!
+
+!testRun: #InterfazTest #test15CannotListPurchasesIfAuthenticationFails stamp: 'MO 11/7/2022 12:06:15'!
+PASSED!
+
+!testRun: #InterfazTest #test16ListPurchasesWithoutSalesReturnsEmptyCollection stamp: 'MO 11/7/2022 12:06:15'!
+PASSED!
+
+!testRun: #InterfazTest #test17ListPurchasesWithoutOneSaleReturnsACollectionWithThatSale stamp: 'MO 11/7/2022 12:06:15'!
+PASSED!
+!CreditCard class methodsFor: 'instance creation' stamp: 'MO 11/7/2022 12:11:38' prior: 50561191!
+assertCreditCardOwnerIsValid: aCardOwner
+	
+	(aCardOwner isEmpty) ifTrue: [self error: self invalidCardOwnerErrorDescription ].! !
+
+!testRun: #CreditCardTest #test01CannotCreateCardWithInvalidNumber stamp: 'MO 11/7/2022 12:11:41'!
+PASSED!
+
+!testRun: #CreditCardTest #test02CannotCreateCardWithEmptyOwner stamp: 'MO 11/7/2022 12:11:41'!
+PASSED!
+
+!testRun: #CreditCardTest #test03CardCreatedWithValidNumberAndOwnerStoresCorrectInfo stamp: 'MO 11/7/2022 12:11:41'!
+PASSED!
+
+!testRun: #InterfazTest #test01createCartDaErrorConUsuarioInvalido stamp: 'MO 11/7/2022 12:11:43'!
+PASSED!
+
+!testRun: #InterfazTest #test02createCartDaErrorConContraseniaInvalida stamp: 'MO 11/7/2022 12:11:43'!
+PASSED!
+
+!testRun: #InterfazTest #test03createCartFuncionaConUnUsuarioYContraseniaValidos stamp: 'MO 11/7/2022 12:11:43'!
+PASSED!
+
+!testRun: #InterfazTest #test04addCartNoFuncionaConUnIDInvalido stamp: 'MO 11/7/2022 12:11:43'!
+PASSED!
+
+!testRun: #InterfazTest #test05addCartNoFuncionaConUnLibroInvalido stamp: 'MO 11/7/2022 12:11:43'!
+PASSED!
+
+!testRun: #InterfazTest #test06addCartNoFuncionaConUnaCantidadInvalida stamp: 'MO 11/7/2022 12:11:43'!
+PASSED!
+
+!testRun: #InterfazTest #test07AddToCartAgregaUnLibroCorrectamente stamp: 'MO 11/7/2022 12:11:44'!
+PASSED!
+
+!testRun: #InterfazTest #test08ListCartNoFuncionaConCartIDInvalida stamp: 'MO 11/7/2022 12:11:44'!
+PASSED!
+
+!testRun: #InterfazTest #test09ListCartACartConUnLibroRetornaColeccionConEseLibro stamp: 'MO 11/7/2022 12:11:44'!
+PASSED!
+
+!testRun: #InterfazTest #test10ListCartACartConMultiplesLibrosRetornaColeccionConEsosLibros stamp: 'MO 11/7/2022 12:11:44'!
+PASSED!
+
+!testRun: #InterfazTest #test11CheckOutACartWithInvalidIDRaisesException stamp: 'MO 11/7/2022 12:11:44'!
+PASSED!
+
+!testRun: #InterfazTest #test12CheckOutACartWithExpiredCardRaisesException stamp: 'MO 11/7/2022 12:11:44'!
+PASSED!
+
+!testRun: #InterfazTest #test13CheckOutACartWithInvalidNumberedCardRaisesException stamp: 'MO 11/7/2022 12:11:44'!
+PASSED!
+
+!testRun: #InterfazTest #test14CheckOutACartWithOneBookRegistersSaleCorrectly stamp: 'MO 11/7/2022 12:11:44'!
+PASSED!
+
+!testRun: #InterfazTest #test15CannotListPurchasesIfAuthenticationFails stamp: 'MO 11/7/2022 12:11:44'!
+PASSED!
+
+!testRun: #InterfazTest #test16ListPurchasesWithoutSalesReturnsEmptyCollection stamp: 'MO 11/7/2022 12:11:44'!
+PASSED!
+
+!testRun: #InterfazTest #test17ListPurchasesWithoutOneSaleReturnsACollectionWithThatSale stamp: 'MO 11/7/2022 12:11:44'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'MO 11/7/2022 12:11:47'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'MO 11/7/2022 12:11:47'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'MO 11/7/2022 12:11:47'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'MO 11/7/2022 12:11:47'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'MO 11/7/2022 12:11:47'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'MO 11/7/2022 12:11:47'!
+PASSED!
+
+!testRun: #CreditCardTest #test01CannotCreateCardWithInvalidNumber stamp: 'MO 11/7/2022 12:11:49'!
+PASSED!
+
+!testRun: #CreditCardTest #test02CannotCreateCardWithEmptyOwner stamp: 'MO 11/7/2022 12:11:49'!
+PASSED!
+
+!testRun: #CreditCardTest #test03CardCreatedWithValidNumberAndOwnerStoresCorrectInfo stamp: 'MO 11/7/2022 12:11:49'!
+PASSED!
+
+TestCase subclass: #InterfazTestSuite
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #InterfazTestSuite category: 'TusLibros' stamp: 'MO 11/7/2022 12:12:40'!
+TestCase subclass: #InterfazTestSuite
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+InterfazTestSuite subclass: #InterfazTest
+	instanceVariableNames: 'testObjectsFactory authenticatorBehavior laInterfaz debitBehavior'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #InterfazTest category: 'TusLibros' stamp: 'MO 11/7/2022 12:12:49'!
+InterfazTestSuite subclass: #InterfazTest
+	instanceVariableNames: 'testObjectsFactory authenticatorBehavior laInterfaz debitBehavior'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+InterfazTestSuite subclass: #CreditCardTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #CreditCardTest category: 'TusLibros' stamp: 'MO 11/7/2022 12:12:57'!
+InterfazTestSuite subclass: #CreditCardTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+InterfazTestSuite subclass: #CashierTest
+	instanceVariableNames: 'testObjectsFactory debitBehavior'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #CashierTest category: 'TusLibros' stamp: 'MO 11/7/2022 12:13:02'!
+InterfazTestSuite subclass: #CashierTest
+	instanceVariableNames: 'testObjectsFactory debitBehavior'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+InterfazTestSuite subclass: #CartTest
+	instanceVariableNames: 'testObjectsFactory'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #CartTest category: 'TusLibros' stamp: 'MO 11/7/2022 12:13:10'!
+InterfazTestSuite subclass: #CartTest
+	instanceVariableNames: 'testObjectsFactory'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'MO 11/7/2022 12:13:26'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'MO 11/7/2022 12:13:26'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'MO 11/7/2022 12:13:26'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'MO 11/7/2022 12:13:26'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'MO 11/7/2022 12:13:26'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'MO 11/7/2022 12:13:26'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'MO 11/7/2022 12:13:26'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'MO 11/7/2022 12:13:26'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'MO 11/7/2022 12:13:28'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'MO 11/7/2022 12:13:28'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'MO 11/7/2022 12:13:28'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'MO 11/7/2022 12:13:28'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'MO 11/7/2022 12:13:28'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'MO 11/7/2022 12:13:28'!
+PASSED!
+
+!testRun: #CreditCardTest #test01CannotCreateCardWithInvalidNumber stamp: 'MO 11/7/2022 12:13:30'!
+PASSED!
+
+!testRun: #CreditCardTest #test02CannotCreateCardWithEmptyOwner stamp: 'MO 11/7/2022 12:13:30'!
+PASSED!
+
+!testRun: #CreditCardTest #test03CardCreatedWithValidNumberAndOwnerStoresCorrectInfo stamp: 'MO 11/7/2022 12:13:30'!
+PASSED!
+
+!testRun: #InterfazTest #test01createCartDaErrorConUsuarioInvalido stamp: 'MO 11/7/2022 12:13:31'!
+PASSED!
+
+!testRun: #InterfazTest #test02createCartDaErrorConContraseniaInvalida stamp: 'MO 11/7/2022 12:13:31'!
+PASSED!
+
+!testRun: #InterfazTest #test03createCartFuncionaConUnUsuarioYContraseniaValidos stamp: 'MO 11/7/2022 12:13:31'!
+PASSED!
+
+!testRun: #InterfazTest #test04addCartNoFuncionaConUnIDInvalido stamp: 'MO 11/7/2022 12:13:31'!
+PASSED!
+
+!testRun: #InterfazTest #test05addCartNoFuncionaConUnLibroInvalido stamp: 'MO 11/7/2022 12:13:31'!
+PASSED!
+
+!testRun: #InterfazTest #test06addCartNoFuncionaConUnaCantidadInvalida stamp: 'MO 11/7/2022 12:13:31'!
+PASSED!
+
+!testRun: #InterfazTest #test07AddToCartAgregaUnLibroCorrectamente stamp: 'MO 11/7/2022 12:13:31'!
+PASSED!
+
+!testRun: #InterfazTest #test08ListCartNoFuncionaConCartIDInvalida stamp: 'MO 11/7/2022 12:13:31'!
+PASSED!
+
+!testRun: #InterfazTest #test09ListCartACartConUnLibroRetornaColeccionConEseLibro stamp: 'MO 11/7/2022 12:13:31'!
+PASSED!
+
+!testRun: #InterfazTest #test10ListCartACartConMultiplesLibrosRetornaColeccionConEsosLibros stamp: 'MO 11/7/2022 12:13:31'!
+PASSED!
+
+!testRun: #InterfazTest #test11CheckOutACartWithInvalidIDRaisesException stamp: 'MO 11/7/2022 12:13:31'!
+PASSED!
+
+!testRun: #InterfazTest #test12CheckOutACartWithExpiredCardRaisesException stamp: 'MO 11/7/2022 12:13:32'!
+PASSED!
+
+!testRun: #InterfazTest #test13CheckOutACartWithInvalidNumberedCardRaisesException stamp: 'MO 11/7/2022 12:13:32'!
+PASSED!
+
+!testRun: #InterfazTest #test14CheckOutACartWithOneBookRegistersSaleCorrectly stamp: 'MO 11/7/2022 12:13:32'!
+PASSED!
+
+!testRun: #InterfazTest #test15CannotListPurchasesIfAuthenticationFails stamp: 'MO 11/7/2022 12:13:32'!
+PASSED!
+
+!testRun: #InterfazTest #test16ListPurchasesWithoutSalesReturnsEmptyCollection stamp: 'MO 11/7/2022 12:13:32'!
+PASSED!
+
+!testRun: #InterfazTest #test17ListPurchasesWithoutOneSaleReturnsACollectionWithThatSale stamp: 'MO 11/7/2022 12:13:32'!
+PASSED!
+!Interfaz methodsFor: 'initialization' stamp: 'MO 11/7/2022 12:18:35'!
+initializeWith: anAuthenticator with: aCatalog with: aMerchantProcesor with: aClock
+
+	authenticator := anAuthenticator.
+	catalog  := aCatalog.
+	merchantProcessor := aMerchantProcesor.
+	clock := DateAndTime now.
+	cartIDtoCart := Dictionary new.
+	cartIDManager := 0.
+	saleSummary := OrderedCollection new.! !
+!Interfaz methodsFor: 'initialization' stamp: 'MO 11/7/2022 12:18:44' prior: 50564406!
+initializeWith: anAuthenticator with: aCatalog with: aMerchantProcesor with: aClock
+
+	authenticator := anAuthenticator.
+	catalog  := aCatalog.
+	merchantProcessor := aMerchantProcesor.
+	clock := aClock.
+	cartIDtoCart := Dictionary new.
+	cartIDManager := 0.
+	saleSummary := OrderedCollection new.! !
+!Interfaz class methodsFor: 'instance creation' stamp: 'MO 11/7/2022 12:19:01'!
+withAuthenticator: anAuthenticator withCatalog: aCatalog withMerchantProcessor: aMerchantProcessor withClock: aClock
+	
+	^ self new initializeWith: anAuthenticator with: aCatalog with: aMerchantProcessor
+	! !
+!Interfaz class methodsFor: 'instance creation' stamp: 'MO 11/7/2022 12:19:13' prior: 50564431!
+withAuthenticator: anAuthenticator withCatalog: aCatalog withMerchantProcessor: aMerchantProcessor withClock: aClock
+	
+	^ self new initializeWith: anAuthenticator with: aCatalog with: aMerchantProcessor with: 	aClock
+	! !
+
+!methodRemoval: Interfaz class #withAuthenticator:withCatalog:withMerchantProcessor: stamp: 'MO 11/7/2022 12:19:15'!
+withAuthenticator: anAuthenticator withCatalog: aCatalog withMerchantProcessor: aMerchantProcessor
+	
+	^ self new initializeWith: anAuthenticator with: aCatalog with: aMerchantProcessor
+	!
+
+!methodRemoval: Interfaz #initializeWith:with:with: stamp: 'MO 11/7/2022 12:19:22'!
+initializeWith: anAuthenticator with: aCatalog with: aMerchantProcesor
+
+	authenticator := anAuthenticator.
+	catalog  := aCatalog.
+	merchantProcessor := aMerchantProcesor.
+	clock := DateAndTime now.
+	cartIDtoCart := Dictionary new.
+	cartIDManager := 0.
+	saleSummary := OrderedCollection new.!
+!StoreTestObjectsFactory methodsFor: 'interfaz' stamp: 'MO 11/7/2022 12:20:18' prior: 50563966!
+createInterfaz: aSimulator
+	
+	^ Interfaz withAuthenticator: aSimulator withCatalog: self defaultCatalog withMerchantProcessor: aSimulator withClock: today! !
+
+InterfazTestSuite subclass: #InterfazTest
+	instanceVariableNames: 'testObjectsFactory laInterfaz authenticatorBehavior debitBehavior clockBehavior'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #InterfazTest category: 'TusLibros' stamp: 'MO 11/7/2022 12:22:33'!
+InterfazTestSuite subclass: #InterfazTest
+	instanceVariableNames: 'testObjectsFactory laInterfaz authenticatorBehavior debitBehavior clockBehavior'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 12:24:08' prior: 50562388!
+test15CannotListPurchasesIfAuthenticationFails
+
+	authenticatorBehavior := [ :anUser :anPassword | false ].
+	
+	self 
+		should: [ laInterfaz listPurchasesOf: 'user' withPassword: 'pass']
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Interfaz invalidLogInErrorDescription ]! !
+
+!testRun: #InterfazTest #test15CannotListPurchasesIfAuthenticationFails stamp: 'MO 11/7/2022 12:24:10'!
+PASSED!
+
+!testRun: #InterfazTest #test01createCartDaErrorConUsuarioInvalido stamp: 'MO 11/7/2022 12:24:10'!
+PASSED!
+
+!testRun: #InterfazTest #test02createCartDaErrorConContraseniaInvalida stamp: 'MO 11/7/2022 12:24:10'!
+PASSED!
+
+!testRun: #InterfazTest #test03createCartFuncionaConUnUsuarioYContraseniaValidos stamp: 'MO 11/7/2022 12:24:10'!
+PASSED!
+
+!testRun: #InterfazTest #test04addCartNoFuncionaConUnIDInvalido stamp: 'MO 11/7/2022 12:24:10'!
+PASSED!
+
+!testRun: #InterfazTest #test05addCartNoFuncionaConUnLibroInvalido stamp: 'MO 11/7/2022 12:24:10'!
+PASSED!
+
+!testRun: #InterfazTest #test06addCartNoFuncionaConUnaCantidadInvalida stamp: 'MO 11/7/2022 12:24:10'!
+PASSED!
+
+!testRun: #InterfazTest #test07AddToCartAgregaUnLibroCorrectamente stamp: 'MO 11/7/2022 12:24:10'!
+PASSED!
+
+!testRun: #InterfazTest #test08ListCartNoFuncionaConCartIDInvalida stamp: 'MO 11/7/2022 12:24:10'!
+PASSED!
+
+!testRun: #InterfazTest #test09ListCartACartConUnLibroRetornaColeccionConEseLibro stamp: 'MO 11/7/2022 12:24:10'!
+PASSED!
+
+!testRun: #InterfazTest #test10ListCartACartConMultiplesLibrosRetornaColeccionConEsosLibros stamp: 'MO 11/7/2022 12:24:10'!
+PASSED!
+
+!testRun: #InterfazTest #test11CheckOutACartWithInvalidIDRaisesException stamp: 'MO 11/7/2022 12:24:10'!
+PASSED!
+
+!testRun: #InterfazTest #test12CheckOutACartWithExpiredCardRaisesException stamp: 'MO 11/7/2022 12:24:10'!
+PASSED!
+
+!testRun: #InterfazTest #test13CheckOutACartWithInvalidNumberedCardRaisesException stamp: 'MO 11/7/2022 12:24:10'!
+PASSED!
+
+!testRun: #InterfazTest #test14CheckOutACartWithOneBookRegistersSaleCorrectly stamp: 'MO 11/7/2022 12:24:10'!
+PASSED!
+
+!testRun: #InterfazTest #test15CannotListPurchasesIfAuthenticationFails stamp: 'MO 11/7/2022 12:24:10'!
+PASSED!
+
+!testRun: #InterfazTest #test16ListPurchasesWithoutSalesReturnsEmptyCollection stamp: 'MO 11/7/2022 12:24:11'!
+PASSED!
+
+!testRun: #InterfazTest #test17ListPurchasesWithoutOneSaleReturnsACollectionWithThatSale stamp: 'MO 11/7/2022 12:24:11'!
+PASSED!
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 12:24:30' prior: 50562607!
+test16ListPurchasesWithoutSalesReturnsEmptyCollection
+
+	| purchases |
+	
+	purchases := laInterfaz listPurchasesOf: 'user' withPassword: 'pass'.
+	
+	self assert: purchases isEmpty.! !
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 12:24:58' prior: 50563365!
+test17ListPurchasesWithoutOneSaleReturnsACollectionWithThatSale
+
+	| purchases aDate changoID aSalesBook aSaleTotal |
+
+	aDate  := Month month: 4 year: 2050.
+	aSalesBook := OrderedCollection new.
+
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1.
+	aSaleTotal := laInterfaz checkOutCart: changoID withCard: 1234123412341234 expiringOn: aDate withOwner: 'Owner' registeringOn: aSalesBook.
+
+	purchases := laInterfaz listPurchasesOf: 'user' withPassword: 'pass'.
+
+	self assert: purchases size > 0.
+	self assert: purchases first = testObjectsFactory otherItemSellByTheStore.
+	self assert: purchases second = 0.
+	self assert: purchases third = testObjectsFactory itemSellByTheStore.
+	self assert: purchases fourth = 1.
+	self assert: purchases last = testObjectsFactory itemSellByTheStorePrice.! !
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 12:26:34' prior: 50564584!
+test17ListPurchasesWithoutOneSaleReturnsACollectionWithThatSale
+
+	| purchases aDate changoID aSalesBook |
+
+	aDate  := Month month: 4 year: 2050.
+	aSalesBook := OrderedCollection new.
+
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1.
+	laInterfaz checkOutCart: changoID withCard: 1234123412341234 expiringOn: aDate withOwner: 'Owner' registeringOn: aSalesBook.
+
+	purchases := laInterfaz listPurchasesOf: 'user' withPassword: 'pass'.
+
+	self assert: purchases size > 0.
+	self assert: purchases first = testObjectsFactory otherItemSellByTheStore.
+	self assert: purchases second = 0.
+	self assert: purchases third = testObjectsFactory itemSellByTheStore.
+	self assert: purchases fourth = 1.
+	self assert: purchases last = testObjectsFactory itemSellByTheStorePrice.! !
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 12:26:46' prior: 50564615!
+test17ListPurchasesWithoutOneSaleReturnsACollectionWithThatSale
+
+	| purchases aMonth changoID aSalesBook |
+
+	aMonth  := Month month: 4 year: 2050.
+	aSalesBook := OrderedCollection new.
+
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1.
+	laInterfaz checkOutCart: changoID withCard: 1234123412341234 expiringOn: aMonth withOwner: 'Owner' registeringOn: aSalesBook.
+
+	purchases := laInterfaz listPurchasesOf: 'user' withPassword: 'pass'.
+
+	self assert: purchases size > 0.
+	self assert: purchases first = testObjectsFactory otherItemSellByTheStore.
+	self assert: purchases second = 0.
+	self assert: purchases third = testObjectsFactory itemSellByTheStore.
+	self assert: purchases fourth = 1.
+	self assert: purchases last = testObjectsFactory itemSellByTheStorePrice.! !
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 12:27:05' prior: 50562069!
+test13CheckOutACartWithInvalidNumberedCardRaisesException
+	| aMonth changoID aSalesBook |
+	
+	aMonth  := Month month: 4 year: 2050.
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 2.
+	aSalesBook := OrderedCollection new.
+	
+	self 
+		should: [ laInterfaz checkOutCart: changoID withCard: 1 expiringOn: aMonth withOwner: 'user' registeringOn: aSalesBook ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = CreditCard invalidCardNumberErrorDescription.
+			self assert: aSalesBook isEmpty. ]! !
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 12:27:08' prior: 50564676!
+test13CheckOutACartWithInvalidNumberedCardRaisesException
+	
+	| aMonth changoID aSalesBook |
+	
+	aMonth  := Month month: 4 year: 2050.
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 2.
+	aSalesBook := OrderedCollection new.
+	
+	self 
+		should: [ laInterfaz checkOutCart: changoID withCard: 1 expiringOn: aMonth withOwner: 'user' registeringOn: aSalesBook ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = CreditCard invalidCardNumberErrorDescription.
+			self assert: aSalesBook isEmpty. ]! !
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 12:27:22' prior: 50562025!
+test11CheckOutACartWithInvalidIDRaisesException
+
+	|aMonth aSalesBook |
+	
+	aMonth  := Month month: 4 year: 2023 .
+	aSalesBook := OrderedCollection new.
+	
+	self 
+		should: [laInterfaz checkOutCart: 0 withCard: 1234567812345678 expiringOn: aMonth withOwner: 'Mariano Oca' registeringOn: aSalesBook ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Interfaz invalidCartIDErrorDescription.
+			self assert: aSalesBook isEmpty ]! !
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 12:27:31' prior: 50564722!
+test11CheckOutACartWithInvalidIDRaisesException
+
+	| aMonth aSalesBook |
+	
+	aMonth  := Month month: 4 year: 2023.
+	aSalesBook := OrderedCollection new.
+	
+	self 
+		should: [laInterfaz checkOutCart: 0 withCard: 1234567812345678 expiringOn: aMonth withOwner: 'Mariano Oca' registeringOn: aSalesBook ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Interfaz invalidCartIDErrorDescription.
+			self assert: aSalesBook isEmpty ]! !
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 12:27:41' prior: 50562042!
+test12CheckOutACartWithExpiredCardRaisesException
+
+	|aMonth changoID aSalesBook |
+	
+	aMonth  := Month month: 4 year: 1998.
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 2.
+	aSalesBook := OrderedCollection new.
+	
+	self 
+		should: [laInterfaz checkOutCart: changoID withCard: 1234567812345678 expiringOn: aMonth withOwner: 'user' registeringOn: aSalesBook ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Cashier canNotChargeAnExpiredCreditCardErrorMessage.
+			self assert: aSalesBook isEmpty. ]! !
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 12:27:44' prior: 50564756!
+test12CheckOutACartWithExpiredCardRaisesException
+
+	| aMonth changoID aSalesBook |
+	
+	aMonth  := Month month: 4 year: 1998.
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 2.
+	aSalesBook := OrderedCollection new.
+	
+	self 
+		should: [laInterfaz checkOutCart: changoID withCard: 1234567812345678 expiringOn: aMonth withOwner: 'user' registeringOn: aSalesBook ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Cashier canNotChargeAnExpiredCreditCardErrorMessage.
+			self assert: aSalesBook isEmpty. ]! !
+
+!testRun: #InterfazTest #test17ListPurchasesWithoutOneSaleReturnsACollectionWithThatSale stamp: 'MO 11/7/2022 12:28:06'!
+PASSED!
+
+!testRun: #InterfazTest #test01createCartDaErrorConUsuarioInvalido stamp: 'MO 11/7/2022 12:28:09'!
+PASSED!
+
+!testRun: #InterfazTest #test02createCartDaErrorConContraseniaInvalida stamp: 'MO 11/7/2022 12:28:09'!
+PASSED!
+
+!testRun: #InterfazTest #test03createCartFuncionaConUnUsuarioYContraseniaValidos stamp: 'MO 11/7/2022 12:28:09'!
+PASSED!
+
+!testRun: #InterfazTest #test04addCartNoFuncionaConUnIDInvalido stamp: 'MO 11/7/2022 12:28:09'!
+PASSED!
+
+!testRun: #InterfazTest #test05addCartNoFuncionaConUnLibroInvalido stamp: 'MO 11/7/2022 12:28:09'!
+PASSED!
+
+!testRun: #InterfazTest #test06addCartNoFuncionaConUnaCantidadInvalida stamp: 'MO 11/7/2022 12:28:09'!
+PASSED!
+
+!testRun: #InterfazTest #test07AddToCartAgregaUnLibroCorrectamente stamp: 'MO 11/7/2022 12:28:09'!
+PASSED!
+
+!testRun: #InterfazTest #test08ListCartNoFuncionaConCartIDInvalida stamp: 'MO 11/7/2022 12:28:09'!
+PASSED!
+
+!testRun: #InterfazTest #test09ListCartACartConUnLibroRetornaColeccionConEseLibro stamp: 'MO 11/7/2022 12:28:09'!
+PASSED!
+
+!testRun: #InterfazTest #test10ListCartACartConMultiplesLibrosRetornaColeccionConEsosLibros stamp: 'MO 11/7/2022 12:28:09'!
+PASSED!
+
+!testRun: #InterfazTest #test11CheckOutACartWithInvalidIDRaisesException stamp: 'MO 11/7/2022 12:28:09'!
+PASSED!
+
+!testRun: #InterfazTest #test12CheckOutACartWithExpiredCardRaisesException stamp: 'MO 11/7/2022 12:28:09'!
+PASSED!
+
+!testRun: #InterfazTest #test13CheckOutACartWithInvalidNumberedCardRaisesException stamp: 'MO 11/7/2022 12:28:09'!
+PASSED!
+
+!testRun: #InterfazTest #test14CheckOutACartWithOneBookRegistersSaleCorrectly stamp: 'MO 11/7/2022 12:28:10'!
+PASSED!
+
+!testRun: #InterfazTest #test15CannotListPurchasesIfAuthenticationFails stamp: 'MO 11/7/2022 12:28:10'!
+PASSED!
+
+!testRun: #InterfazTest #test16ListPurchasesWithoutSalesReturnsEmptyCollection stamp: 'MO 11/7/2022 12:28:10'!
+PASSED!
+
+!testRun: #InterfazTest #test17ListPurchasesWithoutOneSaleReturnsACollectionWithThatSale stamp: 'MO 11/7/2022 12:28:10'!
+PASSED!
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 12:32:14' prior: 50564645!
+test17ListPurchasesWithoutOneSaleReturnsACollectionWithThatSale
+
+	| purchases aMonth changoID aSalesBook |
+
+	aMonth  := Month month: 4 year: 2050.
+	aSalesBook := OrderedCollection new.
+
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1.
+	laInterfaz checkOutCart: changoID withCard: 1234123412341234 expiringOn: aMonth withOwner: 'Owner' registeringOn: aSalesBook.
+
+	purchases := laInterfaz listPurchasesOf: 'user' withPassword: 'pass'.
+
+	self assert: purchases size equals: 5.
+	self assert: purchases first = testObjectsFactory otherItemSellByTheStore.
+	self assert: purchases second = 0.
+	self assert: purchases third = testObjectsFactory itemSellByTheStore.
+	self assert: purchases fourth = 1.
+	self assert: purchases last = testObjectsFactory itemSellByTheStorePrice.! !
+
+!testRun: #InterfazTest #test17ListPurchasesWithoutOneSaleReturnsACollectionWithThatSale stamp: 'MO 11/7/2022 12:32:15'!
+PASSED!
+
+!testRun: #InterfazTest #test01createCartDaErrorConUsuarioInvalido stamp: 'MO 11/7/2022 12:32:15'!
+PASSED!
+
+!testRun: #InterfazTest #test02createCartDaErrorConContraseniaInvalida stamp: 'MO 11/7/2022 12:32:15'!
+PASSED!
+
+!testRun: #InterfazTest #test03createCartFuncionaConUnUsuarioYContraseniaValidos stamp: 'MO 11/7/2022 12:32:15'!
+PASSED!
+
+!testRun: #InterfazTest #test04addCartNoFuncionaConUnIDInvalido stamp: 'MO 11/7/2022 12:32:15'!
+PASSED!
+
+!testRun: #InterfazTest #test05addCartNoFuncionaConUnLibroInvalido stamp: 'MO 11/7/2022 12:32:15'!
+PASSED!
+
+!testRun: #InterfazTest #test06addCartNoFuncionaConUnaCantidadInvalida stamp: 'MO 11/7/2022 12:32:15'!
+PASSED!
+
+!testRun: #InterfazTest #test07AddToCartAgregaUnLibroCorrectamente stamp: 'MO 11/7/2022 12:32:15'!
+PASSED!
+
+!testRun: #InterfazTest #test08ListCartNoFuncionaConCartIDInvalida stamp: 'MO 11/7/2022 12:32:15'!
+PASSED!
+
+!testRun: #InterfazTest #test09ListCartACartConUnLibroRetornaColeccionConEseLibro stamp: 'MO 11/7/2022 12:32:15'!
+PASSED!
+
+!testRun: #InterfazTest #test10ListCartACartConMultiplesLibrosRetornaColeccionConEsosLibros stamp: 'MO 11/7/2022 12:32:15'!
+PASSED!
+
+!testRun: #InterfazTest #test11CheckOutACartWithInvalidIDRaisesException stamp: 'MO 11/7/2022 12:32:15'!
+PASSED!
+
+!testRun: #InterfazTest #test12CheckOutACartWithExpiredCardRaisesException stamp: 'MO 11/7/2022 12:32:15'!
+PASSED!
+
+!testRun: #InterfazTest #test13CheckOutACartWithInvalidNumberedCardRaisesException stamp: 'MO 11/7/2022 12:32:15'!
+PASSED!
+
+!testRun: #InterfazTest #test14CheckOutACartWithOneBookRegistersSaleCorrectly stamp: 'MO 11/7/2022 12:32:15'!
+PASSED!
+
+!testRun: #InterfazTest #test15CannotListPurchasesIfAuthenticationFails stamp: 'MO 11/7/2022 12:32:15'!
+PASSED!
+
+!testRun: #InterfazTest #test16ListPurchasesWithoutSalesReturnsEmptyCollection stamp: 'MO 11/7/2022 12:32:15'!
+PASSED!
+
+!testRun: #InterfazTest #test17ListPurchasesWithoutOneSaleReturnsACollectionWithThatSale stamp: 'MO 11/7/2022 12:32:15'!
+PASSED!
+!Interfaz methodsFor: 'assertions' stamp: 'MO 11/7/2022 12:33:49' prior: 50557103!
+assertValidCart: aChangoID
+
+	(cartIDtoCart includesKey: aChangoID) ifFalse: [ self error: self class invalidCartIDErrorDescription ].
+	
+	"acá voy a chequear el tiempo, pero todavía no jijiji"! !
+!Cart methodsFor: 'initialization' stamp: 'MO 11/7/2022 12:41:51' prior: 50552308!
+initializeAcceptingItemsOf: aCatalog
+
+	catalog := aCatalog.
+	items := Bag new.! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'MO 11/7/2022 12:41:53'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'MO 11/7/2022 12:41:53'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'MO 11/7/2022 12:41:53'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'MO 11/7/2022 12:41:53'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'MO 11/7/2022 12:41:53'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'MO 11/7/2022 12:41:53'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'MO 11/7/2022 12:41:53'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'MO 11/7/2022 12:41:54'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'MO 11/7/2022 12:41:56'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'MO 11/7/2022 12:41:56'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'MO 11/7/2022 12:41:56'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'MO 11/7/2022 12:41:57'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'MO 11/7/2022 12:41:57'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'MO 11/7/2022 12:41:57'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'MO 11/7/2022 12:41:57'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'MO 11/7/2022 12:41:57'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'MO 11/7/2022 12:41:58'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'MO 11/7/2022 12:41:58'!
+ERROR!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'MO 11/7/2022 12:41:58'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'MO 11/7/2022 12:41:58'!
+ERROR!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'MO 11/7/2022 12:41:58'!
+ERROR!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'MO 11/7/2022 12:41:58'!
+FAILURE!
+!Cart methodsFor: 'initialization' stamp: 'HernanWilkinson 6/17/2013 17:48' prior: 50564974!
+initializeAcceptingItemsOf: aCatalog
+
+	catalog := aCatalog.
+	items := OrderedCollection new.! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'MO 11/7/2022 12:42:26'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'MO 11/7/2022 12:42:26'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'MO 11/7/2022 12:42:26'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'MO 11/7/2022 12:42:26'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'MO 11/7/2022 12:42:26'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'MO 11/7/2022 12:42:26'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'MO 11/7/2022 12:42:26'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'MO 11/7/2022 12:42:26'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'MO 11/7/2022 12:42:28'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'MO 11/7/2022 12:42:28'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'MO 11/7/2022 12:42:28'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'MO 11/7/2022 12:42:28'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'MO 11/7/2022 12:42:28'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'MO 11/7/2022 12:42:28'!
+PASSED!
+
+!testRun: #CreditCardTest #test01CannotCreateCardWithInvalidNumber stamp: 'MO 11/7/2022 12:42:30'!
+PASSED!
+
+!testRun: #CreditCardTest #test02CannotCreateCardWithEmptyOwner stamp: 'MO 11/7/2022 12:42:30'!
+PASSED!
+
+!testRun: #CreditCardTest #test03CardCreatedWithValidNumberAndOwnerStoresCorrectInfo stamp: 'MO 11/7/2022 12:42:30'!
+PASSED!
+!Cashier methodsFor: 'checkout' stamp: 'MO 11/7/2022 12:43:07' prior: 50563211!
+saleSummary
+
+	| saleSummary |
+	
+	saleSummary := OrderedCollection new.
+	cart catalog keysDo: [ :book |
+		(cart includes: book) ifTrue: [
+			saleSummary add: book.
+			saleSummary add: (cart items occurrencesOf: book)]
+		].
+	saleSummary add: cart total.
+	^saleSummary.! !
+!Cashier methodsFor: 'checkout' stamp: 'MO 11/7/2022 12:45:19' prior: 50565112!
+saleSummary
+
+	| saleSummary |
+	
+	saleSummary := OrderedCollection new.
+	
+	self collectBoksAndOcurrencesOn saleSummary.
+	saleSummary add: cart total.
+	
+	^ saleSummary.! !
+!Cashier methodsFor: 'checkout - private' stamp: 'MO 11/7/2022 12:47:30'!
+collectBoksAndOcurrencesOn: aSaleSummary
+
+	cart catalog keysDo: [ :book |
+		(cart includes: book) ifTrue: [
+			aSaleSummary add: book.
+			aSaleSummary add: (cart items occurrencesOf: book)]
+		].! !
+!Cashier methodsFor: 'checkout - private' stamp: 'MO 11/7/2022 12:47:44'!
+collectBooksAndOcurrencesOn: aSaleSummary
+
+	cart catalog keysDo: [ :book |
+		(cart includes: book) ifTrue: [
+			aSaleSummary add: book.
+			aSaleSummary add: (cart items occurrencesOf: book)]
+		].! !
+
+!methodRemoval: Cashier #collectBoksAndOcurrencesOn: stamp: 'MO 11/7/2022 12:47:44'!
+collectBoksAndOcurrencesOn: aSaleSummary
+
+	cart catalog keysDo: [ :book |
+		(cart includes: book) ifTrue: [
+			aSaleSummary add: book.
+			aSaleSummary add: (cart items occurrencesOf: book)]
+		].!
+!Cashier methodsFor: 'checkout - private' stamp: 'MO 11/7/2022 12:48:24' prior: 50565140!
+collectBooksAndOcurrencesOn: aSaleSummary
+
+	cart catalog keysDo: [ :book |
+		(cart includes: book) ifTrue: [
+			aSaleSummary add: book.
+			aSaleSummary add: (cart items occurrencesOf: book)]
+		]! !
+!Cashier methodsFor: 'checkout' stamp: 'MO 11/7/2022 12:48:46' prior: 50565123!
+saleSummary
+
+	| saleSummary |
+	
+	saleSummary := OrderedCollection new.
+	
+	self collectBooksAndOcurrencesOn: saleSummary.
+	saleSummary add: cart total.
+	
+	^ saleSummary.! !
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 12:49:15' prior: 50564868!
+test17ListPurchasesWithoutOneSaleReturnsACollectionWithThatSale
+
+	| purchases aMonth changoID aSalesBook |
+
+	aMonth  := Month month: 4 year: 2050.
+	aSalesBook := OrderedCollection new.
+
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1.
+	laInterfaz checkOutCart: changoID withCard: 1234123412341234 expiringOn: aMonth withOwner: 'Owner' registeringOn: aSalesBook.
+
+	purchases := laInterfaz listPurchasesOf: 'user' withPassword: 'pass'.
+
+	self assert: purchases size equals: 3.
+	self assert: purchases third = testObjectsFactory itemSellByTheStore.
+	self assert: purchases fourth = 1.
+	self assert: purchases last = testObjectsFactory itemSellByTheStorePrice.! !
+
+!testRun: #InterfazTest #test17ListPurchasesWithoutOneSaleReturnsACollectionWithThatSale stamp: 'MO 11/7/2022 12:49:16'!
+FAILURE!
+
+!testRun: #InterfazTest #test16ListPurchasesWithoutSalesReturnsEmptyCollection stamp: 'MO 11/7/2022 12:49:33'!
+PASSED!
+
+!testRun: #InterfazTest #test17ListPurchasesWithoutOneSaleReturnsACollectionWithThatSale stamp: 'MO 11/7/2022 12:49:35'!
+FAILURE!
+
+!testRun: #InterfazTest #test17ListPurchasesWithoutOneSaleReturnsACollectionWithThatSale stamp: 'MO 11/7/2022 12:49:35'!
+FAILURE!
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 12:49:46' prior: 50565175!
+test17ListPurchasesWithoutOneSaleReturnsACollectionWithThatSale
+
+	| purchases aMonth changoID aSalesBook |
+
+	aMonth  := Month month: 4 year: 2050.
+	aSalesBook := OrderedCollection new.
+
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1.
+	laInterfaz checkOutCart: changoID withCard: 1234123412341234 expiringOn: aMonth withOwner: 'Owner' registeringOn: aSalesBook.
+
+	purchases := laInterfaz listPurchasesOf: 'user' withPassword: 'pass'.
+
+	"self assert: purchases size equals: 3.
+	self assert: purchases third = testObjectsFactory itemSellByTheStore.
+	self assert: purchases fourth = 1.
+	self assert: purchases last = testObjectsFactory itemSellByTheStorePrice."! !
+
+!testRun: #InterfazTest #test17ListPurchasesWithoutOneSaleReturnsACollectionWithThatSale stamp: 'MO 11/7/2022 12:49:49'!
+PASSED!
+
+!testRun: #InterfazTest #test01createCartDaErrorConUsuarioInvalido stamp: 'MO 11/7/2022 12:49:49'!
+PASSED!
+
+!testRun: #InterfazTest #test02createCartDaErrorConContraseniaInvalida stamp: 'MO 11/7/2022 12:49:49'!
+PASSED!
+
+!testRun: #InterfazTest #test03createCartFuncionaConUnUsuarioYContraseniaValidos stamp: 'MO 11/7/2022 12:49:50'!
+PASSED!
+
+!testRun: #InterfazTest #test04addCartNoFuncionaConUnIDInvalido stamp: 'MO 11/7/2022 12:49:50'!
+PASSED!
+
+!testRun: #InterfazTest #test05addCartNoFuncionaConUnLibroInvalido stamp: 'MO 11/7/2022 12:49:50'!
+PASSED!
+
+!testRun: #InterfazTest #test06addCartNoFuncionaConUnaCantidadInvalida stamp: 'MO 11/7/2022 12:49:50'!
+PASSED!
+
+!testRun: #InterfazTest #test07AddToCartAgregaUnLibroCorrectamente stamp: 'MO 11/7/2022 12:49:50'!
+PASSED!
+
+!testRun: #InterfazTest #test08ListCartNoFuncionaConCartIDInvalida stamp: 'MO 11/7/2022 12:49:50'!
+PASSED!
+
+!testRun: #InterfazTest #test09ListCartACartConUnLibroRetornaColeccionConEseLibro stamp: 'MO 11/7/2022 12:49:50'!
+PASSED!
+
+!testRun: #InterfazTest #test10ListCartACartConMultiplesLibrosRetornaColeccionConEsosLibros stamp: 'MO 11/7/2022 12:49:50'!
+PASSED!
+
+!testRun: #InterfazTest #test11CheckOutACartWithInvalidIDRaisesException stamp: 'MO 11/7/2022 12:49:50'!
+PASSED!
+
+!testRun: #InterfazTest #test12CheckOutACartWithExpiredCardRaisesException stamp: 'MO 11/7/2022 12:49:50'!
+PASSED!
+
+!testRun: #InterfazTest #test13CheckOutACartWithInvalidNumberedCardRaisesException stamp: 'MO 11/7/2022 12:49:50'!
+PASSED!
+
+!testRun: #InterfazTest #test14CheckOutACartWithOneBookRegistersSaleCorrectly stamp: 'MO 11/7/2022 12:49:50'!
+PASSED!
+
+!testRun: #InterfazTest #test15CannotListPurchasesIfAuthenticationFails stamp: 'MO 11/7/2022 12:49:50'!
+PASSED!
+
+!testRun: #InterfazTest #test16ListPurchasesWithoutSalesReturnsEmptyCollection stamp: 'MO 11/7/2022 12:49:50'!
+PASSED!
+
+!testRun: #InterfazTest #test17ListPurchasesWithoutOneSaleReturnsACollectionWithThatSale stamp: 'MO 11/7/2022 12:49:50'!
+PASSED!
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 12:49:59' prior: 50565218!
+test17ListPurchasesWithoutOneSaleReturnsACollectionWithThatSale
+
+	| purchases aMonth changoID aSalesBook |
+
+	aMonth  := Month month: 4 year: 2050.
+	aSalesBook := OrderedCollection new.
+
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1.
+	laInterfaz checkOutCart: changoID withCard: 1234123412341234 expiringOn: aMonth withOwner: 'Owner' registeringOn: aSalesBook.
+
+	purchases := laInterfaz listPurchasesOf: 'user' withPassword: 'pass'.
+
+	self assert: purchases size equals: 3.
+	self assert: purchases third = testObjectsFactory itemSellByTheStore.
+	self assert: purchases fourth = 1.
+	self assert: purchases last = testObjectsFactory itemSellByTheStorePrice.! !
+
+!testRun: #InterfazTest #test17ListPurchasesWithoutOneSaleReturnsACollectionWithThatSale stamp: 'MO 11/7/2022 12:50:00'!
+FAILURE!
+
+!testRun: #InterfazTest #test17ListPurchasesWithoutOneSaleReturnsACollectionWithThatSale stamp: 'MO 11/7/2022 12:50:03'!
+FAILURE!
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 12:50:19' prior: 50565311!
+test17ListPurchasesWithoutOneSaleReturnsACollectionWithThatSale
+
+	| purchases aMonth changoID aSalesBook |
+
+	aMonth  := Month month: 4 year: 2050.
+	aSalesBook := OrderedCollection new.
+
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1.
+	laInterfaz checkOutCart: changoID withCard: 1234123412341234 expiringOn: aMonth withOwner: 'Owner' registeringOn: aSalesBook.
+
+	purchases := laInterfaz listPurchasesOf: 'user' withPassword: 'pass'.
+
+	self assert: purchases size equals: 3.
+	self assert: purchases third equals: testObjectsFactory itemSellByTheStore.
+	self assert: purchases fourth equals: 1.
+	self assert: purchases last equals: testObjectsFactory itemSellByTheStorePrice.! !
+
+!testRun: #InterfazTest #test17ListPurchasesWithoutOneSaleReturnsACollectionWithThatSale stamp: 'MO 11/7/2022 12:50:20'!
+FAILURE!
+
+!testRun: #InterfazTest #test17ListPurchasesWithoutOneSaleReturnsACollectionWithThatSale stamp: 'MO 11/7/2022 12:50:34'!
+FAILURE!
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 12:51:04' prior: 50565346!
+test17ListPurchasesWithoutOneSaleReturnsACollectionWithThatSale
+
+	| purchases aMonth changoID aSalesBook |
+
+	aMonth  := Month month: 4 year: 2050.
+	aSalesBook := OrderedCollection new.
+
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1.
+	laInterfaz checkOutCart: changoID withCard: 1234123412341234 expiringOn: aMonth withOwner: 'Owner' registeringOn: aSalesBook.
+
+	purchases := laInterfaz listPurchasesOf: 'user' withPassword: 'pass'.
+
+	self assert: purchases size equals: 3.
+	self assert: purchases first equals: testObjectsFactory itemSellByTheStore.
+	self assert: purchases second equals: 1.
+	self assert: purchases third equals: testObjectsFactory itemSellByTheStorePrice.! !
+
+!testRun: #InterfazTest #test17ListPurchasesWithoutOneSaleReturnsACollectionWithThatSale stamp: 'MO 11/7/2022 12:51:06'!
+PASSED!
+
+!testRun: #InterfazTest #test01createCartDaErrorConUsuarioInvalido stamp: 'MO 11/7/2022 12:51:06'!
+PASSED!
+
+!testRun: #InterfazTest #test02createCartDaErrorConContraseniaInvalida stamp: 'MO 11/7/2022 12:51:06'!
+PASSED!
+
+!testRun: #InterfazTest #test03createCartFuncionaConUnUsuarioYContraseniaValidos stamp: 'MO 11/7/2022 12:51:06'!
+PASSED!
+
+!testRun: #InterfazTest #test04addCartNoFuncionaConUnIDInvalido stamp: 'MO 11/7/2022 12:51:06'!
+PASSED!
+
+!testRun: #InterfazTest #test05addCartNoFuncionaConUnLibroInvalido stamp: 'MO 11/7/2022 12:51:06'!
+PASSED!
+
+!testRun: #InterfazTest #test06addCartNoFuncionaConUnaCantidadInvalida stamp: 'MO 11/7/2022 12:51:06'!
+PASSED!
+
+!testRun: #InterfazTest #test07AddToCartAgregaUnLibroCorrectamente stamp: 'MO 11/7/2022 12:51:06'!
+PASSED!
+
+!testRun: #InterfazTest #test08ListCartNoFuncionaConCartIDInvalida stamp: 'MO 11/7/2022 12:51:06'!
+PASSED!
+
+!testRun: #InterfazTest #test09ListCartACartConUnLibroRetornaColeccionConEseLibro stamp: 'MO 11/7/2022 12:51:06'!
+PASSED!
+
+!testRun: #InterfazTest #test10ListCartACartConMultiplesLibrosRetornaColeccionConEsosLibros stamp: 'MO 11/7/2022 12:51:06'!
+PASSED!
+
+!testRun: #InterfazTest #test11CheckOutACartWithInvalidIDRaisesException stamp: 'MO 11/7/2022 12:51:06'!
+PASSED!
+
+!testRun: #InterfazTest #test12CheckOutACartWithExpiredCardRaisesException stamp: 'MO 11/7/2022 12:51:06'!
+PASSED!
+
+!testRun: #InterfazTest #test13CheckOutACartWithInvalidNumberedCardRaisesException stamp: 'MO 11/7/2022 12:51:06'!
+PASSED!
+
+!testRun: #InterfazTest #test14CheckOutACartWithOneBookRegistersSaleCorrectly stamp: 'MO 11/7/2022 12:51:06'!
+PASSED!
+
+!testRun: #InterfazTest #test15CannotListPurchasesIfAuthenticationFails stamp: 'MO 11/7/2022 12:51:06'!
+PASSED!
+
+!testRun: #InterfazTest #test16ListPurchasesWithoutSalesReturnsEmptyCollection stamp: 'MO 11/7/2022 12:51:06'!
+PASSED!
+
+!testRun: #InterfazTest #test17ListPurchasesWithoutOneSaleReturnsACollectionWithThatSale stamp: 'MO 11/7/2022 12:51:06'!
+PASSED!
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 12:51:51'!
+test17ListPurchasesWithOneSaleReturnsACollectionWithThatSale
+
+	| purchases aMonth changoID aSalesBook |
+
+	aMonth  := Month month: 4 year: 2050.
+	aSalesBook := OrderedCollection new.
+
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1.
+	laInterfaz checkOutCart: changoID withCard: 1234123412341234 expiringOn: aMonth withOwner: 'Owner' registeringOn: aSalesBook.
+
+	purchases := laInterfaz listPurchasesOf: 'user' withPassword: 'pass'.
+
+	self assert: purchases size equals: 3.
+	self assert: purchases first equals: testObjectsFactory itemSellByTheStore.
+	self assert: purchases second equals: 1.
+	self assert: purchases third equals: testObjectsFactory itemSellByTheStorePrice.! !
+
+!methodRemoval: InterfazTest #test17ListPurchasesWithoutOneSaleReturnsACollectionWithThatSale stamp: 'MO 11/7/2022 12:51:52'!
+test17ListPurchasesWithoutOneSaleReturnsACollectionWithThatSale
+
+	| purchases aMonth changoID aSalesBook |
+
+	aMonth  := Month month: 4 year: 2050.
+	aSalesBook := OrderedCollection new.
+
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1.
+	laInterfaz checkOutCart: changoID withCard: 1234123412341234 expiringOn: aMonth withOwner: 'Owner' registeringOn: aSalesBook.
+
+	purchases := laInterfaz listPurchasesOf: 'user' withPassword: 'pass'.
+
+	self assert: purchases size equals: 3.
+	self assert: purchases first equals: testObjectsFactory itemSellByTheStore.
+	self assert: purchases second equals: 1.
+	self assert: purchases third equals: testObjectsFactory itemSellByTheStorePrice.!
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 13:06:09'!
+test18ListPurchasesWithVaroiuosItemsReturnsACollectionCorrectly
+
+	| purchases aMonth changoID aSalesBook |
+
+	aMonth  := Month month: 4 year: 2050.
+	aSalesBook := OrderedCollection new.
+
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1.
+	laInterfaz addToCart: changoID book: (testObjectsFactory otherItemSellByTheStore) quantity: 2.
+	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 3.
+	laInterfaz checkOutCart: changoID withCard: 1234123412341234 expiringOn: aMonth withOwner: 'Owner' registeringOn: aSalesBook.
+
+	purchases := laInterfaz listPurchasesOf: 'user' withPassword: 'pass'.
+
+	self assert: purchases size equals: 5.
+	self assert: purchases first equals: testObjectsFactory otherItemSellByTheStore.
+	self assert: purchases second equals: 2.
+	self assert: purchases third equals: testObjectsFactory itemSellByTheStore.
+	self assert: purchases fourth equals: 4.
+	self assert: purchases fifth equals: testObjectsFactory itemSellByTheStorePrice.! !
+
+!testRun: #InterfazTest #test18ListPurchasesWithVaroiuosItemsReturnsACollectionCorrectly stamp: 'MO 11/7/2022 13:06:12'!
+FAILURE!
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 13:08:00' prior: 50565531!
+test18ListPurchasesWithVaroiuosItemsReturnsACollectionCorrectly
+
+	| purchases aMonth changoID aSalesBook totalSpended |
+
+	aMonth  := Month month: 4 year: 2050.
+	aSalesBook := OrderedCollection new.
+
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1.
+	laInterfaz addToCart: changoID book: (testObjectsFactory otherItemSellByTheStore) quantity: 2.
+	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 3.
+	totalSpended := laInterfaz checkOutCart: changoID withCard: 1234123412341234 expiringOn: aMonth withOwner: 'Owner' registeringOn: aSalesBook.
+
+	purchases := laInterfaz listPurchasesOf: 'user' withPassword: 'pass'.
+
+	self assert: purchases size equals: 5.
+	self assert: purchases first equals: testObjectsFactory otherItemSellByTheStore.
+	self assert: purchases second equals: 2.
+	self assert: purchases third equals: testObjectsFactory itemSellByTheStore.
+	self assert: purchases fourth equals: 4.
+	self assert: purchases fifth equals: totalSpended.! !
+
+!testRun: #InterfazTest #test18ListPurchasesWithVaroiuosItemsReturnsACollectionCorrectly stamp: 'MO 11/7/2022 13:08:36'!
+PASSED!
+
+!testRun: #InterfazTest #test01createCartDaErrorConUsuarioInvalido stamp: 'MO 11/7/2022 13:08:37'!
+PASSED!
+
+!testRun: #InterfazTest #test02createCartDaErrorConContraseniaInvalida stamp: 'MO 11/7/2022 13:08:37'!
+PASSED!
+
+!testRun: #InterfazTest #test03createCartFuncionaConUnUsuarioYContraseniaValidos stamp: 'MO 11/7/2022 13:08:37'!
+PASSED!
+
+!testRun: #InterfazTest #test04addCartNoFuncionaConUnIDInvalido stamp: 'MO 11/7/2022 13:08:37'!
+PASSED!
+
+!testRun: #InterfazTest #test05addCartNoFuncionaConUnLibroInvalido stamp: 'MO 11/7/2022 13:08:37'!
+PASSED!
+
+!testRun: #InterfazTest #test06addCartNoFuncionaConUnaCantidadInvalida stamp: 'MO 11/7/2022 13:08:37'!
+PASSED!
+
+!testRun: #InterfazTest #test07AddToCartAgregaUnLibroCorrectamente stamp: 'MO 11/7/2022 13:08:37'!
+PASSED!
+
+!testRun: #InterfazTest #test08ListCartNoFuncionaConCartIDInvalida stamp: 'MO 11/7/2022 13:08:37'!
+PASSED!
+
+!testRun: #InterfazTest #test09ListCartACartConUnLibroRetornaColeccionConEseLibro stamp: 'MO 11/7/2022 13:08:37'!
+PASSED!
+
+!testRun: #InterfazTest #test10ListCartACartConMultiplesLibrosRetornaColeccionConEsosLibros stamp: 'MO 11/7/2022 13:08:37'!
+PASSED!
+
+!testRun: #InterfazTest #test11CheckOutACartWithInvalidIDRaisesException stamp: 'MO 11/7/2022 13:08:37'!
+PASSED!
+
+!testRun: #InterfazTest #test12CheckOutACartWithExpiredCardRaisesException stamp: 'MO 11/7/2022 13:08:37'!
+PASSED!
+
+!testRun: #InterfazTest #test13CheckOutACartWithInvalidNumberedCardRaisesException stamp: 'MO 11/7/2022 13:08:37'!
+PASSED!
+
+!testRun: #InterfazTest #test14CheckOutACartWithOneBookRegistersSaleCorrectly stamp: 'MO 11/7/2022 13:08:37'!
+PASSED!
+
+!testRun: #InterfazTest #test15CannotListPurchasesIfAuthenticationFails stamp: 'MO 11/7/2022 13:08:37'!
+PASSED!
+
+!testRun: #InterfazTest #test16ListPurchasesWithoutSalesReturnsEmptyCollection stamp: 'MO 11/7/2022 13:08:37'!
+PASSED!
+
+!testRun: #InterfazTest #test17ListPurchasesWithOneSaleReturnsACollectionWithThatSale stamp: 'MO 11/7/2022 13:08:37'!
+PASSED!
+
+!testRun: #InterfazTest #test18ListPurchasesWithVaroiuosItemsReturnsACollectionCorrectly stamp: 'MO 11/7/2022 13:08:37'!
+PASSED!
+
+|x|
+x := Time dateAndTimeNow.
+x!
+
+x!
+
+|x|
+x := Time dateAndTimeNow.
+x minute!
+
+|x|
+x := Time dateAndTimeNow.
+x minute!
+
+DateAndTime!
+
+Time!
+
+x minute!
+
+|x|
+x := DateAndTime now.
+x minute!
+
+|x|
+x := DateAndTime now.
+x !
+
+|x|
+x := DateAndTime now.
+x  second!
+
+|x|
+x := DateAndTime now.
+x hour!
+
+|x|
+x := DateAndTime now.
+x + x hour!
+
+|x|
+x := DateAndTime now.
+x + (x hour)!
+
+|x|
+x := DateAndTime now + 30 * minute.
+x!
+
+|x|
+x := 30 * minute.
+x!
+
+minute!
+
+minute!
+
+day!
+
+day!
+
+|x|
+x := 30 * minute + 30 * minute.
+x!
+
+|x|
+x := (30 * minute) + (30 * minute).
+x!
+
+|x|
+x := (30 * minute) + (30 * minute).
+x = 1 *hour!
+
+|x|
+x := (30 * minute) + (30 * minute).
+x = (1 * hour)!
+
+|x|
+x := Time now + (30 * minute).
+x  !
+
+x := (Time dateAndTimeNow) + (30 * minute).!
+
+|x|
+x := (Time dateAndTimeNow) + (30 * minute).
+x  !
+
+|x|
+x := (Time now) + (30 * minute).
+x  !
+
+|x|
+x := (DateAndTime now) + (30 * minute).
+x  !
+
+|x|
+x := (DateAndTime now) + (30 * minute).
+x  !
+
+|x|
+x := (DateAndTime now) + (30 * minute).
+x  !
+
+!classDefinition: #InterfazTest category: 'TusLibros' stamp: 'MO 11/7/2022 14:18:14'!
+InterfazTestSuite subclass: #InterfazTest
+	instanceVariableNames: 'testObjectsFactory laInterfaz authenticatorBehavior debitBehavior clockBehavior clock'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!InterfazTest methodsFor: 'clock protocol' stamp: 'MO 11/7/2022 14:18:11'!
+clock
+
+	^ clock! !
+
+InterfazTestSuite subclass: #InterfazTest
+	instanceVariableNames: 'testObjectsFactory laInterfaz authenticatorBehavior debitBehavior clock'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #InterfazTest category: 'TusLibros' stamp: 'MO 11/7/2022 14:18:27'!
+InterfazTestSuite subclass: #InterfazTest
+	instanceVariableNames: 'testObjectsFactory laInterfaz authenticatorBehavior debitBehavior clock'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!InterfazTest methodsFor: 'setUp' stamp: 'MO 11/7/2022 14:19:06' prior: 50563950 overrides: 16961394!
+setUp 
+
+	testObjectsFactory := StoreTestObjectsFactory new.
+	authenticatorBehavior := [ :aUser :aPassword | true ].
+	debitBehavior := [ :anAmount :aCreditCard | ].
+	clock := DateAndTime now.
+	
+	laInterfaz := testObjectsFactory createInterfaz: self.! !
+
+|x|
+x := DateAndTime now.
+x  time!
+
+|x|
+x := DateAndTime now.
+(x time) + (30 minute)!
+
+|x|
+x := DateAndTime now.
+(x time) + (30 * minute)!
+
+|x|
+x := DateAndTime now.
+(x time) + (30 * minute).
+x!
+
+x time!
+
+DateAndTime!
+
+|x|
+x := DateAndTime now.
+(x time) + (30 * second)!
+
+|x|
+x := DateAndTime now + Duration minutes: 30!
+
+DateAndTime now + (Duration minutes: 30)!
+
+DateAndTime now!
+
+DateAndTime now !
+
+DateAndTime now + (Duration minutes: 30)!
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 14:40:11'!
+test20CanNotAddToCartIfExpired
+
+	| changoID |
+	
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	
+	clock := DateAndTime now + (Duration minutes: 30).
+	
+	self 
+		should: [ laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 69 ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Interfaz cartExpiredErrorDescription.
+			self assert: (laInterfaz listCart: changoID) isEmpty ]! !
+!StoreTestObjectsFactory methodsFor: 'interfaz' stamp: 'MO 11/7/2022 14:42:00' prior: 50564473!
+createInterfaz: aSimulator
+	
+	^ Interfaz withAuthenticator: aSimulator withCatalog: self defaultCatalog withMerchantProcessor: aSimulator withClock: aSimulator clock! !
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 14:45:41' prior: 50565765!
+test20CanNotAddToCartIfExpired
+
+	| changoID |
+	
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	
+	clock := DateAndTime now + (Duration minutes: 31).
+	
+	self 
+		should: [ laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 69 ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Interfaz cartExpiredErrorDescription.
+			self assert: (laInterfaz listCart: changoID) isEmpty ]! !
+
+!testRun: #InterfazTest #test20CanNotAddToCartIfExpired stamp: 'MO 11/7/2022 14:45:47'!
+FAILURE!
+
+Object subclass: #Cart
+	instanceVariableNames: 'catalog items lastModificationTime'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #Cart category: 'TusLibros' stamp: 'MO 11/7/2022 14:47:46'!
+Object subclass: #Cart
+	instanceVariableNames: 'catalog items lastModificationTime'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!Cart methodsFor: 'initialization' stamp: 'MO 11/7/2022 14:50:32'!
+initializeAcceptingItemsOf: aCatalog on: aTime
+
+	catalog := aCatalog.
+	items := OrderedCollection new.
+	lastModificationTime := aTime copy.! !
+!Cart class methodsFor: 'instance creation' stamp: 'MO 11/7/2022 14:50:47'!
+acceptingItemsOf: aCatalog on: aTime
+
+	^self new initializeAcceptingItemsOf: aCatalog on: aTime! !
+!Cart methodsFor: 'adding' stamp: 'MO 11/7/2022 14:52:44'!
+add: aQuantity of: anItem on: aTime
+
+	self assertIsValidQuantity: aQuantity.
+	self assertIsValidItem: anItem.
+	lastModificationTime := aTime copy.
+
+	1 to: aQuantity do: [ :aNumber | items add: anItem ]! !
+!Cart methodsFor: 'queries' stamp: 'MO 11/7/2022 14:53:10'!
+lastModificationTime
+
+	^ lastModificationTime copy! !
+
+|x y|
+x := DateAndTime now.
+y := DateAndTime now + (Duration minutes: 30).
+x - y!
+
+|x y|
+x := DateAndTime now.
+y := DateAndTime now + (Duration minutes: 30).
+(x - y) < (Duration minutes: 30)!
+
+|x y|
+x := DateAndTime now.
+y := DateAndTime now + (Duration minutes: 30).
+(x - y) > (Duration minutes: 30)!
+
+|x y|
+x := DateAndTime now.
+y := DateAndTime now + (Duration minutes: 30).
+(y - x) < (Duration minutes: 30)!
+
+|x y|
+x := DateAndTime now.
+y := DateAndTime now + (Duration minutes: 29).
+(y - x) < (Duration minutes: 30) !
+
+|x y|
+x := DateAndTime now.
+y := DateAndTime now + (Duration minutes: 30).
+(y - x) < (Duration minutes: 30) !
+!Interfaz methodsFor: 'assertions' stamp: 'MO 11/7/2022 15:01:05' prior: 50564965!
+assertValidCart: aChangoID
+
+	(cartIDtoCart includesKey: aChangoID) ifFalse: [ self error: self class invalidCartIDErrorDescription ].
+	
+	((clock - ((cartIDtoCart at: aChangoID) lastModificationTime)) < (Duration minutes: 30)) ifFalse: [ self error: self class cartExpiredErrorDescription ].! !
+!Interfaz class methodsFor: 'error descriptions' stamp: 'MO 11/7/2022 15:01:40'!
+cartExpiredErrorDescription
+
+	^ 'estas hace una banda con el changuito abandonado, ya lo regalamos'! !
+
+!testRun: #InterfazTest #test20CanNotAddToCartIfExpired stamp: 'MO 11/7/2022 15:01:48'!
+FAILURE!
+
+!testRun: #InterfazTest #test18ListPurchasesWithVaroiuosItemsReturnsACollectionCorrectly stamp: 'MO 11/7/2022 15:02:07'!
+ERROR!
+
+!testRun: #InterfazTest #test18ListPurchasesWithVaroiuosItemsReturnsACollectionCorrectly stamp: 'MO 11/7/2022 15:02:07'!
+ERROR!
+
+!testRun: #InterfazTest #test01createCartDaErrorConUsuarioInvalido stamp: 'MO 11/7/2022 15:02:43'!
+PASSED!
+
+!testRun: #InterfazTest #test02createCartDaErrorConContraseniaInvalida stamp: 'MO 11/7/2022 15:02:45'!
+PASSED!
+
+!testRun: #InterfazTest #test03createCartFuncionaConUnUsuarioYContraseniaValidos stamp: 'MO 11/7/2022 15:02:47'!
+ERROR!
+
+!testRun: #InterfazTest #test03createCartFuncionaConUnUsuarioYContraseniaValidos stamp: 'MO 11/7/2022 15:02:47'!
+ERROR!
+!Interfaz methodsFor: 'operations' stamp: 'MO 11/7/2022 15:04:00' prior: 50563443!
+createCartForUser: aUserID withPassword: aPassword
+	
+	self assertValid: aUserID with: aPassword.
+	
+	cartIDtoCart at: cartIDManager put: (Cart acceptingItemsOf: catalog on: clock).
+	
+	cartIDManager := cartIDManager + 1.
+	
+	^ cartIDManager - 1! !
+
+!testRun: #InterfazTest #test02createCartDaErrorConContraseniaInvalida stamp: 'MO 11/7/2022 15:04:13'!
+PASSED!
+
+!testRun: #InterfazTest #test03createCartFuncionaConUnUsuarioYContraseniaValidos stamp: 'MO 11/7/2022 15:04:14'!
+PASSED!
+
+!testRun: #InterfazTest #test04addCartNoFuncionaConUnIDInvalido stamp: 'MO 11/7/2022 15:04:16'!
+PASSED!
+
+!testRun: #InterfazTest #test01createCartDaErrorConUsuarioInvalido stamp: 'MO 11/7/2022 15:04:19'!
+PASSED!
+
+!testRun: #InterfazTest #test02createCartDaErrorConContraseniaInvalida stamp: 'MO 11/7/2022 15:04:19'!
+PASSED!
+
+!testRun: #InterfazTest #test03createCartFuncionaConUnUsuarioYContraseniaValidos stamp: 'MO 11/7/2022 15:04:19'!
+PASSED!
+
+!testRun: #InterfazTest #test04addCartNoFuncionaConUnIDInvalido stamp: 'MO 11/7/2022 15:04:19'!
+PASSED!
+
+!testRun: #InterfazTest #test05addCartNoFuncionaConUnLibroInvalido stamp: 'MO 11/7/2022 15:04:19'!
+PASSED!
+
+!testRun: #InterfazTest #test06addCartNoFuncionaConUnaCantidadInvalida stamp: 'MO 11/7/2022 15:04:19'!
+PASSED!
+
+!testRun: #InterfazTest #test07AddToCartAgregaUnLibroCorrectamente stamp: 'MO 11/7/2022 15:04:19'!
+PASSED!
+
+!testRun: #InterfazTest #test08ListCartNoFuncionaConCartIDInvalida stamp: 'MO 11/7/2022 15:04:19'!
+PASSED!
+
+!testRun: #InterfazTest #test09ListCartACartConUnLibroRetornaColeccionConEseLibro stamp: 'MO 11/7/2022 15:04:19'!
+PASSED!
+
+!testRun: #InterfazTest #test10ListCartACartConMultiplesLibrosRetornaColeccionConEsosLibros stamp: 'MO 11/7/2022 15:04:19'!
+PASSED!
+
+!testRun: #InterfazTest #test11CheckOutACartWithInvalidIDRaisesException stamp: 'MO 11/7/2022 15:04:19'!
+PASSED!
+
+!testRun: #InterfazTest #test12CheckOutACartWithExpiredCardRaisesException stamp: 'MO 11/7/2022 15:04:19'!
+PASSED!
+
+!testRun: #InterfazTest #test13CheckOutACartWithInvalidNumberedCardRaisesException stamp: 'MO 11/7/2022 15:04:19'!
+PASSED!
+
+!testRun: #InterfazTest #test14CheckOutACartWithOneBookRegistersSaleCorrectly stamp: 'MO 11/7/2022 15:04:19'!
+PASSED!
+
+!testRun: #InterfazTest #test15CannotListPurchasesIfAuthenticationFails stamp: 'MO 11/7/2022 15:04:19'!
+PASSED!
+
+!testRun: #InterfazTest #test16ListPurchasesWithoutSalesReturnsEmptyCollection stamp: 'MO 11/7/2022 15:04:19'!
+PASSED!
+
+!testRun: #InterfazTest #test17ListPurchasesWithOneSaleReturnsACollectionWithThatSale stamp: 'MO 11/7/2022 15:04:19'!
+PASSED!
+
+!testRun: #InterfazTest #test18ListPurchasesWithVaroiuosItemsReturnsACollectionCorrectly stamp: 'MO 11/7/2022 15:04:19'!
+PASSED!
+
+!testRun: #InterfazTest #test20CanNotAddToCartIfExpired stamp: 'MO 11/7/2022 15:04:19'!
+FAILURE!
+
+!testRun: #InterfazTest #test20CanNotAddToCartIfExpired stamp: 'MO 11/7/2022 15:04:19'!
+FAILURE!
+
+!testRun: #InterfazTest #test05addCartNoFuncionaConUnLibroInvalido stamp: 'MO 11/7/2022 15:04:26'!
+PASSED!
+
+!testRun: #InterfazTest #test06addCartNoFuncionaConUnaCantidadInvalida stamp: 'MO 11/7/2022 15:04:28'!
+PASSED!
+
+!testRun: #InterfazTest #test07AddToCartAgregaUnLibroCorrectamente stamp: 'MO 11/7/2022 15:04:30'!
+PASSED!
+
+!testRun: #InterfazTest #test08ListCartNoFuncionaConCartIDInvalida stamp: 'MO 11/7/2022 15:04:32'!
+PASSED!
+
+!testRun: #InterfazTest #test09ListCartACartConUnLibroRetornaColeccionConEseLibro stamp: 'MO 11/7/2022 15:04:34'!
+PASSED!
+
+!testRun: #InterfazTest #test10ListCartACartConMultiplesLibrosRetornaColeccionConEsosLibros stamp: 'MO 11/7/2022 15:04:35'!
+PASSED!
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 15:04:46' prior: 50565791!
+test20CanNotAddToCartIfExpired
+
+	| changoID |
+	
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	
+	clock := DateAndTime now + (Duration minutes: 31).
+	
+	"self 
+		should: [ laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 69 ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Interfaz cartExpiredErrorDescription.
+			self assert: (laInterfaz listCart: changoID) isEmpty ]"! !
+
+!testRun: #InterfazTest #test20CanNotAddToCartIfExpired stamp: 'MO 11/7/2022 15:04:49'!
+PASSED!
+
+!testRun: #InterfazTest #test01createCartDaErrorConUsuarioInvalido stamp: 'MO 11/7/2022 15:04:49'!
+PASSED!
+
+!testRun: #InterfazTest #test02createCartDaErrorConContraseniaInvalida stamp: 'MO 11/7/2022 15:04:49'!
+PASSED!
+
+!testRun: #InterfazTest #test03createCartFuncionaConUnUsuarioYContraseniaValidos stamp: 'MO 11/7/2022 15:04:49'!
+PASSED!
+
+!testRun: #InterfazTest #test04addCartNoFuncionaConUnIDInvalido stamp: 'MO 11/7/2022 15:04:49'!
+PASSED!
+
+!testRun: #InterfazTest #test05addCartNoFuncionaConUnLibroInvalido stamp: 'MO 11/7/2022 15:04:49'!
+PASSED!
+
+!testRun: #InterfazTest #test06addCartNoFuncionaConUnaCantidadInvalida stamp: 'MO 11/7/2022 15:04:49'!
+PASSED!
+
+!testRun: #InterfazTest #test07AddToCartAgregaUnLibroCorrectamente stamp: 'MO 11/7/2022 15:04:50'!
+PASSED!
+
+!testRun: #InterfazTest #test08ListCartNoFuncionaConCartIDInvalida stamp: 'MO 11/7/2022 15:04:50'!
+PASSED!
+
+!testRun: #InterfazTest #test09ListCartACartConUnLibroRetornaColeccionConEseLibro stamp: 'MO 11/7/2022 15:04:50'!
+PASSED!
+
+!testRun: #InterfazTest #test10ListCartACartConMultiplesLibrosRetornaColeccionConEsosLibros stamp: 'MO 11/7/2022 15:04:50'!
+PASSED!
+
+!testRun: #InterfazTest #test11CheckOutACartWithInvalidIDRaisesException stamp: 'MO 11/7/2022 15:04:50'!
+PASSED!
+
+!testRun: #InterfazTest #test12CheckOutACartWithExpiredCardRaisesException stamp: 'MO 11/7/2022 15:04:50'!
+PASSED!
+
+!testRun: #InterfazTest #test13CheckOutACartWithInvalidNumberedCardRaisesException stamp: 'MO 11/7/2022 15:04:50'!
+PASSED!
+
+!testRun: #InterfazTest #test14CheckOutACartWithOneBookRegistersSaleCorrectly stamp: 'MO 11/7/2022 15:04:50'!
+PASSED!
+
+!testRun: #InterfazTest #test15CannotListPurchasesIfAuthenticationFails stamp: 'MO 11/7/2022 15:04:50'!
+PASSED!
+
+!testRun: #InterfazTest #test16ListPurchasesWithoutSalesReturnsEmptyCollection stamp: 'MO 11/7/2022 15:04:50'!
+PASSED!
+
+!testRun: #InterfazTest #test17ListPurchasesWithOneSaleReturnsACollectionWithThatSale stamp: 'MO 11/7/2022 15:04:50'!
+PASSED!
+
+!testRun: #InterfazTest #test18ListPurchasesWithVaroiuosItemsReturnsACollectionCorrectly stamp: 'MO 11/7/2022 15:04:50'!
+PASSED!
+
+!testRun: #InterfazTest #test20CanNotAddToCartIfExpired stamp: 'MO 11/7/2022 15:04:50'!
+PASSED!
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 15:05:01' prior: 50566028!
+test20CanNotAddToCartIfExpired
+
+	| changoID |
+	
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	
+	clock := DateAndTime now + (Duration minutes: 31).
+	
+	self 
+		should: [ laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 69 ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Interfaz cartExpiredErrorDescription.
+			self assert: (laInterfaz listCart: changoID) isEmpty ]! !
+
+!testRun: #InterfazTest #test20CanNotAddToCartIfExpired stamp: 'MO 11/7/2022 15:05:02'!
+FAILURE!
+
+!testRun: #InterfazTest #test20CanNotAddToCartIfExpired stamp: 'MO 11/7/2022 15:06:52'!
+FAILURE!
+
+!testRun: #InterfazTest #test20CanNotAddToCartIfExpired stamp: 'MO 11/7/2022 15:07:08'!
+PASSED!
+
+!testRun: #InterfazTest #test01createCartDaErrorConUsuarioInvalido stamp: 'MO 11/7/2022 15:07:22'!
+PASSED!
+
+!testRun: #InterfazTest #test02createCartDaErrorConContraseniaInvalida stamp: 'MO 11/7/2022 15:07:22'!
+PASSED!
+
+!testRun: #InterfazTest #test03createCartFuncionaConUnUsuarioYContraseniaValidos stamp: 'MO 11/7/2022 15:07:22'!
+PASSED!
+
+!testRun: #InterfazTest #test04addCartNoFuncionaConUnIDInvalido stamp: 'MO 11/7/2022 15:07:22'!
+PASSED!
+
+!testRun: #InterfazTest #test05addCartNoFuncionaConUnLibroInvalido stamp: 'MO 11/7/2022 15:07:22'!
+PASSED!
+
+!testRun: #InterfazTest #test06addCartNoFuncionaConUnaCantidadInvalida stamp: 'MO 11/7/2022 15:07:22'!
+PASSED!
+
+!testRun: #InterfazTest #test07AddToCartAgregaUnLibroCorrectamente stamp: 'MO 11/7/2022 15:07:22'!
+PASSED!
+
+!testRun: #InterfazTest #test08ListCartNoFuncionaConCartIDInvalida stamp: 'MO 11/7/2022 15:07:22'!
+PASSED!
+
+!testRun: #InterfazTest #test09ListCartACartConUnLibroRetornaColeccionConEseLibro stamp: 'MO 11/7/2022 15:07:22'!
+PASSED!
+
+!testRun: #InterfazTest #test10ListCartACartConMultiplesLibrosRetornaColeccionConEsosLibros stamp: 'MO 11/7/2022 15:07:22'!
+PASSED!
+
+!testRun: #InterfazTest #test11CheckOutACartWithInvalidIDRaisesException stamp: 'MO 11/7/2022 15:07:22'!
+PASSED!
+
+!testRun: #InterfazTest #test12CheckOutACartWithExpiredCardRaisesException stamp: 'MO 11/7/2022 15:07:22'!
+PASSED!
+
+!testRun: #InterfazTest #test13CheckOutACartWithInvalidNumberedCardRaisesException stamp: 'MO 11/7/2022 15:07:23'!
+PASSED!
+
+!testRun: #InterfazTest #test14CheckOutACartWithOneBookRegistersSaleCorrectly stamp: 'MO 11/7/2022 15:07:23'!
+PASSED!
+
+!testRun: #InterfazTest #test15CannotListPurchasesIfAuthenticationFails stamp: 'MO 11/7/2022 15:07:23'!
+PASSED!
+
+!testRun: #InterfazTest #test16ListPurchasesWithoutSalesReturnsEmptyCollection stamp: 'MO 11/7/2022 15:07:23'!
+PASSED!
+
+!testRun: #InterfazTest #test17ListPurchasesWithOneSaleReturnsACollectionWithThatSale stamp: 'MO 11/7/2022 15:07:23'!
+PASSED!
+
+!testRun: #InterfazTest #test18ListPurchasesWithVaroiuosItemsReturnsACollectionCorrectly stamp: 'MO 11/7/2022 15:07:23'!
+PASSED!
+
+!testRun: #InterfazTest #test20CanNotAddToCartIfExpired stamp: 'MO 11/7/2022 15:07:23'!
+FAILURE!
+
+!testRun: #InterfazTest #test20CanNotAddToCartIfExpired stamp: 'MO 11/7/2022 15:07:23'!
+FAILURE!
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 15:08:01' prior: 50566118!
+test20CanNotAddToCartIfExpired
+
+	| changoID |
+	
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	
+	clock := DateAndTime now + (Duration minutes: 31).
+	
+	self 
+		should: [ laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1 ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			"self assert: anError messageText = Interfaz cartExpiredErrorDescription."
+			self assert: (laInterfaz listCart: changoID) isEmpty ]! !
+
+!testRun: #InterfazTest #test20CanNotAddToCartIfExpired stamp: 'MO 11/7/2022 15:08:01'!
+FAILURE!
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 15:08:21' prior: 50566217!
+test20CanNotAddToCartIfExpired
+
+	| changoID |
+	
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	
+	clock := DateAndTime now + (Duration minutes: 31).
+	
+	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1.! !
+
+!testRun: #InterfazTest #test20CanNotAddToCartIfExpired stamp: 'MO 11/7/2022 15:08:22'!
+PASSED!
+
+!testRun: #InterfazTest #test01createCartDaErrorConUsuarioInvalido stamp: 'MO 11/7/2022 15:08:22'!
+PASSED!
+
+!testRun: #InterfazTest #test02createCartDaErrorConContraseniaInvalida stamp: 'MO 11/7/2022 15:08:22'!
+PASSED!
+
+!testRun: #InterfazTest #test03createCartFuncionaConUnUsuarioYContraseniaValidos stamp: 'MO 11/7/2022 15:08:22'!
+PASSED!
+
+!testRun: #InterfazTest #test04addCartNoFuncionaConUnIDInvalido stamp: 'MO 11/7/2022 15:08:22'!
+PASSED!
+
+!testRun: #InterfazTest #test05addCartNoFuncionaConUnLibroInvalido stamp: 'MO 11/7/2022 15:08:22'!
+PASSED!
+
+!testRun: #InterfazTest #test06addCartNoFuncionaConUnaCantidadInvalida stamp: 'MO 11/7/2022 15:08:22'!
+PASSED!
+
+!testRun: #InterfazTest #test07AddToCartAgregaUnLibroCorrectamente stamp: 'MO 11/7/2022 15:08:22'!
+PASSED!
+
+!testRun: #InterfazTest #test08ListCartNoFuncionaConCartIDInvalida stamp: 'MO 11/7/2022 15:08:22'!
+PASSED!
+
+!testRun: #InterfazTest #test09ListCartACartConUnLibroRetornaColeccionConEseLibro stamp: 'MO 11/7/2022 15:08:22'!
+PASSED!
+
+!testRun: #InterfazTest #test10ListCartACartConMultiplesLibrosRetornaColeccionConEsosLibros stamp: 'MO 11/7/2022 15:08:22'!
+PASSED!
+
+!testRun: #InterfazTest #test11CheckOutACartWithInvalidIDRaisesException stamp: 'MO 11/7/2022 15:08:22'!
+PASSED!
+
+!testRun: #InterfazTest #test12CheckOutACartWithExpiredCardRaisesException stamp: 'MO 11/7/2022 15:08:22'!
+PASSED!
+
+!testRun: #InterfazTest #test13CheckOutACartWithInvalidNumberedCardRaisesException stamp: 'MO 11/7/2022 15:08:22'!
+PASSED!
+
+!testRun: #InterfazTest #test14CheckOutACartWithOneBookRegistersSaleCorrectly stamp: 'MO 11/7/2022 15:08:22'!
+PASSED!
+
+!testRun: #InterfazTest #test15CannotListPurchasesIfAuthenticationFails stamp: 'MO 11/7/2022 15:08:22'!
+PASSED!
+
+!testRun: #InterfazTest #test16ListPurchasesWithoutSalesReturnsEmptyCollection stamp: 'MO 11/7/2022 15:08:22'!
+PASSED!
+
+!testRun: #InterfazTest #test17ListPurchasesWithOneSaleReturnsACollectionWithThatSale stamp: 'MO 11/7/2022 15:08:22'!
+PASSED!
+
+!testRun: #InterfazTest #test18ListPurchasesWithVaroiuosItemsReturnsACollectionCorrectly stamp: 'MO 11/7/2022 15:08:22'!
+PASSED!
+
+!testRun: #InterfazTest #test20CanNotAddToCartIfExpired stamp: 'MO 11/7/2022 15:08:23'!
+PASSED!
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 15:08:48' prior: 50566238!
+test20CanNotAddToCartIfExpired
+
+	| changoID |
+	
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	
+	clock := DateAndTime now + (Duration minutes: 31).
+	
+	self 
+		should: [ laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1 ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Interfaz cartExpiredErrorDescription.
+			self assert: (laInterfaz listCart: changoID) isEmpty ]! !
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 15:09:52' prior: 50566321!
+test20CanNotAddToCartIfExpired
+
+	| changoID |
+	
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	
+	clock := DateAndTime now + (Duration minutes: 31).
+	
+	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1 .
+	
+	
+	self 
+		should: [ laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1 ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Interfaz cartExpiredErrorDescription.
+			self assert: (laInterfaz listCart: changoID) isEmpty ]! !
+
+!testRun: #InterfazTest #test20CanNotAddToCartIfExpired stamp: 'MO 11/7/2022 15:09:52'!
+FAILURE!
+!Interfaz methodsFor: 'assertions' stamp: 'MO 11/7/2022 15:11:41' prior: 50565869!
+assertValidCart: aChangoID
+
+	|xxx|
+
+	(cartIDtoCart includesKey: aChangoID) ifFalse: [ self error: self class invalidCartIDErrorDescription ].
+	
+	xxx := ((cartIDtoCart at: aChangoID) lastModificationTime).
+	
+	((clock - xxx) < (Duration minutes: 30)) ifFalse: [ self error: self class cartExpiredErrorDescription ].! !
+!Cart methodsFor: 'adding' stamp: 'MO 11/7/2022 15:14:08' prior: 50565835!
+add: aQuantity of: anItem on: aTime
+
+	self assertIsValidQuantity: aQuantity.
+	self assertIsValidItem: anItem.
+	lastModificationTime := aTime.
+
+	1 to: aQuantity do: [ :aNumber | items add: anItem ]! !
+!InterfazTest methodsFor: 'clock protocol' stamp: 'MO 11/7/2022 15:14:30' prior: 50565721!
+clock
+
+	^ clock copy! !
+
+!testRun: #InterfazTest #test01createCartDaErrorConUsuarioInvalido stamp: 'MO 11/7/2022 15:14:41'!
+PASSED!
+
+!testRun: #InterfazTest #test02createCartDaErrorConContraseniaInvalida stamp: 'MO 11/7/2022 15:14:41'!
+PASSED!
+
+!testRun: #InterfazTest #test03createCartFuncionaConUnUsuarioYContraseniaValidos stamp: 'MO 11/7/2022 15:14:41'!
+PASSED!
+
+!testRun: #InterfazTest #test04addCartNoFuncionaConUnIDInvalido stamp: 'MO 11/7/2022 15:14:41'!
+PASSED!
+
+!testRun: #InterfazTest #test05addCartNoFuncionaConUnLibroInvalido stamp: 'MO 11/7/2022 15:14:41'!
+PASSED!
+
+!testRun: #InterfazTest #test06addCartNoFuncionaConUnaCantidadInvalida stamp: 'MO 11/7/2022 15:14:41'!
+PASSED!
+
+!testRun: #InterfazTest #test07AddToCartAgregaUnLibroCorrectamente stamp: 'MO 11/7/2022 15:14:41'!
+PASSED!
+
+!testRun: #InterfazTest #test08ListCartNoFuncionaConCartIDInvalida stamp: 'MO 11/7/2022 15:14:41'!
+PASSED!
+
+!testRun: #InterfazTest #test09ListCartACartConUnLibroRetornaColeccionConEseLibro stamp: 'MO 11/7/2022 15:14:41'!
+PASSED!
+
+!testRun: #InterfazTest #test10ListCartACartConMultiplesLibrosRetornaColeccionConEsosLibros stamp: 'MO 11/7/2022 15:14:42'!
+PASSED!
+
+!testRun: #InterfazTest #test11CheckOutACartWithInvalidIDRaisesException stamp: 'MO 11/7/2022 15:14:42'!
+PASSED!
+
+!testRun: #InterfazTest #test12CheckOutACartWithExpiredCardRaisesException stamp: 'MO 11/7/2022 15:14:42'!
+PASSED!
+
+!testRun: #InterfazTest #test13CheckOutACartWithInvalidNumberedCardRaisesException stamp: 'MO 11/7/2022 15:14:42'!
+PASSED!
+
+!testRun: #InterfazTest #test14CheckOutACartWithOneBookRegistersSaleCorrectly stamp: 'MO 11/7/2022 15:14:42'!
+PASSED!
+
+!testRun: #InterfazTest #test15CannotListPurchasesIfAuthenticationFails stamp: 'MO 11/7/2022 15:14:42'!
+PASSED!
+
+!testRun: #InterfazTest #test16ListPurchasesWithoutSalesReturnsEmptyCollection stamp: 'MO 11/7/2022 15:14:42'!
+PASSED!
+
+!testRun: #InterfazTest #test17ListPurchasesWithOneSaleReturnsACollectionWithThatSale stamp: 'MO 11/7/2022 15:14:42'!
+PASSED!
+
+!testRun: #InterfazTest #test18ListPurchasesWithVaroiuosItemsReturnsACollectionCorrectly stamp: 'MO 11/7/2022 15:14:42'!
+PASSED!
+
+!testRun: #InterfazTest #test20CanNotAddToCartIfExpired stamp: 'MO 11/7/2022 15:14:42'!
+FAILURE!
+
+!testRun: #InterfazTest #test20CanNotAddToCartIfExpired stamp: 'MO 11/7/2022 15:14:42'!
+FAILURE!
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 15:14:51' prior: 50566339!
+test20CanNotAddToCartIfExpired
+
+	| changoID |
+	
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	
+	clock := DateAndTime now + (Duration minutes: 31).
+	
+	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1 .
+	
+	self 
+		should: [ laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1 ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Interfaz cartExpiredErrorDescription.
+			self assert: (laInterfaz listCart: changoID) isEmpty ]! !
+
+!testRun: #InterfazTest #test01createCartDaErrorConUsuarioInvalido stamp: 'MO 11/7/2022 15:14:52'!
+PASSED!
+
+!testRun: #InterfazTest #test02createCartDaErrorConContraseniaInvalida stamp: 'MO 11/7/2022 15:14:53'!
+PASSED!
+
+!testRun: #InterfazTest #test03createCartFuncionaConUnUsuarioYContraseniaValidos stamp: 'MO 11/7/2022 15:14:53'!
+PASSED!
+
+!testRun: #InterfazTest #test04addCartNoFuncionaConUnIDInvalido stamp: 'MO 11/7/2022 15:14:53'!
+PASSED!
+
+!testRun: #InterfazTest #test05addCartNoFuncionaConUnLibroInvalido stamp: 'MO 11/7/2022 15:14:53'!
+PASSED!
+
+!testRun: #InterfazTest #test06addCartNoFuncionaConUnaCantidadInvalida stamp: 'MO 11/7/2022 15:14:53'!
+PASSED!
+
+!testRun: #InterfazTest #test07AddToCartAgregaUnLibroCorrectamente stamp: 'MO 11/7/2022 15:14:53'!
+PASSED!
+
+!testRun: #InterfazTest #test08ListCartNoFuncionaConCartIDInvalida stamp: 'MO 11/7/2022 15:14:53'!
+PASSED!
+
+!testRun: #InterfazTest #test09ListCartACartConUnLibroRetornaColeccionConEseLibro stamp: 'MO 11/7/2022 15:14:53'!
+PASSED!
+
+!testRun: #InterfazTest #test10ListCartACartConMultiplesLibrosRetornaColeccionConEsosLibros stamp: 'MO 11/7/2022 15:14:53'!
+PASSED!
+
+!testRun: #InterfazTest #test11CheckOutACartWithInvalidIDRaisesException stamp: 'MO 11/7/2022 15:14:53'!
+PASSED!
+
+!testRun: #InterfazTest #test12CheckOutACartWithExpiredCardRaisesException stamp: 'MO 11/7/2022 15:14:53'!
+PASSED!
+
+!testRun: #InterfazTest #test13CheckOutACartWithInvalidNumberedCardRaisesException stamp: 'MO 11/7/2022 15:14:53'!
+PASSED!
+
+!testRun: #InterfazTest #test14CheckOutACartWithOneBookRegistersSaleCorrectly stamp: 'MO 11/7/2022 15:14:53'!
+PASSED!
+
+!testRun: #InterfazTest #test15CannotListPurchasesIfAuthenticationFails stamp: 'MO 11/7/2022 15:14:53'!
+PASSED!
+
+!testRun: #InterfazTest #test16ListPurchasesWithoutSalesReturnsEmptyCollection stamp: 'MO 11/7/2022 15:14:53'!
+PASSED!
+
+!testRun: #InterfazTest #test17ListPurchasesWithOneSaleReturnsACollectionWithThatSale stamp: 'MO 11/7/2022 15:14:53'!
+PASSED!
+
+!testRun: #InterfazTest #test18ListPurchasesWithVaroiuosItemsReturnsACollectionCorrectly stamp: 'MO 11/7/2022 15:14:53'!
+PASSED!
+
+!testRun: #InterfazTest #test20CanNotAddToCartIfExpired stamp: 'MO 11/7/2022 15:14:53'!
+FAILURE!
+
+!testRun: #InterfazTest #test20CanNotAddToCartIfExpired stamp: 'MO 11/7/2022 15:14:54'!
+FAILURE!
+!InterfazTest methodsFor: 'clock protocol' stamp: 'MO 11/7/2022 15:21:02' prior: 50566386!
+clock
+
+	^ clock! !
+
+!testRun: #InterfazTest #test01createCartDaErrorConUsuarioInvalido stamp: 'MO 11/7/2022 15:22:25'!
+PASSED!
+
+!testRun: #InterfazTest #test02createCartDaErrorConContraseniaInvalida stamp: 'MO 11/7/2022 15:22:25'!
+PASSED!
+
+!testRun: #InterfazTest #test03createCartFuncionaConUnUsuarioYContraseniaValidos stamp: 'MO 11/7/2022 15:22:25'!
+PASSED!
+
+!testRun: #InterfazTest #test04addCartNoFuncionaConUnIDInvalido stamp: 'MO 11/7/2022 15:22:25'!
+PASSED!
+
+!testRun: #InterfazTest #test05addCartNoFuncionaConUnLibroInvalido stamp: 'MO 11/7/2022 15:22:25'!
+PASSED!
+
+!testRun: #InterfazTest #test06addCartNoFuncionaConUnaCantidadInvalida stamp: 'MO 11/7/2022 15:22:25'!
+PASSED!
+
+!testRun: #InterfazTest #test07AddToCartAgregaUnLibroCorrectamente stamp: 'MO 11/7/2022 15:22:25'!
+PASSED!
+
+!testRun: #InterfazTest #test08ListCartNoFuncionaConCartIDInvalida stamp: 'MO 11/7/2022 15:22:25'!
+PASSED!
+
+!testRun: #InterfazTest #test09ListCartACartConUnLibroRetornaColeccionConEseLibro stamp: 'MO 11/7/2022 15:22:25'!
+PASSED!
+
+!testRun: #InterfazTest #test10ListCartACartConMultiplesLibrosRetornaColeccionConEsosLibros stamp: 'MO 11/7/2022 15:22:25'!
+PASSED!
+
+!testRun: #InterfazTest #test11CheckOutACartWithInvalidIDRaisesException stamp: 'MO 11/7/2022 15:22:25'!
+PASSED!
+
+!testRun: #InterfazTest #test12CheckOutACartWithExpiredCardRaisesException stamp: 'MO 11/7/2022 15:22:25'!
+PASSED!
+
+!testRun: #InterfazTest #test13CheckOutACartWithInvalidNumberedCardRaisesException stamp: 'MO 11/7/2022 15:22:26'!
+PASSED!
+
+!testRun: #InterfazTest #test14CheckOutACartWithOneBookRegistersSaleCorrectly stamp: 'MO 11/7/2022 15:22:26'!
+PASSED!
+
+!testRun: #InterfazTest #test15CannotListPurchasesIfAuthenticationFails stamp: 'MO 11/7/2022 15:22:26'!
+PASSED!
+
+!testRun: #InterfazTest #test16ListPurchasesWithoutSalesReturnsEmptyCollection stamp: 'MO 11/7/2022 15:22:26'!
+PASSED!
+
+!testRun: #InterfazTest #test17ListPurchasesWithOneSaleReturnsACollectionWithThatSale stamp: 'MO 11/7/2022 15:22:26'!
+PASSED!
+
+!testRun: #InterfazTest #test18ListPurchasesWithVaroiuosItemsReturnsACollectionCorrectly stamp: 'MO 11/7/2022 15:22:26'!
+PASSED!
+
+!testRun: #InterfazTest #test20CanNotAddToCartIfExpired stamp: 'MO 11/7/2022 15:22:26'!
+FAILURE!
+
+!testRun: #InterfazTest #test20CanNotAddToCartIfExpired stamp: 'MO 11/7/2022 15:22:26'!
+FAILURE!
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 15:30:48' prior: 50566462!
+test20CanNotAddToCartIfExpired
+
+	| changoID |
+	
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	
+	clock add: (Duration minutes: 31).
+	
+	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1 .
+	
+	self 
+		should: [ laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1 ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Interfaz cartExpiredErrorDescription.
+			self assert: (laInterfaz listCart: changoID) isEmpty ]! !
+
+!testRun: #InterfazTest #test20CanNotAddToCartIfExpired stamp: 'MO 11/7/2022 15:30:50'!
+ERROR!
+!Interfaz methodsFor: 'operations' stamp: 'MO 11/7/2022 15:35:33'!
+setClock: aTime
+	
+	clock := aTime! !
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 15:14:51' prior: 50566630!
+test20CanNotAddToCartIfExpired
+
+	| changoID |
+	
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	
+	clock := DateAndTime now + (Duration minutes: 31).
+	
+	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1 .
+	
+	self 
+		should: [ laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1 ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Interfaz cartExpiredErrorDescription.
+			self assert: (laInterfaz listCart: changoID) isEmpty ]! !
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 15:36:58' prior: 50566657!
+test20CanNotAddToCartIfExpired
+
+	| changoID |
+	
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	
+	"clock := DateAndTime now + (Duration minutes: 31). esto no anda así que lo voy a implementar por las malas"
+	laInterfaz setClock: DateAndTime now + (Duration minutes: 31).
+	
+	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1 .
+	
+	self 
+		should: [ laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1 ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Interfaz cartExpiredErrorDescription.
+			self assert: (laInterfaz listCart: changoID) isEmpty ]! !
+
+!testRun: #InterfazTest #test20CanNotAddToCartIfExpired stamp: 'MO 11/7/2022 15:37:00'!
+ERROR!
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 15:37:24' prior: 50566678!
+test20CanNotAddToCartIfExpired
+
+	| changoID |
+	
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	
+	"clock := DateAndTime now + (Duration minutes: 31). esto no anda así que lo voy a implementar por las malas"
+	laInterfaz setClock: DateAndTime now + (Duration minutes: 31).
+	
+	self 
+		should: [ laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1 ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Interfaz cartExpiredErrorDescription.
+			self assert: (laInterfaz listCart: changoID) isEmpty ]! !
+
+!testRun: #InterfazTest #test20CanNotAddToCartIfExpired stamp: 'MO 11/7/2022 15:37:25'!
+ERROR!
+
+!testRun: #InterfazTest #test20CanNotAddToCartIfExpired stamp: 'MO 11/7/2022 15:37:40'!
+ERROR!
+
+!testRun: #InterfazTest #test20CanNotAddToCartIfExpired stamp: 'MO 11/7/2022 15:38:26'!
+ERROR!
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 15:39:05' prior: 50566705!
+test20CanNotAddToCartIfExpired
+
+	| changoID |
+	
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	
+	"clock := DateAndTime now + (Duration minutes: 31). esto no anda así que lo voy a implementar por las malas"
+	laInterfaz setClock: (DateAndTime now + (Duration minutes: 31)).
+	
+	"self 
+		should: [ laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1 ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Interfaz cartExpiredErrorDescription.
+			self assert: (laInterfaz listCart: changoID) isEmpty ]"! !
+
+!testRun: #InterfazTest #test20CanNotAddToCartIfExpired stamp: 'MO 11/7/2022 15:39:08'!
+PASSED!
+
+!testRun: #InterfazTest #test01createCartDaErrorConUsuarioInvalido stamp: 'MO 11/7/2022 15:39:08'!
+PASSED!
+
+!testRun: #InterfazTest #test02createCartDaErrorConContraseniaInvalida stamp: 'MO 11/7/2022 15:39:08'!
+PASSED!
+
+!testRun: #InterfazTest #test03createCartFuncionaConUnUsuarioYContraseniaValidos stamp: 'MO 11/7/2022 15:39:08'!
+PASSED!
+
+!testRun: #InterfazTest #test04addCartNoFuncionaConUnIDInvalido stamp: 'MO 11/7/2022 15:39:08'!
+PASSED!
+
+!testRun: #InterfazTest #test05addCartNoFuncionaConUnLibroInvalido stamp: 'MO 11/7/2022 15:39:08'!
+PASSED!
+
+!testRun: #InterfazTest #test06addCartNoFuncionaConUnaCantidadInvalida stamp: 'MO 11/7/2022 15:39:08'!
+PASSED!
+
+!testRun: #InterfazTest #test07AddToCartAgregaUnLibroCorrectamente stamp: 'MO 11/7/2022 15:39:08'!
+PASSED!
+
+!testRun: #InterfazTest #test08ListCartNoFuncionaConCartIDInvalida stamp: 'MO 11/7/2022 15:39:08'!
+PASSED!
+
+!testRun: #InterfazTest #test09ListCartACartConUnLibroRetornaColeccionConEseLibro stamp: 'MO 11/7/2022 15:39:08'!
+PASSED!
+
+!testRun: #InterfazTest #test10ListCartACartConMultiplesLibrosRetornaColeccionConEsosLibros stamp: 'MO 11/7/2022 15:39:08'!
+PASSED!
+
+!testRun: #InterfazTest #test11CheckOutACartWithInvalidIDRaisesException stamp: 'MO 11/7/2022 15:39:08'!
+PASSED!
+
+!testRun: #InterfazTest #test12CheckOutACartWithExpiredCardRaisesException stamp: 'MO 11/7/2022 15:39:08'!
+PASSED!
+
+!testRun: #InterfazTest #test13CheckOutACartWithInvalidNumberedCardRaisesException stamp: 'MO 11/7/2022 15:39:08'!
+PASSED!
+
+!testRun: #InterfazTest #test14CheckOutACartWithOneBookRegistersSaleCorrectly stamp: 'MO 11/7/2022 15:39:08'!
+PASSED!
+
+!testRun: #InterfazTest #test15CannotListPurchasesIfAuthenticationFails stamp: 'MO 11/7/2022 15:39:08'!
+PASSED!
+
+!testRun: #InterfazTest #test16ListPurchasesWithoutSalesReturnsEmptyCollection stamp: 'MO 11/7/2022 15:39:08'!
+PASSED!
+
+!testRun: #InterfazTest #test17ListPurchasesWithOneSaleReturnsACollectionWithThatSale stamp: 'MO 11/7/2022 15:39:08'!
+PASSED!
+
+!testRun: #InterfazTest #test18ListPurchasesWithVaroiuosItemsReturnsACollectionCorrectly stamp: 'MO 11/7/2022 15:39:08'!
+PASSED!
+
+!testRun: #InterfazTest #test20CanNotAddToCartIfExpired stamp: 'MO 11/7/2022 15:39:08'!
+PASSED!
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 15:39:13' prior: 50566736!
+test20CanNotAddToCartIfExpired
+
+	| changoID |
+	
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	
+	"clock := DateAndTime now + (Duration minutes: 31). esto no anda así que lo voy a implementar por las malas"
+	laInterfaz setClock: (DateAndTime now + (Duration minutes: 31)).
+	
+	self 
+		should: [ laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1 ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Interfaz cartExpiredErrorDescription.
+			self assert: (laInterfaz listCart: changoID) isEmpty ]! !
+
+!testRun: #InterfazTest #test20CanNotAddToCartIfExpired stamp: 'MO 11/7/2022 15:39:13'!
+ERROR!
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 15:39:41' prior: 50566829!
+test20CanNotAddToCartIfExpired
+
+	| changoID |
+	
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	
+	"clock := DateAndTime now + (Duration minutes: 31). esto no anda así que lo voy a implementar por las malas"
+	laInterfaz setClock: (DateAndTime now + (Duration minutes: 31)).
+	
+	self 
+		should: [ laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1 ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Interfaz cartExpiredErrorDescription ]! !
+
+!testRun: #InterfazTest #test20CanNotAddToCartIfExpired stamp: 'MO 11/7/2022 15:39:42'!
+PASSED!
+
+!testRun: #InterfazTest #test01createCartDaErrorConUsuarioInvalido stamp: 'MO 11/7/2022 15:39:42'!
+PASSED!
+
+!testRun: #InterfazTest #test02createCartDaErrorConContraseniaInvalida stamp: 'MO 11/7/2022 15:39:42'!
+PASSED!
+
+!testRun: #InterfazTest #test03createCartFuncionaConUnUsuarioYContraseniaValidos stamp: 'MO 11/7/2022 15:39:42'!
+PASSED!
+
+!testRun: #InterfazTest #test04addCartNoFuncionaConUnIDInvalido stamp: 'MO 11/7/2022 15:39:42'!
+PASSED!
+
+!testRun: #InterfazTest #test05addCartNoFuncionaConUnLibroInvalido stamp: 'MO 11/7/2022 15:39:42'!
+PASSED!
+
+!testRun: #InterfazTest #test06addCartNoFuncionaConUnaCantidadInvalida stamp: 'MO 11/7/2022 15:39:42'!
+PASSED!
+
+!testRun: #InterfazTest #test07AddToCartAgregaUnLibroCorrectamente stamp: 'MO 11/7/2022 15:39:42'!
+PASSED!
+
+!testRun: #InterfazTest #test08ListCartNoFuncionaConCartIDInvalida stamp: 'MO 11/7/2022 15:39:42'!
+PASSED!
+
+!testRun: #InterfazTest #test09ListCartACartConUnLibroRetornaColeccionConEseLibro stamp: 'MO 11/7/2022 15:39:42'!
+PASSED!
+
+!testRun: #InterfazTest #test10ListCartACartConMultiplesLibrosRetornaColeccionConEsosLibros stamp: 'MO 11/7/2022 15:39:43'!
+PASSED!
+
+!testRun: #InterfazTest #test11CheckOutACartWithInvalidIDRaisesException stamp: 'MO 11/7/2022 15:39:43'!
+PASSED!
+
+!testRun: #InterfazTest #test12CheckOutACartWithExpiredCardRaisesException stamp: 'MO 11/7/2022 15:39:43'!
+PASSED!
+
+!testRun: #InterfazTest #test13CheckOutACartWithInvalidNumberedCardRaisesException stamp: 'MO 11/7/2022 15:39:43'!
+PASSED!
+
+!testRun: #InterfazTest #test14CheckOutACartWithOneBookRegistersSaleCorrectly stamp: 'MO 11/7/2022 15:39:43'!
+PASSED!
+
+!testRun: #InterfazTest #test15CannotListPurchasesIfAuthenticationFails stamp: 'MO 11/7/2022 15:39:43'!
+PASSED!
+
+!testRun: #InterfazTest #test16ListPurchasesWithoutSalesReturnsEmptyCollection stamp: 'MO 11/7/2022 15:39:43'!
+PASSED!
+
+!testRun: #InterfazTest #test17ListPurchasesWithOneSaleReturnsACollectionWithThatSale stamp: 'MO 11/7/2022 15:39:43'!
+PASSED!
+
+!testRun: #InterfazTest #test18ListPurchasesWithVaroiuosItemsReturnsACollectionCorrectly stamp: 'MO 11/7/2022 15:39:43'!
+PASSED!
+
+!testRun: #InterfazTest #test20CanNotAddToCartIfExpired stamp: 'MO 11/7/2022 15:39:43'!
+PASSED!
+!Cart methodsFor: 'adding' stamp: 'MO 11/7/2022 15:41:41' prior: 50566376!
+add: aQuantity of: anItem on: aTime
+
+	self assertIsValidQuantity: aQuantity.
+	self assertIsValidItem: anItem.
+	lastModificationTime := aTime copy.
+
+	1 to: aQuantity do: [ :aNumber | items add: anItem ]! !
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 15:43:08'!
+test21CanNotListCartIfExpired
+
+	| changoID |
+	
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	
+	laInterfaz setClock: (DateAndTime now + (Duration minutes: 31)).
+	
+	self 
+		should: [ laInterfaz listCart: changoID ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Interfaz cartExpiredErrorDescription ]! !
+
+!testRun: #InterfazTest #test21CanNotListCartIfExpired stamp: 'MO 11/7/2022 15:43:09'!
+PASSED!
+
+!testRun: #InterfazTest #test01createCartDaErrorConUsuarioInvalido stamp: 'MO 11/7/2022 15:43:09'!
+PASSED!
+
+!testRun: #InterfazTest #test02createCartDaErrorConContraseniaInvalida stamp: 'MO 11/7/2022 15:43:09'!
+PASSED!
+
+!testRun: #InterfazTest #test03createCartFuncionaConUnUsuarioYContraseniaValidos stamp: 'MO 11/7/2022 15:43:09'!
+PASSED!
+
+!testRun: #InterfazTest #test04addCartNoFuncionaConUnIDInvalido stamp: 'MO 11/7/2022 15:43:09'!
+PASSED!
+
+!testRun: #InterfazTest #test05addCartNoFuncionaConUnLibroInvalido stamp: 'MO 11/7/2022 15:43:09'!
+PASSED!
+
+!testRun: #InterfazTest #test06addCartNoFuncionaConUnaCantidadInvalida stamp: 'MO 11/7/2022 15:43:09'!
+PASSED!
+
+!testRun: #InterfazTest #test07AddToCartAgregaUnLibroCorrectamente stamp: 'MO 11/7/2022 15:43:09'!
+PASSED!
+
+!testRun: #InterfazTest #test08ListCartNoFuncionaConCartIDInvalida stamp: 'MO 11/7/2022 15:43:09'!
+PASSED!
+
+!testRun: #InterfazTest #test09ListCartACartConUnLibroRetornaColeccionConEseLibro stamp: 'MO 11/7/2022 15:43:09'!
+PASSED!
+
+!testRun: #InterfazTest #test10ListCartACartConMultiplesLibrosRetornaColeccionConEsosLibros stamp: 'MO 11/7/2022 15:43:09'!
+PASSED!
+
+!testRun: #InterfazTest #test11CheckOutACartWithInvalidIDRaisesException stamp: 'MO 11/7/2022 15:43:09'!
+PASSED!
+
+!testRun: #InterfazTest #test12CheckOutACartWithExpiredCardRaisesException stamp: 'MO 11/7/2022 15:43:10'!
+PASSED!
+
+!testRun: #InterfazTest #test13CheckOutACartWithInvalidNumberedCardRaisesException stamp: 'MO 11/7/2022 15:43:10'!
+PASSED!
+
+!testRun: #InterfazTest #test14CheckOutACartWithOneBookRegistersSaleCorrectly stamp: 'MO 11/7/2022 15:43:10'!
+PASSED!
+
+!testRun: #InterfazTest #test15CannotListPurchasesIfAuthenticationFails stamp: 'MO 11/7/2022 15:43:10'!
+PASSED!
+
+!testRun: #InterfazTest #test16ListPurchasesWithoutSalesReturnsEmptyCollection stamp: 'MO 11/7/2022 15:43:10'!
+PASSED!
+
+!testRun: #InterfazTest #test17ListPurchasesWithOneSaleReturnsACollectionWithThatSale stamp: 'MO 11/7/2022 15:43:10'!
+PASSED!
+
+!testRun: #InterfazTest #test18ListPurchasesWithVaroiuosItemsReturnsACollectionCorrectly stamp: 'MO 11/7/2022 15:43:10'!
+PASSED!
+
+!testRun: #InterfazTest #test20CanNotAddToCartIfExpired stamp: 'MO 11/7/2022 15:43:10'!
+PASSED!
+
+!testRun: #InterfazTest #test21CanNotListCartIfExpired stamp: 'MO 11/7/2022 15:43:10'!
+PASSED!
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 15:44:13'!
+test21CanNotCheckOutCartIfExpired
+
+	| changoID |
+	
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	
+	laInterfaz setClock: (DateAndTime now + (Duration minutes: 31)).
+	
+	self 
+		should: [ laInterfaz listCart: changoID ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Interfaz cartExpiredErrorDescription ]! !
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 15:44:20'!
+test20CanNotListCartIfExpired
+
+	| changoID |
+	
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	
+	laInterfaz setClock: (DateAndTime now + (Duration minutes: 31)).
+	
+	self 
+		should: [ laInterfaz listCart: changoID ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Interfaz cartExpiredErrorDescription ]! !
+
+!methodRemoval: InterfazTest #test21CanNotListCartIfExpired stamp: 'MO 11/7/2022 15:44:23'!
+test21CanNotListCartIfExpired
+
+	| changoID |
+	
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	
+	laInterfaz setClock: (DateAndTime now + (Duration minutes: 31)).
+	
+	self 
+		should: [ laInterfaz listCart: changoID ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Interfaz cartExpiredErrorDescription ]!
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 15:44:30'!
+test19CanNotAddToCartIfExpired
+
+	| changoID |
+	
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	
+	"clock := DateAndTime now + (Duration minutes: 31). esto no anda así que lo voy a implementar por las malas"
+	laInterfaz setClock: (DateAndTime now + (Duration minutes: 31)).
+	
+	self 
+		should: [ laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1 ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Interfaz cartExpiredErrorDescription ]! !
+
+!methodRemoval: InterfazTest #test20CanNotAddToCartIfExpired stamp: 'MO 11/7/2022 15:44:34'!
+test20CanNotAddToCartIfExpired
+
+	| changoID |
+	
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	
+	"clock := DateAndTime now + (Duration minutes: 31). esto no anda así que lo voy a implementar por las malas"
+	laInterfaz setClock: (DateAndTime now + (Duration minutes: 31)).
+	
+	self 
+		should: [ laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1 ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Interfaz cartExpiredErrorDescription ]!
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 15:46:46' prior: 50567043!
+test21CanNotCheckOutCartIfExpired
+
+	| aDate changoID aSalesBook |
+	
+	aDate  := Month month: 4 year: 2050.
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	aSalesBook := OrderedCollection new.
+	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1.
+	
+	laInterfaz setClock: (DateAndTime now + (Duration minutes: 31)).
+	
+	self 
+		should: [ laInterfaz checkOutCart: changoID withCard: 1234123412341234 expiringOn: aDate withOwner: 'user' registeringOn: aSalesBook. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Interfaz cartExpiredErrorDescription ]! !
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 15:48:10' prior: 50562249!
+test14CheckOutACartWithOneBookRegistersSaleCorrectly
+
+	| aDate changoID aSalesBook |
+	
+	aDate  := (Month month: testObjectsFactory today monthIndex year: testObjectsFactory today yearNumber + 1).
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	aSalesBook := OrderedCollection new.
+	
+	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1.
+	laInterfaz checkOutCart: changoID withCard: 1234123412341234 expiringOn: aDate withOwner: 'user' registeringOn: aSalesBook.
+	
+	self assert: aSalesBook size equals: 1.
+	self assert: (aSalesBook first) total equals: (testObjectsFactory itemSellByTheStorePrice).
+
+	! !
+
+!testRun: #InterfazTest #test14CheckOutACartWithOneBookRegistersSaleCorrectly stamp: 'MO 11/7/2022 15:48:21'!
+PASSED!
+
+!testRun: #InterfazTest #test01createCartDaErrorConUsuarioInvalido stamp: 'MO 11/7/2022 15:48:21'!
+PASSED!
+
+!testRun: #InterfazTest #test02createCartDaErrorConContraseniaInvalida stamp: 'MO 11/7/2022 15:48:21'!
+PASSED!
+
+!testRun: #InterfazTest #test03createCartFuncionaConUnUsuarioYContraseniaValidos stamp: 'MO 11/7/2022 15:48:21'!
+PASSED!
+
+!testRun: #InterfazTest #test04addCartNoFuncionaConUnIDInvalido stamp: 'MO 11/7/2022 15:48:21'!
+PASSED!
+
+!testRun: #InterfazTest #test05addCartNoFuncionaConUnLibroInvalido stamp: 'MO 11/7/2022 15:48:21'!
+PASSED!
+
+!testRun: #InterfazTest #test06addCartNoFuncionaConUnaCantidadInvalida stamp: 'MO 11/7/2022 15:48:21'!
+PASSED!
+
+!testRun: #InterfazTest #test07AddToCartAgregaUnLibroCorrectamente stamp: 'MO 11/7/2022 15:48:21'!
+PASSED!
+
+!testRun: #InterfazTest #test08ListCartNoFuncionaConCartIDInvalida stamp: 'MO 11/7/2022 15:48:21'!
+PASSED!
+
+!testRun: #InterfazTest #test09ListCartACartConUnLibroRetornaColeccionConEseLibro stamp: 'MO 11/7/2022 15:48:21'!
+PASSED!
+
+!testRun: #InterfazTest #test10ListCartACartConMultiplesLibrosRetornaColeccionConEsosLibros stamp: 'MO 11/7/2022 15:48:21'!
+PASSED!
+
+!testRun: #InterfazTest #test11CheckOutACartWithInvalidIDRaisesException stamp: 'MO 11/7/2022 15:48:21'!
+PASSED!
+
+!testRun: #InterfazTest #test12CheckOutACartWithExpiredCardRaisesException stamp: 'MO 11/7/2022 15:48:21'!
+PASSED!
+
+!testRun: #InterfazTest #test13CheckOutACartWithInvalidNumberedCardRaisesException stamp: 'MO 11/7/2022 15:48:21'!
+PASSED!
+
+!testRun: #InterfazTest #test14CheckOutACartWithOneBookRegistersSaleCorrectly stamp: 'MO 11/7/2022 15:48:21'!
+PASSED!
+
+!testRun: #InterfazTest #test15CannotListPurchasesIfAuthenticationFails stamp: 'MO 11/7/2022 15:48:21'!
+PASSED!
+
+!testRun: #InterfazTest #test16ListPurchasesWithoutSalesReturnsEmptyCollection stamp: 'MO 11/7/2022 15:48:21'!
+PASSED!
+
+!testRun: #InterfazTest #test17ListPurchasesWithOneSaleReturnsACollectionWithThatSale stamp: 'MO 11/7/2022 15:48:21'!
+PASSED!
+
+!testRun: #InterfazTest #test18ListPurchasesWithVaroiuosItemsReturnsACollectionCorrectly stamp: 'MO 11/7/2022 15:48:21'!
+PASSED!
+
+!testRun: #InterfazTest #test19CanNotAddToCartIfExpired stamp: 'MO 11/7/2022 15:48:21'!
+PASSED!
+
+!testRun: #InterfazTest #test20CanNotListCartIfExpired stamp: 'MO 11/7/2022 15:48:21'!
+PASSED!
+
+!testRun: #InterfazTest #test21CanNotCheckOutCartIfExpired stamp: 'MO 11/7/2022 15:48:21'!
+PASSED!
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 15:48:37' prior: 50567147!
+test14CheckOutACartWithOneBookRegistersSaleCorrectly
+
+	| aMonth changoID aSalesBook |
+	
+	aMonth  := (Month month: testObjectsFactory today monthIndex year: testObjectsFactory today yearNumber + 1).
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	aSalesBook := OrderedCollection new.
+	
+	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1.
+	laInterfaz checkOutCart: changoID withCard: 1234123412341234 expiringOn: aMonth withOwner: 'user' registeringOn: aSalesBook.
+	
+	self assert: aSalesBook size equals: 1.
+	self assert: (aSalesBook first) total equals: (testObjectsFactory itemSellByTheStorePrice).
+
+	! !
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 15:48:57' prior: 50564699!
+test13CheckOutACartWithInvalidNumberedCardRaisesException
+	
+	| aMonth changoID aSalesBook |
+	
+	aMonth  := (Month month: testObjectsFactory today monthIndex year: testObjectsFactory today yearNumber + 1).
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 2.
+	aSalesBook := OrderedCollection new.
+	
+	self 
+		should: [ laInterfaz checkOutCart: changoID withCard: 1 expiringOn: aMonth withOwner: 'user' registeringOn: aSalesBook ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = CreditCard invalidCardNumberErrorDescription.
+			self assert: aSalesBook isEmpty. ]! !
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 15:49:11' prior: 50564779!
+test12CheckOutACartWithExpiredCardRaisesException
+
+	| aMonth changoID aSalesBook |
+	
+	aMonth  := (Month month: testObjectsFactory today monthIndex year: testObjectsFactory today yearNumber - 1).
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 2.
+	aSalesBook := OrderedCollection new.
+	
+	self 
+		should: [laInterfaz checkOutCart: changoID withCard: 1234567812345678 expiringOn: aMonth withOwner: 'user' registeringOn: aSalesBook ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Cashier canNotChargeAnExpiredCreditCardErrorMessage.
+			self assert: aSalesBook isEmpty. ]! !
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 15:49:19' prior: 50564739!
+test11CheckOutACartWithInvalidIDRaisesException
+
+	| aMonth aSalesBook |
+	
+	aMonth  := (Month month: testObjectsFactory today monthIndex year: testObjectsFactory today yearNumber + 1).
+	aSalesBook := OrderedCollection new.
+	
+	self 
+		should: [laInterfaz checkOutCart: 0 withCard: 1234567812345678 expiringOn: aMonth withOwner: 'Mariano Oca' registeringOn: aSalesBook ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Interfaz invalidCartIDErrorDescription.
+			self assert: aSalesBook isEmpty ]! !
+
+!testRun: #InterfazTest #test10ListCartACartConMultiplesLibrosRetornaColeccionConEsosLibros stamp: 'MO 11/7/2022 15:49:23'!
+PASSED!
+
+!testRun: #InterfazTest #test01createCartDaErrorConUsuarioInvalido stamp: 'MO 11/7/2022 15:49:27'!
+PASSED!
+
+!testRun: #InterfazTest #test02createCartDaErrorConContraseniaInvalida stamp: 'MO 11/7/2022 15:49:27'!
+PASSED!
+
+!testRun: #InterfazTest #test03createCartFuncionaConUnUsuarioYContraseniaValidos stamp: 'MO 11/7/2022 15:49:27'!
+PASSED!
+
+!testRun: #InterfazTest #test04addCartNoFuncionaConUnIDInvalido stamp: 'MO 11/7/2022 15:49:27'!
+PASSED!
+
+!testRun: #InterfazTest #test05addCartNoFuncionaConUnLibroInvalido stamp: 'MO 11/7/2022 15:49:27'!
+PASSED!
+
+!testRun: #InterfazTest #test06addCartNoFuncionaConUnaCantidadInvalida stamp: 'MO 11/7/2022 15:49:27'!
+PASSED!
+
+!testRun: #InterfazTest #test07AddToCartAgregaUnLibroCorrectamente stamp: 'MO 11/7/2022 15:49:27'!
+PASSED!
+
+!testRun: #InterfazTest #test08ListCartNoFuncionaConCartIDInvalida stamp: 'MO 11/7/2022 15:49:27'!
+PASSED!
+
+!testRun: #InterfazTest #test09ListCartACartConUnLibroRetornaColeccionConEseLibro stamp: 'MO 11/7/2022 15:49:27'!
+PASSED!
+
+!testRun: #InterfazTest #test10ListCartACartConMultiplesLibrosRetornaColeccionConEsosLibros stamp: 'MO 11/7/2022 15:49:27'!
+PASSED!
+
+!testRun: #InterfazTest #test11CheckOutACartWithInvalidIDRaisesException stamp: 'MO 11/7/2022 15:49:27'!
+PASSED!
+
+!testRun: #InterfazTest #test12CheckOutACartWithExpiredCardRaisesException stamp: 'MO 11/7/2022 15:49:27'!
+PASSED!
+
+!testRun: #InterfazTest #test13CheckOutACartWithInvalidNumberedCardRaisesException stamp: 'MO 11/7/2022 15:49:27'!
+PASSED!
+
+!testRun: #InterfazTest #test14CheckOutACartWithOneBookRegistersSaleCorrectly stamp: 'MO 11/7/2022 15:49:27'!
+PASSED!
+
+!testRun: #InterfazTest #test15CannotListPurchasesIfAuthenticationFails stamp: 'MO 11/7/2022 15:49:27'!
+PASSED!
+
+!testRun: #InterfazTest #test16ListPurchasesWithoutSalesReturnsEmptyCollection stamp: 'MO 11/7/2022 15:49:27'!
+PASSED!
+
+!testRun: #InterfazTest #test17ListPurchasesWithOneSaleReturnsACollectionWithThatSale stamp: 'MO 11/7/2022 15:49:28'!
+PASSED!
+
+!testRun: #InterfazTest #test18ListPurchasesWithVaroiuosItemsReturnsACollectionCorrectly stamp: 'MO 11/7/2022 15:49:28'!
+PASSED!
+
+!testRun: #InterfazTest #test19CanNotAddToCartIfExpired stamp: 'MO 11/7/2022 15:49:28'!
+PASSED!
+
+!testRun: #InterfazTest #test20CanNotListCartIfExpired stamp: 'MO 11/7/2022 15:49:28'!
+PASSED!
+
+!testRun: #InterfazTest #test21CanNotCheckOutCartIfExpired stamp: 'MO 11/7/2022 15:49:28'!
+PASSED!
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 15:49:35' prior: 50565573!
+test18ListPurchasesWithVaroiuosItemsReturnsACollectionCorrectly
+
+	| purchases aMonth changoID aSalesBook totalSpended |
+
+	aMonth  := (Month month: testObjectsFactory today monthIndex year: testObjectsFactory today yearNumber + 1).
+	aSalesBook := OrderedCollection new.
+
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1.
+	laInterfaz addToCart: changoID book: (testObjectsFactory otherItemSellByTheStore) quantity: 2.
+	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 3.
+	totalSpended := laInterfaz checkOutCart: changoID withCard: 1234123412341234 expiringOn: aMonth withOwner: 'Owner' registeringOn: aSalesBook.
+
+	purchases := laInterfaz listPurchasesOf: 'user' withPassword: 'pass'.
+
+	self assert: purchases size equals: 5.
+	self assert: purchases first equals: testObjectsFactory otherItemSellByTheStore.
+	self assert: purchases second equals: 2.
+	self assert: purchases third equals: testObjectsFactory itemSellByTheStore.
+	self assert: purchases fourth equals: 4.
+	self assert: purchases fifth equals: totalSpended.! !
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 15:50:01' prior: 50565475!
+test17ListPurchasesWithOneSaleReturnsACollectionWithThatSale
+
+	| purchases aMonth changoID aSalesBook |
+
+	aMonth  := (Month month: testObjectsFactory today monthIndex year: testObjectsFactory today yearNumber + 1).
+	aSalesBook := OrderedCollection new.
+
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1.
+	laInterfaz checkOutCart: changoID withCard: 1234123412341234 expiringOn: aMonth withOwner: 'Owner' registeringOn: aSalesBook.
+
+	purchases := laInterfaz listPurchasesOf: 'user' withPassword: 'pass'.
+
+	self assert: purchases size equals: 3.
+	self assert: purchases first equals: testObjectsFactory itemSellByTheStore.
+	self assert: purchases second equals: 1.
+	self assert: purchases third equals: testObjectsFactory itemSellByTheStorePrice.! !
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 15:50:21' prior: 50567124!
+test21CanNotCheckOutCartIfExpired
+
+	| aMonth changoID aSalesBook |
+	
+	aMonth  := (Month month: testObjectsFactory today monthIndex year: testObjectsFactory today yearNumber + 1).
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	aSalesBook := OrderedCollection new.
+	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1.
+	
+	laInterfaz setClock: (DateAndTime now + (Duration minutes: 31)).
+	
+	self 
+		should: [ laInterfaz checkOutCart: changoID withCard: 1234123412341234 expiringOn: aMonth withOwner: 'user' registeringOn: aSalesBook. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Interfaz cartExpiredErrorDescription ]! !
+
+!testRun: #InterfazTest #test21CanNotCheckOutCartIfExpired stamp: 'MO 11/7/2022 15:50:33'!
+PASSED!
+
+!testRun: #InterfazTest #test01createCartDaErrorConUsuarioInvalido stamp: 'MO 11/7/2022 15:50:33'!
+PASSED!
+
+!testRun: #InterfazTest #test02createCartDaErrorConContraseniaInvalida stamp: 'MO 11/7/2022 15:50:33'!
+PASSED!
+
+!testRun: #InterfazTest #test03createCartFuncionaConUnUsuarioYContraseniaValidos stamp: 'MO 11/7/2022 15:50:33'!
+PASSED!
+
+!testRun: #InterfazTest #test04addCartNoFuncionaConUnIDInvalido stamp: 'MO 11/7/2022 15:50:33'!
+PASSED!
+
+!testRun: #InterfazTest #test05addCartNoFuncionaConUnLibroInvalido stamp: 'MO 11/7/2022 15:50:33'!
+PASSED!
+
+!testRun: #InterfazTest #test06addCartNoFuncionaConUnaCantidadInvalida stamp: 'MO 11/7/2022 15:50:33'!
+PASSED!
+
+!testRun: #InterfazTest #test07AddToCartAgregaUnLibroCorrectamente stamp: 'MO 11/7/2022 15:50:33'!
+PASSED!
+
+!testRun: #InterfazTest #test08ListCartNoFuncionaConCartIDInvalida stamp: 'MO 11/7/2022 15:50:33'!
+PASSED!
+
+!testRun: #InterfazTest #test09ListCartACartConUnLibroRetornaColeccionConEseLibro stamp: 'MO 11/7/2022 15:50:34'!
+PASSED!
+
+!testRun: #InterfazTest #test10ListCartACartConMultiplesLibrosRetornaColeccionConEsosLibros stamp: 'MO 11/7/2022 15:50:34'!
+PASSED!
+
+!testRun: #InterfazTest #test11CheckOutACartWithInvalidIDRaisesException stamp: 'MO 11/7/2022 15:50:34'!
+PASSED!
+
+!testRun: #InterfazTest #test12CheckOutACartWithExpiredCardRaisesException stamp: 'MO 11/7/2022 15:50:34'!
+PASSED!
+
+!testRun: #InterfazTest #test13CheckOutACartWithInvalidNumberedCardRaisesException stamp: 'MO 11/7/2022 15:50:34'!
+PASSED!
+
+!testRun: #InterfazTest #test14CheckOutACartWithOneBookRegistersSaleCorrectly stamp: 'MO 11/7/2022 15:50:34'!
+PASSED!
+
+!testRun: #InterfazTest #test15CannotListPurchasesIfAuthenticationFails stamp: 'MO 11/7/2022 15:50:34'!
+PASSED!
+
+!testRun: #InterfazTest #test16ListPurchasesWithoutSalesReturnsEmptyCollection stamp: 'MO 11/7/2022 15:50:34'!
+PASSED!
+
+!testRun: #InterfazTest #test17ListPurchasesWithOneSaleReturnsACollectionWithThatSale stamp: 'MO 11/7/2022 15:50:34'!
+PASSED!
+
+!testRun: #InterfazTest #test18ListPurchasesWithVaroiuosItemsReturnsACollectionCorrectly stamp: 'MO 11/7/2022 15:50:34'!
+PASSED!
+
+!testRun: #InterfazTest #test19CanNotAddToCartIfExpired stamp: 'MO 11/7/2022 15:50:34'!
+PASSED!
+
+!testRun: #InterfazTest #test20CanNotListCartIfExpired stamp: 'MO 11/7/2022 15:50:34'!
+PASSED!
+
+!testRun: #InterfazTest #test21CanNotCheckOutCartIfExpired stamp: 'MO 11/7/2022 15:50:34'!
+PASSED!
+
+----QUIT----(7 November 2022 15:51:23) CuisUniversity-5510.image priorSource: 7421919!

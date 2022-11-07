@@ -1,5 +1,13 @@
+!classDefinition: #InterfazTestSuite category: 'TusLibros'!
+TestCase subclass: #InterfazTestSuite
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+
 !classDefinition: #CartTest category: 'TusLibros'!
-TestCase subclass: #CartTest
+InterfazTestSuite subclass: #CartTest
 	instanceVariableNames: 'testObjectsFactory'
 	classVariableNames: ''
 	poolDictionaries: ''
@@ -99,7 +107,7 @@ setUp
 
 
 !classDefinition: #CashierTest category: 'TusLibros'!
-TestCase subclass: #CashierTest
+InterfazTestSuite subclass: #CashierTest
 	instanceVariableNames: 'testObjectsFactory debitBehavior'
 	classVariableNames: ''
 	poolDictionaries: ''
@@ -247,13 +255,13 @@ debit: anAmount from: aCreditCard
 
 
 !classDefinition: #CreditCardTest category: 'TusLibros'!
-TestCase subclass: #CreditCardTest
+InterfazTestSuite subclass: #CreditCardTest
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TusLibros'!
 
-!CreditCardTest methodsFor: 'as yet unclassified' stamp: 'SR 11/6/2022 17:39:43'!
+!CreditCardTest methodsFor: 'tests' stamp: 'SR 11/6/2022 17:39:43'!
 test01CannotCreateCardWithInvalidNumber
 
 	| aCard |
@@ -264,7 +272,7 @@ test01CannotCreateCardWithInvalidNumber
 		withExceptionDo: [ :anError |
 			self assert: anError messageText = CreditCard invalidCardNumberErrorDescription ]! !
 
-!CreditCardTest methodsFor: 'as yet unclassified' stamp: 'SR 11/6/2022 17:02:59'!
+!CreditCardTest methodsFor: 'tests' stamp: 'SR 11/6/2022 17:02:59'!
 test02CannotCreateCardWithEmptyOwner
 
 	| aCard |
@@ -275,7 +283,7 @@ test02CannotCreateCardWithEmptyOwner
 		withExceptionDo: [ :anError |
 			self assert: anError messageText = CreditCard invalidCardOwnerErrorDescription ]! !
 
-!CreditCardTest methodsFor: 'as yet unclassified' stamp: 'SR 11/6/2022 17:10:02'!
+!CreditCardTest methodsFor: 'tests' stamp: 'SR 11/6/2022 17:10:02'!
 test03CardCreatedWithValidNumberAndOwnerStoresCorrectInfo
 
 	| aCard |
@@ -288,17 +296,19 @@ test03CardCreatedWithValidNumberAndOwnerStoresCorrectInfo
 
 
 !classDefinition: #InterfazTest category: 'TusLibros'!
-TestCase subclass: #InterfazTest
-	instanceVariableNames: 'testObjectsFactory authenticatorBehavior laInterfaz'
+InterfazTestSuite subclass: #InterfazTest
+	instanceVariableNames: 'testObjectsFactory laInterfaz authenticatorBehavior debitBehavior clock'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TusLibros'!
 
-!InterfazTest methodsFor: 'setUp' stamp: 'MO 11/3/2022 21:18:40'!
+!InterfazTest methodsFor: 'setUp' stamp: 'MO 11/7/2022 14:19:06'!
 setUp 
 
 	testObjectsFactory := StoreTestObjectsFactory new.
 	authenticatorBehavior := [ :aUser :aPassword | true ].
+	debitBehavior := [ :anAmount :aCreditCard | ].
+	clock := DateAndTime now.
 	
 	laInterfaz := testObjectsFactory createInterfaz: self.! !
 
@@ -432,121 +442,188 @@ test10ListCartACartConMultiplesLibrosRetornaColeccionConEsosLibros
 	self assert: ((laInterfaz listCart: changoID) occurrencesOf: (testObjectsFactory itemSellByTheStore)) equals: 2.
 	self assert: ((laInterfaz listCart: changoID) occurrencesOf: (testObjectsFactory otherItemSellByTheStore)) equals: 3.! !
 
-!InterfazTest methodsFor: 'test' stamp: 'SR 11/6/2022 17:53:30'!
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 15:49:19'!
 test11CheckOutACartWithInvalidIDRaisesException
 
-	|aDate aSalesBook |
+	| aMonth aSalesBook |
 	
-	aDate  := Month month: 4 year: 2023 .
+	aMonth  := (Month month: testObjectsFactory today monthIndex year: testObjectsFactory today yearNumber + 1).
 	aSalesBook := OrderedCollection new.
 	
 	self 
-		should: [laInterfaz checkOutCart: 0 withCard: 1234567812345678 expiringOn: aDate withOwner: 'Mariano Oca' registeringOn: aSalesBook ]
+		should: [laInterfaz checkOutCart: 0 withCard: 1234567812345678 expiringOn: aMonth withOwner: 'Mariano Oca' registeringOn: aSalesBook ]
 		raise: Error
 		withExceptionDo: [ :anError |
 			self assert: anError messageText = Interfaz invalidCartIDErrorDescription.
 			self assert: aSalesBook isEmpty ]! !
 
-!InterfazTest methodsFor: 'test' stamp: 'SR 11/6/2022 17:54:38'!
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 15:49:11'!
 test12CheckOutACartWithExpiredCardRaisesException
 
-	|aDate changoID aSalesBook |
+	| aMonth changoID aSalesBook |
 	
-	aDate  := Month month: 4 year: 1998.
+	aMonth  := (Month month: testObjectsFactory today monthIndex year: testObjectsFactory today yearNumber - 1).
 	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
 	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 2.
 	aSalesBook := OrderedCollection new.
 	
 	self 
-		should: [laInterfaz checkOutCart: changoID withCard: 1234567812345678 expiringOn: aDate withOwner: 'user' registeringOn: aSalesBook ]
+		should: [laInterfaz checkOutCart: changoID withCard: 1234567812345678 expiringOn: aMonth withOwner: 'user' registeringOn: aSalesBook ]
 		raise: Error
 		withExceptionDo: [ :anError |
 			self assert: anError messageText = Cashier canNotChargeAnExpiredCreditCardErrorMessage.
 			self assert: aSalesBook isEmpty. ]! !
 
-!InterfazTest methodsFor: 'test' stamp: 'SR 11/6/2022 17:54:49'!
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 15:48:57'!
 test13CheckOutACartWithInvalidNumberedCardRaisesException
-	| aDate changoID aSalesBook |
 	
-	aDate  := Month month: 4 year: 2050.
+	| aMonth changoID aSalesBook |
+	
+	aMonth  := (Month month: testObjectsFactory today monthIndex year: testObjectsFactory today yearNumber + 1).
 	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
 	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 2.
 	aSalesBook := OrderedCollection new.
 	
 	self 
-		should: [ laInterfaz checkOutCart: changoID withCard: 1 expiringOn: aDate withOwner: 'user' registeringOn: aSalesBook ]
+		should: [ laInterfaz checkOutCart: changoID withCard: 1 expiringOn: aMonth withOwner: 'user' registeringOn: aSalesBook ]
 		raise: Error
 		withExceptionDo: [ :anError |
 			self assert: anError messageText = CreditCard invalidCardNumberErrorDescription.
 			self assert: aSalesBook isEmpty. ]! !
 
-!InterfazTest methodsFor: 'test' stamp: 'SR 11/6/2022 17:59:27'!
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 15:48:37'!
 test14CheckOutACartWithOneBookRegistersSaleCorrectly
 
-	| aDate changoID aSalesBook |
+	| aMonth changoID aSalesBook |
 	
-	aDate  := Month month: 4 year: 2050.
+	aMonth  := (Month month: testObjectsFactory today monthIndex year: testObjectsFactory today yearNumber + 1).
 	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
 	aSalesBook := OrderedCollection new.
 	
 	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1.
-	laInterfaz checkOutCart: changoID withCard: 1234123412341234 expiringOn: aDate withOwner: 'user' registeringOn: aSalesBook.
+	laInterfaz checkOutCart: changoID withCard: 1234123412341234 expiringOn: aMonth withOwner: 'user' registeringOn: aSalesBook.
 	
 	self assert: aSalesBook size equals: 1.
 	self assert: (aSalesBook first) total equals: (testObjectsFactory itemSellByTheStorePrice).
 
 	! !
 
-!InterfazTest methodsFor: 'test' stamp: 'SR 11/6/2022 18:04:23'!
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 12:24:08'!
 test15CannotListPurchasesIfAuthenticationFails
 
-	| aUser aPassword |
-	
-	aUser := 'La invalida'.
-	aPassword := 'contraseña valida'.
 	authenticatorBehavior := [ :anUser :anPassword | false ].
 	
 	self 
-		should: [ laInterfaz listPurchasesOf: aUser withPassword: aPassword ]
+		should: [ laInterfaz listPurchasesOf: 'user' withPassword: 'pass']
 		raise: Error
 		withExceptionDo: [ :anError |
 			self assert: anError messageText = Interfaz invalidLogInErrorDescription ]! !
 
-!InterfazTest methodsFor: 'test' stamp: 'SR 11/6/2022 22:26:04'!
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 12:24:30'!
 test16ListPurchasesWithoutSalesReturnsEmptyCollection
 
-	| aUser aPassword purchases |
+	| purchases |
 	
-	aUser := 'La invalida'.
-	aPassword := 'contraseña valida'.
-	
-	purchases := laInterfaz listPurchasesOf: aUser withPassword: aPassword.
+	purchases := laInterfaz listPurchasesOf: 'user' withPassword: 'pass'.
 	
 	self assert: purchases isEmpty.! !
 
-!InterfazTest methodsFor: 'test' stamp: 'SR 11/6/2022 23:50:06'!
-test17ListPurchasesWithoutOneSaleReturnsACollectionWithThatSale
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 15:50:01'!
+test17ListPurchasesWithOneSaleReturnsACollectionWithThatSale
 
-	| aUser aPassword purchases aDate changoID aSalesBook aSaleTotal |
-	
-	aUser := 'user'.
-	aPassword := 'pass'.
-	
-	aDate  := Month month: 4 year: 2050.
+	| purchases aMonth changoID aSalesBook |
+
+	aMonth  := (Month month: testObjectsFactory today monthIndex year: testObjectsFactory today yearNumber + 1).
 	aSalesBook := OrderedCollection new.
-	
-	changoID := laInterfaz createCartForUser: aUser withPassword: aPassword.
+
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
 	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1.
-	aSaleTotal := laInterfaz checkOutCart: changoID withCard: 1234123412341234 expiringOn: aDate withOwner: 'Owner' registeringOn: aSalesBook.
+	laInterfaz checkOutCart: changoID withCard: 1234123412341234 expiringOn: aMonth withOwner: 'Owner' registeringOn: aSalesBook.
+
+	purchases := laInterfaz listPurchasesOf: 'user' withPassword: 'pass'.
+
+	self assert: purchases size equals: 3.
+	self assert: purchases first equals: testObjectsFactory itemSellByTheStore.
+	self assert: purchases second equals: 1.
+	self assert: purchases third equals: testObjectsFactory itemSellByTheStorePrice.! !
+
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 15:49:35'!
+test18ListPurchasesWithVaroiuosItemsReturnsACollectionCorrectly
+
+	| purchases aMonth changoID aSalesBook totalSpended |
+
+	aMonth  := (Month month: testObjectsFactory today monthIndex year: testObjectsFactory today yearNumber + 1).
+	aSalesBook := OrderedCollection new.
+
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1.
+	laInterfaz addToCart: changoID book: (testObjectsFactory otherItemSellByTheStore) quantity: 2.
+	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 3.
+	totalSpended := laInterfaz checkOutCart: changoID withCard: 1234123412341234 expiringOn: aMonth withOwner: 'Owner' registeringOn: aSalesBook.
+
+	purchases := laInterfaz listPurchasesOf: 'user' withPassword: 'pass'.
+
+	self assert: purchases size equals: 5.
+	self assert: purchases first equals: testObjectsFactory otherItemSellByTheStore.
+	self assert: purchases second equals: 2.
+	self assert: purchases third equals: testObjectsFactory itemSellByTheStore.
+	self assert: purchases fourth equals: 4.
+	self assert: purchases fifth equals: totalSpended.! !
+
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 15:44:30'!
+test19CanNotAddToCartIfExpired
+
+	| changoID |
 	
-	purchases := laInterfaz listPurchasesOf: aUser withPassword: aPassword.
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
 	
-	self assert: purchases size > 0.
-	self assert: purchases first = testObjectsFactory otherItemSellByTheStore.
-	self assert: purchases second = 0.
-	self assert: purchases third = testObjectsFactory itemSellByTheStore.
-	self assert: purchases fourth = 1.
-	self assert: purchases last = testObjectsFactory itemSellByTheStorePrice.! !
+	"clock := DateAndTime now + (Duration minutes: 31). esto no anda así que lo voy a implementar por las malas"
+	laInterfaz setClock: (DateAndTime now + (Duration minutes: 31)).
+	
+	self 
+		should: [ laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1 ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Interfaz cartExpiredErrorDescription ]! !
+
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 15:44:20'!
+test20CanNotListCartIfExpired
+
+	| changoID |
+	
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	
+	laInterfaz setClock: (DateAndTime now + (Duration minutes: 31)).
+	
+	self 
+		should: [ laInterfaz listCart: changoID ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Interfaz cartExpiredErrorDescription ]! !
+
+!InterfazTest methodsFor: 'test' stamp: 'MO 11/7/2022 15:50:21'!
+test21CanNotCheckOutCartIfExpired
+
+	| aMonth changoID aSalesBook |
+	
+	aMonth  := (Month month: testObjectsFactory today monthIndex year: testObjectsFactory today yearNumber + 1).
+	changoID := laInterfaz createCartForUser: 'user' withPassword: 'pass'.
+	aSalesBook := OrderedCollection new.
+	laInterfaz addToCart: changoID book: (testObjectsFactory itemSellByTheStore) quantity: 1.
+	
+	laInterfaz setClock: (DateAndTime now + (Duration minutes: 31)).
+	
+	self 
+		should: [ laInterfaz checkOutCart: changoID withCard: 1234123412341234 expiringOn: aMonth withOwner: 'user' registeringOn: aSalesBook. ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Interfaz cartExpiredErrorDescription ]! !
+
+
+!InterfazTest methodsFor: 'merchant processor protocol' stamp: 'MO 11/7/2022 12:04:41'!
+debit: anAmount from: aCreditCard 
+
+	^debitBehavior value: anAmount value: aCreditCard ! !
 
 
 !InterfazTest methodsFor: 'authenticator protocol' stamp: 'MO 11/3/2022 19:53:14'!
@@ -554,10 +631,16 @@ authenticateUser: aUser with: aPassword
 	
 	^ authenticatorBehavior value: aUser value: aPassword! !
 
+
+!InterfazTest methodsFor: 'clock protocol' stamp: 'MO 11/7/2022 15:21:02'!
+clock
+
+	^ clock! !
+
 
 !classDefinition: #Cart category: 'TusLibros'!
 Object subclass: #Cart
-	instanceVariableNames: 'catalog items'
+	instanceVariableNames: 'catalog items lastModificationTime'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TusLibros'!
@@ -590,11 +673,23 @@ initializeAcceptingItemsOf: aCatalog
 	catalog := aCatalog.
 	items := OrderedCollection new.! !
 
+!Cart methodsFor: 'initialization' stamp: 'MO 11/7/2022 14:50:32'!
+initializeAcceptingItemsOf: aCatalog on: aTime
+
+	catalog := aCatalog.
+	items := OrderedCollection new.
+	lastModificationTime := aTime copy.! !
+
 
 !Cart methodsFor: 'queries' stamp: 'SR 11/6/2022 23:27:05'!
 catalog
 
 	^catalog! !
+
+!Cart methodsFor: 'queries' stamp: 'MO 11/7/2022 14:53:10'!
+lastModificationTime
+
+	^ lastModificationTime copy! !
 
 !Cart methodsFor: 'queries' stamp: 'HernanWilkinson 6/17/2013 17:45'!
 occurrencesOf: anItem
@@ -637,6 +732,15 @@ add: aQuantity of: anItem
 
 	1 to: aQuantity do: [ :aNumber | items add: anItem ]! !
 
+!Cart methodsFor: 'adding' stamp: 'MO 11/7/2022 15:41:41'!
+add: aQuantity of: anItem on: aTime
+
+	self assertIsValidQuantity: aQuantity.
+	self assertIsValidItem: anItem.
+	lastModificationTime := aTime copy.
+
+	1 to: aQuantity do: [ :aNumber | items add: anItem ]! !
+
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
 !classDefinition: 'Cart class' category: 'TusLibros'!
@@ -647,6 +751,11 @@ Cart class
 acceptingItemsOf: aCatalog
 
 	^self new initializeAcceptingItemsOf: aCatalog ! !
+
+!Cart class methodsFor: 'instance creation' stamp: 'MO 11/7/2022 14:50:47'!
+acceptingItemsOf: aCatalog on: aTime
+
+	^self new initializeAcceptingItemsOf: aCatalog on: aTime! !
 
 
 !classDefinition: #Cashier category: 'TusLibros'!
@@ -661,6 +770,15 @@ calculateTotal
 
 	total := cart total.
 	! !
+
+!Cashier methodsFor: 'checkout - private' stamp: 'MO 11/7/2022 12:48:24'!
+collectBooksAndOcurrencesOn: aSaleSummary
+
+	cart catalog keysDo: [ :book |
+		(cart includes: book) ifTrue: [
+			aSaleSummary add: book.
+			aSaleSummary add: (cart items occurrencesOf: book)]
+		]! !
 
 !Cashier methodsFor: 'checkout - private' stamp: 'HernanWilkinson 6/17/2013 19:07'!
 createSale
@@ -689,18 +807,17 @@ checkOut
 
 	^ total! !
 
-!Cashier methodsFor: 'checkout' stamp: 'SR 11/6/2022 23:47:05'!
+!Cashier methodsFor: 'checkout' stamp: 'MO 11/7/2022 12:48:46'!
 saleSummary
 
 	| saleSummary |
 	
 	saleSummary := OrderedCollection new.
-	cart catalog keysDo: [ :book |
-		saleSummary add: book.
-		saleSummary add: (cart items occurrencesOf: book).
-		].
+	
+	self collectBooksAndOcurrencesOn: saleSummary.
 	saleSummary add: cart total.
-	^saleSummary.! !
+	
+	^ saleSummary.! !
 
 
 !Cashier methodsFor: 'initialization' stamp: 'HernanWilkinson 6/17/2013 18:53'!
@@ -803,10 +920,10 @@ assertCreditCardNumberIsValid: aCardNumber
 	
 	(aCardNumber > ((10 ^ 16) -1) or: [aCardNumber <= ((10 ^ 15) -1)]) ifTrue: [self error: self invalidCardNumberErrorDescription].! !
 
-!CreditCard class methodsFor: 'instance creation' stamp: 'SR 11/6/2022 17:04:08'!
+!CreditCard class methodsFor: 'instance creation' stamp: 'MO 11/7/2022 12:11:38'!
 assertCreditCardOwnerIsValid: aCardOwner
 	
-	(aCardOwner = '') ifTrue: [self error: self invalidCardOwnerErrorDescription ].! !
+	(aCardOwner isEmpty) ifTrue: [self error: self invalidCardOwnerErrorDescription ].! !
 
 !CreditCard class methodsFor: 'instance creation' stamp: 'SR 11/6/2022 17:04:27'!
 expiringOn: aMonth withNumber: aCardNumber withOwner: aName
@@ -829,7 +946,7 @@ invalidCardOwnerErrorDescription
 
 !classDefinition: #Interfaz category: 'TusLibros'!
 Object subclass: #Interfaz
-	instanceVariableNames: 'authenticator catalog cartIDtoCart cartIDManager merchantProcessor saleSummary'
+	instanceVariableNames: 'authenticator catalog merchantProcessor clock cartIDtoCart cartIDManager saleSummary'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TusLibros'!
@@ -844,10 +961,16 @@ assertValidBook: aBookISBN
 
 	(catalog includesKey: aBookISBN) ifFalse: [ self error: self class invalidBookISBNIDErrorDescription ]! !
 
-!Interfaz methodsFor: 'assertions' stamp: 'MO 11/3/2022 21:42:24'!
+!Interfaz methodsFor: 'assertions' stamp: 'MO 11/7/2022 15:11:41'!
 assertValidCart: aChangoID
 
-	(cartIDtoCart includesKey: aChangoID) ifFalse: [ self error: self class invalidCartIDErrorDescription ]! !
+	|xxx|
+
+	(cartIDtoCart includesKey: aChangoID) ifFalse: [ self error: self class invalidCartIDErrorDescription ].
+	
+	xxx := ((cartIDtoCart at: aChangoID) lastModificationTime).
+	
+	((clock - xxx) < (Duration minutes: 30)) ifFalse: [ self error: self class cartExpiredErrorDescription ].! !
 
 !Interfaz methodsFor: 'assertions' stamp: 'MO 11/3/2022 21:47:29'!
 assertValidQuantity: aQuantity
@@ -855,11 +978,13 @@ assertValidQuantity: aQuantity
 	(aQuantity > 0) ifFalse: [ self error: self class invalidQuantityErrorDescription ]! !
 
 
-!Interfaz methodsFor: 'initialization' stamp: 'SR 11/6/2022 23:39:04'!
-initializeWith: anAuthenticator with: aCatalog 
+!Interfaz methodsFor: 'initialization' stamp: 'MO 11/7/2022 12:18:44'!
+initializeWith: anAuthenticator with: aCatalog with: aMerchantProcesor with: aClock
 
 	authenticator := anAuthenticator.
 	catalog  := aCatalog.
+	merchantProcessor := aMerchantProcesor.
+	clock := aClock.
 	cartIDtoCart := Dictionary new.
 	cartIDManager := 0.
 	saleSummary := OrderedCollection new.! !
@@ -874,7 +999,7 @@ addToCart: aChangoID book: aBookISBN quantity: aQuantity
 	
 	(cartIDtoCart at: aChangoID) add: aQuantity of: aBookISBN! !
 
-!Interfaz methodsFor: 'operations' stamp: 'SR 11/6/2022 23:32:00'!
+!Interfaz methodsFor: 'operations' stamp: 'MO 11/7/2022 11:55:09'!
 checkOutCart: cartID withCard: cardNumber expiringOn: aDate withOwner: aName registeringOn: aSalesRegister
 
 	| aCard aCashier |
@@ -882,17 +1007,17 @@ checkOutCart: cartID withCard: cardNumber expiringOn: aDate withOwner: aName reg
 	self assertValidCart: cartID.
 	
 	aCard := CreditCard expiringOn: aDate withNumber: cardNumber withOwner: aName.
-	aCashier := Cashier toCheckout: (cartIDtoCart at: cartID) charging: aCard throught: (MerchantProcessorSimulator new) on: (DateAndTime now) registeringOn: aSalesRegister.
+	aCashier := Cashier toCheckout: (cartIDtoCart at: cartID) charging: aCard throught: merchantProcessor on: clock registeringOn: aSalesRegister.
 	saleSummary := aCashier saleSummary.
 	
 	^aCashier checkOut.! !
 
-!Interfaz methodsFor: 'operations' stamp: 'SR 11/7/2022 00:33:44'!
+!Interfaz methodsFor: 'operations' stamp: 'MO 11/7/2022 15:04:00'!
 createCartForUser: aUserID withPassword: aPassword
 	
 	self assertValid: aUserID with: aPassword.
 	
-	cartIDtoCart at: cartIDManager put: (Cart acceptingItemsOf: catalog).
+	cartIDtoCart at: cartIDManager put: (Cart acceptingItemsOf: catalog on: clock).
 	
 	cartIDManager := cartIDManager + 1.
 	
@@ -911,18 +1036,28 @@ listPurchasesOf: aUserID withPassword: aPassword
 	
 	^saleSummary.! !
 
+!Interfaz methodsFor: 'operations' stamp: 'MO 11/7/2022 15:35:33'!
+setClock: aTime
+	
+	clock := aTime! !
+
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
 !classDefinition: 'Interfaz class' category: 'TusLibros'!
 Interfaz class
 	instanceVariableNames: ''!
 
-!Interfaz class methodsFor: 'instance creation' stamp: 'MO 11/3/2022 21:07:03'!
-withAuthenticator: anAuthenticator withCatalog: aCatalog 
+!Interfaz class methodsFor: 'instance creation' stamp: 'MO 11/7/2022 12:19:13'!
+withAuthenticator: anAuthenticator withCatalog: aCatalog withMerchantProcessor: aMerchantProcessor withClock: aClock
 	
-	^ self new initializeWith: anAuthenticator with: aCatalog
+	^ self new initializeWith: anAuthenticator with: aCatalog with: aMerchantProcessor with: 	aClock
 	! !
 
+
+!Interfaz class methodsFor: 'error descriptions' stamp: 'MO 11/7/2022 15:01:40'!
+cartExpiredErrorDescription
+
+	^ 'estas hace una banda con el changuito abandonado, ya lo regalamos'! !
 
 !Interfaz class methodsFor: 'error descriptions' stamp: 'MO 11/3/2022 21:46:33'!
 invalidBookISBNIDErrorDescription
@@ -943,23 +1078,6 @@ invalidLogInErrorDescription
 invalidQuantityErrorDescription
 
 	^ 'claramente no sabes contar'! !
-
-
-!classDefinition: #MerchantProcessorSimulator category: 'TusLibros'!
-Object subclass: #MerchantProcessorSimulator
-	instanceVariableNames: 'debitBehavior'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TusLibros'!
-
-!MerchantProcessorSimulator methodsFor: 'as yet unclassified' stamp: 'cde 11/5/2022 17:50:06'!
-debit: anAmount from: aCreditCard 
-
-	^debitBehavior value: anAmount value: aCreditCard ! !
-
-!MerchantProcessorSimulator methodsFor: 'as yet unclassified' stamp: 'cde 11/5/2022 17:51:18'!
-initialize
-	debitBehavior := [ :anAmount :aCreditCard | ]! !
 
 
 !classDefinition: #Sale category: 'TusLibros'!
@@ -1057,10 +1175,10 @@ initialize
 	today := DateAndTime now! !
 
 
-!StoreTestObjectsFactory methodsFor: 'interfaz' stamp: 'MO 11/3/2022 21:02:42'!
-createInterfaz: anAuthenticator
+!StoreTestObjectsFactory methodsFor: 'interfaz' stamp: 'MO 11/7/2022 14:42:00'!
+createInterfaz: aSimulator
 	
-	^ Interfaz withAuthenticator: anAuthenticator withCatalog: self defaultCatalog! !
+	^ Interfaz withAuthenticator: aSimulator withCatalog: self defaultCatalog withMerchantProcessor: aSimulator withClock: aSimulator clock! !
 
 
 !StoreTestObjectsFactory methodsFor: 'date' stamp: 'HernanWilkinson 6/17/2013 18:37'!
