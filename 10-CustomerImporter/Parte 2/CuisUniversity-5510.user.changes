@@ -1,0 +1,1773 @@
+
+
+----QUIT----(26 October 2022 08:07:27) CuisUniversity-5510.image priorSource: 2900072!
+
+----STARTUP---- (26 October 2022 08:07:28) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5510.image!
+
+
+----QUIT----(26 October 2022 08:07:28) CuisUniversity-5510.image priorSource: 7154921!
+
+----STARTUP---- (14 November 2022 18:08:05) as C:\Users\maria\Desktop\Facultad\Taller\Inge1\CuisUniversity-windows64\CuisUniversity-5510.image!
+
+
+----End fileIn of C:\Users\maria\OneDrive - dc.uba.ar\Downloads\CustomerImporter-35.st----!
+
+!testRun: #ImportTest #test01Import stamp: 'MO 11/14/2022 18:11:24'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'MO 11/14/2022 18:14:41'!
+PASSED!
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'MO 11/14/2022 18:18:06' prior: 50555519 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| newCustomer  |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+
+!classDefinition: #CustomerImporter category: 'CustomerImporter' stamp: 'MO 11/14/2022 18:18:06'!
+Object subclass: #CustomerImporter
+	instanceVariableNames: 'session readStream line'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 18:19:43' prior: 50555676 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| newCustomer  |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData record |
+			record := line findTokens: $,.
+	customerData := record.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 18:21:32' prior: 50555717 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| newCustomer  |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [ | record |
+		record := line findTokens: $,.
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := record.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := record.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 18:21:45' prior: 50555751 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| newCustomer  |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [ | record |
+		record := line findTokens: $,.
+		(line beginsWith: 'C') ifTrue: [ newCustomer := Customer new.
+			newCustomer firstName: record second.
+			newCustomer lastName: record third.
+			newCustomer identificationType: record fourth.
+			newCustomer identificationNumber: record fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := record.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 18:22:00' prior: 50555785 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| newCustomer  |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [ | record |
+		record := line findTokens: $,.
+		(line beginsWith: 'C') ifTrue: [ newCustomer := Customer new.
+			newCustomer firstName: record second.
+			newCustomer lastName: record third.
+			newCustomer identificationType: record fourth.
+			newCustomer identificationNumber: record fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | newAddress |
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'MO 11/14/2022 18:23:39' prior: 50555816 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	 
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [ | record |
+		record := line findTokens: $,.
+		(line beginsWith: 'C') ifTrue: [ 
+			newCustomer := Customer new.
+			newCustomer firstName: record second.
+			newCustomer lastName: record third.
+			newCustomer identificationType: record fourth.
+			newCustomer identificationNumber: record fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | newAddress |
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+
+!classDefinition: #CustomerImporter category: 'CustomerImporter' stamp: 'MO 11/14/2022 18:23:39'!
+Object subclass: #CustomerImporter
+	instanceVariableNames: 'session readStream line newCustomer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'MO 11/14/2022 18:23:55' prior: 50555846 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	 
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [  
+		record := line findTokens: $,.
+		(line beginsWith: 'C') ifTrue: [ 
+			newCustomer := Customer new.
+			newCustomer firstName: record second.
+			newCustomer lastName: record third.
+			newCustomer identificationType: record fourth.
+			newCustomer identificationNumber: record fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | newAddress |
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+
+!classDefinition: #CustomerImporter category: 'CustomerImporter' stamp: 'MO 11/14/2022 18:23:56'!
+Object subclass: #CustomerImporter
+	instanceVariableNames: 'session readStream line newCustomer record'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 18:24:41' prior: 50555884 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	 
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [  
+		record := line findTokens: $,.
+		(line beginsWith: 'C') ifTrue: [ 
+			newCustomer := Customer new.
+			newCustomer firstName: record second.
+			newCustomer lastName: record third.
+			newCustomer identificationType: record fourth.
+			newCustomer identificationNumber: record fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | newAddress |
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 18:25:00'!
+importCustomer
+
+	newCustomer := Customer new.
+			newCustomer firstName: record second.
+			newCustomer lastName: record third.
+			newCustomer identificationType: record fourth.
+			newCustomer identificationNumber: record fifth.
+			session persist: newCustomer! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 18:25:01' prior: 50555922 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	 
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [  
+		record := line findTokens: $,.
+		(line beginsWith: 'C') ifTrue: [ 
+			self importCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | newAddress |
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 18:26:12'!
+importAddress
+
+	| newAddress |
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 18:26:12' prior: 50555962 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	 
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [  
+		record := line findTokens: $,.
+		(line beginsWith: 'C') ifTrue: [ 
+			self importCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ self importAddress ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 18:29:06' prior: 50555997 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	 
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [  
+		record := line findTokens: $,.
+		
+		(line beginsWith: 'C') ifTrue: [ self importCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ self importAddress ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 18:29:50'!
+isCustomerRecord
+
+	^ line beginsWith: 'C'! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 18:29:51' prior: 50556010 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	 
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [  
+		record := line findTokens: $,.
+		
+		(self isCustomerRecord) ifTrue: [ self importCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ self importAddress ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 18:30:09' prior: 50556027 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	 
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [  
+		record := line findTokens: $,.
+		
+		self isCustomerRecord ifTrue: [ self importCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ self importAddress ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 18:30:21'!
+isAddressRecord
+
+	^ line beginsWith: 'A'! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 18:30:21' prior: 50556040 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	 
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [  
+		record := line findTokens: $,.
+		
+		self isCustomerRecord ifTrue: [ self importCustomer ].
+
+		(self isAddressRecord) ifTrue: [ self importAddress ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 18:30:28' prior: 50556057 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	 
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [  
+		record := line findTokens: $,.
+		
+		self isCustomerRecord ifTrue: [ self importCustomer ].
+
+		self isAddressRecord ifTrue: [ self importAddress ].
+
+		line := readStream nextLine. ].
+
+	! !
+
+!testRun: #ImportTest #test01Import stamp: 'MO 11/14/2022 18:30:29'!
+PASSED!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 18:31:02' prior: 50556070 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [  
+		record := line findTokens: $,.
+	
+		self isCustomerRecord ifTrue: [ self importCustomer ].
+
+		self isAddressRecord ifTrue: [ self importAddress ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 18:31:38' prior: 50556086 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [  
+		record := line findTokens: $,.
+	
+		self isCustomerRecord ifTrue: [ self importCustomer ].
+
+		self isAddressRecord ifTrue: [ self importAddress ].
+
+		line := readStream nextLine. ].
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 18:32:26' prior: 50556099 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+
+	[ line := readStream nextLine. line notNil ] whileTrue: [  
+		record := line findTokens: $,.
+	
+		self isCustomerRecord ifTrue: [ self importCustomer ].
+
+		self isAddressRecord ifTrue: [ self importAddress ].
+
+		].
+	! !
+
+!testRun: #ImportTest #test01Import stamp: 'MO 11/14/2022 18:32:28'!
+PASSED!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 18:32:53' prior: 50556112 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+
+	[ line := readStream nextLine. line notNil ] whileTrue: [  
+		record := line findTokens: $,.
+	
+		self isCustomerRecord ifTrue: [ self importCustomer ].
+
+		self isAddressRecord ifTrue: [ self importAddress ].
+	].
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 18:34:38' prior: 50556126 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+
+	[ line := readStream nextLine. line notNil ] whileTrue: [  
+		record := line findTokens: $,.
+	
+		self isCustomerRecord ifTrue: [ self importCustomer ].
+
+		self isAddressRecord ifTrue: [ self importAddress ].
+		
+	
+	].
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 18:34:47'!
+hasNextLine
+
+	line := readStream nextLine. line notNil! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 18:34:47' prior: 50556138 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+
+	[ self hasNextLine ] whileTrue: [  
+		record := line findTokens: $,.
+	
+		self isCustomerRecord ifTrue: [ self importCustomer ].
+
+		self isAddressRecord ifTrue: [ self importAddress ].
+		
+	
+	].
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 18:34:57' prior: 50556155 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+
+	self hasNextLine whileTrue: [  
+		record := line findTokens: $,.
+	
+		self isCustomerRecord ifTrue: [ self importCustomer ].
+
+		self isAddressRecord ifTrue: [ self importAddress ].
+		
+	
+	].
+	! !
+
+!testRun: #ImportTest #test01Import stamp: 'MO 11/14/2022 18:34:59'!
+ERROR!
+
+!testRun: #ImportTest #test01Import stamp: 'MO 11/14/2022 18:34:59'!
+ERROR!
+
+!testRun: #ImportTest #test01Import stamp: 'MO 11/14/2022 18:35:02'!
+ERROR!
+
+!testRun: #ImportTest #test01Import stamp: 'MO 11/14/2022 18:35:03'!
+ERROR!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 18:35:10' prior: 50556166 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+
+	[ self hasNextLine ] whileTrue: [  
+		record := line findTokens: $,.
+	
+		self isCustomerRecord ifTrue: [ self importCustomer ].
+
+		self isAddressRecord ifTrue: [ self importAddress ].
+		
+	
+	].
+	! !
+
+!testRun: #ImportTest #test01Import stamp: 'MO 11/14/2022 18:35:11'!
+ERROR!
+
+!testRun: #ImportTest #test01Import stamp: 'MO 11/14/2022 18:35:11'!
+ERROR!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 18:35:42' prior: 50556149!
+hasNextLine
+
+	line := readStream nextLine. 
+	^ line notNil! !
+
+!testRun: #ImportTest #test01Import stamp: 'MO 11/14/2022 18:35:47'!
+PASSED!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 18:36:30' prior: 50556187 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+
+	[ self hasNextLine ] whileTrue: [
+		record := line findTokens: $,.
+	
+		self isCustomerRecord ifTrue: [ self importCustomer ].
+
+		self isAddressRecord ifTrue: [ self importAddress ].
+		
+	
+	].
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 18:36:50'!
+createRecord
+
+	^ record := line findTokens: $,! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 18:36:51' prior: 50556211 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+
+	[ self hasNextLine ] whileTrue: [
+		self createRecord.
+	
+		self isCustomerRecord ifTrue: [ self importCustomer ].
+
+		self isAddressRecord ifTrue: [ self importAddress ].
+		
+	
+	].
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 18:37:10'!
+importRecord
+
+	self isCustomerRecord ifTrue: [ self importCustomer ].
+
+		self isAddressRecord ifTrue: [ self importAddress ]! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 18:37:10' prior: 50556227 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+
+	[ self hasNextLine ] whileTrue: [
+		self createRecord.
+	
+		self importRecord.
+		
+	
+	].
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 18:38:02' prior: 50556245 overrides: 16902254!
+value
+
+	[ self hasNextLine ] whileTrue: [
+		self createRecord.
+		self importRecord.
+	].
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 18:38:06' prior: 50556253 overrides: 16902254!
+value
+
+	[ self hasNextLine ] whileTrue: [
+		self createRecord.
+		self importRecord.
+	]
+	! !
+!ImportTest methodsFor: 'tests' stamp: 'MO 11/14/2022 18:40:32'!
+test02ShouldNotImportIfFileFormatIsNotCorrect
+
+	CustomerImporter valueFrom: self validImportData into: session..
+
+	self assertImportedRightNumberOfCustomers.
+	self assertPepeSanchezWasImportedCorrecty.
+	self assertJuanPerezWasImportedCorrectly! !
+!ImportTest methodsFor: 'tests' stamp: 'MO 11/14/2022 18:40:50' prior: 50556265!
+test02ShouldNotImportIfFileFormatIsNotCorrect
+
+	CustomerImporter valueFrom: self validImportData into: session.
+
+	self assertImportedRightNumberOfCustomers.
+	self assertPepeSanchezWasImportedCorrecty.
+	self assertJuanPerezWasImportedCorrectly! !
+!ImportTest methodsFor: 'tests' stamp: 'MO 11/14/2022 18:40:54' prior: 50555268!
+test01Import
+
+	CustomerImporter valueFrom: self validImportData into: session.
+
+	self assertImportedRightNumberOfCustomers.
+	self assertPepeSanchezWasImportedCorrecty.
+	self assertJuanPerezWasImportedCorrectly ! !
+!ImportTest methodsFor: 'tests' stamp: 'MO 11/14/2022 18:44:53' prior: 50556276!
+test02ShouldNotImportIfFileFormatIsNotCorrect
+
+	self should: [CustomerImporter valueFrom: self validImportData into: session.]
+		raise: Error
+		withMessageText: [ :aErrorMessage | self assert: aErrorMessage equals: CustomerImporter invalidFormatErrorDescription]
+	
+	CustomerImporter valueFrom: self validImportData into: session.
+
+	self assertImportedRightNumberOfCustomers.
+	self assertPepeSanchezWasImportedCorrecty.
+	self assertJuanPerezWasImportedCorrectly! !
+!ImportTest methodsFor: 'tests' stamp: 'MO 11/14/2022 18:47:11' prior: 50556297!
+test02ShouldNotImportIfFileFormatIsNotCorrect
+
+	self should: [CustomerImporter valueFrom: self validImportData into: session.]
+		raise: Error
+		withMessageText: [ :aErrorMessage | self assert: aErrorMessage equals: CustomerImporter invalidFormatErrorDescription.
+			self assert: (session selectAllOfType: Customer) size equals: 0 ]! !
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'MO 11/14/2022 18:48:12'!
+invalidFormatErrorDescription
+
+	^ 'mira, la cosa es así arranca con A o C, yo no iventé las reglas'! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 18:50:23' prior: 50556237!
+importRecord
+
+	self isCustomerRecord ifTrue: [ self importCustomer ].
+
+	self isAddressRecord ifTrue: [ self importAddress ].
+	
+	! !
+
+!testRun: #ImportTest #test01Import stamp: 'MO 11/14/2022 18:50:24'!
+PASSED!
+
+!testRun: #ImportTest #test02ShouldNotImportIfFileFormatIsNotCorrect stamp: 'MO 11/14/2022 18:50:24'!
+FAILURE!
+
+!testRun: #ImportTest #test02ShouldNotImportIfFileFormatIsNotCorrect stamp: 'MO 11/14/2022 18:50:25'!
+FAILURE!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 18:51:09' prior: 50556336!
+importRecord
+
+	self isCustomerRecord ifTrue: [ self importCustomer ].
+
+	self isAddressRecord ifTrue: [ self importAddress ].
+	
+	self error: self class invalidFormatErrorDescription! !
+
+!testRun: #ImportTest #test01Import stamp: 'MO 11/14/2022 18:51:10'!
+ERROR!
+
+!testRun: #ImportTest #test02ShouldNotImportIfFileFormatIsNotCorrect stamp: 'MO 11/14/2022 18:51:11'!
+ERROR!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 18:52:18' prior: 50556353!
+importRecord
+
+	self isCustomerRecord ifTrue: [ self importCustomer ].
+
+	self isAddressRecord ifTrue: [ self importAddress ].
+	
+	self error: self class invalidFormatErrorDescription! !
+
+!testRun: #ImportTest #test01Import stamp: 'MO 11/14/2022 18:52:19'!
+ERROR!
+
+!testRun: #ImportTest #test02ShouldNotImportIfFileFormatIsNotCorrect stamp: 'MO 11/14/2022 18:52:20'!
+ERROR!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 18:53:12' prior: 50556368!
+importRecord
+
+	self isCustomerRecord ifTrue: [ ^ self importCustomer ].
+
+	self isAddressRecord ifTrue: [ ^ self importAddress ].
+	
+	self error: self class invalidFormatErrorDescription! !
+
+!testRun: #ImportTest #test01Import stamp: 'MO 11/14/2022 18:53:14'!
+PASSED!
+
+!testRun: #ImportTest #test02ShouldNotImportIfFileFormatIsNotCorrect stamp: 'MO 11/14/2022 18:53:14'!
+FAILURE!
+
+!testRun: #ImportTest #test02ShouldNotImportIfFileFormatIsNotCorrect stamp: 'MO 11/14/2022 18:53:15'!
+FAILURE!
+
+!testRun: #ImportTest #test02ShouldNotImportIfFileFormatIsNotCorrect stamp: 'MO 11/14/2022 18:53:53'!
+FAILURE!
+!ImportTest methodsFor: 'test data' stamp: 'MO 11/14/2022 18:55:55'!
+invalidImportData
+
+	^ ReadStream on:
+'W,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+!ImportTest methodsFor: 'test data' stamp: 'MO 11/14/2022 18:56:03' prior: 50556404!
+invalidImportData
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,D,22333444
+W,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+!ImportTest methodsFor: 'tests' stamp: 'MO 11/14/2022 18:56:12' prior: 50556315!
+test02ShouldNotImportIfFileFormatIsNotCorrect
+
+	self should: [CustomerImporter valueFrom: self invalidImportData into: session.]
+		raise: Error
+		withMessageText: [ :aErrorMessage | self assert: aErrorMessage equals: CustomerImporter invalidFormatErrorDescription.
+			self assert: (session selectAllOfType: Customer) size equals: 0 ]! !
+
+!testRun: #ImportTest #test02ShouldNotImportIfFileFormatIsNotCorrect stamp: 'MO 11/14/2022 18:56:13'!
+ERROR!
+
+!testRun: #ImportTest #test02ShouldNotImportIfFileFormatIsNotCorrect stamp: 'MO 11/14/2022 18:56:32'!
+ERROR!
+!ImportTest methodsFor: 'tests' stamp: 'MO 11/14/2022 18:59:54' prior: 50556422!
+test02ShouldNotImportIfFileFormatIsNotCorrect
+
+	self should: [CustomerImporter valueFrom: self invalidImportData into: session.]
+		raise: Error
+		withExceptionDo: [ :anError | self assert: anError messageText equals: CustomerImporter invalidFormatErrorDescription.
+			self assert: (session selectAllOfType: Customer) size equals: 0 ]! !
+
+!testRun: #ImportTest #test02ShouldNotImportIfFileFormatIsNotCorrect stamp: 'MO 11/14/2022 19:00:46'!
+FAILURE!
+!ImportTest methodsFor: 'tests' stamp: 'MO 11/14/2022 19:01:06' prior: 50556442!
+test02ShouldNotImportIfFileFormatIsNotCorrect
+
+	self should: [CustomerImporter valueFrom: self invalidImportData into: session.]
+		raise: Error
+		withExceptionDo: [ :anError | self assert: anError messageText equals: CustomerImporter invalidFormatErrorDescription.
+			"self assert: (session selectAllOfType: Customer) size equals: 0" ]! !
+
+!testRun: #ImportTest #test02ShouldNotImportIfFileFormatIsNotCorrect stamp: 'MO 11/14/2022 19:01:07'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'MO 11/14/2022 19:01:08'!
+PASSED!
+
+!testRun: #ImportTest #test02ShouldNotImportIfFileFormatIsNotCorrect stamp: 'MO 11/14/2022 19:01:08'!
+PASSED!
+!ImportTest methodsFor: 'tests' stamp: 'MO 11/14/2022 19:01:26' prior: 50556459!
+test02ShouldNotImportIfFileFormatIsNotCorrect
+
+	self should: [CustomerImporter valueFrom: self invalidImportData into: session.]
+		raise: Error
+		withExceptionDo: [ :anError | self assert: anError messageText equals: CustomerImporter invalidFormatErrorDescription.
+			self assert: (session selectAllOfType: Customer) size equals: 0 ]! !
+
+!testRun: #ImportTest #test02ShouldNotImportIfFileFormatIsNotCorrect stamp: 'MO 11/14/2022 19:01:29'!
+FAILURE!
+!ImportTest methodsFor: 'tests' stamp: 'MO 11/14/2022 19:01:51' prior: 50556482!
+test02ShouldNotImportIfFileFormatIsNotCorrect
+
+	self should: [CustomerImporter valueFrom: self invalidImportData into: session.]
+		raise: Error
+		withExceptionDo: [ :anError | self assert: anError messageText equals: CustomerImporter invalidFormatErrorDescription.
+			self assert: (session selectAllOfType: Customer) size equals: 1 ]! !
+
+!testRun: #ImportTest #test01Import stamp: 'MO 11/14/2022 19:02:06'!
+PASSED!
+
+!testRun: #ImportTest #test02ShouldNotImportIfFileFormatIsNotCorrect stamp: 'MO 11/14/2022 19:02:06'!
+PASSED!
+!ImportTest methodsFor: 'test data' stamp: 'MO 11/14/2022 19:04:30' prior: 50555371!
+validImportData
+
+	^ ReadStream on:
+'CC,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+
+!testRun: #ImportTest #test01Import stamp: 'MO 11/14/2022 19:04:32'!
+PASSED!
+
+!testRun: #ImportTest #test02ShouldNotImportIfFileFormatIsNotCorrect stamp: 'MO 11/14/2022 19:04:33'!
+PASSED!
+!ImportTest methodsFor: 'test data' stamp: 'MO 11/14/2022 19:05:10' prior: 50556519!
+validImportData
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+!ImportTest methodsFor: 'test data' stamp: 'MO 11/14/2022 19:05:20'!
+cacaImportData
+
+	^ ReadStream on:
+'Caca,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+!ImportTest methodsFor: 'tests' stamp: 'MO 11/14/2022 19:06:32'!
+test03ShouldNotImportIfFileHasCacaOnIt
+
+	self should: [CustomerImporter valueFrom: self cacaImportData into: session.]
+		raise: Error
+		withExceptionDo: [ :anError | self assert: anError messageText equals: CustomerImporter invalidFormatErrorDescription.
+			self assert: (session selectAllOfType: Customer) size equals: 1 ]! !
+
+!testRun: #ImportTest #test03ShouldNotImportIfFileHasCacaOnIt stamp: 'MO 11/14/2022 19:06:41'!
+FAILURE!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 19:08:12' prior: 50556022!
+isCustomerRecord
+
+	^ line beginsWith: 'C,' ! !
+
+!testRun: #ImportTest #test01Import stamp: 'MO 11/14/2022 19:08:14'!
+PASSED!
+
+!testRun: #ImportTest #test02ShouldNotImportIfFileFormatIsNotCorrect stamp: 'MO 11/14/2022 19:08:15'!
+PASSED!
+
+!testRun: #ImportTest #test03ShouldNotImportIfFileHasCacaOnIt stamp: 'MO 11/14/2022 19:08:15'!
+FAILURE!
+
+!testRun: #ImportTest #test03ShouldNotImportIfFileHasCacaOnIt stamp: 'MO 11/14/2022 19:08:15'!
+FAILURE!
+!ImportTest methodsFor: 'tests' stamp: 'MO 11/14/2022 19:08:29' prior: 50556552!
+test03ShouldNotImportIfFileHasCacaOnIt
+
+	self should: [CustomerImporter valueFrom: self cacaImportData into: session.]
+		raise: Error
+		withExceptionDo: [ :anError | self assert: anError messageText equals: CustomerImporter invalidFormatErrorDescription.
+			self assert: (session selectAllOfType: Customer) size equals: 0 ]! !
+
+!testRun: #ImportTest #test03ShouldNotImportIfFileHasCacaOnIt stamp: 'MO 11/14/2022 19:08:30'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'MO 11/14/2022 19:08:31'!
+PASSED!
+
+!testRun: #ImportTest #test02ShouldNotImportIfFileFormatIsNotCorrect stamp: 'MO 11/14/2022 19:08:31'!
+PASSED!
+
+!testRun: #ImportTest #test03ShouldNotImportIfFileHasCacaOnIt stamp: 'MO 11/14/2022 19:08:31'!
+PASSED!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 19:08:42' prior: 50556052!
+isAddressRecord
+
+	^ line beginsWith: 'A,'! !
+
+!testRun: #ImportTest #test01Import stamp: 'MO 11/14/2022 19:08:44'!
+PASSED!
+
+!testRun: #ImportTest #test02ShouldNotImportIfFileFormatIsNotCorrect stamp: 'MO 11/14/2022 19:08:44'!
+PASSED!
+
+!testRun: #ImportTest #test03ShouldNotImportIfFileHasCacaOnIt stamp: 'MO 11/14/2022 19:08:44'!
+PASSED!
+!ImportTest methodsFor: 'test data' stamp: 'MO 11/14/2022 19:09:59'!
+missingInfoImportData
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,D
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+!ImportTest methodsFor: 'tests' stamp: 'MO 11/14/2022 19:10:50'!
+test04ShouldNotImportIfFileHasMissingInfo
+
+	self should: [CustomerImporter valueFrom: self cacaImportData into: session.]
+		raise: Error
+		withExceptionDo: [ :anError | self assert: anError messageText equals: CustomerImporter invalidFormatErrorDescription.
+			self assert: (session selectAllOfType: Customer) size equals: 0 ]! !
+
+!testRun: #ImportTest #test04ShouldNotImportIfFileHasMissingInfo stamp: 'MO 11/14/2022 19:13:18'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'MO 11/14/2022 19:13:18'!
+PASSED!
+
+!testRun: #ImportTest #test02ShouldNotImportIfFileFormatIsNotCorrect stamp: 'MO 11/14/2022 19:13:19'!
+PASSED!
+
+!testRun: #ImportTest #test03ShouldNotImportIfFileHasCacaOnIt stamp: 'MO 11/14/2022 19:13:19'!
+PASSED!
+
+!testRun: #ImportTest #test04ShouldNotImportIfFileHasMissingInfo stamp: 'MO 11/14/2022 19:13:19'!
+PASSED!
+!ImportTest methodsFor: 'tests' stamp: 'MO 11/14/2022 19:13:28' prior: 50556634!
+test04ShouldNotImportIfFileHasMissingInfo
+
+	self should: [CustomerImporter valueFrom: self missingInfoImportData into: session.]
+		raise: Error
+		withExceptionDo: [ :anError | self assert: anError messageText equals: CustomerImporter invalidFormatErrorDescription.
+			self assert: (session selectAllOfType: Customer) size equals: 0 ]! !
+
+!testRun: #ImportTest #test04ShouldNotImportIfFileHasMissingInfo stamp: 'MO 11/14/2022 19:13:29'!
+FAILURE!
+
+!testRun: #ImportTest #test04ShouldNotImportIfFileHasMissingInfo stamp: 'MO 11/14/2022 19:14:18'!
+FAILURE!
+!ImportTest methodsFor: 'tests' stamp: 'MO 11/14/2022 19:15:01' prior: 50556663!
+test04ShouldNotImportIfFileHasMissingInfo
+
+	self should: [CustomerImporter valueFrom: self missingInfoImportData into: session.]
+		raise: Error
+		withExceptionDo: [ :anError | self assert: CustomerImporter invalidFormatErrorDescription equals: anError messageText.
+			self assert: (session selectAllOfType: Customer) size equals: 0 ]! !
+
+!testRun: #ImportTest #test04ShouldNotImportIfFileHasMissingInfo stamp: 'MO 11/14/2022 19:15:02'!
+FAILURE!
+!ImportTest methodsFor: 'tests' stamp: 'MO 11/14/2022 19:15:26' prior: 50556683!
+test04ShouldNotImportIfFileHasMissingInfo
+
+	self should: [CustomerImporter valueFrom: self missingInfoImportData into: session.]
+		raise: Error
+		withExceptionDo: [ :anError | self assert: anError messageText equals: CustomerImporter invalidFormatErrorDescription.
+			self assert: (session selectAllOfType: Customer) size equals: 0 ]! !
+!ImportTest methodsFor: 'tests' stamp: 'MO 11/14/2022 19:17:03' prior: 50556700!
+test04ShouldNotImportIfFileHasMissingInfo
+
+	self should: [CustomerImporter valueFrom: self missingInfoImportData into: session.]
+		raise: Error
+		withExceptionDo: [ :anError | self assert: anError messageText equals: CustomerImporter missingParametersErrorDescription.
+			self assert: (session selectAllOfType: Customer) size equals: 0 ]! !
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'MO 11/14/2022 19:17:30'!
+missingParametersErrorDescription
+
+	^ 'no me ratonees con la data que no somos AFIP'! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 19:24:35' prior: 50556612!
+isAddressRecord
+
+	(record size = 5) ifFalse: [ self error: self class missingParametersErrorDescription ].
+	
+	^ line beginsWith: 'A,'! !
+
+!testRun: #ImportTest #test01Import stamp: 'MO 11/14/2022 19:24:48'!
+ERROR!
+
+!testRun: #ImportTest #test02ShouldNotImportIfFileFormatIsNotCorrect stamp: 'MO 11/14/2022 19:24:48'!
+FAILURE!
+
+!testRun: #ImportTest #test03ShouldNotImportIfFileHasCacaOnIt stamp: 'MO 11/14/2022 19:24:48'!
+PASSED!
+
+!testRun: #ImportTest #test04ShouldNotImportIfFileHasMissingInfo stamp: 'MO 11/14/2022 19:24:49'!
+FAILURE!
+
+!testRun: #ImportTest #test01Import stamp: 'MO 11/14/2022 19:25:05'!
+ERROR!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 19:25:17' prior: 50556734!
+isAddressRecord
+
+	(record size = 6) ifFalse: [ self error: self class missingParametersErrorDescription ].
+	
+	^ line beginsWith: 'A,'! !
+
+!testRun: #ImportTest #test01Import stamp: 'MO 11/14/2022 19:25:18'!
+PASSED!
+
+!testRun: #ImportTest #test02ShouldNotImportIfFileFormatIsNotCorrect stamp: 'MO 11/14/2022 19:25:19'!
+PASSED!
+
+!testRun: #ImportTest #test03ShouldNotImportIfFileHasCacaOnIt stamp: 'MO 11/14/2022 19:25:19'!
+FAILURE!
+
+!testRun: #ImportTest #test04ShouldNotImportIfFileHasMissingInfo stamp: 'MO 11/14/2022 19:25:19'!
+FAILURE!
+
+!testRun: #ImportTest #test03ShouldNotImportIfFileHasCacaOnIt stamp: 'MO 11/14/2022 19:25:30'!
+FAILURE!
+
+!testRun: #ImportTest #test03ShouldNotImportIfFileHasCacaOnIt stamp: 'MO 11/14/2022 19:26:05'!
+FAILURE!
+
+!testRun: #ImportTest #test01Import stamp: 'MO 11/14/2022 19:29:06'!
+PASSED!
+
+!testRun: #ImportTest #test02ShouldNotImportIfFileFormatIsNotCorrect stamp: 'MO 11/14/2022 19:29:07'!
+PASSED!
+
+!testRun: #ImportTest #test03ShouldNotImportIfFileHasCacaOnIt stamp: 'MO 11/14/2022 19:29:07'!
+FAILURE!
+
+!testRun: #ImportTest #test04ShouldNotImportIfFileHasMissingInfo stamp: 'MO 11/14/2022 19:29:07'!
+FAILURE!
+!ImportTest methodsFor: 'tests' stamp: 'MO 11/14/2022 19:29:25' prior: 50556586!
+test03ShouldNotImportIfFileHasCacaOnIt
+
+CustomerImporter valueFrom: self cacaImportData into: session.
+
+	self should: [CustomerImporter valueFrom: self cacaImportData into: session.]
+		raise: Error
+		withExceptionDo: [ :anError | self assert: anError messageText equals: CustomerImporter invalidFormatErrorDescription.
+			self assert: (session selectAllOfType: Customer) size equals: 0 ]! !
+
+!testRun: #ImportTest #test03ShouldNotImportIfFileHasCacaOnIt stamp: 'MO 11/14/2022 19:29:26'!
+ERROR!
+
+!testRun: #ImportTest #test03ShouldNotImportIfFileHasCacaOnIt stamp: 'MO 11/14/2022 19:29:31'!
+ERROR!
+
+!testRun: #ImportTest #test03ShouldNotImportIfFileHasCacaOnIt stamp: 'MO 11/14/2022 19:31:46'!
+ERROR!
+
+!testRun: #ImportTest #test03ShouldNotImportIfFileHasCacaOnIt stamp: 'MO 11/14/2022 19:31:58'!
+ERROR!
+!ImportTest methodsFor: 'tests' stamp: 'MO 11/14/2022 19:32:38' prior: 50556796!
+test03ShouldNotImportIfFileHasCacaOnIt
+
+	self should: [CustomerImporter valueFrom: self cacaImportData into: session.]
+		raise: Error
+		withExceptionDo: [ :anError | self assert: anError messageText equals: CustomerImporter invalidFormatErrorDescription.
+			self assert: (session selectAllOfType: Customer) size equals: 0 ]! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 19:33:00' prior: 50556757!
+isAddressRecord
+
+	"(record size = 6) ifFalse: [ self error: self class missingParametersErrorDescription ]."
+	
+	^ line beginsWith: 'A,'! !
+
+!testRun: #ImportTest #test01Import stamp: 'MO 11/14/2022 19:33:02'!
+PASSED!
+
+!testRun: #ImportTest #test02ShouldNotImportIfFileFormatIsNotCorrect stamp: 'MO 11/14/2022 19:33:02'!
+PASSED!
+
+!testRun: #ImportTest #test03ShouldNotImportIfFileHasCacaOnIt stamp: 'MO 11/14/2022 19:33:02'!
+PASSED!
+
+!testRun: #ImportTest #test04ShouldNotImportIfFileHasMissingInfo stamp: 'MO 11/14/2022 19:33:02'!
+FAILURE!
+
+!testRun: #ImportTest #test04ShouldNotImportIfFileHasMissingInfo stamp: 'MO 11/14/2022 19:33:03'!
+FAILURE!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 19:33:30' prior: 50556569!
+isCustomerRecord
+
+	(record size = 5) ifFalse: [ self error: self class missingParametersErrorDescription ].
+
+	^ line beginsWith: 'C,' ! !
+
+!testRun: #ImportTest #test01Import stamp: 'MO 11/14/2022 19:33:31'!
+ERROR!
+
+!testRun: #ImportTest #test02ShouldNotImportIfFileFormatIsNotCorrect stamp: 'MO 11/14/2022 19:33:32'!
+FAILURE!
+
+!testRun: #ImportTest #test03ShouldNotImportIfFileHasCacaOnIt stamp: 'MO 11/14/2022 19:33:32'!
+PASSED!
+
+!testRun: #ImportTest #test04ShouldNotImportIfFileHasMissingInfo stamp: 'MO 11/14/2022 19:33:32'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'MO 11/14/2022 19:33:48'!
+ERROR!
+
+!testRun: #ImportTest #test02ShouldNotImportIfFileFormatIsNotCorrect stamp: 'MO 11/14/2022 19:33:48'!
+FAILURE!
+
+!testRun: #ImportTest #test03ShouldNotImportIfFileHasCacaOnIt stamp: 'MO 11/14/2022 19:33:48'!
+PASSED!
+
+!testRun: #ImportTest #test04ShouldNotImportIfFileHasMissingInfo stamp: 'MO 11/14/2022 19:33:48'!
+PASSED!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 19:35:47' prior: 50556838!
+isAddressRecord
+
+	(record size = 6) ifFalse: [ self error: self class missingParametersErrorDescription ].
+	
+	^ line beginsWith: 'A,'! !
+
+!testRun: #ImportTest #test01Import stamp: 'MO 11/14/2022 19:35:48'!
+ERROR!
+
+!testRun: #ImportTest #test02ShouldNotImportIfFileFormatIsNotCorrect stamp: 'MO 11/14/2022 19:35:49'!
+FAILURE!
+
+!testRun: #ImportTest #test03ShouldNotImportIfFileHasCacaOnIt stamp: 'MO 11/14/2022 19:35:49'!
+FAILURE!
+
+!testRun: #ImportTest #test04ShouldNotImportIfFileHasMissingInfo stamp: 'MO 11/14/2022 19:35:49'!
+PASSED!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 19:36:16' prior: 50556895!
+isAddressRecord
+	
+	^ line beginsWith: 'A,'! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 19:36:34' prior: 50555983!
+importAddress
+
+	| newAddress |
+	
+	(record size = 6) ifFalse: [ self error: self class missingParametersErrorDescription ].
+	
+	newAddress := Address new.
+	newCustomer addAddress: newAddress.
+	newAddress streetName: record second.
+	newAddress streetNumber: record third asNumber .
+	newAddress town: record fourth.
+	newAddress zipCode: record fifth asNumber .
+	newAddress province: record sixth! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 19:36:47' prior: 50556862!
+isCustomerRecord
+
+	^ line beginsWith: 'C,' ! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 19:37:02' prior: 50555950!
+importCustomer
+
+	(record size = 5) ifFalse: [ self error: self class missingParametersErrorDescription ].
+
+	newCustomer := Customer new.
+	newCustomer firstName: record second.
+	newCustomer lastName: record third.
+	newCustomer identificationType: record fourth.
+	newCustomer identificationNumber: record fifth.
+	session persist: newCustomer! !
+
+!testRun: #ImportTest #test01Import stamp: 'MO 11/14/2022 19:37:05'!
+PASSED!
+
+!testRun: #ImportTest #test02ShouldNotImportIfFileFormatIsNotCorrect stamp: 'MO 11/14/2022 19:37:06'!
+PASSED!
+
+!testRun: #ImportTest #test03ShouldNotImportIfFileHasCacaOnIt stamp: 'MO 11/14/2022 19:37:06'!
+PASSED!
+
+!testRun: #ImportTest #test04ShouldNotImportIfFileHasMissingInfo stamp: 'MO 11/14/2022 19:37:06'!
+PASSED!
+!ImportTest methodsFor: 'tests' stamp: 'MO 11/14/2022 19:40:03'!
+test05ShouldNotImportIfTheFirstLineIsAnAddress
+
+	self should: [CustomerImporter valueFrom: self missingInfoImportData into: session.]
+		raise: Error
+		withExceptionDo: [ :anError | self assert: anError messageText equals: CustomerImporter missingParametersErrorDescription.
+			self assert: (session selectAllOfType: Customer) size equals: 0 ]! !
+!ImportTest methodsFor: 'tests' stamp: 'MO 11/14/2022 19:40:21' prior: 50556967!
+test05ShouldNotImportIfTheFirstLineIsAnAddress
+
+	self should: [CustomerImporter valueFrom: self firstAddressImportData into: session.]
+		raise: Error
+		withExceptionDo: [ :anError | self assert: anError messageText equals: CustomerImporter missingParametersErrorDescription.
+			self assert: (session selectAllOfType: Customer) size equals: 0 ]! !
+!ImportTest methodsFor: 'tests' stamp: 'MO 11/14/2022 19:40:58' prior: 50556981!
+test05ShouldNotImportIfTheFirstLineIsAnAddress
+
+	self should: [CustomerImporter valueFrom: self firstAddressImportData into: session.]
+		raise: Error
+		withExceptionDo: [ :anError | self assert: anError messageText equals: CustomerImporter missingCustomerErrorDescription.
+			self assert: (session selectAllOfType: Customer) size equals: 0 ]! !
+!ImportTest methodsFor: 'test data' stamp: 'MO 11/14/2022 19:41:14'!
+firstAddressImportData
+
+	^ ReadStream on:
+'A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'MO 11/14/2022 19:44:07'!
+missingCustomerErrorDescription
+
+	^ 'un reino sin rey no es un reino'! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 19:46:13'!
+assertValidCustomerRecord
+
+	^ (record size = 5) ifFalse: [ self error: self class missingParametersErrorDescription ]! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'MO 11/14/2022 19:46:13' prior: 50556941!
+importCustomer
+
+	self assertValidCustomerRecord.
+
+	newCustomer := Customer new.
+	newCustomer firstName: record second.
+	newCustomer lastName: record third.
+	newCustomer identificationType: record fourth.
+	newCustomer identificationNumber: record fifth.
+	session persist: newCustomer! !
+!CustomerImporter methodsFor: 'private' stamp: 'MO 11/14/2022 19:49:07'!
+assertValidAddressRecord
+
+	^ (record size = 6) ifFalse: [ self error: self class missingParametersErrorDescription ]! !
+!CustomerImporter methodsFor: 'private' stamp: 'MO 11/14/2022 19:49:07' prior: 50556920!
+importAddress
+
+	| newAddress |
+	
+	self assertValidAddressRecord.
+	
+	newAddress := Address new.
+	newCustomer addAddress: newAddress.
+	newAddress streetName: record second.
+	newAddress streetNumber: record third asNumber .
+	newAddress town: record fourth.
+	newAddress zipCode: record fifth asNumber .
+	newAddress province: record sixth! !
+
+!testRun: #ImportTest #test05ShouldNotImportIfTheFirstLineIsAnAddress stamp: 'MO 11/14/2022 19:49:58'!
+FAILURE!
+!CustomerImporter methodsFor: 'private' stamp: 'MO 11/14/2022 19:51:22' prior: 50557048!
+importAddress
+
+	| newAddress |
+	
+	self assertValidAddressRecord.
+	(newCustomer isNil) ifTrue: [ self error: self class missingCustomerErrorDescription ].
+	
+	newAddress := Address new.
+	newCustomer addAddress: newAddress.
+	newAddress streetName: record second.
+	newAddress streetNumber: record third asNumber .
+	newAddress town: record fourth.
+	newAddress zipCode: record fifth asNumber .
+	newAddress province: record sixth! !
+!CustomerImporter methodsFor: 'private' stamp: 'MO 11/14/2022 19:51:44'!
+assertValidCustomer
+
+	^ (newCustomer isNil) ifTrue: [ self error: self class missingCustomerErrorDescription ]! !
+!CustomerImporter methodsFor: 'private' stamp: 'MO 11/14/2022 19:51:44' prior: 50557065!
+importAddress
+
+	| newAddress |
+	
+	self assertValidAddressRecord.
+	self assertValidCustomer.
+	
+	newAddress := Address new.
+	newCustomer addAddress: newAddress.
+	newAddress streetName: record second.
+	newAddress streetNumber: record third asNumber .
+	newAddress town: record fourth.
+	newAddress zipCode: record fifth asNumber .
+	newAddress province: record sixth! !
+
+!testRun: #ImportTest #test01Import stamp: 'MO 11/14/2022 19:51:49'!
+PASSED!
+
+!testRun: #ImportTest #test02ShouldNotImportIfFileFormatIsNotCorrect stamp: 'MO 11/14/2022 19:51:49'!
+PASSED!
+
+!testRun: #ImportTest #test03ShouldNotImportIfFileHasCacaOnIt stamp: 'MO 11/14/2022 19:51:50'!
+PASSED!
+
+!testRun: #ImportTest #test04ShouldNotImportIfFileHasMissingInfo stamp: 'MO 11/14/2022 19:51:50'!
+PASSED!
+
+!testRun: #ImportTest #test05ShouldNotImportIfTheFirstLineIsAnAddress stamp: 'MO 11/14/2022 19:51:50'!
+PASSED!
+!ImportTest methodsFor: 'test data' stamp: 'MO 11/14/2022 19:58:00'!
+tooMuchImportData
+
+	^ ReadStream on:
+'C,,,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+!ImportTest methodsFor: 'tests' stamp: 'MO 11/14/2022 20:00:08'!
+test06ShouldNotImportIfTMI
+
+	self should: [CustomerImporter valueFrom: self missingInfoImportData into: session.]
+		raise: Error
+		withExceptionDo: [ :anError | self assert: anError messageText equals: CustomerImporter tooManyParametersErrorDescription.
+			self assert: (session selectAllOfType: Customer) size equals: 0 ]! !
+!ImportTest methodsFor: 'tests' stamp: 'MO 11/14/2022 20:00:15' prior: 50557127!
+test06ShouldNotImportIfTMI
+
+	self should: [CustomerImporter valueFrom: self tooMuchImportData into: session.]
+		raise: Error
+		withExceptionDo: [ :anError | self assert: anError messageText equals: CustomerImporter tooManyParametersErrorDescription.
+			self assert: (session selectAllOfType: Customer) size equals: 0 ]! !
+!CustomerImporter class methodsFor: 'error descriptions' stamp: 'MO 11/14/2022 20:02:39'!
+tooManyParametersErrorDescription
+
+	^ 'saquen el paragua que llueven datos que nadie pidió'! !
+
+!testRun: #ImportTest #test01Import stamp: 'MO 11/14/2022 20:06:39'!
+PASSED!
+
+!testRun: #ImportTest #test02ShouldNotImportIfFileFormatIsNotCorrect stamp: 'MO 11/14/2022 20:06:40'!
+PASSED!
+
+!testRun: #ImportTest #test03ShouldNotImportIfFileHasCacaOnIt stamp: 'MO 11/14/2022 20:06:40'!
+PASSED!
+
+!testRun: #ImportTest #test04ShouldNotImportIfFileHasMissingInfo stamp: 'MO 11/14/2022 20:06:40'!
+PASSED!
+
+!testRun: #ImportTest #test05ShouldNotImportIfTheFirstLineIsAnAddress stamp: 'MO 11/14/2022 20:06:40'!
+PASSED!
+
+!testRun: #ImportTest #test06ShouldNotImportIfTMI stamp: 'MO 11/14/2022 20:06:40'!
+FAILURE!
+
+!testRun: #ImportTest #test06ShouldNotImportIfTMI stamp: 'MO 11/14/2022 20:06:41'!
+FAILURE!
+!CustomerImporter methodsFor: 'assertions' stamp: 'MO 11/14/2022 20:09:58' prior: 50557022!
+assertValidCustomerRecord
+
+	(record size < 5) ifTrue: [ self error: self class missingParametersErrorDescription ].
+	(record size > 5) ifTrue: [ self error: self class tooManyParametersErrorDescription ]
+	! !
+!CustomerImporter methodsFor: 'assertions' stamp: 'MO 11/14/2022 20:10:44' prior: 50557041!
+assertValidAddressRecord
+	
+	
+	
+	(record size < 6) ifTrue: [ self error: self class missingParametersErrorDescription ].
+	(record size > 6) ifTrue: [ self error: self class tooManyParametersErrorDescription ]! !
+!CustomerImporter methodsFor: 'assertions' stamp: 'MO 11/14/2022 20:11:20' prior: 50557191!
+assertValidAddressRecord
+	
+	
+	
+	| expectedSize |
+	expectedSize := 6.
+	(record size < expectedSize) ifTrue: [ self error: self class missingParametersErrorDescription ].
+	(record size > 6) ifTrue: [ self error: self class tooManyParametersErrorDescription ]! !
+!CustomerImporter methodsFor: 'assertions' stamp: 'MO 11/14/2022 20:11:36' prior: 50557201!
+assertValidAddressRecord
+	
+	| expectedSize |
+	
+	expectedSize := 6.
+	
+	(record size < expectedSize) ifTrue: [ self error: self class missingParametersErrorDescription ].
+	(record size > expectedSize) ifTrue: [ self error: self class tooManyParametersErrorDescription ]! !
+!CustomerImporter methodsFor: 'assertions' stamp: 'MO 11/14/2022 20:11:53' prior: 50557181!
+assertValidCustomerRecord
+
+	| expectedSize |
+	expectedSize := 5.
+	(record size < expectedSize) ifTrue: [ self error: self class missingParametersErrorDescription ].
+	(record size > 5) ifTrue: [ self error: self class tooManyParametersErrorDescription ]
+	! !
+!CustomerImporter methodsFor: 'assertions' stamp: 'MO 11/14/2022 20:12:02' prior: 50557224!
+assertValidCustomerRecord
+
+	| expectedSize |
+	
+	expectedSize := 5.
+	
+	(record size < expectedSize) ifTrue: [ self error: self class missingParametersErrorDescription ].
+	(record size > expectedSize) ifTrue: [ self error: self class tooManyParametersErrorDescription ]
+	! !
+!CustomerImporter methodsFor: 'assertions' stamp: 'MO 11/14/2022 20:12:16' prior: 50557235!
+assertValidCustomerRecord
+
+	| expectedSize |
+
+	expectedSize := 5.
+
+	(record size < expectedSize) ifTrue: [ self error: self class missingParametersErrorDescription ].
+	(record size > expectedSize) ifTrue: [ self error: self class tooManyParametersErrorDescription ]! !
+
+!testRun: #ImportTest #test01Import stamp: 'MO 11/14/2022 20:12:21'!
+PASSED!
+
+!testRun: #ImportTest #test02ShouldNotImportIfFileFormatIsNotCorrect stamp: 'MO 11/14/2022 20:12:22'!
+PASSED!
+
+!testRun: #ImportTest #test03ShouldNotImportIfFileHasCacaOnIt stamp: 'MO 11/14/2022 20:12:22'!
+PASSED!
+
+!testRun: #ImportTest #test04ShouldNotImportIfFileHasMissingInfo stamp: 'MO 11/14/2022 20:12:22'!
+PASSED!
+
+!testRun: #ImportTest #test05ShouldNotImportIfTheFirstLineIsAnAddress stamp: 'MO 11/14/2022 20:12:22'!
+PASSED!
+
+!testRun: #ImportTest #test06ShouldNotImportIfTMI stamp: 'MO 11/14/2022 20:12:23'!
+FAILURE!
+
+!testRun: #ImportTest #test06ShouldNotImportIfTMI stamp: 'MO 11/14/2022 20:12:23'!
+FAILURE!
+!ImportTest methodsFor: 'test data' stamp: 'MO 11/14/2022 20:12:50' prior: 50557118!
+tooMuchImportData
+
+	^ ReadStream on:
+'C, ,,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+
+!testRun: #ImportTest #test01Import stamp: 'MO 11/14/2022 20:12:52'!
+PASSED!
+
+!testRun: #ImportTest #test02ShouldNotImportIfFileFormatIsNotCorrect stamp: 'MO 11/14/2022 20:12:52'!
+PASSED!
+
+!testRun: #ImportTest #test03ShouldNotImportIfFileHasCacaOnIt stamp: 'MO 11/14/2022 20:12:52'!
+PASSED!
+
+!testRun: #ImportTest #test04ShouldNotImportIfFileHasMissingInfo stamp: 'MO 11/14/2022 20:12:53'!
+PASSED!
+
+!testRun: #ImportTest #test05ShouldNotImportIfTheFirstLineIsAnAddress stamp: 'MO 11/14/2022 20:12:53'!
+PASSED!
+
+!testRun: #ImportTest #test06ShouldNotImportIfTMI stamp: 'MO 11/14/2022 20:12:53'!
+PASSED!
+!ImportTest methodsFor: 'test data' stamp: 'MO 11/14/2022 20:21:33' prior: 50557280!
+tooMuchImportData
+
+	^ ReadStream on:
+'C,Pepe,La Ratatatata,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+!ImportTest methodsFor: 'test data' stamp: 'MO 11/14/2022 20:22:07' prior: 50556413!
+invalidImportData
+
+	^ ReadStream on:
+'W,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+!ImportTest methodsFor: 'tests' stamp: 'MO 11/14/2022 20:22:27' prior: 50556499!
+test02ShouldNotImportIfFileFormatIsNotCorrect
+
+	self should: [CustomerImporter valueFrom: self invalidImportData into: session.]
+		raise: Error
+		withExceptionDo: [ :anError | self assert: anError messageText equals: CustomerImporter invalidFormatErrorDescription.
+			self assert: (session selectAllOfType: Customer) size equals: 0 ]! !
+
+!testRun: #ImportTest #test02ShouldNotImportIfFileFormatIsNotCorrect stamp: 'MO 11/14/2022 20:22:28'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'MO 11/14/2022 20:22:29'!
+PASSED!
+
+!testRun: #ImportTest #test02ShouldNotImportIfFileFormatIsNotCorrect stamp: 'MO 11/14/2022 20:22:29'!
+PASSED!
+
+!testRun: #ImportTest #test03ShouldNotImportIfFileHasCacaOnIt stamp: 'MO 11/14/2022 20:22:30'!
+PASSED!
+
+!testRun: #ImportTest #test04ShouldNotImportIfFileHasMissingInfo stamp: 'MO 11/14/2022 20:22:30'!
+PASSED!
+
+!testRun: #ImportTest #test05ShouldNotImportIfTheFirstLineIsAnAddress stamp: 'MO 11/14/2022 20:22:30'!
+PASSED!
+
+!testRun: #ImportTest #test06ShouldNotImportIfTMI stamp: 'MO 11/14/2022 20:22:30'!
+PASSED!
+!ImportTest methodsFor: 'tests' stamp: 'MO 11/14/2022 20:25:14'!
+test07ShouldImportCorrectlyUntilError
+
+	self should: [CustomerImporter valueFrom: self notValidEnoughImportData into: session.]
+		raise: Error
+		withExceptionDo: [ :anError | self assert: anError messageText equals: CustomerImporter tooManyParametersErrorDescription.
+			self assert: (session selectAllOfType: Customer) size equals: 1 ]! !
+!ImportTest methodsFor: 'tests' stamp: 'MO 11/14/2022 20:25:32' prior: 50557362!
+test07ShouldImportCorrectlyUntilError
+
+	self should: [CustomerImporter valueFrom: self notValidEnoughImportData into: session.]
+		raise: Error
+		withExceptionDo: [ :anError | self assert: anError messageText equals: CustomerImporter invalidFormatErrorDescription.
+			self assert: (session selectAllOfType: Customer) size equals: 1 ]! !
+!ImportTest methodsFor: 'test data' stamp: 'MO 11/14/2022 20:26:04'!
+notValidEnoughImportData
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+X,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+!ImportTest methodsFor: 'tests' stamp: 'MO 11/14/2022 20:28:44' prior: 50557376!
+test07ShouldImportCorrectlyUntilError
+
+	self should: [CustomerImporter valueFrom: self notValidEnoughImportData into: session.]
+		raise: Error
+		withExceptionDo: [ :anError | self assert: anError messageText equals: CustomerImporter invalidFormatErrorDescription.
+			self assertImportedRightNumberOfCustomers.
+			self assertPepeSanchezWasImportedCorrecty.
+			self assert: (session selectAllOfType: Customer) size equals: 1 ]! !
+!ImportTest methodsFor: 'assertions' stamp: 'MO 11/14/2022 20:30:25'!
+assertNoCustomersImported
+
+	^ self assert: 0 equals: (session selectAllOfType: Customer) size! !
+!ImportTest methodsFor: 'assertions' stamp: 'MO 11/14/2022 20:30:30' prior: 50557414!
+assertNoCustomersImported
+
+	self assert: 0 equals: (session selectAllOfType: Customer) size! !
+!ImportTest methodsFor: 'assertions' stamp: 'MO 11/14/2022 20:30:43' prior: 50555315!
+assertImportedRightNumberOfCustomers
+
+	self assert: 2 equals: (session selectAllOfType: Customer) size! !
+!ImportTest methodsFor: 'tests' stamp: 'MO 11/14/2022 20:31:01' prior: 50557327!
+test02ShouldNotImportIfFileFormatIsNotCorrect
+
+	self should: [CustomerImporter valueFrom: self invalidImportData into: session.]
+		raise: Error
+		withExceptionDo: [ :anError | self assert: anError messageText equals: CustomerImporter invalidFormatErrorDescription.
+			self assertNoCustomersImported ]! !
+!ImportTest methodsFor: 'test data' stamp: 'MO 11/14/2022 20:31:29' prior: 50556534!
+validImportData
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+W,Alem,1122,CABA,1001,CABA'! !
+!ImportTest methodsFor: 'tests' stamp: 'MO 11/14/2022 20:32:09' prior: 50557398!
+test07ShouldImportCorrectlyUntilError
+
+	self should: [CustomerImporter valueFrom: self notValidEnoughImportData into: session.]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: CustomerImporter invalidFormatErrorDescription.
+			self assertImportedRightNumberOfCustomers.
+			self assertPepeSanchezWasImportedCorrecty. ]! !
+
+!testRun: #ImportTest #test07ShouldImportCorrectlyUntilError stamp: 'MO 11/14/2022 20:32:11'!
+FAILURE!
+!ImportTest methodsFor: 'test data' stamp: 'HAW 5/22/2022 18:08:08' prior: 50557445!
+validImportData
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+!ImportTest methodsFor: 'test data' stamp: 'MO 11/14/2022 20:32:53' prior: 50557389!
+notValidEnoughImportData
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+X,Alem,1122,CABA,1001,CABA'! !
+
+!testRun: #ImportTest #test01Import stamp: 'MO 11/14/2022 20:33:03'!
+PASSED!
+
+!testRun: #ImportTest #test02ShouldNotImportIfFileFormatIsNotCorrect stamp: 'MO 11/14/2022 20:33:03'!
+PASSED!
+
+!testRun: #ImportTest #test03ShouldNotImportIfFileHasCacaOnIt stamp: 'MO 11/14/2022 20:33:03'!
+PASSED!
+
+!testRun: #ImportTest #test04ShouldNotImportIfFileHasMissingInfo stamp: 'MO 11/14/2022 20:33:03'!
+PASSED!
+
+!testRun: #ImportTest #test05ShouldNotImportIfTheFirstLineIsAnAddress stamp: 'MO 11/14/2022 20:33:03'!
+PASSED!
+
+!testRun: #ImportTest #test06ShouldNotImportIfTMI stamp: 'MO 11/14/2022 20:33:04'!
+PASSED!
+
+!testRun: #ImportTest #test07ShouldImportCorrectlyUntilError stamp: 'MO 11/14/2022 20:33:04'!
+PASSED!
+!ImportTest methodsFor: 'tests' stamp: 'MO 11/14/2022 20:33:18' prior: 50557432!
+test02ShouldNotImportIfFileFormatIsNotCorrect
+
+	self should: [CustomerImporter valueFrom: self invalidImportData into: session.]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: CustomerImporter invalidFormatErrorDescription.
+			self assertNoCustomersImported ]! !
+!ImportTest methodsFor: 'tests' stamp: 'MO 11/14/2022 20:33:29' prior: 50556824!
+test03ShouldNotImportIfFileHasCacaOnIt
+
+	self should: [CustomerImporter valueFrom: self cacaImportData into: session.]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: CustomerImporter invalidFormatErrorDescription.
+			self assertNoCustomersImported ]! !
+!ImportTest methodsFor: 'tests' stamp: 'MO 11/14/2022 20:33:43' prior: 50556714!
+test04ShouldNotImportIfFileHasMissingInfo
+
+	self should: [CustomerImporter valueFrom: self missingInfoImportData into: session.]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: CustomerImporter missingParametersErrorDescription.
+			self assertNoCustomersImported ]! !
+!ImportTest methodsFor: 'tests' stamp: 'MO 11/14/2022 20:33:51' prior: 50556995!
+test05ShouldNotImportIfTheFirstLineIsAnAddress
+
+	self should: [CustomerImporter valueFrom: self firstAddressImportData into: session.]
+		raise: Error
+		withExceptionDo: [ :anError | self assert: anError messageText equals: CustomerImporter missingCustomerErrorDescription.
+			self assertNoCustomersImported ]! !
+!ImportTest methodsFor: 'tests' stamp: 'MO 11/14/2022 20:33:57' prior: 50557550!
+test05ShouldNotImportIfTheFirstLineIsAnAddress
+
+	self should: [CustomerImporter valueFrom: self firstAddressImportData into: session.]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: CustomerImporter missingCustomerErrorDescription.
+			self assertNoCustomersImported ]! !
+!ImportTest methodsFor: 'tests' stamp: 'MO 11/14/2022 20:34:07' prior: 50557140!
+test06ShouldNotImportIfTMI
+
+	self should: [CustomerImporter valueFrom: self tooMuchImportData into: session.]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: CustomerImporter tooManyParametersErrorDescription.
+			self assertNoCustomersImported ]! !
+
+!testRun: #ImportTest #test06ShouldNotImportIfTMI stamp: 'MO 11/14/2022 20:34:11'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'MO 11/14/2022 20:34:11'!
+PASSED!
+
+!testRun: #ImportTest #test02ShouldNotImportIfFileFormatIsNotCorrect stamp: 'MO 11/14/2022 20:34:12'!
+PASSED!
+
+!testRun: #ImportTest #test03ShouldNotImportIfFileHasCacaOnIt stamp: 'MO 11/14/2022 20:34:12'!
+PASSED!
+
+!testRun: #ImportTest #test04ShouldNotImportIfFileHasMissingInfo stamp: 'MO 11/14/2022 20:34:12'!
+PASSED!
+
+!testRun: #ImportTest #test05ShouldNotImportIfTheFirstLineIsAnAddress stamp: 'MO 11/14/2022 20:34:12'!
+PASSED!
+
+!testRun: #ImportTest #test06ShouldNotImportIfTMI stamp: 'MO 11/14/2022 20:34:12'!
+PASSED!
+
+!testRun: #ImportTest #test07ShouldImportCorrectlyUntilError stamp: 'MO 11/14/2022 20:34:13'!
+PASSED!
+
+!testRun: #ImportTest #test04ShouldNotImportIfFileHasMissingInfo stamp: 'MO 11/14/2022 20:34:18'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'MO 11/14/2022 20:34:19'!
+PASSED!
+
+!testRun: #ImportTest #test02ShouldNotImportIfFileFormatIsNotCorrect stamp: 'MO 11/14/2022 20:34:19'!
+PASSED!
+
+!testRun: #ImportTest #test03ShouldNotImportIfFileHasCacaOnIt stamp: 'MO 11/14/2022 20:34:19'!
+PASSED!
+
+----QUIT----(14 November 2022 20:39:29) CuisUniversity-5510.image priorSource: 7155150!
